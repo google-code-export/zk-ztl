@@ -69,10 +69,10 @@ public class B30_123456Test extends ZKClientTestCase {
 				/** start **/
 				/** server code **/
 				zscript = ""
-					+ "			<zk>"
-					+ "				<button id=\"btn\" label=\"Click Me to Show a Message\" onClick=\\'alert(\"Hello!\")\\'/>"
-					+ "			</zk>"
-					+ "		"
+					+ "<zk>"
+					+ "	<button id=\"btn\" label=\"Click Me to Show a Message\" onClick=\\'alert(\"Hello!\")\\'/>"
+					+ "</zk>"
+					+ ""
 					;
 				runZscript(zscript);
 				Widget btn = engine.$f("btn");
