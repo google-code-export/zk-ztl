@@ -1,0 +1,24 @@
+<test tags="combobox">
+	<case id="Constraint">
+		<server><!--
+		<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+			<n:p>[ 1598234 ] strict autocomplete in comboboxes</n:p>
+		        <n:p>1. Type a text which not in comboitem.</n:p>
+		        <n:p>2. Focus on other place but comboitem, and it should display a error message</n:p>
+			<combobox id="cb" onChanging="msg.value = event.value" constraint="strict">
+				<comboitem label="Simple and Rich" />
+				<comboitem label="Cool!" />
+				<comboitem label="Thumbs Up!" />
+			</combobox>
+			<label id="msg" />
+		</zk>
+		 --></server>
+		<client><![CDATA[
+			assertFalse(jq(".z-errbox").exists());
+			type(cb.$n("real"), "abc");
+			assertEquals("abc", msg.get("value"));
+			blur(cb);
+			assertTrue(jq(".z-errbox").exists());
+		]]></client>
+	</case>
+</test>

@@ -1,0 +1,18 @@
+<test tags="groupbox,xhtml">
+	<case id="RightClick">
+		<server><!--
+			<groupbox onClick="" xmlns:h="http://www.w3.org/1999/xhtml">
+				<caption label="User Information"/>
+				<h:form action="/">
+					<h:input type="submit" value="Submit"/>
+				</h:form>
+			</groupbox>
+		--></server>
+		<client>
+			assertTrue(jq(":submit").exists());
+			click(jq(":submit"));
+			waitResponse();
+			assertFalse(jq("div.z-error").exists());
+		</client>
+	</case>
+</test>

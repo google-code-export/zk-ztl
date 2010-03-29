@@ -1,0 +1,46 @@
+<test tags="listbox,databind">
+	<case id="Databind">
+		<server><!--
+		<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
+		<zk xmlns:a="http://www.zkoss.org/2005/zk/annotation">
+		1. Select a value from one of the listboxes. 
+		2. If no NullPointerException, it is right.
+		    <zscript>
+		    	import org.zkoss.zkdemo.test.MyBean;
+		    	
+		    	MyBean mb = new MyBean();
+		    </zscript>
+			
+			<a:bind model="mb.codeFilterTypeValues" selectedItem="mb.codeFilterType"/>
+			<listbox id="codeFilterType" rows="1" mold="select">
+				<a:bind _var="compType"/>
+				<listitem>
+					<a:bind label="compType" value="compType"/>
+					<listcell/>
+				</listitem>
+			</listbox>
+			
+			<a:bind model="mb.titleFilterTypeValues" selectedItem="mb.titleFilterType"/>
+			<listbox id="titleFilterType" rows="1" mold="select">
+				<a:bind _var="titleCompType"/>
+				<listitem>
+					<a:bind label="titleCompType" value="titleCompType"/>
+					<listcell/>
+				</listitem>
+			</listbox>
+			
+		</zk>
+		 --></server>
+		<client><![CDATA[
+			select(codeFilterType, "STARTS");
+			assertFalse(jq("@window").exists());
+			select(codeFilterType, "CONTAINS");
+			assertFalse(jq("@window").exists());
+			
+			select(titleFilterType, "STARTS");
+			assertFalse(jq("@window").exists());
+			select(titleFilterType, "CONTAINS");
+			assertFalse(jq("@window").exists());
+		]]></client>
+	</case>
+</test>

@@ -1,0 +1,29 @@
+<test tags="textbox,button,constraint,focus">
+	<case id="Constraint1">
+		<server id="zul"><!--
+			<zk>
+				<textbox constraint="/.+@.+\.[a-z]+/: Invalid e-mailaddress" id="tb" />
+				<button id="btn" label="check" onClick="checkDate()" />
+			</zk>
+		--></server>
+		<server id="java" lang="java">
+		void checkDate() {
+			tb.getValue();
+		}
+		</server>
+		<client>
+			focus(tb);
+			blur(tb);
+			assertTrue(jq(tb).hasClass("z-textbox-text-invalid"));
+		</client>
+	</case>
+	<case id="Constraint2">
+		<server ref="zul"/>
+		<server ref="java"/>
+		<client>
+			focus(tb);
+			click(btn);
+			assertTrue(jq(tb).hasClass("z-textbox-text-invalid"));
+		</client>
+	</case>
+</test>
