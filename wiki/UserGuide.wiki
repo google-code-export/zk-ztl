@@ -4,6 +4,23 @@
 = Introduction =
 A ZTL file is a XML based format that is compiled by [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/util/ZtlGenerator.html ZtlGenerator] to generate the Junit test case in Java.
 
+For example (ZTL),
+{{{
+<test tags="button">
+	<case id="Click">
+		<server><!--
+			<zk>
+				<button id="btn" label="Click Me to Show a Message" onClick='alert("Hello!")'/>
+			</zk>
+		--></server>
+		<client>
+			click(btn);
+			waitResponse();
+			assertTrue(jq("@window").exists());
+		</client>
+	</case>
+</test>
+}}}
 = Write a ZTL Test Case =
 
 === Package ===
