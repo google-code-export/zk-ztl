@@ -10,13 +10,6 @@ First, you have to checkout the project of the ZTL from [http://code.google.com/
  * *src* the source code of the ZTL core.
  * *test* the directory of the ZTL testing file.
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
-
 Second, you can use [http://ant.apache.org/ Ant] to run the build.xml under *ztl* folder.
 {{{$ztl ant}}}
 {{{    
