@@ -50,7 +50,9 @@ public class DesktopInit implements org.zkoss.zk.ui.util.DesktopInit {
 ||timeout|| the timeout of the waiting response from zk server, in millisecond|| yes ||
 ||browser|| each test case should be tested in the browser type, by default "all" is assumed|| yes ||
 ||all|| describes how many browser type should be tested|| no ||
- * *Note:* *Overrided in ZTL file* is meaning the property can be overrided in each ZTL file, if necessary.
+
+ * Note: *Overrided in ZTL file* means the property can be overrided in each ZTL file, if necessary.
+
 4. Start the Selenium server and ZK server.
  * Run with *startup.bat* under *selenium-sserver* directory.
  * Run your ZK server.
