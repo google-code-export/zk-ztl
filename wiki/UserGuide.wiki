@@ -4,15 +4,21 @@
 = Introduction =
 A ZTL file is a XML based format that is compiled by [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/util/ZtlGenerator.html ZtlGenerator] to generate the Junit test case in Java.
 
-= Write a ZTL test case =
+= Write a ZTL Test Case =
 
-1. *Package:*
+=== Package ===
  The package of the test case is depended on where the file is located to the root directory. In this project, the directory is called *test*(you can use your own directory).
 
  For example, the _B30-123456_ file is under _test/org/zkoss/zkdemo/test2/B30-123456.ztl_, its package is _org.zkoss.zkdemo.test2.B30_123456Test.java_, the dash sign '-' will replace with the underscore sign '`_`' for the legal Java class name convention.
 
-2. *FileName*
+=== File Name ===
  The file name of the ZTL file will convert to Java class name, so it should be a legal Java class name.
 
-3. *Test*
- The root tag in the ZTL file, it can enclose one or many *Case*
+=== Test ===
+ The root tag in the ZTL file, it can enclose one or many [#Case Case]
+
+=== Case ===
+
+=== Server ===
+
+=== Client ===
