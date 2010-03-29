@@ -58,15 +58,15 @@ Configure your server setting under *src/config.properties*
 
  * Note: *Overrided in ZTL file* means the property can be overrided in each ZTL file, if necessary.
 
-== Start Server==
+== Start Server ==
 Start the Selenium server and ZK server.
  * Run with *startup.bat* under *selenium-sserver* directory.
  * Run your ZK server.
 
-== Run AutoTest ==
+== Run Test Case and Report==
 Run with *runProject.bat* under *ztl* directory.
 
-== More details ==
+== More Details ==
 You can use [http://ant.apache.org/ Ant] to run the build.xml under *ztl* folder.
  For example,
    {{{$ztl ant}}}
