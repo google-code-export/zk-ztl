@@ -95,7 +95,7 @@ public class B30_123456Test extends ZKClientTestCase {
 == ZTL Description ==
 
 === Package ===
- The package of the test case is depended on where the file is located to the root directory. In this project, the directory is called *test*(you can use your own directory).
+ The package of the test case is depended on where the file is located to the root directory. In this project, the directory is called *test*(you can use your own directory, please see [#Setting build.prop.xml this]).
 
  For example, the _B30-123456_ file is under _test/org/zkoss/zkdemo/test2/B30-123456.ztl_, its package is _org.zkoss.zkdemo.test2.B30_123456Test.java_, the dash sign '-' will replace with the underscore sign '`_`' for the legal Java class name convention.
 
@@ -130,3 +130,6 @@ public class B30_123456Test extends ZKClientTestCase {
  The content of the tag is run at Selenium server.
 || *Property* || *Description* || *Default Value* || *Require* ||
 || wait || the delay time of the command inside the tag, in millisecond || none || optional ||
+
+== Setting build.prop.xml ==
+You can change the value of *test.src* to your own directory where the ZTL file are placed.
