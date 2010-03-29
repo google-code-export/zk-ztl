@@ -1,5 +1,5 @@
 #summary The guide is used to create a ZTL test case and contribute into this project.
-<wiki:toc max_depth="3" />
+<wiki:toc max_depth="2" />
 == Introduction ==
 Since ZK is a popular Ajax framework, we need to continue to maintain our high testing standards and find areas to improve upon. Automation is one of the best ways in which you can improve testing of your product which is the main reason for introducing ZTL, to make it easier to automate testing of ZK applications. We have begun the process of translating each of our zkdeme/test2 manual test cases to ZTL. Should you with to contribute a new test case or translate a manual test case to a ZTL you are more than welcome to. We will be using this tool to run through all test cases before ZK release or freshly builds.
 
