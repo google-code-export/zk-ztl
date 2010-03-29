@@ -1,9 +1,15 @@
-#summary One-sentence summary of this page.
+#summary Get Started with the ZTL auto-testing.
 
-= Introduction =
+= Checkout =
+First, you have to checkout the project of the ZTL from [http://code.google.com/p/zk-ztl/source/checkout here].
 
-Add your content here.
+Second, you should see the folder under *ztl* folder as follows.
 
+ * javadoc the Javadoc of the ZTL core.
+ * lib the libraries required for this project.
+ * selenium-server... the selenium server.
+ * src the source code of the ZTL core.
+ * test the directory of the ZTL testing file.
 
 = Details =
 
