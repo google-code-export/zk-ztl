@@ -92,7 +92,7 @@ public class B30_123456Test extends ZKClientTestCase {
 	}
 }
 }}}
-== Write a ZTL Test Case ==
+== ZTL Description ==
 
 === Package ===
  The package of the test case is depended on where the file is located to the root directory. In this project, the directory is called *test*(you can use your own directory).
