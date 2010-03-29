@@ -1,5 +1,5 @@
 #summary Get started with the ZTL auto-testing.
-
+<wiki:toc max_depth="2" />
 = How to run the ZTL test cases =
 1. you have to checkout the project of the ZTL from [http://code.google.com/p/zk-ztl/source/checkout here].
  Then, you should see the folder under *ztl* folder as follows.
