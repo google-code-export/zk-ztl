@@ -134,3 +134,15 @@ public class B30_123456Test extends ZKClientTestCase {
 == Setting ==
 === Change ZTL directory ===
 You can change the value of *test.src* under *ztl/build.prop.xml* to your own directory where the ZTL file are placed.
+
+== Eclipse Project ==
+=== Checkout Source Code ===
+Please refer to [GetStartedWithZTL#Checkout_Source_Code]
+=== Import an Existing Projects into Workspace ===
+ # In your eclipse, click *File*>*Import...*>*Existing Projects into Workspace*
+ # Select root directory with the *ztl* directory where you checkout
+ # Right-click upon *src/org/zkoss/ztl/util/ZtlGenerator.java*, and click *Run As*>*Run Configurations...*
+ # At the right panel of the dialog, click the tab *Arguments* and put the following arguments.
+ {{{-src test -dist codegen}}}
+ # Click *Apply* and *Run*
+ # You can see all of the Junit test cases are created under the *codegen* directory.
