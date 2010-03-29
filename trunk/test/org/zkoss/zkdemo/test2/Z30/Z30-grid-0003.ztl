@@ -1,0 +1,88 @@
+<test tags="grid,model,paging">
+	<case id="ColumnSpan">
+		<server><![CDATA[
+			<zk xmlns:h="http://www.w3.org/1999/xhtml">
+				<h:h3> Test Grid with paging</h:h3>
+				<h:p>
+				See if the sorted result printed in console is same as the data collection displayed in Browser.
+				</h:p>
+				<vbox>
+				<toolbarbutton label="B30-1823959.zul" href="B30-1823959.zul"/>
+				<toolbarbutton label="B30-1824604.zul" href="B30-1824604.zul"/>
+				</vbox>
+					<separator/>
+					<zscript>
+						ListModel strset = new org.zkoss.zkdemo.test2.grid.FakeListModel();
+				
+						import org.zkoss.zkdemo.userguide.*;
+						Comparator asc = new RowLabelComparator(true),
+						dsc = new RowLabelComparator(false);
+					</zscript>
+					<vbox>
+						<button id="btn1" label="Invalidate Model" onClick="strset.invalidate()"/>
+						<button id="btn2" label="Invalidate Grid" onClick="grid.invalidate()"/>
+						<grid id="grid" mold="paging" model="${strset}" width="400px" pageSize="13" activePage="10">
+							<columns sizable="true">
+								<column label="Type" sortAscending="${asc}" sortDescending="${dsc}"
+								 sortDirection="ascending"/>
+							</columns>
+						</grid>
+					</vbox>
+				</zk>
+		]]></server>
+		<client><![CDATA[
+			Widget paging = grid.getChild("paging");
+			Widget rows = grid.getChild("rows");
+			Element $paging = paging.$n();
+			String uuid = paging.uuid();
+			String first = uuid + "-first";
+			String prev = uuid + "-prev";
+			String next = uuid + "-next";
+			String last = uuid + "-last";
+			
+			assertEquals("400px", grid.get("width"));
+			assertEquals("13", rows.eval("nChildren"));
+			assertEquals("Option 130", rows.firstChild().firstChild().get("value"));
+			assertTrue(10 < Integer.parseInt($paging.get("offsetHeight")));
+			assertEquals("10", paging.get("activePage"));
+			click(btn1);
+			waitResponse();
+			assertEquals("400px", grid.get("width"));
+			assertEquals("13", rows.eval("nChildren"));
+			assertEquals("Option 130", rows.firstChild().firstChild().get("value"));
+			assertTrue(10 < Integer.parseInt($paging.get("offsetHeight")));
+			assertEquals("10", paging.get("activePage"));
+			click(btn2);
+			waitResponse();
+			assertEquals("400px", grid.get("width"));
+			assertEquals("13", rows.eval("nChildren"));
+			assertEquals("Option 130", rows.firstChild().firstChild().get("value"));
+			assertNotEquals("0", $paging.get("offsetHeight"));
+			assertEquals("10", paging.get("activePage"));
+			click(first);
+			waitResponse();
+			assertEquals("13", rows.eval("nChildren"));
+			assertEquals("Option 0", rows.firstChild().firstChild().get("value"));
+			assertTrue(10 < Integer.parseInt($paging.get("offsetHeight")));
+			assertEquals("0", paging.get("activePage"));
+			click(next);
+			waitResponse();
+			assertEquals("13", rows.eval("nChildren"));
+			assertEquals("Option 13", rows.firstChild().firstChild().get("value"));
+			assertTrue(10 < Integer.parseInt($paging.get("offsetHeight")));
+			assertEquals("1", paging.get("activePage"));
+			click(prev);
+			waitResponse();
+			assertEquals("13", rows.eval("nChildren"));
+			assertEquals("Option 0", rows.firstChild().firstChild().get("value"));
+			assertTrue(10 < Integer.parseInt($paging.get("offsetHeight")));
+			assertEquals("0", paging.get("activePage"));
+			click(last);
+			waitResponse();
+			assertEquals("3", rows.eval("nChildren"));
+			assertEquals("Option 9997", rows.firstChild().firstChild().get("value"));
+			assertTrue(10 < Integer.parseInt($paging.get("offsetHeight")));
+			assertEquals("769", paging.get("activePage"));
+		]]></client>
+	</case>
+</test>
