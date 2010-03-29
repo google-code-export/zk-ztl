@@ -1,5 +1,4 @@
 #summary Get started with the ZTL auto-testing.
-#labels Phase-Deploy
 
 = How to run the ZTL test cases =
 1. you have to checkout the project of the ZTL from [http://code.google.com/p/zk-ztl/source/checkout here].
@@ -42,7 +41,7 @@ public class DesktopInit implements org.zkoss.zk.ui.util.DesktopInit {
 }
 }}} 
 3. Configure your server setting under *src/config.properties*
-|| *Name* || *Description* || *Can modify it depended on each ztl file*||
+|| *Name* || *Description* || *Overrided in ZTL file*||
 || client || the URL of the selenium server|| yes||
 || server || the URL of the ZK server|| yes ||
 || context-path || the name(zkdemo) of the context path, like http://localhost:8080/zkdemo|| yes ||
@@ -51,7 +50,7 @@ public class DesktopInit implements org.zkoss.zk.ui.util.DesktopInit {
 ||timeout|| the timeout of the waiting response from zk server, in millisecond|| yes ||
 ||browser|| each test case should be tested in the browser type, by default "all" is assumed|| yes ||
 ||all|| describes how many browser type should be tested|| no ||
-
+ * *Note:* *Overrided in ZTL file* is meaning the property can be overrided in each ZTL file, if necessary.
 4. Start the Selenium server and ZK server.
  * Run with *startup.bat* under *selenium-sserver* directory.
  * Run your ZK server.
