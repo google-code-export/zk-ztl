@@ -51,7 +51,7 @@ Configure your server setting under *src/config.properties*
 || server || the URL of the ZK server|| yes ||
 || context-path || the name(zkdemo) of the context path, like http://localhost:8080/zkdemo|| yes ||
 ||delay|| the delay time of each command run by Selenium|| yes ||
-||action|| By default, the service.zul is assumed, like http://localhost:8080/zkdemo/service.zul|| yes ||
+||action|| by default, the service.zul is assumed, like http://localhost:8080/zkdemo/service.zul|| yes ||
 ||timeout|| the timeout of the waiting response from zk server, in millisecond|| yes ||
 ||browser|| each test case should be tested in the browser type, by default "all" is assumed|| yes ||
 ||all|| describes how many browser type should be tested|| no ||
