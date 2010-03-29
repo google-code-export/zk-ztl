@@ -1,4 +1,5 @@
 #summary ZTL user guide.
+<wiki:toc max_depth="2" />
 
 = Introduction =
 A ZTL file is a XML based format that is compiled by [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/util/ZtlGenerator.html ZtlGenerator] to generate the Junit test case in Java.
