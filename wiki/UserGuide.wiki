@@ -19,12 +19,12 @@ A ZTL file is a XML based format that is compiled by [http://zk-ztl.googlecode.c
 || *Property* || *Description* || *Default Value* || *Require* ||
 || import || the package that require to import to this test case || none || optional ||
 || tags || the tags to filter the test case, like _button_, _window_, _listbox_, and so on. || none || optional ||
-|| context-path || the name(zkdemo) of the context path, like http://localhost:8080/zkdemo || according to *config.properites* || optional ||
-|| server || the URL of the ZK server || according to *config.properites* || optional ||
-|| action || the path that is visited by Selenium server|| according to *config.properites* || optional ||
-|| delay || the delay time of each command run by Selenium ||according to *config.properites* || optional ||
-|| timeout || the timeout of the waiting response from zk server, in millisecond||according to *config.properites* || optional ||
-|| browser || the test case should be tested with all of the browser types ||according to *config.properites* || optional ||
+|| context-path || the name(zkdemo) of the context path, like http://localhost:8080/zkdemo || according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
+|| server || the URL of the ZK server || according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
+|| action || the path that is visited by Selenium server|| according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
+|| delay || the delay time of each command run by Selenium ||according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
+|| timeout || the timeout of the waiting response from zk server, in millisecond||according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
+|| browser || the test case should be tested with all of the browser types ||according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
 
 === Case ===
  The tag is like a method of Junit test case, and each [#Case Case] in the same [#Test Test] won't impact each other. And it can enclose one or many [#Server Server] or [#Client Client]
