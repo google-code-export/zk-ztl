@@ -1,7 +1,7 @@
 #summary The guide is used to create a ZTL test case and contribute into this project.
 
 == Introduction ==
-Since ZK is a popular Ajax framework, we need to make it more stable and more professional, so we have to translate each manual test case from our zkdemo/test2 to the ZTL test   case for automatically testing. We are pleasure to welcome you to contribute the test case for us, and we will run thru all of the test cases when release ZK or nightly build.
+Since ZK is a popular Ajax framework, we need to continue to maintain our high testing standards and find areas to improve upon. Automation is one of the best ways in which you can improve testing of your product which is the main reason for introducing ZTL, to make it easier to automate testing of ZK applications. We have begun the process of translating each of our zkdeme/test2 manual test cases to ZTL. Should you with to contribute a new test case or translate a manual test case to a ZTL you are more than welcome to. We will be using this tool to run through all test cases before ZK release or freshly builds.
 
 == ZTL Naming Convention ==
  * For translating *zkdemo/test2/*, each ZTL file name should be the same as the test zul file.
