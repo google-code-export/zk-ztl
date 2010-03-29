@@ -1,7 +1,7 @@
 #summary ZTL user guide.
 <wiki:toc max_depth="3" />
 
-= Introduction =
+== Introduction ==
 A ZTL file is a XML based format that is compiled by [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/util/ZtlGenerator.html ZtlGenerator] to generate the Junit test case in Java.
 
 For example (ZTL),
@@ -92,7 +92,7 @@ public class B30_123456Test extends ZKClientTestCase {
 	}
 }
 }}}
-= Write a ZTL Test Case =
+== Write a ZTL Test Case ==
 
 === Package ===
  The package of the test case is depended on where the file is located to the root directory. In this project, the directory is called *test*(you can use your own directory).
