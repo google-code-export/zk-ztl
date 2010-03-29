@@ -27,14 +27,14 @@ A ZTL file is a XML based format that is compiled by [http://zk-ztl.googlecode.c
 || browser || the test case should be tested with all of the browser types ||according to *config.properites* || optional ||
 
 === Case ===
- The tag is like a method of Junit test case, and each [#Case Case] in the same [#Test Test] won't impact each other.
+ The tag is like a method of Junit test case, and each [#Case Case] in the same [#Test Test] won't impact each other. And it can enclose one or many [#Server Server] or [#Client Client]
 || *Property* || *Description* || *Default Value* || *Require* ||
 || id || the name of the method in the Junit test case that starts with "test" automatically || none || *yes* ||
 
 === Server ===
  The content of the tag is run at ZK server, and each tag will fire a Ajax request to execute the code.
 || *Property* || *Description* || *Default Value* || *Require* ||
-|| id || the id of the server || none || optional ||
+|| id || the id of the server tag used for the *ref* property to identify|| none || optional ||
 || ref || refer to the content of the server matched with the same id. i.e. the content of the tag will copy from the content of the server that id is matched. || none || optional ||
 || lang || the content of the language like *Java*, *Ruby*, and so on.(allowed ZK support only) || zul || optional ||
 
