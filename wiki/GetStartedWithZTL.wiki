@@ -53,7 +53,7 @@ Configure your server setting under *src/config.properties*
 ||delay|| the delay time of each command run by Selenium|| yes ||
 ||action|| by default, the service.zul is assumed, like http://localhost:8080/zkdemo/service.zul|| yes ||
 ||timeout|| the timeout of the waiting response from zk server, in millisecond|| yes ||
-||browser|| each test case should be tested in the browser type, by default "all" is assumed|| yes ||
+||browser|| each test case should be tested with all of the browser types, by default "all" is assumed|| yes ||
 ||all|| describes how many browser type should be tested|| no ||
 
  * Note: *Overrided in ZTL file* means the property can be overrided in each ZTL file, if necessary.
