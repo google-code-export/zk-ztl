@@ -12,7 +12,7 @@ A ZTL file is a XML based format that is compiled by [http://zk-ztl.googlecode.c
  For example, the _B30-123456_ file is under _test/org/zkoss/zkdemo/test2/B30-123456.ztl_, its package is _org.zkoss.zkdemo.test2.B30_123456Test.java_, the dash sign '-' will replace with the underscore sign '`_`' for the legal Java class name convention.
 
 === File Name ===
- The file name of the ZTL file will convert to Java class name, so it should be a legal Java class name.
+ The file name of the ZTL file will convert to Java class name, so it should be a legal Java class name and Junit can recognize. i.e. The class name ends with *Test* postfix.
 
 === Test ===
  The root tag in the ZTL file can enclose one or many [#Case Case].
