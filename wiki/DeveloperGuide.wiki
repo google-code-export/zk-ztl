@@ -6,3 +6,9 @@ Please refer to [http://code.google.com/p/zk-ztl/wiki/UserGuide#Eclipse_Project 
 == Workspace ==
  # *lib* the library directory that requires for this project
  # *src* the ZTL core directory
+   All of you needs are to enhance the package under *org/zkoss/ztl*
+
+== Rejection ==
+ * Don't commit these directories into SVN repository
+  # *ztl/build*
+  # *ztl/codegen*
