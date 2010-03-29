@@ -1,13 +1,19 @@
-#summary One-sentence summary of this page.
+#summary The guide is used to create a ZTL test case and contribute into this project.
 
-= Introduction =
+== Introduction ==
+Since ZK is a popular Ajax framework, we need to make it more stable and more professional, so we have to translate each manual test case from our zkdemo/test2 to the ZTL test   case for automatically testing. We are pleasure to welcome you to contribute the test case for us, and we will run thru all of the test cases when release ZK or nightly build.
 
-Add your content here.
+== ZTL Naming Convention ==
+ * For translating *zkdemo/test2/*, each ZTL file name should be the same as the test zul file.
+  For example, *zkdemo/test2/B30-123456.zul*
+  It should be *test/org/zkoss/zkdemo/test2/B30/B30-123456.ztl*
+  And the tags of the test case should be the same as the *zkdemo/test2/config.properties*
+ * For addition test case, please follow the [#Contrbutor_Folder]
 
+== Contributor Folder ==
+ * If your ZTL file is not translated from our *zkdemo/test2/*, you should put your ZTL file under *test/org/zkoss/zkdemo/contributor/*
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+== Rejection ==
+ * Don't commit these directories into SVN repository
+  # *ztl/build*
+  # *ztl/codegen*
