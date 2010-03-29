@@ -1,13 +1,8 @@
-#summary One-sentence summary of this page.
+#summary The guide is used to develop the ZTL core library not for creating ZTL test case.
 
-= Introduction =
+== Setup your Eclipse Project ==
+Please refer to [http://code.google.com/p/zk-ztl/wiki/UserGuide#Eclipse_Project the guide]
 
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+== Workspace ==
+ # *lib* the library directory that requires for this project
+ # *src* the ZTL core directory
