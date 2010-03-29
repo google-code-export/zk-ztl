@@ -1,5 +1,5 @@
 #summary Get started with the ZTL auto-testing.
-#sidebar GetStartedWithZTL
+#sidebar SideNav
 
 <wiki:toc max_depth="2" />
 = How to run the ZTL test cases =
