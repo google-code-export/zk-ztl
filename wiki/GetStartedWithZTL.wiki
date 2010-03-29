@@ -1,5 +1,5 @@
 #summary Get started with the ZTL auto-testing.
-#sidebar TOCCharacterEntitiesA
+#sidebar GetStartedWithZTL
 
 <wiki:toc max_depth="2" />
 = How to run the ZTL test cases =
