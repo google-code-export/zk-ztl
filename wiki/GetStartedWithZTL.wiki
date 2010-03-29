@@ -2,6 +2,11 @@
 #sidebar SideNav
 
 <wiki:toc max_depth="2" />
+
+== Prerequisites ==
+ # You will need the Java SDK version 1.5 or later. If necessary, [http://java.sun.com/javase/downloads/index.jsp download and install the Java SE Development Kit (JDK)] for your platform.
+ # Apache Ant is also necessary to run command line arguments. If you don't already have it, install [http://ant.apache.org/ Apache Ant].
+
 = How to run the ZTL test cases =
 == Checkout Source Code ==
 You have to checkout the project of the ZTL from [http://code.google.com/p/zk-ztl/source/checkout here].
