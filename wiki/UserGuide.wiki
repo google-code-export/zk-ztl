@@ -1,5 +1,5 @@
 #summary ZTL user guide.
-<wiki:toc max_depth="2" />
+<wiki:toc max_depth="3" />
 
 = Introduction =
 A ZTL file is a XML based format that is compiled by [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/util/ZtlGenerator.html ZtlGenerator] to generate the Junit test case in Java.
@@ -20,6 +20,77 @@ For example (ZTL),
 		</client>
 	</case>
 </test>
+}}}
+It will generate the Java class as follows:
+{{{
+/* B30_123456Test.java
+
+	Purpose:
+		
+	Description:
+		
+	History:
+		Mar, 29, 2010 15:52:29 PM
+
+Copyright (C) 2010 Potix Corporation. All Rights Reserved.
+
+This program is distributed under GPL Version 3.0 in the hope that
+it will be useful, but WITHOUT ANY WARRANTY.
+*/
+import org.junit.Test;
+import org.zkoss.ztl.Element;
+import org.zkoss.ztl.JQuery;
+import org.zkoss.ztl.Tags;
+import org.zkoss.ztl.Widget;
+import org.zkoss.ztl.ZK;
+import org.zkoss.ztl.ZKClientTestCase;
+
+import com.thoughtworks.selenium.Selenium;
+
+@Tags(tags = "button")
+public class B30_123456Test extends ZKClientTestCase {
+	
+	public B30_123456Test() {
+		target = "http://localhost:8080/zk50/service.zul";
+		browsers = getBrowsers("all");
+		_timeout = 60000;
+	}
+	
+	@Test(expected = AssertionError.class)
+	public void testClick() {
+		for (Selenium browser : browsers) {
+			boolean close = false;
+			try {
+				start(browser);
+				browser.windowFocus();
+				browser.windowMaximize();
+				String zscript = "";
+				Widget engine = new Widget(new StringBuffer("zk.Desktop._dt"));
+				/** start **/
+				/** server code **/
+				zscript = ""
+					+ "			<zk>"
+					+ "				<button id=\"btn\" label=\"Click Me to Show a Message\" onClick=\\'alert(\"Hello!\")\\'/>"
+					+ "			</zk>"
+					+ "		"
+					;
+				runZscript(zscript);
+				Widget btn = engine.$f("btn");
+				waitResponse();
+				/** client code **/
+				
+				click(btn);
+				waitResponse();
+				assertTrue(jq("@window").exists());
+				
+				/** end **/
+				close = true;
+			} finally {
+				if (close) stop();	
+			}
+		}
+	}
+}
 }}}
 = Write a ZTL Test Case =
 
