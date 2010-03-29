@@ -34,7 +34,7 @@ It will generate the Java class as follows:
 
 Copyright (C) 2010 Potix Corporation. All Rights Reserved.
 
-This program is distributed under GPL Version 3.0 in the hope that
+This program is distributed under Apache License Version 2.0 in the hope that
 it will be useful, but WITHOUT ANY WARRANTY.
 */
 import org.junit.Test;
