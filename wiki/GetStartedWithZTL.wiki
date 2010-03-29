@@ -2,14 +2,13 @@
 
 = Checkout =
 First, you have to checkout the project of the ZTL from [http://code.google.com/p/zk-ztl/source/checkout here].
+ Then, you should see the folder under *ztl* folder as follows.
 
-Second, you should see the folder under *ztl* folder as follows.
-
- * javadoc the Javadoc of the ZTL core.
- * lib the libraries required for this project.
- * selenium-server... the selenium server.
- * src the source code of the ZTL core.
- * test the directory of the ZTL testing file.
+ * *javadoc* the Javadoc of the ZTL core.
+ * *lib* the libraries required for this project.
+ * *selenium-server...* the selenium server.
+ * *src* the source code of the ZTL core.
+ * *test* the directory of the ZTL testing file.
 
 = Details =
 
@@ -17,3 +16,24 @@ Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
+
+Second, you can use [http://ant.apache.org/ Ant] to run the build.xml under *ztl* folder.
+{{{$ztl ant}}}
+{{{    
+help:
+     [echo]
+     [echo] Usage:
+     [echo]     ant clean
+     [echo]             Clean the source.
+     [echo]     ant build
+     [echo]             Generate the Java class and compile them
+     [echo]     ant generate
+     [echo]             Generate the Java class and build the ztl.jar file
+     [echo]     ant run -Dtags=a,b,c
+     [echo]             Run the test in the given package acrroding to the specific tags
+     [echo]     ant junit report
+     [echo]             Run all of the test case and generate the report
+     [echo]     ant javadoc
+     [echo]             Generate the Javadoc
+     [echo]
+}}}
