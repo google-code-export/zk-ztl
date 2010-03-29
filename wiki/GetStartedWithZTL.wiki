@@ -1,7 +1,8 @@
 #summary Get started with the ZTL auto-testing.
 <wiki:toc max_depth="2" />
 = How to run the ZTL test cases =
-1. you have to checkout the project of the ZTL from [http://code.google.com/p/zk-ztl/source/checkout here].
+== Checkout Source Code ==
+You have to checkout the project of the ZTL from [http://code.google.com/p/zk-ztl/source/checkout here].
  Then, you should see the folder under *ztl* folder as follows.
  * *javadoc* the Javadoc of the ZTL core.
  * *lib* the libraries required for this project.
@@ -9,7 +10,8 @@
  * *src* the source code of the ZTL core.
  * *test* the directory of the ZTL testing file.
 
-2. Add a desktop listener into the zk.xml of your ZK server.
+== Add Listener into zk.xml ==
+Add a desktop listener into the zk.xml of your ZK server.
  For example,
  {{{
 <listener>
@@ -40,7 +42,8 @@ public class DesktopInit implements org.zkoss.zk.ui.util.DesktopInit {
 
 }
 }}} 
-3. Configure your server setting under *src/config.properties*
+== Configure ZTL Setting ==
+Configure your server setting under *src/config.properties*
 || *Name* || *Description* || *Overrided in ZTL file*||
 || client || the URL of the selenium server|| yes||
 || server || the URL of the ZK server|| yes ||
@@ -53,13 +56,16 @@ public class DesktopInit implements org.zkoss.zk.ui.util.DesktopInit {
 
  * Note: *Overrided in ZTL file* means the property can be overrided in each ZTL file, if necessary.
 
-4. Start the Selenium server and ZK server.
+== Start Server==
+Start the Selenium server and ZK server.
  * Run with *startup.bat* under *selenium-sserver* directory.
  * Run your ZK server.
 
-5. Run with *runProject.bat* under *ztl* directory.
+== Run AutoTest ==
+Run with *runProject.bat* under *ztl* directory.
 
-6. More details, you can use [http://ant.apache.org/ Ant] to run the build.xml under *ztl* folder.
+== More details ==
+You can use [http://ant.apache.org/ Ant] to run the build.xml under *ztl* folder.
  For example,
    {{{$ztl ant}}}
 {{{    
