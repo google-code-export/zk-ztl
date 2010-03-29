@@ -1,4 +1,5 @@
-#summary Get Started with the ZTL auto-testing.
+#summary Get started with the ZTL auto-testing.
+#labels Phase-Deploy
 
 = How to run the ZTL test cases =
 1. you have to checkout the project of the ZTL from [http://code.google.com/p/zk-ztl/source/checkout here].
