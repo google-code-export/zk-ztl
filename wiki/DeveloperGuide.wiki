@@ -1,4 +1,5 @@
 #summary The guide is used to develop the ZTL core library not for creating ZTL test case.
+<wiki:toc max_depth="3" />
 
 == Prerequisites ==
  # You will need the Java SDK version 1.5 or later. If necessary, [http://java.sun.com/javase/downloads/index.jsp download and install the Java SE Development Kit (JDK)] for your platform.
