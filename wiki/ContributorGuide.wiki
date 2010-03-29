@@ -8,10 +8,11 @@ Since ZK is a popular Ajax framework, we need to continue to maintain our high t
   For example, *zkdemo/test2/B30-123456.zul*
   It should be *test/org/zkoss/zkdemo/test2/B30/B30-123456.ztl*
   And the tags of the test case should be the same as the *zkdemo/test2/config.properties*
- * For addition test case, please follow the [#Contrbutor_Folder]
+ * For the additional test case, please follow the [#Contrbutor_Folder]
 
 == Contributor Folder ==
  * If your ZTL file is not translated from our *zkdemo/test2/*, you should put your ZTL file under *test/org/zkoss/zkdemo/contributor/*
+ * Before you commit, please verify each browser in the test case should be run.
 
 == Rejection ==
  * Don't commit these directories into SVN repository
