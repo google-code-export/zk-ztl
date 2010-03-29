@@ -1,5 +1,9 @@
 #summary The guide is used to develop the ZTL core library not for creating ZTL test case.
 
+== Prerequisites ==
+ # You will need the Java SDK version 1.5 or later. If necessary, [http://java.sun.com/javase/downloads/index.jsp download and install the Java SE Development Kit (JDK)] for your platform.
+ # Apache Ant is also necessary to run command line arguments. If you don't already have it, install [http://ant.apache.org/ Apache Ant].
+
 == Setup your Eclipse Project ==
 Please refer to [http://code.google.com/p/zk-ztl/wiki/UserGuide#Eclipse_Project the guide]
 
