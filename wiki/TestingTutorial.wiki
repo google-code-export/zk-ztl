@@ -57,3 +57,27 @@ Each _server_ tag can refer to another _server_ tag where is placed in the same 
 
 === Client ===
 The content of each _client_ tag in the same _case_ will copy to the area of the same method of the Java class, so the variable name should not be declared twice.
+
+== Waiting Response ==
+The API of [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/ZKClientTestCase.html#waitResponse%28%29 waitResponse] is used to wait the response from ZK server, for example, if you have a button to run a Zscript at ZK server, you have to check the value of another component after the process is done, you can invoke the *waitResponse()* method before check the value.
+
+For example,
+{{{
+click(btn); // it may cost some times.
+waitResponse(); // ensure the process is done.
+assertEquals("Ready", label.get("value"));
+}}}
+
+== Escaping Single Quotation ==
+You may use the JQuery's selector to find a ZK or other elements in the _client_ tag.
+
+For example,
+{{{
+assertTrue(jq("@window[border=\"normal\"]").exists());
+}}}
+As you can see, you have to use the *\"* double quotation rather than single quotation in this case, because Selenium will translate the content to enclose with a single quotation.
+
+== Reference ==
+ * [http://www.zkoss.org/javadoc/latest/jsdoc/ ZK 5 JavaScript Documentation]
+ * [http://www.jarvana.com/jarvana/view/org/seleniumhq/selenium/selenium-rc-documentation/1.0.1/selenium-rc-documentation-1.0.1-doc.zip!/java/com/thoughtworks/selenium/Selenium.html Selenium's API]
+ * [http://api.jquery.com/category/selectors/ jQuery's selector API]
