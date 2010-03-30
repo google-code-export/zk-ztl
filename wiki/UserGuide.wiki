@@ -129,7 +129,7 @@ public class B30_123456Test extends ZKClientTestCase {
 === Client ===
  The content of the tag is run at Selenium server.
 || *Property* || *Description* || *Default Value* || *Require* ||
-|| wait || the delay time of the command inside the tag, in millisecond || none || optional ||
+|| wait || the delay time of the command inside the tag, in millisecond. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1568393.ztl For example] || none || optional ||
 
 == Eclipse Project ==
 === Checkout Source Code ===
