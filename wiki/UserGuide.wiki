@@ -131,10 +131,6 @@ public class B30_123456Test extends ZKClientTestCase {
 || *Property* || *Description* || *Default Value* || *Require* ||
 || wait || the delay time of the command inside the tag, in millisecond || none || optional ||
 
-== Setting Ant ==
-=== Change ZTL directory ===
-You can change the value of *test.src* under *ztl/build.prop.xml* to your own directory where the ZTL file are placed.
-
 == Eclipse Project ==
 === Checkout Source Code ===
 Please refer to [GetStartedWithZTL#Checkout_Source_Code]
@@ -147,3 +143,7 @@ Please refer to [GetStartedWithZTL#Checkout_Source_Code]
  # Click *Apply* and *Run*
  # You can see all of the Junit test cases are created under the *codegen* directory.
  # Right-click upon the Junit test case you want to run as *Junit Test*
+
+== Configure Ant Setting ==
+=== Change ZTL directory ===
+You can change the value of *test.src* under *ztl/build.prop.xml* to your own directory where the ZTL file are placed.
