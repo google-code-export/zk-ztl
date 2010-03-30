@@ -13,6 +13,11 @@ Please refer to [http://code.google.com/p/zk-ztl/wiki/UserGuide#Eclipse_Project 
  # *src* the ZTL core directory
    All of you needs are to enhance the package under *org/zkoss/ztl*
 
+== TODO List ==
+ # Provide a way or API to check the layout display correctly for ZTL test case.
+ # Provide a tool to record/play the ZTL automatically.
+ # Provide a plugin for ZK studio to be able to edit the ZTL file and run with Junit automatically.
+
 == Rejection ==
  * Don't commit these directories into SVN repository
   # *ztl/build*
