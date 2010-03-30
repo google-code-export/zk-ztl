@@ -42,3 +42,5 @@ For example,
 As you can see, the content of the server encloses with *<!-- -->* or *<![CDATA[ ]]>*, the *<!-- -->* comment is to solve the issue that the content of the server includes another *<![CDATA[ ]]>* description. Either of the ways you can choose to write with your ZTL file for the _server_ tag.
 
 In addition, the content of the _client_ tag is copied to the Java class directly that generated, so the content should be validated by Java syntax validator. If the content contains the sign of *>* or *<* (like for loop), you should use *<![CDATA[ ]]>* to enclose the content of the _client_ for a well-formed ZTL file.
+
+Each ID of the _case_ in the ZTL file should be unique, for example, the _case_'s ID is related to the method name of the Java class, so it should not have two same method name in a Java class, moreover, the ID of the _server_ is used to make a reference for another _server_ tag, so it is better to have different ID for the unnecessary conflict.
