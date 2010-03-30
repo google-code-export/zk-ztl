@@ -132,8 +132,10 @@ assertTrue(jq("@window[border=\"normal\"]").exists());
 }}}
 As you can see, you have to use the *\"* double quotation rather than single quotation in this case, because Selenium will translate the content to enclose with a single quotation.
 
-=== Test without Sever tag ===
+=== Test without Server tag ===
 Sometimes you have to test the zul file from ZK server directly. Thus, you can modify the _action_ property to the path of the zul file. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1729253.ztl For example].
+
+
 ----
 == Reference ==
  * [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/package-summary.html ZTL Java Documentation]
