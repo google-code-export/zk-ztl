@@ -61,11 +61,11 @@ Configure your server setting under *src/config.properties*
 ||browser|| each test case should be tested with all of the browser types, by default "all" is assumed|| yes ||
 ||all|| describes how many browser type should be tested|| no ||
 
- * Note: *Overrided in ZTL file* means the property can be overrided in each ZTL file, if necessary.
+ * *Note*: *Overrided in ZTL file* means the property can be overrided in each ZTL file, if necessary.
 
 == Start Server ==
 Start the Selenium server and ZK server.
- * Run with *startup.bat* under *selenium-sserver* directory.
+ * Run with *startup.bat* under *selenium-server* directory.
  * Run your ZK server.
 
 == Run Test Case and Report==
