@@ -86,20 +86,32 @@ int top = parseInt(jq.css("top"));
 == Case Study ==
 === Combobox ===
  ==== Type ====
-In _combobox_ or _bandbox_, you have to type the word into the _real_ sub-element.
+ In _combobox_ or _bandbox_, you have to type the word into the _real_ sub-element.
 
-For example,
-{{{type(combobox.$n("real"), "abc");
-assertEquals("abc", msg.get("value"));}}}
+ For example,
+ {{{
+type(combobox.$n("real"), "abc");
+assertEquals("abc", msg.get("value"));
+}}}
 
 === Tree ===
  ==== Open ====
  In treeitem, you have to click upon the _open_ sub-element.
 
-For example,
-{{{click(treeitem.$n("open"));}}}
+ For example,
+ {{{
+click(treeitem.$n("open"));
+}}}
 
-
+=== Window ===
+ ==== DragDrop ====
+ In the overlapped window or modal window, you have to drag the element upon the _cap_ sub-element.
+ 
+ For example,
+ {{{
+dragdropTo(jq("@window > div[id$=\"cap\"]"), "10,10", "160,160");
+}}}
+As you can see, the selector is matched in which the ID of the div inside the _window_ component ends with *cap*.
 ----
 == Troubleshooting == 
 === Escaping Single Quotation ===
