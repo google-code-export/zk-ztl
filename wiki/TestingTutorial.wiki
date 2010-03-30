@@ -44,3 +44,14 @@ As you can see, the content of the server encloses with *<!-- -->* or *<![CDATA[
 In addition, the content of the _client_ tag is copied to the Java class directly that generated, so the content should be validated by Java syntax validator. If the content contains the sign of *>* or *<* (like for loop), you should use *<![CDATA[ ]]>* to enclose the content of the _client_ for a well-formed ZTL file.
 
 Each ID of the _case_ in the ZTL file should be unique, for example, the _case_'s ID is related to the method name of the Java class, so it should not have two same method name in a Java class, moreover, the ID of the _server_ is used to make a reference for another _server_ tag, so it is better to have different ID for the unnecessary conflict.
+
+== Scope Visibility ==
+=== Case===
+The same example above, each _case_ tag has its own scope, so the content inside the _case_ won't affect others.
+=== Server ===
+Each _server_ tag can refer to another _server_ tag where is in the same _test_ tag(i.e. in the same ZTL file), so you can use the *ref* property to refer to the same content.
+
+*Note:* each _server_ tag in the same _case_ tag is run at the same ZK page via Ajax's request, so the ID of the ZK component or the content of the Zscript will run at the same page scope, if there is not another ID-Space-Owner.
+
+=== Client ===
+The content of each _client_ tag in the same _case_ will copy to the area of the same method of the Java class, so the variable name should not be declared twice.
