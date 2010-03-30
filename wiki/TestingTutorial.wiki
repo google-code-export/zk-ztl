@@ -48,12 +48,12 @@ Each ID of the _case_ in the ZTL file should be unique, for example, the _case_'
 == Scope Visibility ==
 The same example above.
 === Case===
-Each _case_ tag has its own scope, so the content inside the _case_ won't affect others.
+Each _case_ tag has its own scope, so the content inside the _case_ tag won't affect others.
 
 === Server ===
-Each _server_ tag can refer to another _server_ tag where is in the same _test_ tag(i.e. in the same ZTL file), so you can use the *ref* property to refer to the same content.
+Each _server_ tag can refer to another _server_ tag where is placed in the same _test_ tag(i.e. in the same ZTL file), so you can use the *ref* property to refer to other _server_ tag for the same content.
 
-*Note:* each _server_ tag in the same _case_ tag is run at the same ZK page via Ajax's request, so the ID of the ZK component or the content of the Zscript will run at the same page scope, if there is not another ID-Space-Owner.
+*Note:* each _server_ tag in the same _case_ tag is run at the same ZK page via Ajax's request, so the ID of the ZK component or the content of the Zscript may conflict in the scenario, if there is not another ID-Space-Owner.
 
 === Client ===
 The content of each _client_ tag in the same _case_ will copy to the area of the same method of the Java class, so the variable name should not be declared twice.
