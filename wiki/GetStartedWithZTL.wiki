@@ -54,7 +54,7 @@ Configure your server setting under *src/config.properties*
 || *Name* || *Description* || *Overrided in ZTL file*||
 || client || the URL of the selenium server|| yes||
 || server || the URL of the ZK server|| yes ||
-|| context-path || the name(zkdemo) of the context path, like http://localhost:8080/zkdemo|| yes ||
+|| context-path || the name(*/zkdemo*) of the context path, like http://localhost:8080/zkdemo|| yes ||
 ||delay|| the delay time of each command run by Selenium|| yes ||
 ||action|| by default, the service.zul is assumed, like http://localhost:8080/zkdemo/service.zul|| yes ||
 ||timeout|| the timeout of the waiting response from zk server, in millisecond|| yes ||
