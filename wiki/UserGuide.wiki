@@ -147,3 +147,6 @@ Please refer to [GetStartedWithZTL#Checkout_Source_Code]
 == Configure Ant Setting ==
 === Change ZTL directory ===
 You can change the value of *test.src* under *ztl/build.prop.xml* to your own directory where the ZTL file are placed.
+
+== Testing Tutorial ==
+[TestingTutorial Testing Tutorial]
