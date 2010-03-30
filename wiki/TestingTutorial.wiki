@@ -104,7 +104,7 @@ click(treeitem.$n("open"));
 }}}
 
 === Window ===
- ==== DragDrop ====
+ ==== `DragDrop` ====
  In the overlapped window or modal window, you have to drag the element upon the _cap_ sub-element.
  
  For example,
