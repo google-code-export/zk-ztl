@@ -15,8 +15,8 @@ Please refer to [http://code.google.com/p/zk-ztl/wiki/UserGuide#Eclipse_Project 
 
 == TODO List ==
  # Provide a way or API to check the layout display correctly for ZTL test case.
- # Provide a tool to record/play the ZTL automatically.
- # Provide a plugin for ZK studio to be able to edit the ZTL file and run with Junit automatically.
+ # Provide a tool to record/play the ZTL test case automatically.
+ # Provide a plugin for ZK studio to be able to edit the ZTL file and run it with Junit automatically.
 
 == Rejection ==
  * Don't commit these directories into SVN repository
