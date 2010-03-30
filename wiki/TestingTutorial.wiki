@@ -45,6 +45,7 @@ In addition, the content of the _client_ tag is copied to the Java class directl
 
 Each ID of the _case_ in the ZTL file should be unique, for example, the _case_'s ID is related to the method name of the Java class, so it should not have two same method name in a Java class, moreover, the ID of the _server_ is used to make a reference for another _server_ tag, so it is better to have different ID for the unnecessary conflict.
 
+----
 == Scope Visibility ==
 The same example above.
 === Case===
@@ -58,6 +59,8 @@ Each _server_ tag can refer to another _server_ tag where is placed in the same 
 === Client ===
 The content of each _client_ tag in the same _case_ will copy to the area of the same method of the Java class, so the variable name should not be declared twice.
 
+
+----
 == Utile API ==
 === Waiting Response ===
 The API of [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/ZKClientTestCase.html#waitResponse%28%29 waitResponse] is used to wait the response from ZK server, for example, if you have a button to run a Zscript at ZK server, you have to check the value of another component after the process is done, you can invoke the *waitResponse()* method before check the value.
@@ -79,6 +82,25 @@ int left = parseInt(jq.css("left"));
 int top = parseInt(jq.css("top"));
 }}}
 
+----
+== Case Study ==
+=== Combobox ===
+ ==== Type ====
+In _combobox_ or _bandbox_, you have to type the word into the _real_ sub-element.
+
+For example,
+{{{type(combobox.$n("real"), "abc");
+assertEquals("abc", msg.get("value"));}}}
+
+=== Tree ===
+ ==== Open ====
+ In treeitem, you have to click upon the _open_ sub-element.
+
+For example,
+{{{click(treeitem.$n("open"));}}}
+
+
+----
 == Troubleshooting == 
 === Escaping Single Quotation ===
 You may use the JQuery's selector to find a ZK or other elements in the _client_ tag.
@@ -89,6 +111,7 @@ assertTrue(jq("@window[border=\"normal\"]").exists());
 }}}
 As you can see, you have to use the *\"* double quotation rather than single quotation in this case, because Selenium will translate the content to enclose with a single quotation.
 
+----
 == Reference ==
  * [http://www.zkoss.org/javadoc/latest/jsdoc/ ZK 5 JavaScript Documentation]
  * [http://www.jarvana.com/jarvana/view/org/seleniumhq/selenium/selenium-rc-documentation/1.0.1/selenium-rc-documentation-1.0.1-doc.zip!/java/com/thoughtworks/selenium/Selenium.html Selenium's API]
