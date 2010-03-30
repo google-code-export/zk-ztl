@@ -1,4 +1,5 @@
  * [GetStartedWithZTL Getting Started]
  * [UserGuide User Guide]
+  * [TestingTutorial Testing Tutorial]
  * [DeveloperGuide Developer's Guide]
  * [ContributorGuide Contributor's Guide]
