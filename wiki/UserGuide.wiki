@@ -122,8 +122,8 @@ public class B30_123456Test extends ZKClientTestCase {
 === Server ===
  The content of the tag is run at ZK server, and each tag will fire a Ajax request to execute the code.
 || *Property* || *Description* || *Default Value* || *Require* ||
-|| id || the id of the server tag used for the *ref* property to identify|| none || optional ||
-|| ref || refer to the content of the server matched with the same id. i.e. the content of the tag will copy from the content of the server that id is matched. || none || optional ||
+|| id || the id of the server tag used for the *ref* property to identify. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1486556.ztl For example]|| none || optional ||
+|| ref || refer to the content of the server matched with the same id. i.e. the content of the tag will copy from the content of the server that id is matched. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1486556.ztl For example]|| none || optional ||
 || lang || the content of the language like *Java*, *Ruby*, and so on.(allowed ZK support only) || zul || optional ||
 
 === Client ===
