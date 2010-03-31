@@ -46,6 +46,33 @@ In addition, the content of the _client_ tag is copied to the Java class directl
 Each ID of the _case_ in the ZTL file should be unique, for example, the _case_'s ID is related to the method name of the Java class, so it should not have two same method name in a Java class, moreover, the ID of the _server_ is used to make a reference for another _server_ tag, so it is better to have different ID for the unnecessary conflict.
 
 ----
+== ID Naming Binding ==
+Once you specify the ID of ZK component into the _server_ tag, you can use the ID as a widget class into the _client_ tag directly.
+
+For example,
+{{{
+<server>
+	<button id="btn"/>
+</server>
+<client>
+	click(btn);
+</client>
+}}}
+or
+{{{
+<server lang="java">
+	void createLabel(Window w) {
+		Label label = new Label("Hello!");
+		label.setId("mylabel");
+		label.setParent(w);
+	}
+</server>
+<client>
+	assertEquals("Hello!", getText(mylabel));
+</client>
+}}}
+
+----
 == Scope Visibility ==
 The same example above.
 === Case===
