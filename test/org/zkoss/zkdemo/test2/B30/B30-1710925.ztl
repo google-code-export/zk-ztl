@@ -39,10 +39,13 @@
 			color = jq("body").css("backgroundColor");
 			assertTrue("rgb(0, 0, 255)".equals(color) || "blue".equals(color));
 			
-			click(btn3);
-			waitResponse();
-			color = jq("body").css("backgroundColor");
-			assertTrue("rgba(0, 0, 0, 0)".equals(color) || "transparent".equals(color));
+			// IE6 cannot display correctly when remove the style with a blank content.
+			if (!ZK.is("ie6_")) {
+				click(btn3);
+				waitResponse();
+				color = jq("body").css("backgroundColor");
+				assertTrue("rgba(0, 0, 0, 0)".equals(color) || "transparent".equals(color));
+			}
 		]]></client>
 	</case>
 </test>

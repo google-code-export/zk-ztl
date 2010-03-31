@@ -47,6 +47,7 @@
 			for (int i = 0; i < 5; i++) {
 				click(start);
 				click(stop);
+				waitResponse();
 				assertEquals(rowNr.get("value"), serverRows.firstChild().firstChild().get("value"));
 			}
 			
