@@ -81,7 +81,10 @@
 			assertTrue($jq.hasClass("z-column-sizing"));
 			
 			dragdropTo(uuid, width + ",0", width.intValue() - 20 + ",0");
-			assertEquals(width.intValue() - 20, getElementWidth(uuid).intValue());
+			if (!ZK.is("ie6_"))
+				assertEquals(width.intValue() - 20, getElementWidth(uuid).intValue());
+			else
+				assertTrue(width.intValue() - 20 - getElementWidth(uuid).intValue() < 2);
 		]]></client>
 	</case>
 </test>

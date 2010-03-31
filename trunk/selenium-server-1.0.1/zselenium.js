@@ -63,7 +63,7 @@ Selenium.prototype.getEval = function(script) {
         var window = this.browserbot.getCurrentWindow(),
         	result = (window.jq ? window.jq.evalJSON : eval)(script);
         // Selenium RC doesn't allow returning null
-        if (null === result) return "null";
+        if (null == result) return "null";
         return result;
     } catch (e) {
         throw new SeleniumError("Threw an exception: " + extractExceptionMessage(e));
