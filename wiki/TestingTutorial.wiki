@@ -75,8 +75,7 @@ assertEquals("Ready", label.get("value"));
 === Parse Integer from String ===
 The API of [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/ZKClientTestCase.html#parseInt%28java.lang.String%29 parseInt] is used to convert a string value to an int value.
 
-For example,
-If the CSS left is "125px", it will convert to 125 int value.
+For example, if the value fo the _left_ is "125px", it will convert to 125 int value.
 {{{
 JQuery jq = jq("@window");
 int left = parseInt(jq.css("left"));
