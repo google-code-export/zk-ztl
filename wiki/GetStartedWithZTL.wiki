@@ -6,6 +6,7 @@
 = Prerequisites =
  # You will need the Java SDK version 1.5 or later. If necessary, [http://java.sun.com/javase/downloads/index.jsp download and install the Java SE Development Kit (JDK)] for your platform.
  # Apache Ant is also necessary to run command line arguments. If you don't already have it, install [http://ant.apache.org/ Apache Ant].
+ # If you use ZK Selector into your ZTL test case, you have to use ZK 5.0.2 version and later in your ZK server.
 
 = How to run the ZTL test cases =
 == Checkout Source Code ==
