@@ -1,0 +1,30 @@
+<test tags="grid,row">
+	<case id="Setspan">
+		<server><!--
+			<zk>
+			<grid>
+			<rows>
+			<row>
+			<label value="File:"/>
+			<textbox width="98%"/>
+			</row>
+			<row id="row">
+			<label value="File:"/>
+			<textbox width="98%"/>
+			</row>
+			<row>
+			<label value="Options:"/>
+			<textbox rows="3" width="98%"/>
+			</row>
+			</rows>
+			</grid>
+			<button id="btn" label="Click Me you should see the stripe still exists."
+			onClick='row.setSpans("1,1")'/>
+			</zk>
+		 --></server>
+		<client><![CDATA[
+ 				click(btn);
+				assertTrue(jq(row).hasClass("z-row z-grid-odd"));
+		]]></client>
+	</case>
+</test>
