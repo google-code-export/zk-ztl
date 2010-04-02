@@ -44,8 +44,8 @@ public class ${ztl.fileName} extends ZKClientTestCase {
 			boolean close = false;
 			try {
 				start(browser);
-				browser.windowFocus();
-				browser.windowMaximize();
+				windowFocus();
+				windowMaximize();
 				String zscript = "";
 				Widget engine = new Widget(new StringBuffer("zk.Desktop._dt"));
 				/** start **/
