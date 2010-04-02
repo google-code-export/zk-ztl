@@ -16,6 +16,7 @@
 		<client><![CDATA[
 			assertFalse(jq(".z-errbox").exists());
 			type(cb.$n("real"), "abc");
+			waitResponse();
 			assertEquals("abc", msg.get("value"));
 			blur(cb);
 			assertTrue(jq(".z-errbox").exists());
