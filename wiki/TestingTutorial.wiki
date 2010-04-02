@@ -10,10 +10,10 @@ For example,
 <test import="java.util.*,java.io.*"
 	browser="firefox,ie" tags="window">
 	<case id="Method1">
-		<server id="zul"><!--
+		<server id="zulCode"><!--
 			<button id="btn" label="click me" onClick='sayHi();'/>
 		--></server>
-		<server id="java" lang="java"><![CDATA[
+		<server id="javaCode" lang="java"><![CDATA[
 			vold sayHi() {
 				alert("Hi!");
 			}
@@ -25,7 +25,7 @@ For example,
 		</client>
 	</case>
 	<case id="Method2">
-		<server ref="zul"/>
+		<server ref="zulCode"/>
 		<server lang="java"><!--
 			void sayHi() {
 				btn.detach();
