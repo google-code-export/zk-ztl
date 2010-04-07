@@ -4,14 +4,14 @@
 <wiki:toc max_depth="2" />
 
 = Prerequisites =
- # You will need the Java SDK version 1.5 or later. If necessary, [http://java.sun.com/javase/downloads/index.jsp download and install the Java SE Development Kit (JDK)] for your platform.
+ # You will need the Java SDK version 1.5 or later. If necessary,  please [http://java.sun.com/javase/downloads/index.jsp download and install the Java SE Development Kit (JDK)] for your platform.
  # Apache Ant is also necessary to run command line arguments. If you don't already have it, install [http://ant.apache.org/ Apache Ant].
- # If you use ZK Selector into your ZTL test case, you have to use ZK 5.0.2 version and later in your ZK server.
+ # If you use ZK Selector in your ZTL test case, ZK 5.0.2 or later is required.
 
 = How to run the ZTL test cases =
 == Checkout Source Code ==
-You have to checkout the project of the ZTL from [http://code.google.com/p/zk-ztl/source/checkout here].
- Then, you should see the folder under *ztl* folder as follows.
+You need to check out the ZTL project from [http://code.google.com/p/zk-ztl/source/checkout here].
+You should now be able to the following folders under *ztl*:
  * *javadoc* the Javadoc of the ZTL core.
  * *lib* the libraries required for this project.
  * *selenium-server...* the selenium server.
@@ -19,7 +19,7 @@ You have to checkout the project of the ZTL from [http://code.google.com/p/zk-zt
  * *test* the directory of the ZTL testing file.
 
 == Add Listener into zk.xml ==
-Add a desktop listener into the zk.xml of your ZK server.
+Add a desktop listener to zk.xml.
  For example,
  {{{
 <listener>
@@ -27,7 +27,7 @@ Add a desktop listener into the zk.xml of your ZK server.
 	<listener-class>org.zkoss.zkdemo.test2.DesktopInit</listener-class>
 </listener>
 }}}
-*Note:* the implementation class is added since ZK 5.0.1 release, you can also implement your own listener to add the following code into your own listener. For example,
+*Note:* the implementation class was added in ZK 5.0.1 release, you can also implement your own listener. For example,
  {{{
 public class DesktopInit implements org.zkoss.zk.ui.util.DesktopInit {
 	
@@ -51,18 +51,18 @@ public class DesktopInit implements org.zkoss.zk.ui.util.DesktopInit {
 }
 }}} 
 == Configure ZTL Setting ==
-Configure your server setting under *src/config.properties*
-|| *Name* || *Description* || *Overrided in ZTL file*||
+Configure your server settings under *src/config.properties*
+|| *Name* || *Description* || * Overridden in ZTL file*||
 || client || the URL of the selenium server|| yes||
 || server || the URL of the ZK server|| yes ||
 || context-path || the name(*/zkdemo*) of the context path, like http://localhost:8080/zkdemo|| yes ||
 ||delay|| the delay time of each command run by Selenium|| yes ||
 ||action|| by default, the service.zul is assumed, like http://localhost:8080/zkdemo/service.zul|| yes ||
-||timeout|| the timeout of the waiting response from zk server, in millisecond|| yes ||
-||browser|| each test case should be tested with all of the browser types, by default "all" is assumed|| yes ||
+||timeout|| the timeout of the waiting response from ZK server, in millisecond|| yes ||
+||browser|| each test case should be tested with all browser types, by default "all" is assumed|| yes ||
 ||all|| describes how many browser type should be tested|| no ||
 
- * *Note*: *Overrided in ZTL file* means the property can be overrided in each ZTL file, if necessary.
+ * *Note*: *Overridden in ZTL file* means the property can be overridden in each ZTL file, if necessary.
 
 == Start Server ==
 Start the Selenium server and ZK server.
@@ -70,10 +70,10 @@ Start the Selenium server and ZK server.
  * Run your ZK server.
 
 == Run Test Case and Report==
-Run with *runProject.bat* under *ztl* directory.
+Run the test case and reports using *runProject.bat* under the *ztl* directory.
 
 == More Details ==
-You can use [http://ant.apache.org/ Ant] to run the build.xml under *ztl* folder.
+You can use [http://ant.apache.org/ Ant] to run the build.xml under the *ztl* folder.
  For example,
    {{{$ztl ant}}}
 {{{    
