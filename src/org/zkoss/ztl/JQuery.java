@@ -122,6 +122,14 @@ public class JQuery extends ClientWidget {
 	}
 	
 	/**
+	 * Returns the current value of the first element in the set of matched elements.
+	 * @return
+	 */
+	public String val() {
+		return ZKTestCase.getCurrent().getEval(_out.toString() + ".val()");
+	}
+	
+	/**
 	 * Returns the current computed height for the first element.
 	 */
 	public String height() {
