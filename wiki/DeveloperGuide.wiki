@@ -1,9 +1,9 @@
-#summary The guide is used to develop the ZTL core library not for creating ZTL test case.
+#summary This guide is for developing the ZTL core library and is not for creating ZTL test case.
 <wiki:toc max_depth="3" />
 
 == Prerequisites ==
- # You will need the Java SDK version 1.5 or later. If necessary, [http://java.sun.com/javase/downloads/index.jsp download and install the Java SE Development Kit (JDK)] for your platform.
- # Apache Ant is also necessary to run command line arguments. If you don't already have it, install [http://ant.apache.org/ Apache Ant].
+ # You will need the Java SDK version 1.5 or later. If necessary please [http://java.sun.com/javase/downloads/index.jsp download and install the Java SE Development Kit (JDK)] for your platform.
+ # Apache Ant is also necessary to run command line arguments. If you don't already have it installed please visit [http://ant.apache.org/ Apache Ant].
 
 == Setup your Eclipse Project ==
 Please refer to [http://code.google.com/p/zk-ztl/wiki/UserGuide#Eclipse_Project the guide]
@@ -14,9 +14,9 @@ Please refer to [http://code.google.com/p/zk-ztl/wiki/UserGuide#Eclipse_Project 
    All of you needs are to enhance the package under *org/zkoss/ztl*
 
 == TODO List ==
- # Provide a way or API to check the layout display correctly for ZTL test case.
+ # Provide a way or API to check the layout display correctly for ZTL test cases.
  # Provide a tool to record/play the ZTL test case automatically.
- # Provide a plugin for ZK studio to be able to edit the ZTL file and run it with Junit automatically.
+ # Provide a plug-in for ZK studio to be able to edit the ZTL file and run it with JUnit automatically.
 
 == Rejection ==
  * Don't commit these directories into SVN repository
