@@ -2,7 +2,7 @@
 <wiki:toc max_depth="3" />
 
 == Introduction ==
-A ZTL file is a XML based format that is compiled by [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/util/ZtlGenerator.html ZtlGenerator] to generate the Junit test case in Java.
+A ZTL file is an XML based format that is compiled by [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/util/ZtlGenerator.html ZtlGenerator] to generate a JUnit Java test case.
 
 For example (ZTL),
 {{{
@@ -95,58 +95,58 @@ public class B30_123456Test extends ZKClientTestCase {
 == ZTL Description ==
 
 === Package ===
- The package of the test case is depended on where the file is located to the root directory. In this project, the directory is called *test*(you can use your own directory, please see [#Change_ZTL_directory this]).
+ The package of the test case will depend on the location of the file within the root directory. In this project, the directory is named *test*(however, you can use your own directory, please refer to [#Change_ZTL_directory this] for more information).
 
- For example, the _B30-123456_ file is under _test/org/zkoss/zkdemo/test2/B30-123456.ztl_, its package is _org.zkoss.zkdemo.test2.B30_123456Test.java_, the dash sign '-' will replace with the underscore sign '`_`' for the legal Java class name convention.
+ For example, the _B30-123456_ file is under _test/org/zkoss/zkdemo/test2/B30-123456.ztl_, its package is _org.zkoss.zkdemo.test2.B30_123456Test.java_. The dash '-' is replaced with an underscore '`_`' for the legal Java class name convention. 
 
 === File Name ===
- The file name of the ZTL file will convert to Java class name, so it should be a legal Java class name and Junit can recognize. i.e. The class name ends with *Test* postfix.
+ The file name of the ZTL file will be converted to a Java class name, there it should be a legal Java class name which JUnit can recognize. i.e. The class name should end with *Test*.
 
 === Test ===
- The root tag in the ZTL file can enclose one or many [#Case Case].
+ The root tag in the ZTL file can enclose one or many [#Case Cases].
 || *Property* || *Description* || *Default Value* || *Require* ||
-|| import || the package that require to import to this test case || none || optional ||
+|| import || the package that is required to import this test case || none || optional ||
 || tags || the tags to filter the test case, like _button_, _window_, _listbox_, and so on. || none || optional ||
-|| context-path || the name(zkdemo) of the context path, like http://localhost:8080/zkdemo || according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
+|| context-path || the name (zkdemo) of the context path, for example http://localhost:8080/zkdemo || according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
 || server || the URL of the ZK server || according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
-|| action || the path that is visited by Selenium server|| according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
+|| action || the path that is visited by the Selenium server|| according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
 || delay || the delay time of each command run by Selenium ||according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
-|| timeout || the timeout of the waiting response from zk server, in millisecond||according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
+|| timeout || the timeout for waiting response from ZK server, in millisecond||according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
 || browser || the test case should be tested with all of the browser types ||according to [http://zk-ztl.googlecode.com/svn/trunk/src/config.properties config.properties] || optional ||
 
 === Case ===
- The tag is like a method of Junit test case, and each [#Case Case] in the same [#Test Test] won't impact each other. And it can enclose one or many [#Server Server] or [#Client Client]
+ The tag is like a method of a JUnit test case, and each [#Case Case] in the same [#Test Test] won't impact on each other. It can also enclose one or many [#Server Servers] or [#Client Clients]
 || *Property* || *Description* || *Default Value* || *Require* ||
-|| id || the name of the method in the Junit test case that starts with "test" automatically || none || *yes* ||
+|| id || the name of the method in the JUnit test case that starts with "test" || none || *yes* ||
 
 === Server ===
- The content of the tag is run at ZK server, and each tag will fire a Ajax request to execute the code.
+ The content of the tag is run on the ZK server, and each tag will fire an Ajax request to execute the code.
 || *Property* || *Description* || *Default Value* || *Require* ||
 || id || the id of the server tag used for the *ref* property to identify. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1486556.ztl For example]|| none || optional ||
-|| ref || refer to the content of the server matched with the same id. i.e. the content of the tag will copy from the content of the server that id is matched. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1486556.ztl For example]|| none || optional ||
-|| lang || the content of the language like *Java*, *Ruby*, and so on.(allowed ZK support only) [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1486556.ztl For example]|| zul || optional ||
+|| ref || refer to the content of the server which matches the id. i.e. the content of the tag will be copied from the content of the server whose id is a match. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1486556.ztl For example]|| none || optional ||
+|| lang || the content of the language like *Java*, *Ruby*, and so on. (only ZK supported languages are allowed) [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1486556.ztl For example]|| zul || optional ||
 
 === Client ===
- The content of the tag is run at Selenium server.
+ The content of the tag is run on the Selenium server.
 || *Property* || *Description* || *Default Value* || *Require* ||
-|| wait || the delay time of the command inside the tag, in millisecond. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1568393.ztl For example] || none || optional ||
+|| wait || the delay time of the tag command, in millisecond. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1568393.ztl For example] || none || optional ||
 
 == Eclipse Project ==
 === Checkout Source Code ===
 Please refer to [GetStartedWithZTL#Checkout_Source_Code]
 === Import an Existing Projects into Workspace ===
- # In your eclipse, click *File*>*Import...*>*Existing Projects into Workspace*
- # Select root directory with the *ztl* directory where you checkout
- # Right-click upon *`src/org/zkoss/ztl/util/ZtlGenerator.java`*, and click *Run As*>*Run Configurations...*
- # At the right panel of the dialog, click the tab *Arguments* and put the following arguments.
+ # In your eclipse IDE, click *File*>*Import...*>*Existing Projects into Workspace*
+ # Set the root directory to the directory named *ztl* where you checked out the code
+ # Right-click on *`src/org/zkoss/ztl/util/ZtlGenerator.java`*, and click *Run As*>*Run Configurations...*
+ # On the right hand side panel of the dialog, click the tab *Arguments* and put the following arguments inside.
   {{{-src test -dist codegen}}}
  # Click *Apply* and *Run*
- # You can see all of the Junit test cases are created under the *codegen* directory.
- # Right-click upon the Junit test case you want to run as *Junit Test*
+ # You can find all of the JUnit test cases are created under the *codegen* directory.
+ # Right-click upon the JUnit test case you want and then click run as *JUnit Test*
 
 == Configure Ant Setting ==
 === Change ZTL directory ===
-You can change the value of *test.src* under *ztl/build.prop.xml* to your own directory where the ZTL file are placed.
+You can change the value of *test.src* under *ztl/build.prop.xml* to your own directory where the ZTL files are located.
 
 == Testing Tutorial ==
 [TestingTutorial Testing Tutorial]
