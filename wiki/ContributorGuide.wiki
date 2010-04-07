@@ -12,7 +12,7 @@ Since ZK is a popular Ajax framework, we need to continue to maintain our high t
 
 == Contributor Folder ==
  * If your ZTL file is not translated from our *zkdemo/test2/*, you should put your ZTL file under *test/org/zkoss/zkdemo/contributor/*
- * Before you commit, please verify each browser in the test case should be run.
+ * Before you commit, please verify that the test case can run on each browser.
 
 == Rejection ==
  * Don't commit these directories into SVN repository
