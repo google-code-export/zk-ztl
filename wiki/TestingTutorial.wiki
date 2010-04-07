@@ -1,9 +1,9 @@
-#summary This tutorial will guide you how to write a runnable ZTL testing case.
+#summary This tutorial will guide you how to write a run-able ZTL test case.
 <wiki:toc max_depth="3" />
 
 == Well-formed ZTL file ==
 
-A ZTL file is a XML based documentation, so you have to write a well-formed ZTL file.
+A ZTL file is a well-formed XML document.
 
 For example,
 {{{
@@ -39,15 +39,15 @@ For example,
 	</case>
 </test>
 }}}
-As you can see, the content of the server encloses with *<!-- -->* or *<![CDATA[ ]]>*, the *<!-- -->* comment is to solve the issue that the content of the server includes another *<![CDATA[ ]]>* description. Either of the ways you can choose to write with your ZTL file for the _server_ tag.
+As you can see, the content of the server is enclosed by *<!-- -->* or *<![CDATA[ ]]>*. The *<!-- -->* comment solves an issue which could arise if the content of the <server> tag contains another *<![CDATA[ ]]>* tag. You can choose either way to implement the _server_ tag.
 
-In addition, the content of the _client_ tag is copied to the Java class directly that generated, so the content should be validated by Java syntax validator. If the content contains the sign of *>* or *<* (like for loop), you should use *<![CDATA[ ]]>* to enclose the content of the _client_ for a well-formed ZTL file.
+In addition, the content of the _client_ tag is copied directly to the Java class which is generated, so the content should be valid Java. If the content contains the signs  *>* or *<* (like in a for loop), you should use *<![CDATA[ ]]>* to enclose the content of the _client_ for a well-formed ZTL file.
 
-Each ID of the _case_ in the ZTL file should be unique, for example, the _case_'s ID is related to the method name of the Java class, so it should not have two same method name in a Java class, moreover, the ID of the _server_ is used to make a reference for another _server_ tag, so it is better to have different ID for the unnecessary conflict.
+Each ID of the _case_ in the ZTL file should be unique, for example, the _case_'s ID maps to a method name of the Java class, therefore two methods with the same name should not be present in the same class. Moreover, the ID of the _server_ is used to reference another _server_ tag, so it is better to have different IDs to avoid unnecessary conflicts.
 
 ----
 == ID Naming Binding ==
-Once you specify the ID of ZK component into the _server_ tag, you can use the ID as a widget class into the _client_ tag directly.
+Once you specify the ID of ZK component into the _server_ tag, you can use the ID in the _client_ tag directly.
 
 For example,
 {{{
@@ -74,23 +74,21 @@ or
 
 ----
 == Scope Visibility ==
-The same example above.
+Please refer to the last sample.
 === Case===
 Each _case_ tag has its own scope, so the content inside the _case_ tag won't affect others.
 
 === Server ===
-Each _server_ tag can refer to another _server_ tag where is placed in the same _test_ tag(i.e. in the same ZTL file), so you can use the *ref* property to refer to other _server_ tag for the same content.
+Each _server_ tag can refer to another _server_ tag which is placed in the same _test_ tag (i.e. in the same ZTL file). Therefore you can use the *ref* property to refer to the other _server_ tag for the same content.
 
-*Note:* each _server_ tag in the same _case_ tag is run at the same ZK page via Ajax's request, so the ID of the ZK component or the content of the Zscript may conflict in the scenario, if there is not another ID-Space-Owner.
+*Note:* each _server_ tag in the same _case_ tag is run on the same ZK page via an Ajax request. Therefore the ID of the ZK component or the content of the Zscript may conflict if there is not another ID-Space-Owner.
 
 === Client ===
-The content of each _client_ tag in the same _case_ will copy to the area of the same method of the Java class, so the variable name should not be declared twice.
-
-
+The content of each _client_ tag in the same _case_ will be copied to the same method of the java class so variable names should not be declared twice.
 ----
 == Utile API ==
 === Waiting Response ===
-The API of [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/ZKClientTestCase.html#waitResponse%28%29 waitResponse] is used to wait the response from ZK server, for example, if you have a button to run a Zscript at ZK server, you have to check the value of another component after the process is done, you can invoke the *waitResponse()* method before check the value.
+The API of [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/ZKClientTestCase.html#waitResponse%28%29 waitResponse] is employed when waiting for the response from the ZK server. For example, if you have a button to run Zscript at the ZK server and you have to check the value of another component after the process is done, you can invoke the *waitResponse()* method before checking the value.
 
 For example,
 {{{
@@ -100,9 +98,9 @@ assertEquals("Ready", label.get("value"));
 }}}
 
 === Parse Integer from String ===
-The API of [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/ZKClientTestCase.html#parseInt%28java.lang.String%29 parseInt] is used to convert a string value to an int value.
+The [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/ZKClientTestCase.html#parseInt%28java.lang.String%29 parseInt] function is employed to convert a string value into an int value.
 
-For example, if the value fo the _left_ is "125px", it will convert to 125 int value.
+For example, if the value of _left_ is "125px", it will be converted into an integer of value 125.
 {{{
 JQuery jq = jq("@window");
 int left = parseInt(jq.css("left"));
@@ -113,7 +111,7 @@ int top = parseInt(jq.css("top"));
 == Case Study ==
 === Checkbox ===
  ==== Check ====
- You have to click the _real_ sub-element, rather than invoking check() method.
+ You need to click the _real_ sub-element, rather than invoking the check() method.
  
  For example,
  {{{
@@ -121,7 +119,7 @@ click(checkbox.$n("real"));
 }}}
 === Combobox ===
  ==== Type ====
- In _combobox_ or _bandbox_, you have to type the word into the _real_ sub-element.
+ In _combobox_ or _bandbox_, you need to “type” text into the _real_ sub-element.
 
  For example,
  {{{
@@ -140,27 +138,27 @@ click(treeitem.$n("open"));
 
 === Window ===
  ==== Drag Drop ====
- In the overlapped window or modal window, you have to drag the element upon the _cap_ sub-element.
+ In the overlapped window or modal window, you need to drag the element upon the _cap_ sub-element.
  
  For example,
  {{{
 dragdropTo(jq("@window > div[id$=\"cap\"]"), "10,10", "160,160");
 }}}
- As you can see, the selector is matched in which the ID of the div inside the _window_ component ends with *cap*.
+ As you can see, the selector matches a any div with an id ending with *cap* inside a _window_ component.
 
 ----
 == Troubleshooting == 
 === Escaping Single Quotation ===
-You may use the JQuery's selector to find a ZK or other elements in the _client_ tag.
+You may use the jQuery's selector to find a ZK or other elements within the _client_ tag.
 
 For example,
 {{{
 assertTrue(jq("@window[border=\"normal\"]").exists());
 }}}
-As you can see, you have to use the *\"* double quotation rather than single quotation in this case, because Selenium will translate the content to enclose with a single quotation.
+As you can see, you need to use the *\"* double quotation rather than single quotation in this case as Selenium will translate the content to enclose with a single quotation.
 
 === Test without Server tag ===
-Sometimes you have to test the zul file from ZK server directly. Thus, you can modify the _action_ property to the path of the zul file. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1729253.ztl For example].
+Sometimes you will need to test the zul file directly from ZK server. Thus, you can modify the _action_ property to the path of the zul file. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1729253.ztl For example].
 
 
 ----
