@@ -1,0 +1,20 @@
+<test tags="grid">
+        <case id="Click">
+                <server><!--
+					<zk>
+						<grid>
+							<rows>
+								<row>
+									<label value="name" />
+									<combobox id="cb"/>
+								</row>			
+							</rows>
+						</grid>
+					</zk>
+                --></server>
+                <client wait="100">
+                        click(cb.$n("btn"));
+                        assertEquals(jq(cb.$n()).offsetLeft() + "px", jq(cb.$n("pp")).css("left"));
+                </client>
+        </case>
+</test>
