@@ -194,4 +194,18 @@ public class JQuery extends ClientWidget {
 	public boolean exists() {
 		return Boolean.valueOf(ZKTestCase.getCurrent().getEval("!!" + _out.toString() + "[0]"));
 	}
+	
+	/**
+	 * Returns the current computed offsetLeft for the first element
+	 */
+	public String offsetLeft() {
+		return ZKTestCase.getCurrent().getEval(_out.toString() + ".offset().left");
+	}
+	
+	/**
+	 * Returns the current computed offsetTop for the first element
+	 */
+	public String offsetTop() {
+		return ZKTestCase.getCurrent().getEval(_out.toString() + ".offset().top");
+	}
 }
