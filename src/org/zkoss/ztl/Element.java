@@ -86,6 +86,12 @@ public class Element extends ClientWidget {
 		return new Element(_out + ".parentNode");
 	}
 	/**
+	 * Returns the firstChild of the element.
+	 */
+	public Element firstChild() {
+		return new Element(_out + ".firstChild");
+	}
+	/**
 	 * Returns whether the element exists or not.
 	 */
 	public boolean exists() {
