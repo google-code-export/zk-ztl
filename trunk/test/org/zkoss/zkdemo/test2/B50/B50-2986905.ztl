@@ -1,4 +1,4 @@
-<test tags="menu">
+<test tags="listitem">
 	<case id="ChangeIcon">
 		<server id="zul"><![CDATA[
 			<listbox name="lb" mold="select">
