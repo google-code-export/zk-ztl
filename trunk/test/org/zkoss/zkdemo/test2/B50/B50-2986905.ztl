@@ -1,0 +1,12 @@
+<test tags="menu">
+	<case id="ChangeIcon">
+		<server id="zul"><![CDATA[
+			<listbox name="lb" mold="select">
+	 			<listitem id="li" label="label" value="value"/>	 		
+	 		</listbox>
+		]]></server>
+		<client wait="100"><![CDATA[		
+			assertEquals("value",jq(li).val());
+		]]></client>
+	</case>
+</test>
