@@ -1,5 +1,5 @@
 <test tags="grid,combobox">
-        <case id="Click">
+        <case id="dropdownList">
                 <server><!--
 					<zk>
 						<grid>

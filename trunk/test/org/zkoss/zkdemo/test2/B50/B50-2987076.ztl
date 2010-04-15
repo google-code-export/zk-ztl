@@ -1,5 +1,5 @@
 <test tags="tree,treeitem,treerow,treecell">
-	<case id="ChangeIcon">
+	<case id="tooltiptext">
 		<server id="zul"><![CDATA[
 			<zk>
 				<button id="setBtn" onClick='tr.tooltiptext="row"'/>

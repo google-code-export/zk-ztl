@@ -1,5 +1,5 @@
 <test tags="combobox,textbox">
-	<case id="ChangeIcon">
+	<case id="popup">
 		<server id="zul"><![CDATA[
 			<zk>
 				<textbox id="tb" tooltip="popup" />

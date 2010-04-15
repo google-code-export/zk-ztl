@@ -1,5 +1,5 @@
 <test tags="listbox,listitem">
-	<case id="ChangeIcon">
+	<case id="value">
 		<server id="zul"><![CDATA[
 			<listbox name="lb" mold="select">
 	 			<listitem id="li" label="label" value="value"/>	 		
