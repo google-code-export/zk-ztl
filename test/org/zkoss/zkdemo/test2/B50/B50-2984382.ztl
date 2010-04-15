@@ -1,4 +1,4 @@
-<test tags="grid">
+<test tags="grid,combobox">
         <case id="Click">
                 <server><!--
 					<zk>

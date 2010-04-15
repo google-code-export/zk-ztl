@@ -1,4 +1,4 @@
-<test tags="treerow">
+<test tags="tree,treeitem,treerow,treecell">
 	<case id="ChangeIcon">
 		<server id="zul"><![CDATA[
 			<zk>
