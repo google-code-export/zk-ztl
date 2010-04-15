@@ -1,4 +1,4 @@
-<test tags="button">
+<test tags="button,popup">
 	<case id="ChangeIcon">
 		<server id="zul"><![CDATA[
 			<zk>
