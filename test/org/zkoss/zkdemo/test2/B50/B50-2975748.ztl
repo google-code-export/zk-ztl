@@ -1,5 +1,5 @@
 <test tags="button,popup">
-	<case id="ChangeIcon">
+	<case id="popup">
 		<server id="zul"><![CDATA[
 			<zk>
 			   <button id="btn" popup="popup" onClick="" />

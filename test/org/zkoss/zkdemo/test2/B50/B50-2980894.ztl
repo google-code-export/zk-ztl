@@ -1,5 +1,5 @@
 <test tags="datebox,calendar">
-	<case id="ChangeIcon">
+	<case id="selectDate">
 		<server id="zul"><![CDATA[
 			<datebox id="db" readonly="true" />
 		]]></server>
