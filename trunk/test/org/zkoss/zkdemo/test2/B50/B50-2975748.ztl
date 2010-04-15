@@ -1,0 +1,14 @@
+<test tags="button">
+	<case id="ChangeIcon">
+		<server id="zul"><![CDATA[
+			<zk>
+			   <button id="btn" popup="popup" onClick="" />
+			   <popup id="popup"/>
+			</zk>
+		]]></server>
+		<client wait="100"><![CDATA[
+			click(btn);
+			assertTrue(popup.exists());
+		]]></client>
+	</case>
+</test>
