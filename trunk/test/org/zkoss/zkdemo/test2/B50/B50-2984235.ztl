@@ -1,0 +1,19 @@
+<test tags="combobox,textbox">
+	<case id="ChangeIcon">
+		<server id="zul"><![CDATA[
+			<zk>
+				<textbox id="tb" tooltip="popup" />
+				<combobox id="cb" tooltip="popup"/>
+				<popup id="popup"/>
+			</zk>
+		]]></server>
+		<client wait="300"><![CDATA[
+			Element tbNode = tb.$n();
+			mouseOver(tbNode);
+			assertTrue(popup.exists());
+			mouseOut(tbNode);
+			mouseOver(cb.$n());
+			assertTrue(popup.exists());
+		]]></client>
+	</case>
+</test>
