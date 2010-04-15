@@ -1,0 +1,22 @@
+<test tags="treerow">
+	<case id="ChangeIcon">
+		<server id="zul"><![CDATA[
+			<zk>
+			   <tree>
+					<treechildren>
+						<treeitem>
+							<treerow id="tr" tooltiptext="row">
+								<treecell>
+									Item 1
+								</treecell>					
+							</treerow>
+						</treeitem>
+					</treechildren>
+				</tree>
+			</zk>
+		]]></server>
+		<client wait="100"><![CDATA[
+			assertEquals("row", tr.$n().get("title"));
+		]]></client>
+	</case>
+</test>
