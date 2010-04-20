@@ -155,6 +155,12 @@ public class ZKClientTestCase extends ZKTestCase {
 		super.dragdropTo(locatorOfObjectToBeDragged.toString(), from, to);
 	}
 	
+	public void dragdropToObject(ClientWidget locatorOfObjectToBeDragged,
+			ClientWidget locatorOfDragDestinationObject, String from, String to) {
+		super.dragdropToObject(locatorOfObjectToBeDragged.toString(),
+				locatorOfDragDestinationObject.toString(), from, to);
+	}
+	
 	public void dragAndDropToObject(ClientWidget locatorOfObjectToBeDragged,
 			ClientWidget locatorOfDragDestinationObject) {
 		super.dragAndDropToObject(locatorOfObjectToBeDragged.toString(), locatorOfDragDestinationObject.toString());
