@@ -198,7 +198,10 @@ public class ZtlGenerator {
 				for (File f : files) {
 					String pkg = f.getParent().replace(bin, "");
 					if (pkg.length() > 0)
-						pkg = pkg.replace(File.separator, ".").substring(1) + '.';
+						pkg = pkg.replace(File.separator, ".") + '.';
+					int b = pkg.indexOf("org.zkoss");
+					if (b > 0)
+						pkg = pkg.substring(b);
 					Class c = Class.forName(pkg
 							+ f.getName().replace(".class", ""));
 					Tags atags = ((Tags) c.getAnnotation(Tags.class));
