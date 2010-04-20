@@ -240,6 +240,24 @@ public class ZKTestCase extends SeleneseTestCase implements Selenium {
 		browser.mouseUpAt(locatorOfObjectToBeDragged, to);
 	}
 	
+	/**
+	 * Drags and drops the specific element from its specific area to another element.
+	 * <p>For example,<br/>
+	 * 		draggdropToObject("z-xxx", "z-yyy", "10,20", "10,20")
+	 * <p>The result of the "z-xxx" is moved to the position(10,20) of the "z-yyy".
+	 * @param locatorOfObjectToBeDragged the draggable UUID
+	 * @param locatorOfDragDestinationObject the droppable UUID
+	 * @param from the "x,y" value is related to the draggable element, which is dragged from.
+	 * @param to the "x,y" value is related to the droppable element, which is dropped to.
+	 */
+	public void dragdropToObject(String locatorOfObjectToBeDragged,
+			String locatorOfDragDestinationObject, String from, String to) {
+		Selenium browser = getCurrent();
+		browser.mouseDownAt(locatorOfObjectToBeDragged, from);
+		browser.mouseMoveAt(locatorOfDragDestinationObject, to);
+		browser.mouseUpAt(locatorOfDragDestinationObject, to);
+	}
+	
 	@Override
 	public void dragAndDropToObject(String locatorOfObjectToBeDragged,
 			String locatorOfDragDestinationObject) {
