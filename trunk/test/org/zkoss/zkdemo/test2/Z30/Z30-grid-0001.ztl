@@ -248,7 +248,11 @@
 			click(enable);
 			waitResponse();
 			dragdropTo(col1, width + ",0", Integer.parseInt(width) + 10 + ",0");
-			assertEquals("60", $col1.get("offsetWidth"));
+			
+			if(ZK.is("ie6_"))
+				assertTrue(60 - parseInt($col1.get("offsetWidth")) < 2);
+			else
+				assertEquals("60", $col1.get("offsetWidth"));
 		]]></client>
 	</case>
 </test>
