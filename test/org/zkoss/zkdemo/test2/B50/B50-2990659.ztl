@@ -1,0 +1,11 @@
+<test tags="decimalbox">
+	<case id="Format">
+		<server><!--
+		<decimalbox id="db" format="R ##,###,###,###.00"/>
+		--></server>
+		<client>
+			type(db, "1111");
+			assertEquals("R 1,111.00", jq(db).val());
+		</client>
+	</case>
+</test>
