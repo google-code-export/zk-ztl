@@ -88,6 +88,8 @@ help:
      [echo]             Generate the Java class and build the ztl.jar file
      [echo]     ant run -Dtags=a,b,c
      [echo]             Run the test in the given package acrroding to the specific tags
+     [echo]     ant runcase -Dcase=B30-123456.ztl,...
+     [echo]             Run the test in the given package acrroding to the specific ztl file name
      [echo]     ant junit report
      [echo]             Run all of the test case and generate the report
      [echo]     ant javadoc
