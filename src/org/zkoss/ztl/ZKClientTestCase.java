@@ -74,7 +74,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	 * @param jQuery the JQuery object.
 	 */
 	protected Widget widget(JQuery jQuery) {
-		return new Widget(jQuery.toString());
+		return new Widget(jQuery);
 	}
 	
 	/**
