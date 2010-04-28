@@ -12,6 +12,8 @@ Usage:
 		Generate the Java class and build the ztl.jar file
 	ant run -Dtags=a,b,c
 		Run the test in the given package acrroding to the specific tags
+	ant runcase -Dcase=B30-123456.ztl,...
+		Run the test in the given package acrroding to the specific tags
 	ant junit report
 		Run all of the test case and generate the report
 	ant javadoc
@@ -97,6 +99,22 @@ Usage:
          <arg value="-run"/>
          <arg value="${test.dir}"/>
          <arg value="${tags}"/>
+         <classpath>
+           <pathelement path="${classes.dir}"/>
+           <pathelement path="${test.dir}"/>
+			<fileset dir="${lib.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+         </classpath>
+       </java>
+	</target>
+	<target name="runcase" depends="compile,compileztl">
+		<echo>Tags: -Dtags=${tags}</echo>
+		<java classname="org.zkoss.ztl.util.ZtlGenerator"
+           	fork="true">
+         <arg value="-run"/>
+         <arg value="${test.dir}"/>
+         <arg value="${case}"/>
          <classpath>
            <pathelement path="${classes.dir}"/>
            <pathelement path="${test.dir}"/>
