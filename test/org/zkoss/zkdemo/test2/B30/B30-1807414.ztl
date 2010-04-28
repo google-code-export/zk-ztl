@@ -42,11 +42,11 @@
 </window>
 		--></server>
 		<client><![CDATA[
-       		assertEquals("(A0,&nbsp;B0)", jq("@row:eq(0) span").html());
-      		assertEquals("(A1,&nbsp;B1)", jq("@row:eq(1) span").html());
-      		assertEquals("(A2,&nbsp;B2)", jq("@row:eq(2) span").html());
-      		assertEquals("(A3,&nbsp;B3)", jq("@row:eq(3) span").html());
-      		assertEquals("(A4,&nbsp;B4)", jq("@row:eq(4) span").html());
+       		assertEquals("(A0,&nbsp;B0)", jq("@row:eq(0) @label").html());
+      		assertEquals("(A1,&nbsp;B1)", jq("@row:eq(1) @label").html());
+      		assertEquals("(A2,&nbsp;B2)", jq("@row:eq(2) @label").html());
+      		assertEquals("(A3,&nbsp;B3)", jq("@row:eq(3) @label").html());
+      		assertEquals("(A4,&nbsp;B4)", jq("@row:eq(4) @label").html());
       		assertEquals("5", x.getChild("rows").eval("nChildren"));
       		
       		assertEquals("(A0, B0)", jq("@listitem:eq(0) div").html());
