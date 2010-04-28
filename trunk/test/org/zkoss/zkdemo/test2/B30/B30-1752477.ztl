@@ -75,33 +75,82 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-		String[] offset1 = zk(cb1).revisedOffset();
-		String[] offset2 = zk(cb1.$n("btn")).revisedOffset();
-		assertEquals(offset1[1], offset2[1]);
-		assertEquals(jq(cb1.$n("real")).outerHeight(), jq(cb1.$n("btn")).outerHeight());
-		assertEquals(parseInt(offset1[0]) + parseInt(jq(cb1).outerWidth())
-				- parseInt(jq(cb1.$n("btn")).outerWidth()), parseInt(offset2[0]));
-		
-		offset1 = zk(cb2).revisedOffset();
-		offset2 = zk(cb2.$n("btn")).revisedOffset();
-		assertEquals(offset1[1], offset2[1]);
-		assertEquals(jq(cb2.$n("real")).outerHeight(), jq(cb2.$n("btn")).outerHeight());
-		assertEquals(parseInt(offset1[0]) + parseInt(jq(cb2).outerWidth())
-				- parseInt(jq(cb2.$n("btn")).outerWidth()), parseInt(offset2[0]));
-		
-		offset1 = zk(cb3).revisedOffset();
-		offset2 = zk(cb3.$n("btn")).revisedOffset();
-		assertEquals(offset1[1], offset2[1]);
-		assertEquals(jq(cb3.$n("real")).outerHeight(), jq(cb3.$n("btn")).outerHeight());
-		assertEquals(parseInt(offset1[0]) + parseInt(jq(cb3).outerWidth())
-				- parseInt(jq(cb3.$n("btn")).outerWidth()), parseInt(offset2[0]));
-		
-		offset1 = zk(cb4).revisedOffset();
-		offset2 = zk(cb4.$n("btn")).revisedOffset();
-		assertEquals(offset1[1], offset2[1]);
-		assertEquals(jq(cb4.$n("real")).outerHeight(), jq(cb4.$n("btn")).outerHeight());
-		assertEquals(parseInt(offset1[0]) + parseInt(jq(cb4).outerWidth())
-				- parseInt(jq(cb4.$n("btn")).outerWidth()), parseInt(offset2[0]));
+			if (ZK.is("ie6_")) {
+					String[] offset1 = zk(cb1).revisedOffset();
+					String[] offset2 = zk(cb1.$n("btn")).revisedOffset();
+					assertEquals(parseInt(offset1[1]) + 1, parseInt(offset2[1]));
+					assertEquals(parseInt(jq(cb1.$n("real")).outerHeight()),
+							parseInt(jq(cb1.$n("btn")).outerHeight()));
+					assertEquals(parseInt(offset1[0])
+							+ parseInt(jq(cb1).outerWidth())
+							- parseInt(jq(cb1.$n("btn")).outerWidth()),
+							parseInt(offset2[0]));
+					offset1 = zk(cb2).revisedOffset();
+					offset2 = zk(cb2.$n("btn")).revisedOffset();
+					assertEquals(parseInt(offset1[1]) + 1, parseInt(offset2[1]));
+					assertEquals(jq(cb2.$n("real")).outerHeight(), jq(
+							cb2.$n("btn")).outerHeight());
+					assertEquals(parseInt(offset1[0])
+							+ parseInt(jq(cb2).outerWidth())
+							- parseInt(jq(cb2.$n("btn")).outerWidth()),
+							parseInt(offset2[0]));
+					offset1 = zk(cb3).revisedOffset();
+					offset2 = zk(cb3.$n("btn")).revisedOffset();
+					assertEquals(parseInt(offset1[1]) + 1, parseInt(offset2[1]));
+					assertEquals(jq(cb3.$n("real")).outerHeight(), jq(
+							cb3.$n("btn")).outerHeight());
+					assertEquals(parseInt(offset1[0])
+							+ parseInt(jq(cb3).outerWidth())
+							- parseInt(jq(cb3.$n("btn")).outerWidth()),
+							parseInt(offset2[0]));
+					offset1 = zk(cb4).revisedOffset();
+					offset2 = zk(cb4.$n("btn")).revisedOffset();
+					assertEquals(parseInt(offset1[1]) + 1, parseInt(offset2[1]));
+					assertEquals(jq(cb4.$n("real")).outerHeight(), jq(
+							cb4.$n("btn")).outerHeight());
+					assertEquals(parseInt(offset1[0])
+							+ parseInt(jq(cb4).outerWidth())
+							- parseInt(jq(cb4.$n("btn")).outerWidth()),
+							parseInt(offset2[0]));
+
+				} else {
+					String[] offset1 = zk(cb1).revisedOffset();
+					String[] offset2 = zk(cb1.$n("btn")).revisedOffset();
+					assertEquals(offset1[1], offset2[1]);
+					assertEquals(jq(cb1.$n("real")).outerHeight(), jq(
+							cb1.$n("btn")).outerHeight());
+					assertEquals(parseInt(offset1[0])
+							+ parseInt(jq(cb1).outerWidth())
+							- parseInt(jq(cb1.$n("btn")).outerWidth()),
+							parseInt(offset2[0]));
+					offset1 = zk(cb2).revisedOffset();
+					offset2 = zk(cb2.$n("btn")).revisedOffset();
+					assertEquals(offset1[1], offset2[1]);
+					assertEquals(jq(cb2.$n("real")).outerHeight(), jq(
+							cb2.$n("btn")).outerHeight());
+					assertEquals(parseInt(offset1[0])
+							+ parseInt(jq(cb2).outerWidth())
+							- parseInt(jq(cb2.$n("btn")).outerWidth()),
+							parseInt(offset2[0]));
+					offset1 = zk(cb3).revisedOffset();
+					offset2 = zk(cb3.$n("btn")).revisedOffset();
+					assertEquals(offset1[1], offset2[1]);
+					assertEquals(jq(cb3.$n("real")).outerHeight(), jq(
+							cb3.$n("btn")).outerHeight());
+					assertEquals(parseInt(offset1[0])
+							+ parseInt(jq(cb3).outerWidth())
+							- parseInt(jq(cb3.$n("btn")).outerWidth()),
+							parseInt(offset2[0]));
+					offset1 = zk(cb4).revisedOffset();
+					offset2 = zk(cb4.$n("btn")).revisedOffset();
+					assertEquals(offset1[1], offset2[1]);
+					assertEquals(jq(cb4.$n("real")).outerHeight(), jq(
+							cb4.$n("btn")).outerHeight());
+					assertEquals(parseInt(offset1[0])
+							+ parseInt(jq(cb4).outerWidth())
+							- parseInt(jq(cb4.$n("btn")).outerWidth()),
+							parseInt(offset2[0]));
+				}
 		]]></client>
 	</case>
 </test>
