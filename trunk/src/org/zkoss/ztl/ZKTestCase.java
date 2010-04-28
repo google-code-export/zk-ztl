@@ -708,7 +708,11 @@ public class ZKTestCase extends SeleneseTestCase implements Selenium {
 
 	@Override
 	public void select(String selectLocator, String optionLocator) {
+		getCurrent().focus(selectLocator);
 		getCurrent().select(selectLocator, optionLocator);
+		
+		// fixed for IE to fire onchange event.
+		getCurrent().windowFocus();
 	}
 
 	@Override
