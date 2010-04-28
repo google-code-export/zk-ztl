@@ -109,7 +109,7 @@ Usage:
        </java>
 	</target>
 	<target name="runcase" depends="compile,compileztl">
-		<echo>Tags: -Dtags=${tags}</echo>
+		<echo>Case: -Dcase=${case}</echo>
 		<java classname="org.zkoss.ztl.util.ZtlGenerator"
            	fork="true">
          <arg value="-run"/>
