@@ -34,6 +34,10 @@ public class Widget extends ClientWidget {
 		_uuid = uuid;
 		_out = new StringBuffer(WIDGET.replace("%1", uuid));
 	}
+	
+	public Widget(JQuery jquery) {
+		_out = new StringBuffer(WIDGET.replace("'%1'", jquery.toString()));
+	}
 	public Widget(StringBuffer out) {
 		_out = new StringBuffer(out);
 	}

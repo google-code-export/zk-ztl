@@ -1,0 +1,60 @@
+<test tags="Listbox,Model">
+	<case id="Model">
+		<server><!--
+<window title="Test of setModel with declared content" border="normal">
+	<label value="Version: ${desktop.webApp.version}"/>
+	<zscript><![CDATA[
+	import org.zkoss.util.Pair;
+	
+	List infos = new LinkedList();
+	for (int j = 0; j < 5; ++j) {
+		infos.add(new Pair("A" + j, "B" + j));
+	}
+	ListModelList model = new ListModelList(infos);
+	]]></zscript>
+	
+	<grid id="x" >
+	<rows>
+	<row>
+	<textbox value="ABC"/><textbox value="DEF"/><textbox value="YYY"/>
+	</row>
+	</rows>
+	</grid>
+	<zscript>
+	x.setModel(model);
+	</zscript>
+
+	<separator/>
+
+	<listbox id="y">
+	<listitem>
+	<listcell>
+	<textbox value="A"/>
+	</listcell>
+	<listcell>
+	<textbox value="B"/>
+	</listcell>
+	</listitem>
+	</listbox>
+	<zscript>
+	y.setModel(model);
+	</zscript>
+</window>
+		--></server>
+		<client><![CDATA[
+       		assertEquals("(A0,&nbsp;B0)", jq("@row:eq(0) span").html());
+      		assertEquals("(A1,&nbsp;B1)", jq("@row:eq(1) span").html());
+      		assertEquals("(A2,&nbsp;B2)", jq("@row:eq(2) span").html());
+      		assertEquals("(A3,&nbsp;B3)", jq("@row:eq(3) span").html());
+      		assertEquals("(A4,&nbsp;B4)", jq("@row:eq(4) span").html());
+      		assertEquals("5", x.getChild("rows").eval("nChildren"));
+      		
+      		assertEquals("(A0, B0)", jq("@listitem:eq(0) div").html());
+      		assertEquals("(A1, B1)", jq("@listitem:eq(1) div").html());
+      		assertEquals("(A2, B2)", jq("@listitem:eq(2) div").html());
+      		assertEquals("(A3, B3)", jq("@listitem:eq(3) div").html());
+      		assertEquals("(A4, B4)", jq("@listitem:eq(4) div").html());
+       		assertEquals("5", y.eval("nChildren"));
+		]]></client>
+	</case>
+</test>
