@@ -29,8 +29,13 @@ If the popup of combox out of position, that is wrong.
 		String[] offset1 = zk(cb).revisedOffset();
 		click(cb.$n("btn"));
 		String[] offset2 = zk(cb.$n("pp")).revisedOffset();
-		assertEquals(offset1[0], offset2[0]);
-		assertEquals(parseInt(offset1[1]) + parseInt(jq(cb).outerHeight()), parseInt(offset2[1]));
+		if (ZK.is("ie6_")) {
+			assertEquals(parseInt(offset1[0]), parseInt(offset2[0]));
+			assertEquals(parseInt(offset1[1]) + parseInt(jq(cb).outerHeight()) - 1, parseInt(offset2[1]));
+		} else {
+			assertEquals(offset1[0], offset2[0]);
+			assertEquals(parseInt(offset1[1]) + parseInt(jq(cb).outerHeight()), parseInt(offset2[1]));
+		}
 		]]></client>
 	</case>
 </test>

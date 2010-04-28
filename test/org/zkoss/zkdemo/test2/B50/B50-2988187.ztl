@@ -7,7 +7,7 @@
 					<tab label="tab1"/>
 				</tabs>
 				<tabpanels>
-					<tabpanel visible="false">
+					<tabpanel>
 						<button id="btn" label="click me" popup="pp"/>
 						<popup id="pp" width="300px">
 							Here is a Popup.
