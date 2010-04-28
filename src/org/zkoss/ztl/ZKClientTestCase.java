@@ -70,6 +70,14 @@ public class ZKClientTestCase extends ZKTestCase {
 	}
 	
 	/**
+	 * Returns the Widget object from the JQuery object.
+	 * @param jQuery the JQuery object.
+	 */
+	protected Widget widget(JQuery jQuery) {
+		return new Widget(jQuery.toString());
+	}
+	
+	/**
 	 * Returns the Jquery object of the selector
 	 * <p> Default: without "#" sign
 	 * @param selector the selector
