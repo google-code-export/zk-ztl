@@ -21,7 +21,9 @@ import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -169,7 +171,10 @@ public class ZtlGenerator {
 				run = true;
 				bin = args[i + 1];
 				tags = args[i + 2];
-				log("bin=" + bin, "tags=" + tags);
+				if (tags.toLowerCase().endsWith(".ztl"))
+					log("bin=" + bin, "case=" + tags);
+				else
+					log("bin=" + bin, "tags=" + tags);
 			}
 			i++;
 		}
@@ -181,6 +186,8 @@ public class ZtlGenerator {
 			log("	java org.zkoss.ztl.util.ZtlGenerator -src ./test -dest ./codegen");
 			log("\n2.Or run with tags\n");
 			log("	java org.zkoss.ztl.util.ZtlGenerator -run [srcdir] [grid,listbox,button...]");
+			log("\n3.Or run with case\n");
+			log("	java org.zkoss.ztl.util.ZtlGenerator -run [srcdir] [B123456.ztl,...]");
 			log("\n");
 			System.exit(-1);
 		}
@@ -191,41 +198,68 @@ public class ZtlGenerator {
 				t.run(t.load(f, dir.getPath()), dist);
 		} else {
 			try {
-				String[] tag = tags.toLowerCase().split(",");
-				boolean foundAll = false;
+				tags = tags.toLowerCase();
+				String[] tag = tags.split(",");
 				List<File> files = getFiles(new File(bin), new ArrayList<File>(
 						30), "Test.class");
-				for (File f : files) {
-					String pkg = f.getParent().replace(bin, "");
-					if (pkg.length() > 0)
-						pkg = pkg.replace(File.separator, ".") + '.';
-					int b = pkg.indexOf("org.zkoss");
-					if (b > 0)
-						pkg = pkg.substring(b);
-					Class c = Class.forName(pkg
-							+ f.getName().replace(".class", ""));
-					Tags atags = ((Tags) c.getAnnotation(Tags.class));
-					if (atags == null)
-						continue;
-					String keys = atags.tags();
-					if (keys == null)
-						continue;
-					keys = keys.toLowerCase();
-					boolean found = true;
-					for (String t : tag) {
-						if (keys.indexOf(t) == -1) {
-							found = false;
-							break;
+				if (tags.endsWith(".ztl")) {
+					Map<String, String> map = new HashMap<String, String>(tag.length);
+					for (String nm : tag) {
+						map.put(nm.replace("-", "_").replace(".ztl", "") + "test", "");
+					}
+					boolean foundAll = false;
+					for (File f : files) {
+						String pkg = f.getParent().replace(bin, "");
+						if (pkg.length() > 0)
+							pkg = pkg.replace(File.separator, ".") + '.';
+						int b = pkg.indexOf("org.zkoss");
+						if (b > 0)
+							pkg = pkg.substring(b);
+						String name = f.getName().replace(".class", "");
+						if (map.containsKey(name.toLowerCase())) {
+							Class c = Class.forName(pkg
+									+ f.getName().replace(".class", ""));
+							log(c);
+							junit.textui.TestRunner.run(c);
+							foundAll = true;
 						}
 					}
-					if (found) {
-						foundAll = true;
-						log(c);
-						junit.textui.TestRunner.run(c);
+					if (!foundAll)
+						log("Not found the case [" + tag + "]");
+				} else {
+					boolean foundAll = false;
+					for (File f : files) {
+						String pkg = f.getParent().replace(bin, "");
+						if (pkg.length() > 0)
+							pkg = pkg.replace(File.separator, ".") + '.';
+						int b = pkg.indexOf("org.zkoss");
+						if (b > 0)
+							pkg = pkg.substring(b);
+						Class c = Class.forName(pkg
+								+ f.getName().replace(".class", ""));
+						Tags atags = ((Tags) c.getAnnotation(Tags.class));
+						if (atags == null)
+							continue;
+						String keys = atags.tags();
+						if (keys == null)
+							continue;
+						keys = keys.toLowerCase();
+						boolean found = true;
+						for (String t : tag) {
+							if (keys.indexOf(t) == -1) {
+								found = false;
+								break;
+							}
+						}
+						if (found) {
+							foundAll = true;
+							log(c);
+							junit.textui.TestRunner.run(c);
+						}
 					}
+					if (!foundAll)
+						log("Not found the tags [" + tags + "]");
 				}
-				if (!foundAll)
-					log("Not found the tags [" + tags + "]");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
