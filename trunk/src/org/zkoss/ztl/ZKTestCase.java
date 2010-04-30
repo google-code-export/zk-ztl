@@ -71,6 +71,13 @@ public class ZKTestCase extends SeleneseTestCase implements Selenium {
 		return ConfigHelper.getInstance().getBrowsers(browsers);
 	}
 	
+	/**
+	 * Resizes the current window to the size(width and height).
+	 */
+	public void windowResizeTo(int width, int height) {
+		getCurrent().getEval("window.resizeTo("+width + "," + height+")");
+	}
+	
 	/** untested yet
 	protected List<LoggingSelenium> getLoggingBrowsers(String browsers, BufferedWriter loggingWriter){
 		return ConfigHelper.getInstance().getLoggingBrowsers(browsers, loggingWriter);
