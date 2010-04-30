@@ -13,7 +13,7 @@ Usage:
 	ant run -Dtags=a,b,c
 		Run the test in the given package acrroding to the specific tags
 	ant runcase -Dcase=B30-123456.ztl,...
-		Run the test in the given package acrroding to the specific tags
+		Run the test in the given package acrroding to the specific ztl file name
 	ant junit report
 		Run all of the test case and generate the report
 	ant javadoc
