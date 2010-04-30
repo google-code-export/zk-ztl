@@ -105,7 +105,7 @@ public class Server implements Source {
 			try {
 				String lang = getLang();
 				if (!"zul".equals(lang))
-					ary.add("\"<zscript lang=\\\"" + lang + "\\\">\"");
+					ary.add("\"<zscript lang=\\\"" + lang + "\\\"><![CDATA[\"");
 				while ((str = reader.readLine()) != null) {
 					if (str.length() > 0) {
 						str = str.replace("\\", "\\\\\\\\");
@@ -119,7 +119,7 @@ public class Server implements Source {
 				}
 
 				if (!"zul".equals(lang))
-					ary.add("\"</zscript>\"");
+					ary.add("\"]]></zscript>\"");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

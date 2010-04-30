@@ -1,0 +1,28 @@
+<test tags="Textbox,Borderlayout,Errorbox,Constraint">
+	<case id="Constraint">
+		<server><!--
+<borderlayout height="300px">
+	<center autoscroll="true">
+		<div height="500px">
+			Please focus in the textbox, then focus out, and then when
+			you scroll up/down the scroll bar, the error box should be
+			moved according to the textbox.
+			<separator />
+			<textbox id="tb" value="show Error" constraint="/.+@.+\.[a-z]+/" />
+		</div>
+	</center>
+</borderlayout>
+		 --></server>
+		<client><![CDATA[
+			Element cave = widget(jq("@center")).$n("cave");
+			focus(tb);
+			blur(tb);
+			assertTrue(jq(".z-errbox").exists());
+			int top = parseInt(zk(jq(".z-errbox")).revisedOffset()[1]);
+			cave.eval("scrollTop = 20");
+			assertSame(top - 20, parseInt(zk(jq(".z-errbox")).revisedOffset()[1]));
+			cave.eval("scrollTop = 0");
+			assertSame(top, parseInt(zk(jq(".z-errbox")).revisedOffset()[1]));
+		]]></client>
+	</case>
+</test>
