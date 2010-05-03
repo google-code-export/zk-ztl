@@ -1,0 +1,23 @@
+<test tags="menu">
+	<case id="ChangeIcon">
+		<server id="zul"><![CDATA[
+			<zk>
+				<portallayout id="pl" maximizedMode="whole">
+					<portalchildren>
+						<panel id="panel" border="normal" height="400px" collapsible="true"
+							closable="true" maximizable="true" title="Panel">
+							<panelchildren>
+								<window width="100%" height="100%" />
+							</panelchildren>
+						</panel>			
+					</portalchildren>
+				</portallayout>
+			</zk>
+		]]></server>
+		<client><![CDATA[
+			String height = jq(pl.$n()).height();
+			click(panel.$n("max"));
+			assertEquals(height, jq(pl.$n()).height());
+		]]></client>
+	</case>
+</test>
