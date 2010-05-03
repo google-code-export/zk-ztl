@@ -23,7 +23,7 @@ Make a textbox databinding access:load only. (This bug used to cause NullPointer
 		assertEquals("ZK", jq(tb).val());
 		assertEquals("ZK", jq(label).html());
 		type(tb, "Test");
-		keyPress(tb, "9");
+		keyPress(tb, "\\9");
 		assertEquals("Test", jq(tb).val());
 		assertEquals("ZK", jq(label).html());
 		assertFalse(jq(".z-error").exists());
