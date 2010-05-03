@@ -44,8 +44,9 @@ public class ZK extends ClientWidget {
 	/**
 	 * Returns the revised offset array.
 	 */
-	public String[] revisedOffset() {
-		return ZKTestCase.getCurrent().getEval(_out.toString() + ".revisedOffset()").split(",");
+	public int[] revisedOffset() {
+		String[] s = ZKTestCase.getCurrent().getEval(_out.toString() + ".revisedOffset()").split(",");
+		return new int[] {ZKClientTestCase.parseInt(s[0]), ZKClientTestCase.parseInt(s[1])};
 	}
 	/**
 	 * Returns the revised width.

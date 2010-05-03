@@ -34,24 +34,23 @@ It still doesn't work even add row after creation.
 </zk>
 		 --></server>
 		<client><![CDATA[
-			int w = parseInt(jq(col1).outerWidth());
+			int w = jq(col1).outerWidth();
 			dragdropTo(col1, w + ",0", w + 10 + ",0");
 			w += 10;
-			assertTrue(w <= parseInt(jq(col1).outerWidth()));
+			assertTrue(w <= jq(col1).outerWidth());
 			click(btn1);
 			dragdropTo(col1, w + ",0", w + 10 + ",0");
 			w += 10;
-			assertTrue(w <= parseInt(jq(col1).outerWidth()));
-			
+			assertTrue(w <= jq(col1).outerWidth());
 			// the following is the rough test, because the grid is sized by content.
 			click(btn2);
-			assertTrue(30 < parseInt(jq(col1).outerWidth()));
+			assertTrue(30 < jq(col1).outerWidth());
 			assertEquals(jq(col1).outerWidth(), jq("@row > td").outerWidth());
 			click(btn3);
-			assertTrue(100 >= parseInt(jq(col1).outerWidth()));
+			assertTrue(100 >= jq(col1).outerWidth());
 			assertEquals(jq(col1).outerWidth(), jq("@row > td").outerWidth());
 			click(btn4);
-			assertTrue(200 >= parseInt(jq(col1).outerWidth()));
+			assertTrue(200 >= jq(col1).outerWidth());
 			assertEquals(jq(col1).outerWidth(), jq("@row > td").outerWidth());
 		]]></client>
 	</case>

@@ -132,47 +132,47 @@ public class JQuery extends ClientWidget {
 	/**
 	 * Returns the current computed height for the first element.
 	 */
-	public String height() {
-		return ZKTestCase.getCurrent().getEval(_out.toString() + ".height()");
+	public int height() {
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".height()"));
 	}
 	
 	/**
 	 * Returns the current computed width for the first element.
 	 */
-	public String width() {
-		return ZKTestCase.getCurrent().getEval(_out.toString() + ".width()");
+	public int width() {
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".width()"));
 	}
 	
 	/**
 	 * Returns the current computed height for the first element,
 	 * including padding but not border.
 	 */
-	public String innerHeight() {
-		return ZKTestCase.getCurrent().getEval(_out.toString() + ".innerHeight()");
+	public int innerHeight() {
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".innerHeight()"));
 	}
 	
 	/**
 	 * Returns the current computed width for the first element,
 	 * including padding but not border.
 	 */
-	public String innerWidth() {
-		return ZKTestCase.getCurrent().getEval(_out.toString() + ".innerWidth()");
+	public int innerWidth() {
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".innerWidth()"));
 	}
 	
 	/**
 	 * Returns the current computed width for the first element,
 	 * including padding and border.
 	 */
-	public String outerWidth() {
-		return ZKTestCase.getCurrent().getEval(_out.toString() + ".outerWidth()");
+	public int outerWidth() {
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".outerWidth()"));
 	}
 	
 	/**
 	 * Returns the current computed height for the first element,
 	 * including padding and border.
 	 */
-	public String outerHeight() {
-		return ZKTestCase.getCurrent().getEval(_out.toString() + ".outerHeight()");
+	public int outerHeight() {
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".outerHeight()"));
 	}
 	
 	/**
@@ -198,14 +198,14 @@ public class JQuery extends ClientWidget {
 	/**
 	 * Returns the current computed offsetLeft for the first element
 	 */
-	public String offsetLeft() {
-		return ZKTestCase.getCurrent().getEval(_out.toString() + ".offset().left");
+	public int offsetLeft() {
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".offset().left"));
 	}
 	
 	/**
 	 * Returns the current computed offsetTop for the first element
 	 */
-	public String offsetTop() {
-		return ZKTestCase.getCurrent().getEval(_out.toString() + ".offset().top");
+	public int offsetTop() {
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".offset().top"));
 	}
 }
