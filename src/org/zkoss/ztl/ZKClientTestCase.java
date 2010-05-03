@@ -113,7 +113,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	 * Returns the int value from the given string number.
 	 * @param number the string number, if null, 0 is assumed.
 	 */
-	protected int parseInt(String number) {
+	public static int parseInt(String number) {
 		if (number != null)
 			return Integer.parseInt(number.replaceAll("[^-0-9]", ""));
 		return 0;

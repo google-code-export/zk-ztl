@@ -38,7 +38,7 @@ model.add(">>Item Y :"+new java.util.Date());
 		assertEquals("3", lb.eval("nChildren"));
 		
 		// assumed the height of the label is 15px
-		assertTrue(parseInt(jq(lb).outerHeight()) > 15 * 3);
+		assertTrue(jq(lb).outerHeight() > 15 * 3);
 		
 		assertTrue(jq("@listitem:odd").hasClass("z-listbox-odd"));
 		]]></client>

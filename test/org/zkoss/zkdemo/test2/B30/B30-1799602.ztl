@@ -26,15 +26,15 @@ If the popup of combox out of position, that is wrong.
 </window>
 		--></server>
 		<client><![CDATA[
-		String[] offset1 = zk(cb).revisedOffset();
+		int[] offset1 = zk(cb).revisedOffset();
 		click(cb.$n("btn"));
-		String[] offset2 = zk(cb.$n("pp")).revisedOffset();
+		int[] offset2 = zk(cb.$n("pp")).revisedOffset();
 		if (ZK.is("ie6_")) {
-			assertEquals(parseInt(offset1[0]), parseInt(offset2[0]));
-			assertEquals(parseInt(offset1[1]) + parseInt(jq(cb).outerHeight()) - 1, parseInt(offset2[1]));
+			assertSame(offset1[0], offset2[0]);
+			assertSame(offset1[1] + jq(cb).outerHeight() - 1, offset2[1]);
 		} else {
-			assertEquals(offset1[0], offset2[0]);
-			assertEquals(parseInt(offset1[1]) + parseInt(jq(cb).outerHeight()), parseInt(offset2[1]));
+			assertSame(offset1[0], offset2[0]);
+			assertSame(offset1[1] + jq(cb).outerHeight(), offset2[1]);
 		}
 		]]></client>
 	</case>

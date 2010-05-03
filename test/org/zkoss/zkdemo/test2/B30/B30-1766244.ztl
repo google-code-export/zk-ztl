@@ -30,23 +30,22 @@
 		</window>
 		 --></server>
 		<client><![CDATA[
-		String[] offset1 = zk(cb).revisedOffset();
-		String[] offset2 = zk(cb.$n("btn")).revisedOffset();
+		int[] offset1 = zk(cb).revisedOffset();
+		int[] offset2 = zk(cb.$n("btn")).revisedOffset();
 		grid.$n("body").eval("scrollTop = 20");
-		String[] offset3 = zk(cb).revisedOffset();
-		String[] offset4 = zk(cb.$n("btn")).revisedOffset();
-		assertEquals(offset1[0], offset3[0]);
-		assertEquals(offset2[0], offset4[0]);
-		assertEquals(parseInt(offset1[1]) - 20, parseInt(offset3[1]));
-		assertEquals(parseInt(offset2[1]) - 20, parseInt(offset4[1]));
-		
+		int[] offset3 = zk(cb).revisedOffset();
+		int[] offset4 = zk(cb.$n("btn")).revisedOffset();
+		assertSame(offset1[0], offset3[0]);
+		assertSame(offset2[0], offset4[0]);
+		assertSame(offset1[1] - 20, offset3[1]);
+		assertSame(offset2[1] - 20, offset4[1]);
 		grid.$n("body").eval("scrollTop = 0");
 		offset3 = zk(cb).revisedOffset();
 		offset4 = zk(cb.$n("btn")).revisedOffset();
-		assertEquals(offset1[0], offset3[0]);
-		assertEquals(offset1[1], offset3[1]);
-		assertEquals(offset2[0], offset4[0]);
-		assertEquals(offset2[1], offset4[1]);
+		assertSame(offset1[0], offset3[0]);
+		assertSame(offset1[1], offset3[1]);
+		assertSame(offset2[0], offset4[0]);
+		assertSame(offset2[1], offset4[1]);
 		]]></client>
 	</case>
 </test>

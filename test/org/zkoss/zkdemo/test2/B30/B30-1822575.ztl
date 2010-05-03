@@ -129,20 +129,20 @@ Change window's height, component won't resize
 </zk>
 		 --></server>
 		<client><![CDATA[
-			int winHgh = parseInt(jq(win.$n("cave")).height());
-			int treeHgh = parseInt(jq(tree2).outerHeight());
+			int winHgh = jq(win.$n("cave")).height();
+			int treeHgh = jq(tree2).outerHeight();
 			assertEquals(treeHgh, winHgh);
 			click(btn1);
 			waitResponse();
-			int winHgh2 = parseInt(jq(win.$n("cave")).height());
-			int treeHgh2 = parseInt(jq(tree2).outerHeight());
+			int winHgh2 = jq(win.$n("cave")).height();
+			int treeHgh2 = jq(tree2).outerHeight();
 			assertEquals(treeHgh2, winHgh2);
 			assertTrue(winHgh * 0.3 >= winHgh2);
 			assertTrue(treeHgh * 0.3 >= treeHgh2);
 			click(btn2);
 			waitResponse();
-			winHgh2 = parseInt(jq(win.$n("cave")).height());
-			treeHgh2 = parseInt(jq(tree2).outerHeight());
+			winHgh2 = jq(win.$n("cave")).height();
+			treeHgh2 = jq(tree2).outerHeight();
 			assertEquals(treeHgh2, winHgh2);
 			assertTrue(winHgh * 0.3 >= winHgh2);
 			assertTrue(treeHgh * 0.3 >= treeHgh2);

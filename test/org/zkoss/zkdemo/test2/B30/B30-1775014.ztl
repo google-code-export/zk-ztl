@@ -63,11 +63,11 @@ timer every second. This problem does not happen in Firefox 2.
 </window>
 		--></server>
 		<client><![CDATA[
-			String width = jq(grid).outerWidth();
-			for (int i = 0; i < 10; i++) {
-				waitResponse();
-				assertEquals(width, jq(grid).outerWidth());
-			}
+		int width = jq(grid).outerWidth();
+		for (int i = 0; i < 10; i++) {
+			waitResponse();
+			assertSame(width, jq(grid).outerWidth());
+		}
 		]]></client>
 	</case>
 </test>

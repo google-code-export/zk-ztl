@@ -32,11 +32,11 @@ Grid:onColSize event.getColIndex() alwyas return 1
 </vbox>
 		 --></server>
 		<client><![CDATA[
-		int w1 = parseInt(jq(col1).outerWidth());
-		int w2 = parseInt(jq(col2).outerWidth());
-		int w3 = parseInt(jq(col3).outerWidth());
-		int w4 = parseInt(jq(col4).outerWidth());
-		int w5 = parseInt(jq(col5).outerWidth());
+		int w1 = jq(col1).outerWidth();
+		int w2 = jq(col2).outerWidth();
+		int w3 = jq(col3).outerWidth();
+		int w4 = jq(col4).outerWidth();
+		int w5 = jq(col5).outerWidth();
 		dragdropTo(col5, w5 + ",0", w5+10 + ",0");
 		assertEquals(lab.get("value"), "4");
 		dragdropTo(col4, w4 + ",0", w4+10+ ",0");
