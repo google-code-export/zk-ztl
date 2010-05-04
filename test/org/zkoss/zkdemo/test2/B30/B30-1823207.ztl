@@ -8,7 +8,7 @@
 2. The selected item should appear in the 2nd listbox.<br/>
 3. Repeat 1 and 2 in RANDOM order, the 2nd listbox should list items in order no matter the added sequence.<br/>
 4. Press the parentModel button and check the real order of the 2nd listbox. It should be in order.<br/>
-5. Press the parents button and check the real order of the inner TreeSet. It should be in order.<br/>
+5. Press the parents button and check the real order of the inner TreeMap. It should be in order.<br/>
 6. If everything ok. Now start to check "remove" item from 2nd listbox.<br/>
 7. DoubleClick randomly on the item of the 2nd listbox and check if it is removed properly and kept the order.<br/>
 8. Now repeate 4 and 5 to see if the inner data structure is in the same order as shown on the 2nd listbox.<br/>
@@ -32,25 +32,27 @@ public class BlahComparator implements Comparator {
 }
 
 class Person {
-	TreeSet parents = new TreeSet(new BlahComparator());
+	TreeMap parents = new TreeMap(new BlahComparator());
 	
-	public TreeSet getParents(){
+	public TreeMap getParents(){
 		return parents;
 	}
 	
 	public void addParent(Object o){
-		parents.add(o);
+		parents.put(o, new Integer(o.getAge()));
 	}
 	
 }
 
 class Blah implements Comparable{
+	int age = 10;
 	int number = 0;
 	private String name ;
 	private static int counter = 1;
 	
-	public Blah(){
+	public Blah(int age){
 		name = "Blah " + Integer.toString((number = counter++));
+		this.age = age;
 	}
 	
 	public void setName(String n){
@@ -68,6 +70,10 @@ class Blah implements Comparable{
 		return number;
 	}
 	
+	public int getAge() {
+		return age;
+	}
+	
 	public int compareTo(Object o){
 		int n = ((Blah)o).getNumber();
 		if(number > n) return 1;
@@ -80,7 +86,7 @@ Person person = new Person();
 int actionCounter = 1;
 ArrayList l = new ArrayList(20);
 for(int i = 0; i < 20; i++)
-	l.add(new Blah());
+	l.add(new Blah(i+1));
 	
 ]]></zscript>
 
@@ -89,7 +95,7 @@ for(int i = 0; i < 20; i++)
 <listbox id="select" model="@{l}" mold="select" >
 <attribute name="onSelect">
 	Blah p = l.get(self.selectedIndex);
-	((ListModelSet)parentsList.getModel()).add(p);
+	((Map)parentsList.getModel()).put(p, new Integer(p.getAge()));
 </attribute>
 </listbox>
 </groupbox>
@@ -98,21 +104,32 @@ for(int i = 0; i < 20; i++)
 <caption label="2nd listbox"/>
 <listbox id="parentsList" model="@{person.parents}">
 	<listhead>
-		<listheader label="Parent"/>
+		<listheader label="Name"/>
+		<listheader label="Age"/>
 	</listhead>
 	<listitem self="@{each=obj}" value="@{obj}">
 		<attribute name="onDoubleClick">
-			Blah b = (Blah)self.value;
-			((ListModelSet)parentsList.getModel()).remove(b);
+			((Map)parentsList.getModel()).remove(((java.util.Map.Entry)self.value).getKey());
 		</attribute>
-		<listcell label="@{obj}"/>
+		<listcell label="@{obj.key}"/>
+		<listcell label="@{obj.value}"/>
 	</listitem>
 </listbox>
 </groupbox>
 
 <button id="parentModel" label="parentModel" onClick='alert(""+parentsList.getModel())'/>
 <button id="parents" label="parents" onClick='alert(""+person.getParents())'/>
-<button id="selectionInModel" label="selectionInModel" onClick='alert(""+parentsList.getModel().getSelection())'/>
+<button id="selectionInModel" label="Listitem.getItems()">
+	<attribute name="onClick"><![CDATA[
+		StringBuffer sb = new StringBuffer(124);
+		for(Iterator it = parentsList.getItems().iterator(); it.hasNext();) {
+			Listitem li = (Listitem) it.next();
+			sb.append(li.getValue()+",");
+		}
+		sb.delete( sb.length()- 1, sb.length());
+		alert(sb.toString());
+	]]></attribute>
+</button>
 </window>
 </zk>
 		 --></server>
@@ -121,59 +138,47 @@ for(int i = 0; i < 20; i++)
 			select(select, "Blah 2");
 			waitResponse();
 			assertEquals("Blah 2", widget(jq("@listbox > @listitem")).get("label"));
-			
 			select(select, "Blah 4");
 			waitResponse();
 			assertEquals("Blah 4", widget(jq("@listbox > @listitem:last-child")).get("label"));
-			
 			select(select, "Blah 9");
 			waitResponse();
 			assertEquals("Blah 9", widget(jq("@listbox > @listitem:last-child")).get("label"));
-			
 			click(parentModel);
 			waitResponse();
-			assertEquals("[Blah 2, Blah 4, Blah 9]", jq("@window[mode=\"modal\"] @label").html());
+			assertEquals("{Blah 2=2, Blah 4=4, Blah 9=9}", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
-			
 			click(parents);
 			waitResponse();
-			assertEquals("[Blah 2, Blah 4, Blah 9]", jq("@window[mode=\"modal\"] @label").html());
+			assertEquals("{Blah 2=2, Blah 4=4, Blah 9=9}", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
-			
 			click(jq("@listbox > @listitem:last-child"));
 			click(selectionInModel);
 			waitResponse();
-			assertEquals("[Blah 9]", jq("@window[mode=\"modal\"] @label").html());
+			assertEquals("Blah 2=2,Blah 4=4,Blah 9=9", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
-			
 			doubleClick(jq("@listbox > @listitem:last-child"));
 			waitResponse();
 			assertEquals("Blah 4", widget(jq("@listbox > @listitem:last-child")).get("label"));
-
 			click(parents);
 			waitResponse();
-			assertEquals("[Blah 2, Blah 4]", jq("@window[mode=\"modal\"] @label").html());
+			assertEquals("{Blah 2=2, Blah 4=4}", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
-
 			click(parentModel);
 			waitResponse();
-			assertEquals("[Blah 2, Blah 4]", jq("@window[mode=\"modal\"] @label").html());
+			assertEquals("{Blah 2=2, Blah 4=4}", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
-			
 			doubleClick(jq("@listbox > @listitem:first-child"));
 			waitResponse();
 			assertEquals("Blah 4", widget(jq("@listbox > @listitem")).get("label"));
-
 			click(parents);
 			waitResponse();
-			assertEquals("[Blah 4]", jq("@window[mode=\"modal\"] @label").html());
+			assertEquals("{Blah 4=4}", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
-
 			click(parentModel);
 			waitResponse();
-			assertEquals("[Blah 4]", jq("@window[mode=\"modal\"] @label").html());
+			assertEquals("{Blah 4=4}", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
-			
 			// including listhead
 			assertEquals("2", parentsList.size());
 		]]></client>

@@ -62,11 +62,11 @@
 			assertFalse(item2.exists());
 			assertFalse(jq(".z-error").exists());
 			click(append);
-			assertEquals(2, parseInt(tc.eval("nChildren")));
+			assertEquals(2, tc.size());
 			assertEquals(2, parseInt(t.$n("rows").get("rows.length")));
 			assertFalse(jq(".z-error").exists());
 			click(append);
-			assertEquals(3, parseInt(tc.eval("nChildren")));
+			assertEquals(3, tc.size());
 			assertEquals(3, parseInt(t.$n("rows").get("rows.length")));
 			assertFalse(jq(".z-error").exists());
 
@@ -76,7 +76,7 @@
 
 			click(removelast);
 			click(removelast);
-			assertEquals(2, parseInt(tc.eval("nChildren")));
+			assertEquals(2, tc.size());
 			assertEquals(2, parseInt(t.$n("rows").get("rows.length")));
 			assertFalse(jq(".z-error").exists());
 			assertFalse(isVisible(t.getChild("paging")));

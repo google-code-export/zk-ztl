@@ -26,16 +26,16 @@ model.add(">>Item Y :"+new java.util.Date());
 </zk>
 		--></server>
 		<client><![CDATA[
-		assertEquals("0", lb.eval("nChildren"));
+		assertEquals("0", lb.size());
 		click(btn);
-		assertEquals("1", lb.eval("nChildren"));
+		assertEquals("1", lb.size());
 		assertTrue(lb.firstChild().get("label").startsWith(">>Item Y :"));
 		click(btn);
-		assertEquals("2", lb.eval("nChildren"));
+		assertEquals("2", lb.size());
 		assertTrue(lb.lastChild().get("label").startsWith(">>Item Y :"));
 		
 		click(btn);
-		assertEquals("3", lb.eval("nChildren"));
+		assertEquals("3", lb.size());
 		
 		// assumed the height of the label is 15px
 		assertTrue(jq(lb).outerHeight() > 15 * 3);

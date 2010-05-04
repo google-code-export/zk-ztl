@@ -20,9 +20,9 @@
 			assertTrue(jq(".z-errbox").exists());
 			int top = zk(jq(".z-errbox")).revisedOffset()[1];
 			cave.eval("scrollTop = 20");
-			assertSame(top - 20, zk(jq(".z-errbox")).revisedOffset()[1]);
+			assertEquals(top - 20, zk(jq(".z-errbox")).revisedOffset()[1]);
 			cave.eval("scrollTop = 0");
-			assertSame(top, zk(jq(".z-errbox")).revisedOffset()[1]);
+			assertEquals(top, zk(jq(".z-errbox")).revisedOffset()[1]);
 		]]></client>
 	</case>
 </test>

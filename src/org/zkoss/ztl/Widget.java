@@ -124,6 +124,13 @@ public class Widget extends ClientWidget {
 	public Widget getChild(String name) {
 		return new Widget(_out, "." + name);
 	}
+	
+	/**
+	 * Returns the size of the children.
+	 */
+	public int size() {
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".nChildren"));
+	}
 	/**
 	 * Returns the last child of the widget.
 	 */
