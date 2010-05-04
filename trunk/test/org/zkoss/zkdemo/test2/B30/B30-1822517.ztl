@@ -99,20 +99,20 @@
 		 --></server>
 		<client><![CDATA[
 			click(btn1);
-			assertEquals("3", jq("$l1 > @listitem").eval("length"));
+			assertEquals("3", jq("$l1 > @listitem").length());
 			assertEquals("change1.key1", jq("$l1 > @listitem:eq(0) div").html());
 			assertEquals("change1.key2", jq("$l1 > @listitem:eq(1) div").html());
 			assertEquals("change1.key3", jq("$l1 > @listitem:eq(2) div").html());
 			
 			click(btn2);
-			assertEquals("3", jq("$l2 > @listitem").eval("length"));
+			assertEquals("3", jq("$l2 > @listitem").length());
 			assertEquals("change2.key1", jq("$l2 > @listitem:eq(0) @label").html());
 			assertEquals("change2.key2", jq("$l2 > @listitem:eq(1) @label").html());
 			assertEquals("change2.key3", jq("$l2 > @listitem:eq(2) @label").html());
 			
 			for (int i = 0; i < 3; i++) {
 				click(btn3);
-				assertEquals("4", jq("$l2 > @listitem").eval("length"));
+				assertEquals("4", jq("$l2 > @listitem").length());
 				assertEquals("change3.val1", jq("$l2 > @listitem:eq(0) @label").html());
 				assertEquals("change3.val2", jq("$l2 > @listitem:eq(1) @label").html());
 				assertEquals("change3.val3", jq("$l2 > @listitem:eq(2) @label").html());
