@@ -1,0 +1,41 @@
+<test tags="Splitter">
+	<case id="Style">
+		<server><!--
+<zk>
+Splitter- The image of bar isn't updated, when dynamically call setCollapse method.
+<window border="normal" width="800px" title="Case 1: hbox and splitter">
+		<hbox height="100px" width="100%">
+		cdacdacdacdacdaca
+		<splitter id="hsplitter" collapse="none"/>
+		cdacdacdacdacacsdc
+		</hbox>
+		<label id="d" />
+		<radiogroup>
+			<attribute name="onCheck">
+				hsplitter.setCollapse(self.selectedItem.label);
+				d.setValue("Collapse: "+self.selectedItem.label);
+			</attribute>
+			<radio id="r1" selected="true" label="none"/>
+			<radio id="r2" label="before"/>
+			<radio id="r3" label="after"/>
+		</radiogroup>
+</window>
+</zk>
+		 --></server>
+		<client><![CDATA[
+		assertFalse(isVisible(hsplitter.$n("btn")));
+		click(r2.$n("real"));
+		
+		assertTrue(isVisible(hsplitter.$n("btn")));
+		assertTrue(jq(hsplitter.$n("btn")).hasClass("z-splitter-hor-btn-l"));
+		
+		click(r3.$n("real"));
+		assertTrue(isVisible(hsplitter.$n("btn")));
+		assertFalse(jq(hsplitter.$n("btn")).hasClass("z-splitter-hor-btn-l"));
+		assertTrue(jq(hsplitter.$n("btn")).hasClass("z-splitter-hor-btn-r"));
+		
+		click(r1.$n("real"));
+		assertFalse(isVisible(hsplitter.$n("btn")));
+		]]></client>
+	</case>
+</test>
