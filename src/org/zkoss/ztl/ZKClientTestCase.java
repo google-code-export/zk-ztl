@@ -114,8 +114,13 @@ public class ZKClientTestCase extends ZKTestCase {
 	 * @param number the string number, if null, 0 is assumed.
 	 */
 	public static int parseInt(String number) {
-		if (number != null)
-			return Integer.parseInt(number.replaceAll("[^-0-9]", ""));
+		if (number != null) {
+			number = number.replaceAll("[^-0-9]", "");
+			int decimal = number.indexOf('.');
+			if ((decimal) > 0)
+				number = number.substring(0, decimal);
+			return Integer.parseInt(number);
+		}
 		return 0;
 	}
 	public void addSelection(ClientWidget locator, String optionLocator) {

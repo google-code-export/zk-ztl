@@ -206,21 +206,13 @@ public class JQuery extends ClientWidget {
 	 * Returns the current computed offsetLeft for the first element
 	 */
 	public int offsetLeft() {
-		String left = ZKTestCase.getCurrent().getEval(_out.toString() + ".offset().left");
-		int b = left.indexOf('.');
-		if ((b) > 0)
-			left = left.substring(0, b);
-		return ZKClientTestCase.parseInt(left);
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".offset().left"));
 	}
 	
 	/**
 	 * Returns the current computed offsetTop for the first element
 	 */
 	public int offsetTop() {
-		String top = ZKTestCase.getCurrent().getEval(_out.toString() + ".offset().top");
-		int b = top.indexOf('.');
-		if (b > 0)
-			top = top.substring(0, b);
-		return ZKClientTestCase.parseInt(top);
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".offset().top"));
 	}
 }
