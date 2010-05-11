@@ -128,7 +128,7 @@ public class Widget extends ClientWidget {
 	/**
 	 * Returns the size of the children.
 	 */
-	public int size() {
+	public int nChildren() {
 		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".nChildren"));
 	}
 	/**

@@ -126,9 +126,13 @@ public class ZtlGenerator {
 			if (pkg.length() > 0)
 				pkg = pkg.replace(File.separator, ".").substring(1);
 			ConfigHelper ch = ConfigHelper.getInstance();
+			
 			/** config filed ***/
 			Test test = SAXParser.parser(f);
-			test.setLastModified(f.lastModified());
+			
+			// if config.properties is changed, we need to regenerate Java.
+			test.setLastModified(f.lastModified() < ch.lastModified() ?
+					ch.lastModified(): f.lastModified());
 			test.setFileName(fileName);
 			test.setServer(ch.getServer());
 			test.setPackage(pkg);
