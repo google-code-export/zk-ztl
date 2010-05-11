@@ -55,17 +55,17 @@
 			</hbox>
 		]]></server>
 		<client><![CDATA[
-			assertEquals("1", rows.size());	
+			assertEquals("1", rows.nChildren());	
 			
 			click(btn1);
 			waitResponse();
-			assertEquals("2", rows.size());
+			assertEquals("2", rows.nChildren());
 			assertEquals("2", rows.$n().get("rows.length"));
 			assertEquals("Label x", rows.lastChild().firstChild().get("value"));
 				
 			click(btn2);
 			waitResponse();
-			assertEquals("3", rows.size());
+			assertEquals("3", rows.nChildren());
 			assertEquals("3", rows.$n().get("rows.length"));
 			assertEquals("Label 0", rows.firstChild().firstChild().get("value"));
 		]]></client>
@@ -75,22 +75,22 @@
 		<server ref="zulbtn"/>
 		<client><![CDATA[
 			Element $n = rows.$n();
-			assertEquals("1", rows.size());
+			assertEquals("1", rows.nChildren());
 				
 			click(btn2);
 			waitResponse();
-			assertEquals("2", rows.size());
+			assertEquals("2", rows.nChildren());
 			assertEquals("2", $n.get("rows.length"));
 			
 			click(btn3);
 			waitResponse();
-			assertEquals("1", rows.size());
+			assertEquals("1", rows.nChildren());
 			assertEquals("1", $n.get("rows.length"));
 			assertEquals("Label 0", rows.firstChild().firstChild().get("value"));
 			
 			click(btn4);
 			waitResponse();
-			assertEquals("0", rows.size());
+			assertEquals("0", rows.nChildren());
 			assertEquals("0", $n.get("rows.length"));
 		]]></client>
 	</case>

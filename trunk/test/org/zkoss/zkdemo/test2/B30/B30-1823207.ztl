@@ -180,7 +180,7 @@ for(int i = 0; i < 20; i++)
 			assertEquals("{Blah 4=4}", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
 			// including listhead
-			assertEquals("2", parentsList.size());
+			assertEquals("2", parentsList.nChildren());
 		]]></client>
 	</case>
 </test>

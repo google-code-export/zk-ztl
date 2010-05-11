@@ -60,6 +60,7 @@ public class ConfigHelper {
 	private String _delay;
 	private String _browser;
 	private Properties _prop;
+	private long _lastModified;
 	private static ConfigHelper ch = new ConfigHelper();
 	/**
 	 * key : Firefox, IE ... value : *firefox, *iexplore ...
@@ -112,6 +113,10 @@ public class ConfigHelper {
 
 	public String getBrowser() {
 		return _browser;
+	}
+	
+	public long lastModified() {
+		return _lastModified;
 	}
 
 	/**
@@ -188,7 +193,7 @@ public class ConfigHelper {
 				in = ClassLoader.getSystemResourceAsStream("config.properties");
 				_prop = new Properties();
 				_prop.load(in);
-
+				_lastModified = new File(ClassLoader.getSystemResource("config.properties").getFile()).lastModified();
 				_client = _prop.getProperty("client");
 				_server = _prop.getProperty("server");
 				_contextPath = _prop.getProperty("context-path");
