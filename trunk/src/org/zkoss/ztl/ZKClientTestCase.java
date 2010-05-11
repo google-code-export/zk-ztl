@@ -115,9 +115,9 @@ public class ZKClientTestCase extends ZKTestCase {
 	 */
 	public static int parseInt(String number) {
 		if (number != null) {
-			number = number.replaceAll("[^-0-9]", "");
+			number = number.replaceAll("[^-0-9\\.]", "");
 			int decimal = number.indexOf('.');
-			if ((decimal) > 0)
+			if (decimal > 0)
 				number = number.substring(0, decimal);
 			return Integer.parseInt(number);
 		}
