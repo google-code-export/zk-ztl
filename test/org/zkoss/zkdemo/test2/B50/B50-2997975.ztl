@@ -1,0 +1,48 @@
+<test tags="bandbox,combobox,datebox,timebox,spinner">
+	<case id="ButtonVisible">
+		<server><![CDATA[
+<zk>
+<datebox id="d" readonly="true" buttonVisible="false"/>
+<combobox id="c" readonly="true" buttonVisible="false"/>
+<bandbox id="b" readonly="true" buttonVisible="false"/>
+<timebox id="t" readonly="true" buttonVisible="false"/>
+<spinner id="s" readonly="true" buttonVisible="false"/>
+<button id="btn" label="invisible/visible"
+ onClick='b.buttonVisible = !b.buttonVisible;c.buttonVisible = !c.buttonVisible;d.buttonVisible = !d.buttonVisible;t.buttonVisible = !t.buttonVisible;s.buttonVisible = !s.buttonVisible'/>
+</zk>
+		]]></server>
+		<client><![CDATA[
+   			click(b.$n("real"));
+   			assertFalse(isVisible(b.$n("pp")));
+   			assertEquals("1px", jq(b.$n("real")).css("border-right-width"));
+   			
+			click(c.$n("real"));
+			assertFalse(isVisible(c.$n("pp")));
+   			assertEquals("1px", jq(c.$n("real")).css("border-right-width"));
+
+			click(d.$n("real"));
+			assertFalse(isVisible(d.$n("pp")));
+   			assertEquals("1px", jq(d.$n("real")).css("border-right-width"));
+   			
+   			assertEquals("1px", jq(t.$n("real")).css("border-right-width"));
+   			assertEquals("1px", jq(s.$n("real")).css("border-right-width"));
+   			
+   			click(btn);
+   			click(b.$n("real"));
+   			assertTrue(isVisible(b.$n("pp")));
+   			assertEquals("0px", jq(b.$n("real")).css("border-right-width"));
+   			
+			click(c.$n("real"));
+			assertTrue(isVisible(c.$n("pp")));
+   			assertEquals("0px", jq(c.$n("real")).css("border-right-width"));
+
+			click(d.$n("real"));
+			assertTrue(isVisible(d.$n("pp")));
+   			assertEquals("0px", jq(d.$n("real")).css("border-right-width"));
+   			
+   			assertEquals("0px", jq(t.$n("real")).css("border-right-width"));
+   			assertEquals("0px", jq(s.$n("real")).css("border-right-width"));
+   			
+		]]></client>
+	</case>
+</test>

@@ -1,0 +1,67 @@
+<test tags="listbox">
+	<case id="Scroll">
+		<server><![CDATA[
+<zk> 
+<div id="div" height="300px" style="overflow:auto;"> 
+        <listbox id="box"  multiple="true" checkmark="true"> 
+                <listhead> 
+                        <listheader label="Name"/> 
+                        <listheader label="Gender"/> 
+                        <listheader label="Age"/> 
+                        <listheader label="Description"/> 
+                </listhead> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem id="li1"> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+                <listitem> <listcell label="Mary"/><listcell label="FEMALE"/><listcell label="18"/><listcell label="A young lady."/></listitem> 
+
+        </listbox>         
+</div> 
+</zk> 
+
+
+		]]></server>
+		<client><![CDATA[
+			div.$n().eval("scrollTop = 500");
+			click(li1.$n("cm"));
+			assertEquals(500, parseInt(div.$n().eval("scrollTop")));
+		]]></client>
+	</case>
+</test>
