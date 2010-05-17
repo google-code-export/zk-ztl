@@ -1,5 +1,5 @@
-<test tags="menu">
-	<case id="ChangeIcon">
+<test tags="tree,treeitem,treerow,treecell">
+	<case id="open">
 		<server id="zul"><![CDATA[
 			<zk>
 				<button id="btn" label="change label" onClick='treecell.label="new Name"' />
