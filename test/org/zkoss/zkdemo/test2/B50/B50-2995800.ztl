@@ -1,5 +1,5 @@
-<test tags="menu">
-	<case id="ChangeIcon">
+<test tags="portallayout,panel">
+	<case id="maximizable">
 		<server id="zul"><![CDATA[
 			<zk>
 				<portallayout id="pl" maximizedMode="whole">

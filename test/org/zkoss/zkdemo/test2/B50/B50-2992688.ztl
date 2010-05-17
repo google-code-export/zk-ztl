@@ -1,5 +1,5 @@
-<test tags="menu">
-	<case id="ChangeIcon">
+<test tags="combobox">
+	<case id="disabled">
 		<server id="zul"><![CDATA[
 			<zk>
 			    <combobox id="cb" disabled="true"/> 
