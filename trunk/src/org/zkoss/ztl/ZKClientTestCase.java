@@ -24,6 +24,33 @@ package org.zkoss.ztl;
 public class ZKClientTestCase extends ZKTestCase {
 	protected int _timeout;
 	
+	public static final String F1 = "112";
+	public static final String F2 = "113";
+	public static final String F3 = "114";
+	public static final String F4 = "115";
+	public static final String F5 = "116";
+	public static final String F6 = "117";
+	public static final String F7 = "118";
+	public static final String F8 = "119";
+	public static final String F9 = "120";
+	public static final String F10 = "121";
+	public static final String F11 = "122";
+	public static final String F12 = "123";
+
+	public static final String PAGE_UP = "33";
+	public static final String PAGE_DOWN = "34";
+	public static final String END = "35";
+	public static final String HOME = "36";
+	public static final String LEFT = "37";
+	public static final String UP = "38";
+	public static final String RIGHT = "39";
+	public static final String DOWN = "40";
+
+	public static final String INSERT = "45";
+	public static final String DELETE = "46";
+	
+	public static final String BACKSPACE = "8";
+	
 	/**
 	 * Waits for Ajax response.
 	 * <p>By default the timeout time is specified in config.properties

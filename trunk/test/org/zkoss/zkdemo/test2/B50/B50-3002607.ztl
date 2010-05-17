@@ -1,0 +1,21 @@
+<test tags="textbox">
+	<case id="deleteChar">
+		<server id="zul"><![CDATA[
+			<zk>
+				<bandbox id="bb" readonly="true">
+					<bandpopup>
+						<textbox id="tb" value="test" />
+					</bandpopup>
+				</bandbox>
+			</zk>
+		]]></server>
+		<client><![CDATA[
+			click(bb.$n("btn"));
+			String before = jq(tb).val();
+			focus(tb);
+			keyPressNative(END);
+			keyPressNative(BACKSPACE);
+			assertFalse(jq(tb).val().equals(before));
+		]]></client>
+	</case>
+</test>
