@@ -1,5 +1,5 @@
-<test tags="menu">
-	<case id="ChangeIcon">
+<test tags="combobox,popup">
+	<case id="zindex">
 		<server id="zul"><![CDATA[
 			<zk>
 				<combobox id="cb">
