@@ -23,24 +23,6 @@ package org.zkoss.ztl;
  */
 public class ZKClientTestCase extends ZKTestCase {
 	protected int _timeout;
-
-	public static final String PAGE_UP = "33";
-	public static final String PAGE_DOWN = "34";
-	public static final String END = "35";
-	public static final String HOME = "36";
-	
-	public static final String LEFT = "37";
-	public static final String UP = "38";
-	public static final String RIGHT = "39";
-	public static final String DOWN = "40";
-
-	public static final String INSERT = "45";
-	public static final String DELETE = "46";
-	
-	public static final String BACKSPACE = "8";
-	public static final String TAB = "9";
-	public static final String ENTER = "13";
-	public static final String ESC = "27";
 	
 	/**
 	 * Waits for Ajax response.

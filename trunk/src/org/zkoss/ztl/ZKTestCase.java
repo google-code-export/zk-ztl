@@ -31,6 +31,24 @@ import com.thoughtworks.selenium.Selenium;
 public class ZKTestCase extends SeleneseTestCase implements Selenium {
 	protected static final ThreadLocal<Selenium> _selenium = new ThreadLocal<Selenium>();
 	
+	public static final String PAGE_UP = "33";
+	public static final String PAGE_DOWN = "34";
+	public static final String END = "35";
+	public static final String HOME = "36";
+	
+	public static final String LEFT = "37";
+	public static final String UP = "38";
+	public static final String RIGHT = "39";
+	public static final String DOWN = "40";
+
+	public static final String INSERT = "45";
+	public static final String DELETE = "46";
+	
+	public static final String BACKSPACE = "8";
+	public static final String TAB = "9";
+	public static final String ENTER = "13";
+	public static final String ESC = "27";
+	
 	/**
 	 * The prefix is depended on what the ID generator is.
 	 */
