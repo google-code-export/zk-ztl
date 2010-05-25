@@ -13,8 +13,10 @@
 		<client><![CDATA[
 			click(cb.$n("btn"));
 			mouseOver(cbi);
-			int ppZindex = Integer.parseInt(jq(cb.$n("pp")).css("z-index"));
-			int popipZindex = Integer.parseInt(jq(popup).css("z-index"));
+			String zindex = jq(cb.$n("pp")).css("z-index");
+			int ppZindex = zindex.equals("auto") ? 0 : Integer.parseInt(zindex);
+			zindex = jq(popup).css("z-index");
+			int popipZindex = zindex.equals("auto") ? 0 : Integer.parseInt(zindex);
 			assertTrue("The z-index of the popup: " +popipZindex + " isn't greate then the pp of the combobox: "+ppZindex,popipZindex > ppZindex);
 		]]></client>
 	</case>
