@@ -75,7 +75,7 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-		if (ZK.is("ie6_")) {
+		if (ZK.is("ie") && !ZK.is("ie8")) {
 			int[] offset1 = zk(cb1).revisedOffset();
 			int[] offset2 = zk(cb1.$n("btn")).revisedOffset();
 			assertEquals(offset1[1] + 1, offset2[1]);

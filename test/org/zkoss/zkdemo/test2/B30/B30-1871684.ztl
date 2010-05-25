@@ -1,4 +1,4 @@
-<test action="test2/B30-1871684.zul">
+<test tags="Tree" action="test2/B30-1871684.zul">
 	<case id="Visible">
 		<client><![CDATA[
 		assertTrue(isVisible(jq("@treecell[label=\"Make me invisible by click try \"] div.z-overflow-hidden")));
