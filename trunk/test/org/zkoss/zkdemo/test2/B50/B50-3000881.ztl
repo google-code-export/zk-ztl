@@ -1,0 +1,23 @@
+<test tags="hbox,tabbox">
+	<case id="Width">
+		<server><![CDATA[
+<hbox>
+<tabbox>
+	<tabs>
+		<tab label="tab1" />
+		<tab label="tab2" />
+		<tab label="tab3" />
+	</tabs>
+	<tabpanels>
+		<tabpanel />
+		<tabpanel />
+		<tabpanel />
+	</tabpanels>
+</tabbox>
+</hbox>
+		]]></server>
+		<client><![CDATA[
+   			assertFalse(jq("@tabbox").outerWidth() > 5000);
+   		]]></client>
+	</case>
+</test>
