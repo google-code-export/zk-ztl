@@ -30,6 +30,7 @@
 		--></server>
 		<client><![CDATA[
 			click(uploadBtn);
+			waitResponse();
 			click(jq("@button[label=\"Cancel\"]"));
 			focus(tb);
 			keyPressNative("65");
