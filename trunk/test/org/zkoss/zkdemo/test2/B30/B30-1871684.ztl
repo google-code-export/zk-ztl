@@ -1,0 +1,14 @@
+<test action="test2/B30-1871684.zul">
+	<case id="Visible">
+		<client><![CDATA[
+		assertTrue(isVisible(jq("@treecell[label=\"Make me invisible by click try \"] div.z-overflow-hidden")));
+		mouseOver(jq("@button td.z-button-cm"));
+		click(jq("@button td.z-button-cm"));
+
+		assertFalse(isVisible(jq("@treecell[label=\"Make me invisible by click try \"] div.z-overflow-hidden")));
+		mouseOver(jq("@button td.z-button-cm"));
+		click(jq("@button td.z-button-cm"));
+		assertTrue(isVisible(jq("@treecell[label=\"Make me invisible by click try \"] div.z-overflow-hidden")));
+		]]></client>
+	</case>
+</test>
