@@ -25,7 +25,7 @@ Usage:
 		<delete dir="${report.dir}" />
 		<delete dir="${codegen.dir}"/>
 		<delete dir="${test.dir}"/>
-		<delete dir="${javadoc.dir}"/>
+		<!--<delete dir="${javadoc.dir}"/>-->
 	</target>
 	<target name="init">
 		<mkdir dir="${classes.dir}"/>
