@@ -30,23 +30,61 @@ import com.thoughtworks.selenium.Selenium;
  */
 public class ZKTestCase extends SeleneseTestCase implements Selenium {
 	protected static final ThreadLocal<Selenium> _selenium = new ThreadLocal<Selenium>();
-	
+	/**
+	 * The keycode of the PAGE_UP key
+	 */
 	public static final String PAGE_UP = "33";
+	/**
+	 * The keycode of the PAGE_DOWN key
+	 */
 	public static final String PAGE_DOWN = "34";
+	/**
+	 * The keycode of the END key
+	 */
 	public static final String END = "35";
+	/**
+	 * The keycode of the HOME key
+	 */
 	public static final String HOME = "36";
-	
+	/**
+	 * The keycode of the LEFT key
+	 */
 	public static final String LEFT = "37";
+	/**
+	 * The keycode of the UP key
+	 */
 	public static final String UP = "38";
+	/**
+	 * The keycode of the RIGHT key
+	 */
 	public static final String RIGHT = "39";
+	/**
+	 * The keycode of the DOWN key
+	 */
 	public static final String DOWN = "40";
-
+	/**
+	 * The keycode of the INSERT key
+	 */
 	public static final String INSERT = "45";
+	/**
+	 * The keycode of the DELETE key
+	 */
 	public static final String DELETE = "46";
-	
+	/**
+	 * The keycode of the BACKSPACE key
+	 */
 	public static final String BACKSPACE = "8";
+	/**
+	 * The keycode of the TAB key
+	 */
 	public static final String TAB = "9";
+	/**
+	 * The keycode of the ENTER key
+	 */
 	public static final String ENTER = "13";
+	/**
+	 * The keycode of the ESC key
+	 */
 	public static final String ESC = "27";
 	
 	/**
