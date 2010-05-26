@@ -1,0 +1,46 @@
+<test tags="Listbox">
+	<case id="KeyDownUp">
+		<server><!--
+<zk>
+<zscript><![CDATA[
+	import java.util.ArrayList;
+	ArrayList list = new ArrayList();
+	
+	for(int i=1;i<=50;i++)
+	{
+		list.add("entry "+i);
+	}
+]]></zscript>
+	<listbox id="listbox" width="250px" rows="6">
+		<listhead sizable="true">
+			<listheader label="name" sort="auto"/>
+		</listhead>
+		<listitem forEach="${list}" label="${each}"/>
+	</listbox>
+</zk>
+		 --></server>
+		<client wait="100"><![CDATA[
+			click(listbox.firstChild().nextSibling());
+			boolean isChrome = ZK.is("safari"); 
+			if (isChrome) {
+				for (int i = 0; i < 15; i++) {
+					keyDownNative(DOWN);
+				}
+				assertTrue(150 < parseInt(listbox.$n("body").get("scrollTop")));
+				for (int i = 0; i < 15; i++) {
+					keyDownNative(UP);
+				}
+				assertTrue(0 == parseInt(listbox.$n("body").get("scrollTop")));
+			} else {
+				for (int i = 0; i < 15; i++) {
+					keyDown(listbox.eval("getSelectedItem().uuid"), DOWN);
+				}
+				assertTrue(150 < parseInt(listbox.$n("body").get("scrollTop")));
+				for (int i = 0; i < 15; i++) {
+					keyDown(listbox.eval("getSelectedItem().uuid"), UP);
+				}
+				assertTrue(0 == parseInt(listbox.$n("body").get("scrollTop")));
+			}
+		]]></client>
+	</case>
+</test>
