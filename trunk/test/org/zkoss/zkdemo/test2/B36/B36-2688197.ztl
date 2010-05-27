@@ -1,0 +1,100 @@
+<test tags="window">
+	<case id="titleCorner">
+		<server><!--
+			<zk>
+				<html><![CDATA[  
+				Test 3 Cases:
+				<ol>
+					<li>In IE 7, the popup have width but no height.</li>
+					<li>In all browser, the popup have height but no width.</li>
+					<li>In all browser, the popup have no height and no width</li>
+				</ol>
+				]]></html>
+				<vbox>
+					<hbox>
+						<button label="set width">
+							<attribute name="onClick"><![CDATA[  
+						 title.setWidth("300px");
+					]]></attribute>
+						</button>
+						<button label="no width">
+							<attribute name="onClick"><![CDATA[  
+						title.setWidth("");
+					]]></attribute>
+						</button>
+						<button label="set height">
+							<attribute name="onClick"><![CDATA[  
+						title.setHeight("100px");
+					]]></attribute>
+						</button>
+						<button label="no height">
+							<attribute name="onClick"><![CDATA[  
+						title.setHeight("");
+					]]></attribute>
+						</button>
+					</hbox>
+					<label value="Click me to Show Popup!" popup="title" />
+				</vbox>
+				<popup id="title">
+					<html>Input the subject of this letter. Problem report :</html>
+					<toolbarbutton label="ZK Forum" target="zkdemo"
+						href="http://www.zkoss.org/forum" />
+				</popup>
+			
+			</zk>
+		--></server>
+		<client><![CDATA[
+			JQuery setWidth = jq("@button[label=\"set width\"] button");
+			JQuery noWidth = jq("@button[label=\"no width\"] button");
+			JQuery setHeight = jq("@button[label=\"set height\"] button");
+			JQuery noHeight = jq("@button[label=\"no height\"] button");
+			JQuery label = jq("@label");
+			
+			
+			click(setWidth);
+			click(noHeight);
+			click(label);
+			
+			JQuery node = jq(title.$n());
+			JQuery tl = jq("div.z-popup-tl");
+			JQuery cl = jq("div.z-popup-cl");
+			JQuery bl = jq("div.z-popup-bl");
+			
+			int sumHeight = tl.outerHeight() + cl.outerHeight() + bl.outerHeight();
+			int tlWidth = tl.outerWidth() + parseInt(tl.css("margin-right"));
+			int blWidth = tl.outerWidth() + parseInt(bl.css("margin-right"));
+			
+			assertEquals(node.outerHeight(), sumHeight);
+			assertEquals(300, node.outerWidth());
+			assertEquals(300, tlWidth);
+			assertEquals(300, cl.outerWidth());
+			assertEquals(300, blWidth);
+			
+			click(noWidth);
+			click(setHeight);
+			click(label);
+			
+			tlWidth = tl.outerWidth() + parseInt(tl.css("margin-right"));
+			blWidth = tl.outerWidth() + parseInt(bl.css("margin-right"));
+			int width = node.outerWidth();
+			sumHeight = tl.outerHeight() + cl.outerHeight() + bl.outerHeight();
+			
+			assertEquals(width, tlWidth);
+			assertEquals(width, cl.outerWidth());
+			assertEquals(width, blWidth);
+			assertEquals(100, node.outerHeight());
+			assertEquals(99, sumHeight);//the sumHeight will minus 1
+			
+			click(noWidth);
+			click(noHeight);
+			click(label);
+			
+			sumHeight = tl.outerHeight() + cl.outerHeight() + bl.outerHeight();
+			width = node.outerWidth();
+			assertEquals(node.outerHeight(), sumHeight);
+			assertEquals(width, tlWidth);
+			assertEquals(width, cl.outerWidth());
+			assertEquals(width, blWidth);
+		]]></client>
+	</case>
+</test>

@@ -1,0 +1,25 @@
+<test tags="window">
+	<case id="position">
+		<server><!--
+			<zk>
+				You should see the window displays on the center.
+				<window id="win" title="Position Issue" closable="true" position="center"
+				border="normal" mode="overlapped">
+				<label value="Hello world!" />
+				</window>
+			</zk>
+		--></server>
+		<client><![CDATA[
+			Element node = win.$n();
+			int screenWidth = jq(node.parentNode()).innerWidth();
+			int screenHeight = jq(node.parentNode()).innerHeight();
+			int offsetLeft = parseInt(node.get("offsetLeft"));
+			int offsetTop = parseInt(node.get("offsetTop"));
+			int winWidth = jq(node).width();
+			int winHeight = jq(node).height();
+			
+			assertEquals((screenWidth - winWidth)/2, offsetLeft);
+			assertEquals((screenHeight - winHeight)/2, offsetTop);
+		]]></client>
+	</case>
+</test>
