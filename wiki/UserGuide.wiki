@@ -137,6 +137,7 @@ Please refer to [GetStartedWithZTL#Checkout_Source_Code]
 === Import an Existing Projects into Workspace ===
  # In your eclipse IDE, click *File*>*Import...*>*Existing Projects into Workspace*
  # Set the root directory to the directory named *ztl* where you checked out the code
+ # Open *`src/org/zkoss/ztl/util/ZtlGenerator.java`*, and click *Run*.
  # Right-click on *`src/org/zkoss/ztl/util/ZtlGenerator.java`*, and click *Run As*>*Run Configurations...*
  # On the right hand side panel of the dialog, click the tab *Arguments* and put the following arguments inside.
   {{{-src test -dist codegen}}}
