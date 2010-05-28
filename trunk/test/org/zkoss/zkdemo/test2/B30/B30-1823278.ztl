@@ -20,27 +20,16 @@
 </zk>
 		 --></server>
 		<client wait="100"><![CDATA[
-			click(listbox.firstChild().nextSibling());
-			boolean isChrome = ZK.is("safari"); 
-			if (isChrome) {
-				for (int i = 0; i < 15; i++) {
-					keyDownNative(DOWN);
-				}
-				assertTrue(150 < parseInt(listbox.$n("body").get("scrollTop")));
-				for (int i = 0; i < 15; i++) {
-					keyDownNative(UP);
-				}
-				assertTrue(0 == parseInt(listbox.$n("body").get("scrollTop")));
-			} else {
-				for (int i = 0; i < 15; i++) {
-					keyDown(listbox.eval("getSelectedItem().uuid"), DOWN);
-				}
-				assertTrue(150 < parseInt(listbox.$n("body").get("scrollTop")));
-				for (int i = 0; i < 15; i++) {
-					keyDown(listbox.eval("getSelectedItem().uuid"), UP);
-				}
-				assertTrue(0 == parseInt(listbox.$n("body").get("scrollTop")));
+	 		click(listbox.firstChild().nextSibling());
+	 				
+			for (int i = 0; i < 15; i++) {
+				keyDown(listbox.$n("a"), DOWN);
 			}
+			assertTrue(150 < parseInt(listbox.$n("body").get("scrollTop")));
+			for (int i = 0; i < 15; i++) {
+				keyDown(listbox.$n("a"), UP);
+			}
+			assertTrue(0 == parseInt(listbox.$n("body").get("scrollTop")));
 		]]></client>
 	</case>
 </test>
