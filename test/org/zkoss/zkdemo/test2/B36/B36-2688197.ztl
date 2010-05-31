@@ -1,5 +1,5 @@
-<test tags="window">
-	<case id="titleCorner">
+<test tags="popup">
+	<case id="size">
 		<server><!--
 			<zk>
 				<html><![CDATA[  
@@ -49,7 +49,6 @@
 			JQuery setHeight = jq("@button[label=\"set height\"] button");
 			JQuery noHeight = jq("@button[label=\"no height\"] button");
 			JQuery label = jq("@label");
-			
 			
 			click(setWidth);
 			click(noHeight);
