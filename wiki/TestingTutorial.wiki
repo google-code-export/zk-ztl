@@ -191,7 +191,9 @@ keycode:
        V: 86
 
        X: 88
+You have to call _keyUpNative("17");_ at last when you call _keyDownNative("17");_.
 
+otherwise your compute will keep hold _ctrl_ key state.
 
 ----
 == Troubleshooting == 
