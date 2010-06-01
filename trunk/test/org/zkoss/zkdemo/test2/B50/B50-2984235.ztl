@@ -10,11 +10,7 @@
 		<client><![CDATA[
 			Element tbNode = tb.$n();
 			mouseOver(tbNode);
-			try {
-		     Thread.sleep(2000);
-		    } catch (InterruptedException e) {
-		     e.printStackTrace();
-		    }
+			sleep(2000);
 			verifyTrue(popup.exists());
 			mouseOut(tbNode);
 			mouseOver(cb.$n());
