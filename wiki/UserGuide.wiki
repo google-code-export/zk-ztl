@@ -16,7 +16,7 @@ For example (ZTL),
 		<client>
 			click(btn);
 			waitResponse();
-			assertTrue(jq("@window").exists());
+			verifyTrue(jq("@window").exists());
 		</client>
 	</case>
 </test>
@@ -81,7 +81,7 @@ public class B30_123456Test extends ZKClientTestCase {
 				
 				click(btn);
 				waitResponse();
-				assertTrue(jq("@window").exists());
+				verifyTrue(jq("@window").exists());
 				
 				/** end **/
 				close = true;
