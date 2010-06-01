@@ -19,7 +19,7 @@
 		--></server>
 		<client>
 			click(btn);
-			assertTrue(isVisible(pp));
+			verifyTrue(isVisible(pp));
 		</client>
 	</case>
 </test>

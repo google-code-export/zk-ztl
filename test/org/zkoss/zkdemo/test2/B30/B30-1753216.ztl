@@ -31,11 +31,11 @@
 		</zk>
 		 --></server>
 		<client><![CDATA[
-			assertFalse(jq("@window").exists());
-			assertFalse(jq(".z-error").exists());
+			verifyFalse(jq("@window").exists());
+			verifyFalse(jq(".z-error").exists());
 			click(ti0.$n("open"));
-			assertFalse(jq("@window").exists());
-			assertFalse(jq(".z-error").exists());
+			verifyFalse(jq("@window").exists());
+			verifyFalse(jq(".z-error").exists());
 		]]></client>
 	</case>
 </test>

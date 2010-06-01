@@ -14,7 +14,7 @@
                 --></server>
                 <client wait="100">
                         click(cb.$n("btn"));
-                        assertEquals(jq(cb.$n()).offsetLeft() + "px", jq(cb.$n("pp")).css("left"));
+                        verifyEquals(jq(cb.$n()).offsetLeft() + "px", jq(cb.$n("pp")).css("left"));
                 </client>
         </case>
 </test>

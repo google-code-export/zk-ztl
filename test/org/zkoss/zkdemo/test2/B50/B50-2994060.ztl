@@ -83,7 +83,7 @@
 		<client wait="100"><![CDATA[
 			click(cell);
 			waitResponse();
-			assertEquals(msg.get("value"), "");
+			verifyEquals(msg.get("value"), "");
 		]]></client>
 	</case>
 </test>

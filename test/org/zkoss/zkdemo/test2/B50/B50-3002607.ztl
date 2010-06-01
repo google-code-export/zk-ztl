@@ -15,7 +15,7 @@
 			focus(tb);
 			keyPressNative(END);
 			keyPressNative(BACKSPACE);
-			assertFalse(jq(tb).val().equals(before));
+			verifyFalse(jq(tb).val().equals(before));
 		]]></client>
 	</case>
 </test>

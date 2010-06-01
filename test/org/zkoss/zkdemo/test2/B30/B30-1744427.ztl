@@ -33,14 +33,14 @@
 		 --></server>
 		<client><![CDATA[
 			select(codeFilterType, "STARTS");
-			assertFalse(jq("@window").exists());
+			verifyFalse(jq("@window").exists());
 			select(codeFilterType, "CONTAINS");
-			assertFalse(jq("@window").exists());
+			verifyFalse(jq("@window").exists());
 			
 			select(titleFilterType, "STARTS");
-			assertFalse(jq("@window").exists());
+			verifyFalse(jq("@window").exists());
 			select(titleFilterType, "CONTAINS");
-			assertFalse(jq("@window").exists());
+			verifyFalse(jq("@window").exists());
 		]]></client>
 	</case>
 </test>

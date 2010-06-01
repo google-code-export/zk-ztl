@@ -48,14 +48,14 @@
 		<client>
 			dragdropToObject(two, one, "0,10", "0,10");
 			waitResponse();
-			assertEquals("two", mb.firstChild().get("id"));
-			assertEquals(0, two.$n().get("cellIndex"));
+			verifyEquals("two", mb.firstChild().get("id"));
+			verifyEquals(0, two.$n().get("cellIndex"));
 			
 			
 			dragdropToObject(one, two, "0,10", "0,10");
 			waitResponse();
-			assertEquals("one", mb.firstChild().get("id"));
-			assertEquals(1, two.$n().get("cellIndex"));
+			verifyEquals("one", mb.firstChild().get("id"));
+			verifyEquals(1, two.$n().get("cellIndex"));
 			
 		</client>
 	</case>

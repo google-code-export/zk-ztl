@@ -15,11 +15,11 @@
 			</groupbox>
 		]]></server>
 		<client wait="100"><![CDATA[
-			assertTrue(getElementHeight(row.firstChild()).intValue() < 35);
+			verifyTrue(getElementHeight(row.firstChild()).intValue() < 35);
 			Element body = grid.$n("body");
 			int ch = Integer.parseInt(body.get("clientHeight"));
 			int oh = Integer.parseInt(body.get("offsetHeight"));
-			assertEquals(oh - ch, JQuery.scrollbarWidth());
+			verifyEquals(oh - ch, JQuery.scrollbarWidth());
 		]]></client>
 	</case>
 </test>

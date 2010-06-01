@@ -33,16 +33,16 @@
 		</window>
 		 --></server>
 		<client><![CDATA[
-			assertEquals("true", info1);
-			assertEquals("false", info2);
+			verifyEquals("true", info1);
+			verifyEquals("false", info2);
 			click(tab2);
 			waitResponse();
-			assertEquals("false", info1);
-			assertEquals("true", info2);
+			verifyEquals("false", info1);
+			verifyEquals("true", info2);
 			click(tab1);
 			waitResponse();
-			assertEquals("true", info1);
-			assertEquals("false", info2);
+			verifyEquals("true", info1);
+			verifyEquals("false", info2);
 		]]></client>
 	</case>
 </test>

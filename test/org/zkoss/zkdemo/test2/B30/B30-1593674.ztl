@@ -9,10 +9,10 @@
 			</groupbox>
 		--></server>
 		<client>
-			assertTrue(jq(":submit").exists());
+			verifyTrue(jq(":submit").exists());
 			click(jq(":submit"));
 			waitResponse();
-			assertFalse(jq("div.z-error").exists());
+			verifyFalse(jq("div.z-error").exists());
 		</client>
 	</case>
 </test>

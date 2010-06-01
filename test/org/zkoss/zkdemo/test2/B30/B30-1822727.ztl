@@ -61,15 +61,15 @@ Henry should <b>NOT</b> be selected.<br/>
 			click(li1.$n("cm"));
 			click(li2.$n("cm"));
 			click(btn1);
-			assertTrue(li1.is("selected"));
-			assertFalse(li2.is("selected"));
+			verifyTrue(li1.is("selected"));
+			verifyFalse(li2.is("selected"));
 			click(btn1);
 			waitResponse();
 			click(li1.$n("cm"));
-			assertFalse(li1.is("selected"));
+			verifyFalse(li1.is("selected"));
 			click(btn2);
-			assertFalse(li1.is("selected"));
-			assertFalse(li2.is("selected"));
+			verifyFalse(li1.is("selected"));
+			verifyFalse(li2.is("selected"));
 		]]></client>
 	</case>
 </test>

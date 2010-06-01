@@ -48,7 +48,7 @@
 				click(start);
 				click(stop);
 				waitResponse();
-				assertEquals(rowNr.get("value"), serverRows.firstChild().firstChild().get("value"));
+				verifyEquals(rowNr.get("value"), serverRows.firstChild().firstChild().get("value"));
 			}
 			
 		]]></client>

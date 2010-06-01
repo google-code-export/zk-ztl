@@ -17,7 +17,7 @@
 			waitResponse();
 			String zulClass = jq("div.z-msgbox").attr("class");
 			click(jq("@window div.z-window-modal-close"));
-			assertEquals(zHtmlClass, zulClass);
+			verifyEquals(zHtmlClass, zulClass);
 		]]></client>
 	</case>
 </test>

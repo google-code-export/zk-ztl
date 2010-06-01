@@ -25,15 +25,15 @@
 			int top = cr.offsetTop() + 10;
 			dragdropTo(cr, left + "," + top, (left + 100) + "," + top);
 			
-			assertEquals(oldHeight, innerWin.outerHeight());
-			assertEquals(oldWidth, innerWin.outerWidth());
+			verifyEquals(oldHeight, innerWin.outerHeight());
+			verifyEquals(oldWidth, innerWin.outerWidth());
 			
 			left =cr.outerWidth() / 2;
 			top = br.offsetTop();
 			dragdropTo(cr, left + "," + top, left + "," + (top + 100));
 			
-			assertEquals(oldHeight, innerWin.outerHeight());
-			assertEquals(oldWidth, innerWin.outerWidth());
+			verifyEquals(oldHeight, innerWin.outerHeight());
+			verifyEquals(oldWidth, innerWin.outerWidth());
 		]]></client>
 	</case>
 </test>

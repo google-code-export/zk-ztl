@@ -27,7 +27,7 @@
 			waitResponse();
 			click(jq("@button[label=\"close\"] td.z-button-cm"));
 			waitResponse();
-			assertEquals("true", jq("$main @label:last").html());
+			verifyEquals("true", jq("$main @label:last").html());
 		]]></client>
 	</case>
 </test>

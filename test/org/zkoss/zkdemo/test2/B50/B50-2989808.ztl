@@ -10,26 +10,26 @@
 
 		--></server>
 		<client>
-			assertEquals("12345.6%", jq(d1).val());
-			assertEquals("12300%", jq(d2).val());
-			assertEquals("R 12,345,600.00%", jq(d3).val());
-			assertEquals("12,345,600.00%", jq(d4).val());
+			verifyEquals("12345.6%", jq(d1).val());
+			verifyEquals("12300%", jq(d2).val());
+			verifyEquals("R 12,345,600.00%", jq(d3).val());
+			verifyEquals("12,345,600.00%", jq(d4).val());
 			
 			focus(d1);
 			blur(d1);
-			assertEquals("12345.6%", jq(d1).val());
+			verifyEquals("12345.6%", jq(d1).val());
 			
 			focus(d2);
 			blur(d2);
-			assertEquals("12300%", jq(d2).val());
+			verifyEquals("12300%", jq(d2).val());
 			
 			focus(d3);
 			blur(d3);
-			assertEquals("R 12,345,600.00%", jq(d3).val());
+			verifyEquals("R 12,345,600.00%", jq(d3).val());
 			
 			focus(d4);
 			blur(d4);
-			assertEquals("12,345,600.00%", jq(d4).val());
+			verifyEquals("12,345,600.00%", jq(d4).val());
 		</client>
 	</case>
 </test>

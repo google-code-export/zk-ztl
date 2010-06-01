@@ -19,7 +19,7 @@
 		<client>
 			click(panel.$n("max"));
 			click(cb.$n("btn"));
-			assertTrue(parseInt(jq(cb.$n("pp")).css("zIndex")) > parseInt(jq(panel).css("zIndex")));
+			verifyTrue(parseInt(jq(cb.$n("pp")).css("zIndex")) > parseInt(jq(panel).css("zIndex")));
 		</client>
 	</case>
 </test>

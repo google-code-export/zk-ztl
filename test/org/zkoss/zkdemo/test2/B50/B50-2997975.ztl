@@ -13,35 +13,35 @@
 		]]></server>
 		<client><![CDATA[
    			click(b.$n("real"));
-   			assertFalse(isVisible(b.$n("pp")));
-   			assertEquals("1px", jq(b.$n("real")).css("border-right-width"));
+   			verifyFalse(isVisible(b.$n("pp")));
+   			verifyEquals("1px", jq(b.$n("real")).css("border-right-width"));
    			
 			click(c.$n("real"));
-			assertFalse(isVisible(c.$n("pp")));
-   			assertEquals("1px", jq(c.$n("real")).css("border-right-width"));
+			verifyFalse(isVisible(c.$n("pp")));
+   			verifyEquals("1px", jq(c.$n("real")).css("border-right-width"));
 
 			click(d.$n("real"));
-			assertFalse(isVisible(d.$n("pp")));
-   			assertEquals("1px", jq(d.$n("real")).css("border-right-width"));
+			verifyFalse(isVisible(d.$n("pp")));
+   			verifyEquals("1px", jq(d.$n("real")).css("border-right-width"));
    			
-   			assertEquals("1px", jq(t.$n("real")).css("border-right-width"));
-   			assertEquals("1px", jq(s.$n("real")).css("border-right-width"));
+   			verifyEquals("1px", jq(t.$n("real")).css("border-right-width"));
+   			verifyEquals("1px", jq(s.$n("real")).css("border-right-width"));
    			
    			click(btn);
    			click(b.$n("real"));
-   			assertTrue(isVisible(b.$n("pp")));
-   			assertEquals("0px", jq(b.$n("real")).css("border-right-width"));
+   			verifyTrue(isVisible(b.$n("pp")));
+   			verifyEquals("0px", jq(b.$n("real")).css("border-right-width"));
    			
 			click(c.$n("real"));
-			assertTrue(isVisible(c.$n("pp")));
-   			assertEquals("0px", jq(c.$n("real")).css("border-right-width"));
+			verifyTrue(isVisible(c.$n("pp")));
+   			verifyEquals("0px", jq(c.$n("real")).css("border-right-width"));
 
 			click(d.$n("real"));
-			assertTrue(isVisible(d.$n("pp")));
-   			assertEquals("0px", jq(d.$n("real")).css("border-right-width"));
+			verifyTrue(isVisible(d.$n("pp")));
+   			verifyEquals("0px", jq(d.$n("real")).css("border-right-width"));
    			
-   			assertEquals("0px", jq(t.$n("real")).css("border-right-width"));
-   			assertEquals("0px", jq(s.$n("real")).css("border-right-width"));
+   			verifyEquals("0px", jq(t.$n("real")).css("border-right-width"));
+   			verifyEquals("0px", jq(s.$n("real")).css("border-right-width"));
    			
 		]]></client>
 	</case>

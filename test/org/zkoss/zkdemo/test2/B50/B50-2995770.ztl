@@ -31,7 +31,7 @@
 			click(t2);
 			click(btn);
 			click(t1);
-			assertEquals(200, jq(east.$n("real")).width());
+			verifyEquals(200, jq(east.$n("real")).width());
 		]]></client>
 	</case>
 </test>

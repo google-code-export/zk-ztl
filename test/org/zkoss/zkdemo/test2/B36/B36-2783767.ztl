@@ -25,7 +25,7 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			assertEquals("false",jq("@label:last").html());
+			verifyEquals("false",jq("@label:last").html());
 		]]></client>
 	</case>
 </test>

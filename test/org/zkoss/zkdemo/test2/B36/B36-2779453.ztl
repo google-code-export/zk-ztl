@@ -36,7 +36,7 @@
 			click(jq("@listitem[label=\"aaaaaaa\"] span.z-listitem-img-checkbox"));
 			click(jq("@detail div.z-detail-img"));
 			click(jq("@detail div.z-detail-img"));
-			assertEquals(1, jq("tr.z-listitem-seld").length());
+			verifyEquals(1, jq("tr.z-listitem-seld").length());
 		]]></client>
 	</case>
 </test>

@@ -15,10 +15,10 @@
 		    } catch (InterruptedException e) {
 		     e.printStackTrace();
 		    }
-			assertTrue(popup.exists());
+			verifyTrue(popup.exists());
 			mouseOut(tbNode);
 			mouseOver(cb.$n());
-			assertTrue(popup.exists());
+			verifyTrue(popup.exists());
 		]]></client>
 	</case>
 </test>

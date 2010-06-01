@@ -127,7 +127,7 @@
 		 --></server>
 		<client><![CDATA[
             click(detail.$n("img"));
-			assertEquals(2, parseInt(jq(detail.$n("fake")).find(" > td:first").attr("colspan")));			
+			verifyEquals(2, parseInt(jq(detail.$n("fake")).find(" > td:first").attr("colspan")));			
 		]]></client>
 	</case>
 </test>

@@ -27,10 +27,10 @@
 		<client><![CDATA[
   				click(btn);
   				waitResponse();
-				assertTrue(jq(row).hasClass("z-row z-grid-odd"));
+				verifyTrue(jq(row).hasClass("z-row z-grid-odd"));
  				click(btn2);
   				waitResponse();
-				assertTrue(jq(row).hasClass("z-row z-grid-odd"));
+				verifyTrue(jq(row).hasClass("z-row z-grid-odd"));
 		]]></client>
 	</case>
 	<case id="SetSclass">
@@ -82,7 +82,7 @@
 		<client><![CDATA[
   				click(btn);
   				waitResponse();
-				assertTrue(jq(row).hasClass("z-listitem z-listbox-odd"));
+				verifyTrue(jq(row).hasClass("z-listitem z-listbox-odd"));
 		]]></client>
 	</case>
 </test>

@@ -16,9 +16,9 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			assertFalse(jq("@box @div").exists());
+			verifyFalse(jq("@box @div").exists());
 			click(btn1);
-			assertTrue(jq("@box @div").exists());
+			verifyTrue(jq("@box @div").exists());
 		]]></client>
 	</case>
 </test>

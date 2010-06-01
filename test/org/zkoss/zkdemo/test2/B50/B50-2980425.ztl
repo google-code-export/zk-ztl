@@ -29,7 +29,7 @@
 		</listbox>
 		--></server>
 		<client>
-			assertEquals("right", jq(listfooter).attr("align"));
+			verifyEquals("right", jq(listfooter).attr("align"));
 		</client>
 		<server><!--
 			<zk>
@@ -60,7 +60,7 @@
 			</zk>
 		 --></server>
 		<client><![CDATA[
-		     assertEquals("right", jq(footer).attr("align"));
+		     verifyEquals("right", jq(footer).attr("align"));
 		]]></client>
 	</case>
 </test>

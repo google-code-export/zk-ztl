@@ -8,7 +8,7 @@
 		]]></server>
 		<client wait="100"><![CDATA[
 			click(btn);
-			assertTrue(popup.exists());
+			verifyTrue(popup.exists());
 		]]></client>
 	</case>
 </test>

@@ -54,16 +54,16 @@ Test xhtml component inside grid with annotation databinding (this bug generate 
 </zk>
 		--></server>
 		<client><![CDATA[
-			assertEquals("http://www.zkoss.org", jq("@row @label:eq(0)").html());
-			assertEquals("http://jp.zkoss.org", jq("@row @label:eq(1)").html());
-			assertEquals("http://zh.zkoss.org", jq("@row @label:eq(2)").html());
-			assertEquals("http://www.potix.com", jq("@row @label:eq(3)").html());
+			verifyEquals("http://www.zkoss.org", jq("@row @label:eq(0)").html());
+			verifyEquals("http://jp.zkoss.org", jq("@row @label:eq(1)").html());
+			verifyEquals("http://zh.zkoss.org", jq("@row @label:eq(2)").html());
+			verifyEquals("http://www.potix.com", jq("@row @label:eq(3)").html());
 			
 
-			assertEquals("http://www.zkoss.org", jq("@listitem @label:eq(0)").html());
-			assertEquals("http://jp.zkoss.org", jq("@listitem @label:eq(1)").html());
-			assertEquals("http://zh.zkoss.org", jq("@listitem @label:eq(2)").html());
-			assertEquals("http://www.potix.com", jq("@listitem @label:eq(3)").html());
+			verifyEquals("http://www.zkoss.org", jq("@listitem @label:eq(0)").html());
+			verifyEquals("http://jp.zkoss.org", jq("@listitem @label:eq(1)").html());
+			verifyEquals("http://zh.zkoss.org", jq("@listitem @label:eq(2)").html());
+			verifyEquals("http://www.potix.com", jq("@listitem @label:eq(3)").html());
 		]]></client>
 	</case>
 </test>

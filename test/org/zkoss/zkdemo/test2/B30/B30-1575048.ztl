@@ -176,17 +176,17 @@
 			click(userList.getChild("getBodyWidgetIterator().next()"));
 			click(del);
 			waitResponse();
-			assertEquals("2", userList.getChild("getBodyWidgetIterator().next()").get("label"));
+			verifyEquals("2", userList.getChild("getBodyWidgetIterator().next()").get("label"));
 			
 			Widget paging = userList.getChild("paging");
-			assertEquals("5", paging.get("totalSize"));
+			verifyEquals("5", paging.get("totalSize"));
 			
 			click(userList.getChild("getBodyWidgetIterator().next()"));
 			click(del);
 			waitResponse();
-			assertEquals("3", userList.getChild("getBodyWidgetIterator().next()").get("label"));
-			assertEquals("4", paging.get("totalSize"));
-			assertFalse(isVisible(paging));
+			verifyEquals("3", userList.getChild("getBodyWidgetIterator().next()").get("label"));
+			verifyEquals("4", paging.get("totalSize"));
+			verifyFalse(isVisible(paging));
 			
 			// Test adding
 			type(itemId, "123");
@@ -196,9 +196,9 @@
 			
 			click(paging.uuid() + "-next");
 			waitResponse();
-			assertEquals("123", userList.lastChild().get("label"));
-			assertEquals("5", paging.get("totalSize"));
-			assertTrue(isVisible(paging));
+			verifyEquals("123", userList.lastChild().get("label"));
+			verifyEquals("5", paging.get("totalSize"));
+			verifyTrue(isVisible(paging));
 		]]></client>
 	</case>
 </test>

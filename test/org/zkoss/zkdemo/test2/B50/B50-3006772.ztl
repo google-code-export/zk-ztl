@@ -42,7 +42,7 @@
 			click(jq("@page @treerow span.z-tree-last-open"));
 			click(jq("@page @treerow span.z-tree-last-close"));
 			click(jq("@treecell[label=\"1.1.2\"] div.z-overflow-hidden"));
-			assertEquals(1, jq("td.z-treerow-focus").length());
+			verifyEquals(1, jq("td.z-treerow-focus").length());
 		]]></client>
 	</case>
 </test>

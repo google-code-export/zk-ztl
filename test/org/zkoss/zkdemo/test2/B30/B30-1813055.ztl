@@ -66,25 +66,25 @@ Two listbox share the same selected variable. It used to cause NullPointerExcept
 
 		--></server>
 		<client><![CDATA[
-       		assertEquals("10", lb1.nChildren());
-       		assertEquals("10", lb2.nChildren());
-       		assertTrue(jq("@listitem:odd").hasClass("z-listbox-odd"));
+       		verifyEquals("10", lb1.nChildren());
+       		verifyEquals("10", lb2.nChildren());
+       		verifyTrue(jq("@listitem:odd").hasClass("z-listbox-odd"));
        		
        		click(lb1.lastChild());
-       		assertFalse(lb2.firstChild().is("selected"));
-       		assertTrue(lb2.lastChild().is("selected"));
+       		verifyFalse(lb2.firstChild().is("selected"));
+       		verifyTrue(lb2.lastChild().is("selected"));
 
        		click(lb1.firstChild());
-       		assertTrue(lb2.firstChild().is("selected"));
-       		assertFalse(lb2.lastChild().is("selected"));
+       		verifyTrue(lb2.firstChild().is("selected"));
+       		verifyFalse(lb2.lastChild().is("selected"));
        		
        		click(lb2.lastChild());
-       		assertFalse(lb1.firstChild().is("selected"));
-       		assertTrue(lb1.lastChild().is("selected"));
+       		verifyFalse(lb1.firstChild().is("selected"));
+       		verifyTrue(lb1.lastChild().is("selected"));
 
        		click(lb2.firstChild());
-       		assertTrue(lb1.firstChild().is("selected"));
-       		assertFalse(lb1.lastChild().is("selected"));
+       		verifyTrue(lb1.firstChild().is("selected"));
+       		verifyFalse(lb1.lastChild().is("selected"));
 		]]></client>
 	</case>
 </test>

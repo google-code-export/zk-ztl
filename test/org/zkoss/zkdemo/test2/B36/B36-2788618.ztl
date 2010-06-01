@@ -11,7 +11,7 @@
 			click(jq("td.z-calendar-seld"));
 			waitResponse();
 			blur(db.$n("real"));
-			assertFalse(jq("div.z-errbox").exists());
+			verifyFalse(jq("div.z-errbox").exists());
 		]]></client>
 	</case>
 </test>

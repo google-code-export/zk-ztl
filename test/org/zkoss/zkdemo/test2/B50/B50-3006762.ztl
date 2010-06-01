@@ -41,7 +41,7 @@
 			click(jq("@treecell[label=\"1.1.1\"] div.z-overflow-hidden"));
 			click(jq("@page @treerow span.z-tree-root-open"));
 			Element node = tree.$n().firstChild();
-			assertEquals(node.get("clientHeight"), node.get("scrollHeight"));
+			verifyEquals(node.get("clientHeight"), node.get("scrollHeight"));
 		]]></client>
 	</case>
 </test>

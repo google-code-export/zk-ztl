@@ -55,19 +55,19 @@
 			</hbox>
 		]]></server>
 		<client><![CDATA[
-			assertEquals("1", rows.nChildren());	
+			verifyEquals("1", rows.nChildren());	
 			
 			click(btn1);
 			waitResponse();
-			assertEquals("2", rows.nChildren());
-			assertEquals("2", rows.$n().get("rows.length"));
-			assertEquals("Label x", rows.lastChild().firstChild().get("value"));
+			verifyEquals("2", rows.nChildren());
+			verifyEquals("2", rows.$n().get("rows.length"));
+			verifyEquals("Label x", rows.lastChild().firstChild().get("value"));
 				
 			click(btn2);
 			waitResponse();
-			assertEquals("3", rows.nChildren());
-			assertEquals("3", rows.$n().get("rows.length"));
-			assertEquals("Label 0", rows.firstChild().firstChild().get("value"));
+			verifyEquals("3", rows.nChildren());
+			verifyEquals("3", rows.$n().get("rows.length"));
+			verifyEquals("Label 0", rows.firstChild().firstChild().get("value"));
 		]]></client>
 	</case>
 	<case id="Delete">
@@ -75,23 +75,23 @@
 		<server ref="zulbtn"/>
 		<client><![CDATA[
 			Element $n = rows.$n();
-			assertEquals("1", rows.nChildren());
+			verifyEquals("1", rows.nChildren());
 				
 			click(btn2);
 			waitResponse();
-			assertEquals("2", rows.nChildren());
-			assertEquals("2", $n.get("rows.length"));
+			verifyEquals("2", rows.nChildren());
+			verifyEquals("2", $n.get("rows.length"));
 			
 			click(btn3);
 			waitResponse();
-			assertEquals("1", rows.nChildren());
-			assertEquals("1", $n.get("rows.length"));
-			assertEquals("Label 0", rows.firstChild().firstChild().get("value"));
+			verifyEquals("1", rows.nChildren());
+			verifyEquals("1", $n.get("rows.length"));
+			verifyEquals("Label 0", rows.firstChild().firstChild().get("value"));
 			
 			click(btn4);
 			waitResponse();
-			assertEquals("0", rows.nChildren());
-			assertEquals("0", $n.get("rows.length"));
+			verifyEquals("0", rows.nChildren());
+			verifyEquals("0", $n.get("rows.length"));
 		]]></client>
 	</case>
 	<case id="Size">
@@ -110,48 +110,48 @@
 			// Test setting width
 			Element $head = grid.$n("head");			
 			Element $body = grid.$n("body");
-			assertEquals("400px", grid.get("width"));
+			verifyEquals("400px", grid.get("width"));
 				
 			click(width200);
 			waitResponse();
-			assertEquals("200px", grid.get("width"));
+			verifyEquals("200px", grid.get("width"));
 			
-			assertEquals("200px", $head.get("style.width"));
+			verifyEquals("200px", $head.get("style.width"));
 			
 			click(width600);
 			waitResponse();
-			assertEquals("600px", grid.get("width"));
-			assertEquals("600px", $head.get("style.width"));
+			verifyEquals("600px", grid.get("width"));
+			verifyEquals("600px", $head.get("style.width"));
 			
 			click(widthNull);
 			waitResponse();
-			assertEquals("null", grid.get("width"));
-			assertNotEquals("", $head.get("style.width"));
+			verifyEquals("null", grid.get("width"));
+			verifyNotEquals("", $head.get("style.width"));
 
 			// Test setting height
-			assertEquals("null", grid.get("height"));
+			verifyEquals("null", grid.get("height"));
 			String height = $body.get("style.height");
 			
 			click(height200);
 			waitResponse();
-			assertEquals("200px", grid.get("height"));
+			verifyEquals("200px", grid.get("height"));
 			
 			int hh = Integer.parseInt($head.get("offsetHeight"));
 			int bh = Integer.parseInt($body.get("offsetHeight"));
-			assertEquals(200, hh + bh);
+			verifyEquals(200, hh + bh);
 			
 			click(height600);	
 			waitResponse();			
-			assertEquals("600px", grid.get("height"));
+			verifyEquals("600px", grid.get("height"));
 
 			hh = Integer.parseInt($head.get("offsetHeight"));
 			bh = Integer.parseInt($body.get("offsetHeight"));
-			assertEquals(600, 600);
+			verifyEquals(600, 600);
 			
 			click(heightNull);
 			waitResponse();
-			assertEquals("null", grid.get("height"));
-			assertEquals(height, $body.get("style.height"));
+			verifyEquals("null", grid.get("height"));
+			verifyEquals(height, $body.get("style.height"));
 		]]></client>
 	</case>
 	<case id="ColumnSize">
@@ -172,48 +172,48 @@
 			Element $col2 = col2.$n();
 			Element $col3 = col3.$n();
 			
-			assertEquals("50px", col1.get("width"));
+			verifyEquals("50px", col1.get("width"));
 				
 			click(width20);
 			waitResponse();
-			assertEquals("20px", col1.get("width"));
-			assertEquals("20px", $col1.get("style.width"));
+			verifyEquals("20px", col1.get("width"));
+			verifyEquals("20px", $col1.get("style.width"));
 			
 			click(width100);
 			waitResponse();
-			assertEquals("100px", col1.get("width"));
-			assertEquals("100px", $col1.get("style.width"));
+			verifyEquals("100px", col1.get("width"));
+			verifyEquals("100px", $col1.get("style.width"));
 			
 			click(width200);
 			waitResponse();
-			assertEquals("200px", col1.get("width"));
-			assertEquals("200px", $col1.get("style.width"));
+			verifyEquals("200px", col1.get("width"));
+			verifyEquals("200px", $col1.get("style.width"));
 
 			// col12 
-			assertEquals("null", col2.get("width"));
+			verifyEquals("null", col2.get("width"));
 			
 			click(width20b);
 			waitResponse();
-			assertEquals("20px", col2.get("width"));
-			assertEquals("20px", $col2.get("style.width"));
+			verifyEquals("20px", col2.get("width"));
+			verifyEquals("20px", $col2.get("style.width"));
 			
 			click(width100b);
 			waitResponse();
-			assertEquals("100px", col2.get("width"));
-			assertEquals("100px", $col2.get("style.width"));
+			verifyEquals("100px", col2.get("width"));
+			verifyEquals("100px", $col2.get("style.width"));
 			
 
 			// col3 
-			assertEquals("null", col3.get("width"));
+			verifyEquals("null", col3.get("width"));
 			click(width20c);
 			waitResponse();
-			assertEquals("20px", col3.get("width"));
-			assertEquals("20px", $col3.get("style.width"));
+			verifyEquals("20px", col3.get("width"));
+			verifyEquals("20px", $col3.get("style.width"));
 			
 			click(width100c);
 			waitResponse();
-			assertEquals("100px", col3.get("width"));
-			assertEquals("100px", $col3.get("style.width"));
+			verifyEquals("100px", col3.get("width"));
+			verifyEquals("100px", $col3.get("style.width"));
 		]]></client>
 	</case>
 	<case id="Sizable">
@@ -226,23 +226,23 @@
 		]]></server>
 		<client><![CDATA[
 			Element $col1 = col1.$n();
-			assertFalse(cols.is("sizable"));
+			verifyFalse(cols.is("sizable"));
 			JQuery $jq = jq($col1);
 				
 			click(enable);
 			waitResponse();
-			assertTrue(cols.is("sizable"));
+			verifyTrue(cols.is("sizable"));
 			
 			String width = $col1.get("offsetWidth");
 			mouseMoveAt(col1, width + ",0");
-			assertTrue($jq.hasClass("z-column-sizing"));
+			verifyTrue($jq.hasClass("z-column-sizing"));
 
 			click(disable);
 			waitResponse();
-			assertFalse(cols.is("sizable"));
+			verifyFalse(cols.is("sizable"));
 			
 			mouseMoveAt(col1, width + ",0");
-			assertFalse($jq.hasClass("z-column-sizing"));
+			verifyFalse($jq.hasClass("z-column-sizing"));
 			
 			//drag-drop test
 			click(enable);
@@ -250,9 +250,9 @@
 			dragdropTo(col1, width + ",0", Integer.parseInt(width) + 10 + ",0");
 			
 			if(ZK.is("ie6_"))
-				assertTrue(60 - parseInt($col1.get("offsetWidth")) < 2);
+				verifyTrue(60 - parseInt($col1.get("offsetWidth")) < 2);
 			else
-				assertEquals("60", $col1.get("offsetWidth"));
+				verifyEquals("60", $col1.get("offsetWidth"));
 		]]></client>
 	</case>
 </test>

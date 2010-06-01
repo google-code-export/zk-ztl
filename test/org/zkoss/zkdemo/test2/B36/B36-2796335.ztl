@@ -35,12 +35,12 @@
 		<client><![CDATA[
 			click(bottom);
 			waitResponse();
-			assertEquals("50", div1.get("scrollTop"));
-			assertEquals("80", div2.get("scrollTop"));
+			verifyEquals("50", div1.get("scrollTop"));
+			verifyEquals("80", div2.get("scrollTop"));
 			click(top);
 			waitResponse();
-			assertEquals("0", div1.get("scrollTop"));
-			assertEquals("0", div2.get("scrollTop"));
+			verifyEquals("0", div1.get("scrollTop"));
+			verifyEquals("0", div2.get("scrollTop"));
 		]]></client>
 	</case>
 </test>

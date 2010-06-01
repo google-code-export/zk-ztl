@@ -44,7 +44,7 @@
 			click(jq("@button td.z-button-cm"));
 			JQuery tr = jq("div.z-window-embedded-tr");
 			JQuery cnt = jq("div.z-window-embedded-cnt:eq(1)");
-			assertEquals(cnt.offsetLeft() + cnt.outerWidth(), tr.offsetLeft() + tr.outerWidth());
+			verifyEquals(cnt.offsetLeft() + cnt.outerWidth(), tr.offsetLeft() + tr.outerWidth());
 		]]></client>
 	</case>
 </test>

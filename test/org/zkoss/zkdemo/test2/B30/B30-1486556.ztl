@@ -14,7 +14,7 @@
 		<client>
 			focus(tb);
 			blur(tb);
-			assertTrue(jq(tb).hasClass("z-textbox-text-invalid"));
+			verifyTrue(jq(tb).hasClass("z-textbox-text-invalid"));
 		</client>
 	</case>
 	<case id="Constraint2">
@@ -23,7 +23,7 @@
 		<client>
 			focus(tb);
 			click(btn);
-			assertTrue(jq(tb).hasClass("z-textbox-text-invalid"));
+			verifyTrue(jq(tb).hasClass("z-textbox-text-invalid"));
 		</client>
 	</case>
 </test>

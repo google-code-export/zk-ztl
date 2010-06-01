@@ -9,7 +9,7 @@
 		--></server>
 		<client>
 			contextMenu(win);
-			assertTrue(isVisible(menu));
+			verifyTrue(isVisible(menu));
 		</client>
 	</case>
 </test>

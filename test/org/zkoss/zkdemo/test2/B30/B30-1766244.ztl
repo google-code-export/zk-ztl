@@ -35,17 +35,17 @@
 		grid.$n("body").eval("scrollTop = 20");
 		int[] offset3 = zk(cb).revisedOffset();
 		int[] offset4 = zk(cb.$n("btn")).revisedOffset();
-		assertEquals(offset1[0], offset3[0]);
-		assertEquals(offset2[0], offset4[0]);
-		assertEquals(offset1[1] - 20, offset3[1]);
-		assertEquals(offset2[1] - 20, offset4[1]);
+		verifyEquals(offset1[0], offset3[0]);
+		verifyEquals(offset2[0], offset4[0]);
+		verifyEquals(offset1[1] - 20, offset3[1]);
+		verifyEquals(offset2[1] - 20, offset4[1]);
 		grid.$n("body").eval("scrollTop = 0");
 		offset3 = zk(cb).revisedOffset();
 		offset4 = zk(cb.$n("btn")).revisedOffset();
-		assertEquals(offset1[0], offset3[0]);
-		assertEquals(offset1[1], offset3[1]);
-		assertEquals(offset2[0], offset4[0]);
-		assertEquals(offset2[1], offset4[1]);
+		verifyEquals(offset1[0], offset3[0]);
+		verifyEquals(offset1[1], offset3[1]);
+		verifyEquals(offset2[0], offset4[0]);
+		verifyEquals(offset2[1], offset4[1]);
 		]]></client>
 	</case>
 </test>

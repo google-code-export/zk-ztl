@@ -22,14 +22,14 @@
 		<client><![CDATA[
 			click(win.$n("max"));
 			waitResponse();
-			assertEquals("The window is maximized!", jq("@window[mode=\"modal\"] @label").html());
+			verifyEquals("The window is maximized!", jq("@window[mode=\"modal\"] @label").html());
 			click(jq("@window @button"));
-			assertEquals(jq("body").outerWidth(), jq(win).outerWidth());
-			assertEquals(jq("body").outerHeight(), jq(win).outerHeight());
+			verifyEquals(jq("body").outerWidth(), jq(win).outerWidth());
+			verifyEquals(jq("body").outerHeight(), jq(win).outerHeight());
 			click(win.$n("min"));
-			assertEquals("The window is minimized!", jq("@window[mode=\"modal\"] @label").html());
+			verifyEquals("The window is minimized!", jq("@window[mode=\"modal\"] @label").html());
 			click(jq("@window @button"));
-			assertFalse(isVisible(win));
+			verifyFalse(isVisible(win));
 		]]></client>
 	</case>
 </test>

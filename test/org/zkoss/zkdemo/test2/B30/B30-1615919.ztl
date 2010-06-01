@@ -21,8 +21,8 @@
 			int left = parseInt(jq.css("left"));
 			int top = parseInt(jq.css("top"));
 			dragdropTo(jq("@window div[id$=\"cap\"]"), "10,10", "160,160");
-			assertEquals(left+150, parseInt(jq.css("left")));
-			assertEquals(top+150, parseInt(jq.css("top")));
+			verifyEquals(left+150, parseInt(jq.css("left")));
+			verifyEquals(top+150, parseInt(jq.css("top")));
 		]]></client>
 	</case>
 </test>

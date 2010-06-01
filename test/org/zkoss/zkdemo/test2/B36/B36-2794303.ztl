@@ -10,7 +10,7 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			assertEquals(4,jq("div.z-panel-icon").length());
+			verifyEquals(4,jq("div.z-panel-icon").length());
 		]]></client>
 	</case>
 </test>

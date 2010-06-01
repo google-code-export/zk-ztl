@@ -22,16 +22,16 @@
 </zk> 
 		--></server>
 		<client><![CDATA[
-		assertEquals("100 , 0", widget(jq("@button:eq(0)")).get("label"));
-		assertEquals("101 , 0", widget(jq("@button:eq(1)")).get("label"));
-		assertEquals("102 , 0", widget(jq("@button:eq(2)")).get("label"));
-		assertEquals("103 , 0", widget(jq("@button:eq(3)")).get("label"));
-		assertEquals("104 , 0", widget(jq("@button:eq(4)")).get("label"));
-		assertEquals("105 , 1", widget(jq("@button:eq(5)")).get("label"));
-		assertEquals("106 , 1", widget(jq("@button:eq(6)")).get("label"));
-		assertEquals("107 , 1", widget(jq("@button:eq(7)")).get("label"));
-		assertEquals("108 , 1", widget(jq("@button:eq(8)")).get("label"));
-		assertEquals("109 , 1", widget(jq("@button:eq(9)")).get("label"));
+		verifyEquals("100 , 0", widget(jq("@button:eq(0)")).get("label"));
+		verifyEquals("101 , 0", widget(jq("@button:eq(1)")).get("label"));
+		verifyEquals("102 , 0", widget(jq("@button:eq(2)")).get("label"));
+		verifyEquals("103 , 0", widget(jq("@button:eq(3)")).get("label"));
+		verifyEquals("104 , 0", widget(jq("@button:eq(4)")).get("label"));
+		verifyEquals("105 , 1", widget(jq("@button:eq(5)")).get("label"));
+		verifyEquals("106 , 1", widget(jq("@button:eq(6)")).get("label"));
+		verifyEquals("107 , 1", widget(jq("@button:eq(7)")).get("label"));
+		verifyEquals("108 , 1", widget(jq("@button:eq(8)")).get("label"));
+		verifyEquals("109 , 1", widget(jq("@button:eq(9)")).get("label"));
 		]]></client>
 	</case>
 </test>

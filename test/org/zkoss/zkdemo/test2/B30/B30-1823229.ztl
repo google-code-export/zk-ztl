@@ -23,19 +23,19 @@ Splitter- The image of bar isn't updated, when dynamically call setCollapse meth
 </zk>
 		 --></server>
 		<client><![CDATA[
-		assertFalse(isVisible(hsplitter.$n("btn")));
+		verifyFalse(isVisible(hsplitter.$n("btn")));
 		click(r2.$n("real"));
 		
-		assertTrue(isVisible(hsplitter.$n("btn")));
-		assertTrue(jq(hsplitter.$n("btn")).hasClass("z-splitter-hor-btn-l"));
+		verifyTrue(isVisible(hsplitter.$n("btn")));
+		verifyTrue(jq(hsplitter.$n("btn")).hasClass("z-splitter-hor-btn-l"));
 		
 		click(r3.$n("real"));
-		assertTrue(isVisible(hsplitter.$n("btn")));
-		assertFalse(jq(hsplitter.$n("btn")).hasClass("z-splitter-hor-btn-l"));
-		assertTrue(jq(hsplitter.$n("btn")).hasClass("z-splitter-hor-btn-r"));
+		verifyTrue(isVisible(hsplitter.$n("btn")));
+		verifyFalse(jq(hsplitter.$n("btn")).hasClass("z-splitter-hor-btn-l"));
+		verifyTrue(jq(hsplitter.$n("btn")).hasClass("z-splitter-hor-btn-r"));
 		
 		click(r1.$n("real"));
-		assertFalse(isVisible(hsplitter.$n("btn")));
+		verifyFalse(isVisible(hsplitter.$n("btn")));
 		]]></client>
 	</case>
 </test>

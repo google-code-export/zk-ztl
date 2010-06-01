@@ -10,7 +10,7 @@
 		--></server>
 		<client><![CDATA[
 			click(jq("@button td.z-button-cm"));
-			assertEquals("top, 0", jq("#zk_log").val().trim());
+			verifyEquals("top, 0", jq("#zk_log").val().trim());
 		]]></client>
 	</case>
 </test>

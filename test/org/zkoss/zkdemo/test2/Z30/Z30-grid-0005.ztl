@@ -54,37 +54,37 @@
 			// check colSpan
 			int c1 = Integer.parseInt(head1.firstChild().$n().get("colSpan"));
 			int c2 = Integer.parseInt(head1.lastChild().$n().get("colSpan"));
-			assertEquals(3, c1 + c2);
+			verifyEquals(3, c1 + c2);
 			c1 = Integer.parseInt(head2.firstChild().$n().get("colSpan"));
 			c2 = Integer.parseInt(head2.lastChild().$n().get("colSpan"));
-			assertEquals(3, c1 + c2);
+			verifyEquals(3, c1 + c2);
 
 			c1 = Integer.parseInt(head3.firstChild().$n().get("colSpan"));
 			c2 = Integer.parseInt(head3.firstChild().nextSibling().$n().get("colSpan"));
 			int c3 = Integer.parseInt(head3.lastChild().$n().get("colSpan"));
-			assertEquals(3, c1 + c2 + c3);
+			verifyEquals(3, c1 + c2 + c3);
 			
 			c1 = Integer.parseInt(head4.firstChild().$n().get("colSpan"));
-			assertEquals(3, c1);
+			verifyEquals(3, c1);
 
 			int w = zk(grid).revisedWidth(getElementWidth(grid.uuid()).intValue());
-			assertEquals(w + "", $head.get("offsetWidth"));
-			assertEquals(w + "", $body.get("offsetWidth"));
+			verifyEquals(w + "", $head.get("offsetWidth"));
+			verifyEquals(w + "", $body.get("offsetWidth"));
 			int h = zk(grid).revisedHeight(getElementHeight(grid.uuid()).intValue());
-			assertEquals(h, Integer.parseInt($head.get("offsetHeight")) + Integer.parseInt($body.get("offsetHeight")));
+			verifyEquals(h, Integer.parseInt($head.get("offsetHeight")) + Integer.parseInt($body.get("offsetHeight")));
 			
 			// check sizing
 			click(checkId);
 			waitResponse();
 			Number width = getElementWidth(uuid);
 			mouseMoveAt(uuid, width + ",0");
-			assertTrue($jq.hasClass("z-column-sizing"));
+			verifyTrue($jq.hasClass("z-column-sizing"));
 			
 			dragdropTo(uuid, width + ",0", width.intValue() - 20 + ",0");
 			if (!ZK.is("ie6_"))
-				assertEquals(width.intValue() - 20, getElementWidth(uuid).intValue());
+				verifyEquals(width.intValue() - 20, getElementWidth(uuid).intValue());
 			else
-				assertTrue(width.intValue() - 20 - getElementWidth(uuid).intValue() < 2);
+				verifyTrue(width.intValue() - 20 - getElementWidth(uuid).intValue() < 2);
 		]]></client>
 	</case>
 </test>

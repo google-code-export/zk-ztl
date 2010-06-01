@@ -17,7 +17,7 @@
 </hbox>
 		]]></server>
 		<client><![CDATA[
-   			assertFalse(jq("@tabbox").outerWidth() > 5000);
+   			verifyFalse(jq("@tabbox").outerWidth() > 5000);
    		]]></client>
 	</case>
 </test>

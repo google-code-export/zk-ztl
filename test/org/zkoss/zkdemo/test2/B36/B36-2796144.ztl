@@ -30,7 +30,7 @@
 			String time = jq("@timebox input").val();
 			click(jq("td.z-calendar-seld"));
 			waitResponse();
-			assertTrue(dateValue2.get("value").indexOf(time) > 0);
+			verifyTrue(dateValue2.get("value").indexOf(time) > 0);
 		]]></client>
 	</case>
 	<case id="time2">
@@ -43,7 +43,7 @@
 			String time = jq("@timebox input").val();
 			click(jq("td.z-calendar-seld"));
 			waitResponse();
-			assertTrue(dateValue2.get("value").indexOf(time) > 0);
+			verifyTrue(dateValue2.get("value").indexOf(time) > 0);
 		]]></client>
 	</case>
 

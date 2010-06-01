@@ -36,19 +36,19 @@
 		</zk>
 		 --></server>
 		<client><![CDATA[
-			assertFalse(jq("@window").exists());
+			verifyFalse(jq("@window").exists());
 			click(menu);
 			click(menuitem);
 			waitResponse();
-			assertFalse(jq("@window").exists());
+			verifyFalse(jq("@window").exists());
 			click(menu2);
 			click(menu3);
 			click(menuitem2);
 			waitResponse();
-			assertFalse(jq("@window").exists());
+			verifyFalse(jq("@window").exists());
 			click(menuitem2.nextSibling());
 			waitResponse();
-			assertTrue(jq("@window").exists());
+			verifyTrue(jq("@window").exists());
 		]]></client>
 	</case>
 </test>

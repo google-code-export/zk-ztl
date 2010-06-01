@@ -19,7 +19,7 @@
 		]]></server>
 		<client><![CDATA[
 			click(jq("@button"));
-			assertEquals("D", jq("@option:eq(2)").text());
+			verifyEquals("D", jq("@option:eq(2)").text());
    		]]></client>
 	</case>
 </test>

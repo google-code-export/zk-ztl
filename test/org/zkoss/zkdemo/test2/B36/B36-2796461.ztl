@@ -18,7 +18,7 @@
 			click(db.$n("btn"));
 			waitResponse();
 			Element pp = db.$n("pp");
-			assertEquals(pp.get("scrollHeight"), pp.get("clientHeight"));
+			verifyEquals(pp.get("scrollHeight"), pp.get("clientHeight"));
 		]]></client>
 	</case>
 </test>

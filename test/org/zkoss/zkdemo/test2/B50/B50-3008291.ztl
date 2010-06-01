@@ -27,7 +27,7 @@
 		waitResponse();
 		click(jq("@button td.z-button-cm"));
 		waitResponse();
-		assertEquals(jq(lbx.$n("body")).outerWidth(),jq(lbx.$n("cave")).outerWidth()); 
+		verifyEquals(jq(lbx.$n("body")).outerWidth(),jq(lbx.$n("cave")).outerWidth()); 
 		]]></client>
 	</case>
 </test>
