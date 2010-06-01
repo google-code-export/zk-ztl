@@ -21,7 +21,7 @@ For example,
 		<client>
 			click(btn);
 			waitResponse();
-			assertTrue(jq("@window").exists());
+			verifyTrue(jq("@window").exists());
 		</client>
 	</case>
 	<case id="Method2">
@@ -34,7 +34,7 @@ For example,
 		<client>
 			click(btn);
 			waitResponse();
-			assertFalse(btn.exists());
+			verifyFalse(btn.exists());
 		</client>
 	</case>
 </test>
@@ -68,7 +68,7 @@ or
 	}
 </server>
 <client>
-	assertEquals("Hello!", getText(mylabel));
+	verifyEquals("Hello!", getText(mylabel));
 </client>
 }}}
 
@@ -94,7 +94,7 @@ For example,
 {{{
 click(btn); // it may cost some times.
 waitResponse(); // ensure the process is done.
-assertEquals("Ready", label.get("value"));
+verifyEquals("Ready", label.get("value"));
 }}}
 
 === Parse Integer from String ===
@@ -124,7 +124,21 @@ click(checkbox.$n("real"));
  For example,
  {{{
 type(combobox.$n("real"), "abc");
-assertEquals("abc", msg.get("value"));
+verifyEquals("abc", msg.get("value"));
+}}}
+
+=== Spinner/Timebox ===
+ ==== Click ====
+ In the two widgets, you have to use mouseDownAt/mouseUp() instead of clickAt().
+
+ For example,
+ {{{
+mouseDownAt(jq("@spinner i.z-spinner-btn"), "0,0");
+mouseUp(jq("@spinner i.z-spinner-btn"));
+verifyTrue(5 < parseInt(jq("@spinner input.z-spinner-inp").val()));
+mouseDownAt(jq("@spinner i.z-spinner-btn"), "3,20");
+mouseUp(jq("@spinner i.z-spinner-btn"));
+verifyTrue(3 > parseInt(jq("@spinner input.z-spinner-inp").val()));
 }}}
 
 === Tree ===
@@ -153,7 +167,7 @@ You may use the jQuery's selector to find a ZK or other elements within the _cli
 
 For example,
 {{{
-assertTrue(jq("@window[border=\"normal\"]").exists());
+verifyTrue(jq("@window[border=\"normal\"]").exists());
 }}}
 As you can see, you need to use the *\"* double quotation rather than single quotation in this case as Selenium will translate the content to enclose with a single quotation.
 
