@@ -1,0 +1,15 @@
+<test tags="Window" action="userguide/">
+	<case id="Hello">
+		<client><![CDATA[
+		verifyEquals("My First Window", getText(jq("@window[mode=\"embedded\"][title=\"My First Window\"] div.z-window-embedded-header")));
+		verifyEquals("Hello, World!", getText(jq("@window[mode=\"embedded\"][title=\"My First Window\"] @label")));
+		click(jq("$srcView span.z-tab-text"));
+		click(jq("$codeView"));
+		type(jq("$codeView"), "<window title=\"Test OK\" border=\"normal\" width=\"200px\">\n Good!\n</window>");
+		click(jq("$tryBtn td.z-button-cm"));
+		waitResponse();
+		verifyEquals("Test OK", getText(jq("@window[mode=\"embedded\"][title=\"Test OK\"] div.z-window-embedded-header")));
+		verifyEquals("Good!", getText(jq("@window[mode=\"embedded\"][title=\"Test OK\"] @label")));
+		]]></client>
+	</case>
+</test>

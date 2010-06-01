@@ -1,0 +1,13 @@
+<test tags="Popup" action="userguide/#f3">
+	<case id="Popup">
+		<client><![CDATA[
+		mouseOver(jq("$view @label:eq(2)"));
+		sleep(1000);
+		verifyTrue(jq("$mail div.z-popup-cm").exists());
+		click(jq("$view @textbox:eq(0)"));
+		verifyFalse(jq("$mail div.z-popup-cm").exists());
+		click(jq("$view @label:eq(4)"));
+		verifyTrue(jq("$view @html").exists());
+		]]></client>
+	</case>
+</test>
