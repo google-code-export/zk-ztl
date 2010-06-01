@@ -107,6 +107,15 @@ int left = parseInt(jq.css("left"));
 int top = parseInt(jq.css("top"));
 }}}
 
+=== Sleep the Current Thread ===
+Because Thread.sleep() needs to try/catch the method, but the sleep() doesn't.
+
+For example,
+{{{
+mouseOver(jq("$view @label:eq(2)"));
+sleep(1000);
+verifyTrue(jq("$mail div.z-popup-cm").exists());
+}}}
 ----
 == Case Study ==
 === Checkbox ===
