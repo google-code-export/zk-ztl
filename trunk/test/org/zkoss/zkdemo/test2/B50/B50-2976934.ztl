@@ -9,7 +9,7 @@
                 --></server>
                 <client wait="100">
                         click(cb.$n("real"));
-                        assertEquals("true", jq(cb.$n("real")).attr("checked"));
+                        verifyEquals("true", jq(cb.$n("real")).attr("checked"));
                 </client>
         </case>
 </test>

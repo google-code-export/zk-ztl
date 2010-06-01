@@ -15,7 +15,7 @@
 		--></server>
 		<client><![CDATA[
 			click(b);
-			assertEquals("<Button b>:[MouseEvent onClick <Button b>]:{}:void",i.get("value"));
+			verifyEquals("<Button b>:[MouseEvent onClick <Button b>]:{}:void",i.get("value"));
 		]]></client>
 	</case>
 </test>

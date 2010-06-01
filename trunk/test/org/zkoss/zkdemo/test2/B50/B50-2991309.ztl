@@ -41,7 +41,7 @@
 			waitResponse();
 			click(btn);
 			waitResponse();
-			assertEquals(msg.get("value"), "");
+			verifyEquals(msg.get("value"), "");
 		]]></client>
 	</case>
 </test>

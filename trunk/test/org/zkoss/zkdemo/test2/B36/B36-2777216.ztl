@@ -24,7 +24,7 @@
 				click(jq("@button button"));
 				waitResponse();
 			}
-			assertEquals(jq(itemlist.$n("body")).outerWidth(), jq(itemlist.$n("pgib")).outerWidth());
+			verifyEquals(jq(itemlist.$n("body")).outerWidth(), jq(itemlist.$n("pgib")).outerWidth());
 		]]></client>
 	</case>
 </test>

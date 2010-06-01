@@ -77,20 +77,20 @@
 			keyDown(endDate, "40");
 			keyDown(endDate, "40");
 			keyDown(endDate, "13");
-			assertFalse(jq(".z-errbox").exists());
+			verifyFalse(jq(".z-errbox").exists());
 			
 			// Test invalid date
 			click($b);
 			keyDown(beginDate, "40");
 			keyDown(beginDate, "40");
 			keyDown(beginDate, "13");
-			assertTrue(jq(".z-errbox").exists());
+			verifyTrue(jq(".z-errbox").exists());
 			
 			click($e);
 			keyDown(endDate, "40");
 			keyDown(endDate, "40");
 			keyDown(endDate, "13");
-			assertFalse(jq(".z-errbox").exists());
+			verifyFalse(jq(".z-errbox").exists());
 		]]></client>
 	</case>
 </test>

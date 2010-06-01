@@ -61,7 +61,7 @@
 		<client><![CDATA[
 			div.$n().eval("scrollTop = 500");
 			click(li1.$n("cm"));
-			assertEquals(500, parseInt(div.$n().eval("scrollTop")));
+			verifyEquals(500, parseInt(div.$n().eval("scrollTop")));
 		]]></client>
 	</case>
 </test>

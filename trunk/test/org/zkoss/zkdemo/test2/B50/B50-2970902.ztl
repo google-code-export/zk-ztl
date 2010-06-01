@@ -16,10 +16,10 @@
 		]]></server>
 		<client><![CDATA[
 			cb1.set("open", true);
-			assertTrue(parseInt(cb1.firstChild().$n().get("offsetHeight")) > 5);
+			verifyTrue(parseInt(cb1.firstChild().$n().get("offsetHeight")) > 5);
 			waitResponse();
 			cb2.set("open", true);
-			assertTrue(parseInt(ci2.$n().get("offsetHeight")) > 5);
+			verifyTrue(parseInt(ci2.$n().get("offsetHeight")) > 5);
 		]]></client>
 	</case>
 </test>

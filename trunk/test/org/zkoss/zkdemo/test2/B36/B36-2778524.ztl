@@ -13,12 +13,12 @@
 		<client><![CDATA[
 			click(db1.$n("btn"));
 			click(jq(db1.$n("pp")).find("@calendar td:eq(12)"));
-			assertFalse(jq(db1.$n("real")).val().indexOf("1999") > 0);
+			verifyFalse(jq(db1.$n("real")).val().indexOf("1999") > 0);
 			
 			click(db2.$n("btn"));
 			click(jq(db2.$n("pp")).find("@calendar td:eq(12)"));
 			blur(db2.$n("real"));
-			assertFalse(jq("div.z-errbox").exists());
+			verifyFalse(jq("div.z-errbox").exists());
 		]]></client>
 	</case>
 </test>

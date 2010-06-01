@@ -24,7 +24,7 @@
 			click(jq("@page @treerow span.z-treerow-img-checkbox:eq(0)"));
 			click(jq("@paging button.z-paging-next"));
 			click(jq("@paging button.z-paging-prev"));
-			assertFalse(jq("@treerow:eq(0)").hasClass("z-treerow-seld"));
+			verifyFalse(jq("@treerow:eq(0)").hasClass("z-treerow-seld"));
 		]]></client>
 	</case>
 </test>

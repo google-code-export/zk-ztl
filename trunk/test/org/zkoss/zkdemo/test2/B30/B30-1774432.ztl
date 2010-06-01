@@ -59,31 +59,31 @@
 		<client><![CDATA[
 			click(item2);
 			click(remove);
-			assertFalse(item2.exists());
-			assertFalse(jq(".z-error").exists());
+			verifyFalse(item2.exists());
+			verifyFalse(jq(".z-error").exists());
 			click(append);
-			assertEquals(2, tc.nChildren());
-			assertEquals(2, parseInt(t.$n("rows").get("rows.length")));
-			assertFalse(jq(".z-error").exists());
+			verifyEquals(2, tc.nChildren());
+			verifyEquals(2, parseInt(t.$n("rows").get("rows.length")));
+			verifyFalse(jq(".z-error").exists());
 			click(append);
-			assertEquals(3, tc.nChildren());
-			assertEquals(3, parseInt(t.$n("rows").get("rows.length")));
-			assertFalse(jq(".z-error").exists());
+			verifyEquals(3, tc.nChildren());
+			verifyEquals(3, parseInt(t.$n("rows").get("rows.length")));
+			verifyFalse(jq(".z-error").exists());
 
 			click(append);
-			assertFalse(jq(".z-error").exists());
-			assertTrue(isVisible(t.getChild("paging")));
+			verifyFalse(jq(".z-error").exists());
+			verifyTrue(isVisible(t.getChild("paging")));
 
 			click(removelast);
 			click(removelast);
-			assertEquals(2, tc.nChildren());
-			assertEquals(2, parseInt(t.$n("rows").get("rows.length")));
-			assertFalse(jq(".z-error").exists());
-			assertFalse(isVisible(t.getChild("paging")));
+			verifyEquals(2, tc.nChildren());
+			verifyEquals(2, parseInt(t.$n("rows").get("rows.length")));
+			verifyFalse(jq(".z-error").exists());
+			verifyFalse(isVisible(t.getChild("paging")));
 			click(redraw);
-			assertEquals(2, parseInt(t.$n("rows").get("rows.length")));
-			assertFalse(jq(".z-error").exists());
-			assertFalse(isVisible(t.getChild("paging")));
+			verifyEquals(2, parseInt(t.$n("rows").get("rows.length")));
+			verifyFalse(jq(".z-error").exists());
+			verifyFalse(isVisible(t.getChild("paging")));
 		]]></client>
 	</case>
 </test>

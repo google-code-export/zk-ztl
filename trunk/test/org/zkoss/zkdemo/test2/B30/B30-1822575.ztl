@@ -131,21 +131,21 @@ Change window's height, component won't resize
 		<client><![CDATA[
 			int winHgh = jq(win.$n("cave")).height();
 			int treeHgh = jq(tree2).outerHeight();
-			assertEquals(treeHgh, winHgh);
+			verifyEquals(treeHgh, winHgh);
 			click(btn1);
 			waitResponse();
 			int winHgh2 = jq(win.$n("cave")).height();
 			int treeHgh2 = jq(tree2).outerHeight();
-			assertEquals(treeHgh2, winHgh2);
-			assertTrue(winHgh * 0.3 >= winHgh2);
-			assertTrue(treeHgh * 0.3 >= treeHgh2);
+			verifyEquals(treeHgh2, winHgh2);
+			verifyTrue(winHgh * 0.3 >= winHgh2);
+			verifyTrue(treeHgh * 0.3 >= treeHgh2);
 			click(btn2);
 			waitResponse();
 			winHgh2 = jq(win.$n("cave")).height();
 			treeHgh2 = jq(tree2).outerHeight();
-			assertEquals(treeHgh2, winHgh2);
-			assertTrue(winHgh * 0.3 >= winHgh2);
-			assertTrue(treeHgh * 0.3 >= treeHgh2);
+			verifyEquals(treeHgh2, winHgh2);
+			verifyTrue(winHgh * 0.3 >= winHgh2);
+			verifyTrue(treeHgh * 0.3 >= treeHgh2);
 		]]></client>
 	</case>
 </test>

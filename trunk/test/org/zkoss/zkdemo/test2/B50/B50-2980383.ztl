@@ -52,7 +52,7 @@
 		<client><![CDATA[
             	Element header = tabs.$n("header");
             	Element tab = last.$n();
-            	assertEquals(parseInt(header.get("scrollLeft")) + parseInt(header.get("offsetWidth")),
+            	verifyEquals(parseInt(header.get("scrollLeft")) + parseInt(header.get("offsetWidth")),
             			parseInt(tab.get("offsetLeft")) + parseInt(tab.get("offsetWidth")));
 		]]></client>
 	</case>

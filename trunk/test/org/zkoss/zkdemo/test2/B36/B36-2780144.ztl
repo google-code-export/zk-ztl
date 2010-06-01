@@ -62,7 +62,7 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			assertEquals(jq(treecell1).find("span:eq(1)").attr("class"), jq(treecell2).find("span:eq(1)").attr("class"));
+			verifyEquals(jq(treecell1).find("span:eq(1)").attr("class"), jq(treecell2).find("span:eq(1)").attr("class"));
 		]]></client>
 	</case>
 </test>

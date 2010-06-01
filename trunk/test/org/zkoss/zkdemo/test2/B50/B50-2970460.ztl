@@ -26,13 +26,13 @@
 			String w = win.get("width");
 			win.set("maximized", true);
 			waitResponse();
-			assertNotEquals(t, win.get("top"));
-			assertNotEquals(l, win.get("left"));
-			assertNotEquals(h, win.get("height"));
-			assertNotEquals(w, win.get("width"));
+			verifyNotEquals(t, win.get("top"));
+			verifyNotEquals(l, win.get("left"));
+			verifyNotEquals(h, win.get("height"));
+			verifyNotEquals(w, win.get("width"));
 			win.set("maximized", false);
-			assertEquals(h, win.get("height"));
-			assertEquals(w, win.get("width"));
+			verifyEquals(h, win.get("height"));
+			verifyEquals(w, win.get("width"));
 		]]></client>
 	</case>
 </test>

@@ -5,7 +5,7 @@
 		--></server>
 		<client>
 			type(db, "1111");
-			assertEquals("R 1,111.00", jq(db).val());
+			verifyEquals("R 1,111.00", jq(db).val());
 		</client>
 	</case>
 </test>

@@ -42,27 +42,27 @@
 		<client><![CDATA[
 			click(col1);
 			waitResponse();
-			assertEquals("Click on column 1", label.get("value"));
+			verifyEquals("Click on column 1", label.get("value"));
 			
 			contextMenu(col2);
 			waitResponse();
-			assertEquals("onRightClick on column 2", label.get("value"));
+			verifyEquals("onRightClick on column 2", label.get("value"));
 			
 			doubleClick(col3);
 			waitResponse();
-			assertEquals("onDoubleClick on column 3", label.get("value"));
+			verifyEquals("onDoubleClick on column 3", label.get("value"));
 	
 			click(col4);
 			waitResponse();
-			assertEquals("Click on column 4", label.get("value"));
+			verifyEquals("Click on column 4", label.get("value"));
 	
 			contextMenu(col4);
 			waitResponse();
-			assertEquals("onRightClick on column 4", label.get("value"));
+			verifyEquals("onRightClick on column 4", label.get("value"));
 	
 			doubleClick(col4);
 			waitResponse();
-			assertEquals("onDoubleClick on column 4", label.get("value"));
+			verifyEquals("onDoubleClick on column 4", label.get("value"));
 		]]></client>
 	</case>
 </test>

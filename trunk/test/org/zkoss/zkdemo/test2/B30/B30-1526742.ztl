@@ -15,7 +15,7 @@
 		--></server>
 		<client wait="100"><![CDATA[
 				int totalWidth = getElementWidth(parent).intValue();
-				assertEquals(totalWidth * 0.2, getElementWidth(space));
+				verifyEquals(totalWidth * 0.2, getElementWidth(space));
 		]]></client>
 	</case>
 </test>

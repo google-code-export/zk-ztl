@@ -7,7 +7,7 @@
 			String date = jq(db.$n("real")).val();
 			String year = date.substring(date.lastIndexOf(".") + 1);
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-			assertEquals(sdf.format(new Date()), year);
+			verifyEquals(sdf.format(new Date()), year);
 		]]></client>
 	</case>
 </test>

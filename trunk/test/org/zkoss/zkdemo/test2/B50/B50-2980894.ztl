@@ -8,11 +8,11 @@
 			Widget cal = new Widget(db.$n("pp").firstChild().get("id"));
 			click(cal.$n("ty"));
 			Element mid = cal.$n("mid");				
-			assertEquals("z-calendar-calyear", mid.get("className"));
+			verifyEquals("z-calendar-calyear", mid.get("className"));
 			click(cal.$n("y0"));
-			assertEquals("z-calendar-calmon", mid.get("className"));				
+			verifyEquals("z-calendar-calmon", mid.get("className"));				
 			click(cal.$n("m0"));
-			assertEquals("z-calendar-calday", mid.get("className"));
+			verifyEquals("z-calendar-calday", mid.get("className"));
 		]]></client>
 	</case>
 </test>

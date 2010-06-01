@@ -6,7 +6,7 @@
 	 		</listbox>
 		]]></server>
 		<client wait="100"><![CDATA[		
-			assertEquals("value",jq(li).val());
+			verifyEquals("value",jq(li).val());
 		]]></client>
 	</case>
 </test>

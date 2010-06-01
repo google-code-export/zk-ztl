@@ -25,11 +25,11 @@
 			for (int i = 0; i < 15; i++) {
 				keyDown(listbox.$n("a"), DOWN);
 			}
-			assertTrue(150 < parseInt(listbox.$n("body").get("scrollTop")));
+			verifyTrue(150 < parseInt(listbox.$n("body").get("scrollTop")));
 			for (int i = 0; i < 15; i++) {
 				keyDown(listbox.$n("a"), UP);
 			}
-			assertTrue(0 == parseInt(listbox.$n("body").get("scrollTop")));
+			verifyTrue(0 == parseInt(listbox.$n("body").get("scrollTop")));
 		]]></client>
 	</case>
 </test>

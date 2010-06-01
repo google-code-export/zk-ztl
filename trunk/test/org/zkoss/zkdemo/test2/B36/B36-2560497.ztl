@@ -27,7 +27,7 @@
             click(b1);
 			click(b2);
 			click(DTbox.$n("btn"));
-			assertFalse(jq(".z-error").exists());
+			verifyFalse(jq(".z-error").exists());
 		]]></client>
 	</case>
 </test>

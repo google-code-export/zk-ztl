@@ -41,7 +41,6 @@ public class ${ztl.fileName} extends ZKClientTestCase {
 	@Test(expected = AssertionError.class)
 	public void test${case.id}() {
 		for (Selenium browser : browsers) {
-			boolean close = false;
 			try {
 				start(browser);
 				windowFocus();
@@ -81,9 +80,8 @@ public class ${ztl.fileName} extends ZKClientTestCase {
 	#end	
 #end	
 	/** end **/
-				close = true;
 			} finally {
-				if (close) stop();	
+				stop();	
 			}
 		}
 	}

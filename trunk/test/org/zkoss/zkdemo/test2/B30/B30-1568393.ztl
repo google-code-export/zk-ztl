@@ -71,8 +71,8 @@
 
 			// after several mouse click, the root should not move it
 			// position
-			assertEquals(x, x2);
-			assertEquals(y, y2);
+			verifyEquals(x, x2);
+			verifyEquals(y, y2);
 
 		]]></client>
 	</case>

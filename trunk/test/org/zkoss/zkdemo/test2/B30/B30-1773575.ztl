@@ -31,11 +31,11 @@
 		<client><![CDATA[
 		click(btn1);
 		waitResponse();
-		assertTrue(getLocation().indexOf("?") < 0);
+		verifyTrue(getLocation().indexOf("?") < 0);
 		click(btn2);
 		waitResponse();
-		assertTrue(getLocation().indexOf("?") < 0);
-		assertTrue(getLocation().endsWith("#12345"));
+		verifyTrue(getLocation().indexOf("?") < 0);
+		verifyTrue(getLocation().endsWith("#12345"));
 		]]></client>
 	</case>
 </test>

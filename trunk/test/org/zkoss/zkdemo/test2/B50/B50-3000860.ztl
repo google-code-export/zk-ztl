@@ -13,7 +13,7 @@
 
 		]]></server>
 		<client><![CDATA[
-   			assertTrue(jq("$tab1").outerHeight() > 16);
+   			verifyTrue(jq("$tab1").outerHeight() > 16);
    		]]></client>
 	</case>
 </test>

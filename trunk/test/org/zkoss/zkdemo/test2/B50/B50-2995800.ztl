@@ -17,7 +17,7 @@
 		<client><![CDATA[
 			int height = jq(pl.$n()).height();
 			click(panel.$n("max"));
-			assertEquals(height, jq(pl.$n()).height());
+			verifyEquals(height, jq(pl.$n()).height());
 		]]></client>
 	</case>
 </test>

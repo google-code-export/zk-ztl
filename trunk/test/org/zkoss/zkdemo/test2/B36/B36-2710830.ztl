@@ -18,8 +18,8 @@
 			int winWidth = jq(node).width();
 			int winHeight = jq(node).height();
 			
-			assertEquals((screenWidth - winWidth)/2, offsetLeft);
-			assertEquals((screenHeight - winHeight)/2, offsetTop);
+			verifyEquals((screenWidth - winWidth)/2, offsetLeft);
+			verifyEquals((screenHeight - winHeight)/2, offsetTop);
 		]]></client>
 	</case>
 </test>

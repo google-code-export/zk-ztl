@@ -60,7 +60,7 @@
 		<client><![CDATA[
 			click(jq("@button button"));
 			waitResponse();
-			assertFalse(jq("div.z-window-modal").exists());
+			verifyFalse(jq("div.z-window-modal").exists());
 		]]></client>
 	</case>
 </test>

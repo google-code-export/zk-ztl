@@ -26,7 +26,7 @@
 			click(openIcon);
 			click(btn);
 			click(openIcon);
-			assertTrue(jq(openIcon).hasClass("z-tree-root-open"));			
+			verifyTrue(jq(openIcon).hasClass("z-tree-root-open"));			
 		]]></client>
 	</case>
 </test>

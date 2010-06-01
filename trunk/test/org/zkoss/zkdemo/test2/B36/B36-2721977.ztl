@@ -32,15 +32,15 @@
 			JQuery btn = jq("@button button");
 			click(btn);
 			waitResponse();
-			assertEquals(2, jq("div.z-errbox").length());
+			verifyEquals(2, jq("div.z-errbox").length());
 			
 			click(btn);
 			waitResponse();
-			assertEquals(2, jq("div.z-errbox").length());
+			verifyEquals(2, jq("div.z-errbox").length());
 			
 			click(btn);
 			waitResponse();
-			assertEquals(2, jq("div.z-errbox").length());
+			verifyEquals(2, jq("div.z-errbox").length());
 		]]></client>
 	</case>
 </test>

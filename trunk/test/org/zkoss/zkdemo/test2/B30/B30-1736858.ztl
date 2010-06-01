@@ -14,10 +14,10 @@
 		<client><![CDATA[
 			click(btn);
 			waitResponse();
-			assertTrue(btn.exists());
+			verifyTrue(btn.exists());
 			click(btn);
 			waitResponse();
-			assertFalse(btn.exists());
+			verifyFalse(btn.exists());
 		]]></client>
 	</case>
 </test>

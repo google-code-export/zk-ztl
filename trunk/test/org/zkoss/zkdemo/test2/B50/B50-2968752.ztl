@@ -17,8 +17,8 @@
 			click(menu);
 			click(menuitem);
 			waitResponse();
-			assertEquals("img/Centigrade-Widget-Icons/Briefcase-16x16.png", menu.get("image"));
-			assertTrue(menu.$n("b").get("style.backgroundImage").indexOf("img/Centigrade-Widget-Icons/Briefcase-16x16.png") > 0);
+			verifyEquals("img/Centigrade-Widget-Icons/Briefcase-16x16.png", menu.get("image"));
+			verifyTrue(menu.$n("b").get("style.backgroundImage").indexOf("img/Centigrade-Widget-Icons/Briefcase-16x16.png") > 0);
 		]]></client>
 	</case>
 </test>

@@ -51,11 +51,11 @@ pageSize
 </zk>
 		 --></server>
 		<client><![CDATA[
-			assertEquals("[ 1 - 2 / 30 ]", jq(".z-paging-info").text());
-			assertEquals(2, jq(".z-treechildren tr").length());
+			verifyEquals("[ 1 - 2 / 30 ]", jq(".z-paging-info").text());
+			verifyEquals(2, jq(".z-treechildren tr").length());
 			click(btn);
-			assertEquals("[ 1 - 10 / 30 ]", jq(".z-paging-info").text());
-			assertEquals(10, jq(".z-treechildren tr").length());
+			verifyEquals("[ 1 - 10 / 30 ]", jq(".z-paging-info").text());
+			verifyEquals(10, jq(".z-treechildren tr").length());
 		]]></client>
 	</case>
 </test>

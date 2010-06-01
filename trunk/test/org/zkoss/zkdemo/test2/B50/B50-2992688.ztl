@@ -6,7 +6,7 @@
 			</zk>
 		]]></server>
 		<client wait="1"><![CDATA[			
-			assertTrue(jq(cb.$n("real")).hasClass("z-combobox-text-disd"));
+			verifyTrue(jq(cb.$n("real")).hasClass("z-combobox-text-disd"));
 		]]></client>
 	</case>
 </test>

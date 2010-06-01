@@ -41,23 +41,23 @@
 		<client><![CDATA[
 		    // growing
 			click(btn1);
-			assertEquals("20", jq(col1).outerWidth());
-			assertEquals("20", jq("@row > td").outerWidth());
+			verifyEquals("20", jq(col1).outerWidth());
+			verifyEquals("20", jq("@row > td").outerWidth());
 			
 			click(btn2);
-			assertEquals("100", jq(col1).outerWidth());
-			assertEquals("100", jq("@row > td").outerWidth());
+			verifyEquals("100", jq(col1).outerWidth());
+			verifyEquals("100", jq("@row > td").outerWidth());
 			click(btn3);
-			assertEquals("200", jq(col1).outerWidth());
-			assertEquals("200", jq("@row > td").outerWidth());
+			verifyEquals("200", jq(col1).outerWidth());
+			verifyEquals("200", jq("@row > td").outerWidth());
 			
 			// shrinking
 			click(btn2);
-			assertEquals("100", jq(col1).outerWidth());
-			assertEquals("100", jq("@row > td").outerWidth());
+			verifyEquals("100", jq(col1).outerWidth());
+			verifyEquals("100", jq("@row > td").outerWidth());
 			click(btn1);
-			assertEquals("20", jq(col1).outerWidth());
-			assertEquals("20", jq("@row > td").outerWidth());
+			verifyEquals("20", jq(col1).outerWidth());
+			verifyEquals("20", jq("@row > td").outerWidth());
 		]]></client>
 	</case>
 </test>

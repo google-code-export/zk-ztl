@@ -63,11 +63,11 @@
 			int tlWidth = tl.outerWidth() + parseInt(tl.css("margin-right"));
 			int blWidth = tl.outerWidth() + parseInt(bl.css("margin-right"));
 			
-			assertEquals(node.outerHeight(), sumHeight);
-			assertEquals(300, node.outerWidth());
-			assertEquals(300, tlWidth);
-			assertEquals(300, cl.outerWidth());
-			assertEquals(300, blWidth);
+			verifyEquals(node.outerHeight(), sumHeight);
+			verifyEquals(300, node.outerWidth());
+			verifyEquals(300, tlWidth);
+			verifyEquals(300, cl.outerWidth());
+			verifyEquals(300, blWidth);
 			
 			click(noWidth);
 			click(setHeight);
@@ -78,11 +78,11 @@
 			int width = node.outerWidth();
 			sumHeight = tl.outerHeight() + cl.outerHeight() + bl.outerHeight();
 			
-			assertEquals(width, tlWidth);
-			assertEquals(width, cl.outerWidth());
-			assertEquals(width, blWidth);
-			assertEquals(100, node.outerHeight());
-			assertEquals(99, sumHeight);//the sumHeight will minus 1
+			verifyEquals(width, tlWidth);
+			verifyEquals(width, cl.outerWidth());
+			verifyEquals(width, blWidth);
+			verifyEquals(100, node.outerHeight());
+			verifyEquals(99, sumHeight);//the sumHeight will minus 1
 			
 			click(noWidth);
 			click(noHeight);
@@ -90,10 +90,10 @@
 			
 			sumHeight = tl.outerHeight() + cl.outerHeight() + bl.outerHeight();
 			width = node.outerWidth();
-			assertEquals(node.outerHeight(), sumHeight);
-			assertEquals(width, tlWidth);
-			assertEquals(width, cl.outerWidth());
-			assertEquals(width, blWidth);
+			verifyEquals(node.outerHeight(), sumHeight);
+			verifyEquals(width, tlWidth);
+			verifyEquals(width, cl.outerWidth());
+			verifyEquals(width, blWidth);
 		]]></client>
 	</case>
 </test>

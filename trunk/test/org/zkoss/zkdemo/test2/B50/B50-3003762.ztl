@@ -32,8 +32,8 @@ You have selected :
 			blur(tb);
 			click(r1.$n("real"));
 			waitResponse();
-			assertEquals("Jerry", jq("$text").text());
-			assertEquals("IDE Support", jq("$choice").text());
+			verifyEquals("Jerry", jq("$text").text());
+			verifyEquals("IDE Support", jq("$choice").text());
    		]]></client>
 	</case>
 </test>

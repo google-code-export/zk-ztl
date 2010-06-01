@@ -21,10 +21,10 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			assertTrue(jq(v1).outerWidth() - (jq(v1.$n().parentNode()).outerWidth()/2) <= 2);
-			assertTrue(jq(v2).outerWidth() - (jq(v2.$n().parentNode()).outerWidth()/2) <= 2);
-			assertEquals(jq(v3.$n().parentNode()).outerWidth(), jq(v3).outerWidth());
-			assertEquals(jq(v4.$n().parentNode()).outerWidth(), jq(v4).outerWidth());
+			verifyTrue(jq(v1).outerWidth() - (jq(v1.$n().parentNode()).outerWidth()/2) <= 2);
+			verifyTrue(jq(v2).outerWidth() - (jq(v2.$n().parentNode()).outerWidth()/2) <= 2);
+			verifyEquals(jq(v3.$n().parentNode()).outerWidth(), jq(v3).outerWidth());
+			verifyEquals(jq(v4.$n().parentNode()).outerWidth(), jq(v4).outerWidth());
 		]]></client>
 	</case>
 </test>

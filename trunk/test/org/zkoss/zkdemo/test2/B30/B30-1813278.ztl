@@ -48,20 +48,20 @@ is the same as what is shown on the page<br/>
 		 --></server>
 		<client><![CDATA[
 			if (ZK.is("ie") && !ZK.is("ie8")) {
-				assertEquals("http://www.zkoss.org/", jq("a:eq(0)").attr("href"));
-				assertEquals("http://jp.zkoss.org/", jq("a:eq(1)").attr("href"));
-				assertEquals("http://zh.zkoss.org/", jq("a:eq(2)").attr("href"));
+				verifyEquals("http://www.zkoss.org/", jq("a:eq(0)").attr("href"));
+				verifyEquals("http://jp.zkoss.org/", jq("a:eq(1)").attr("href"));
+				verifyEquals("http://zh.zkoss.org/", jq("a:eq(2)").attr("href"));
 				click(btn);
 				if (ZK.is("ie6_"))
-					assertEquals("http://www.potix.com/", jq("a:eq(0)").attr("href"));
+					verifyEquals("http://www.potix.com/", jq("a:eq(0)").attr("href"));
 				else
-					assertEquals("http://www.potix.com", jq("a:eq(0)").attr("href"));
+					verifyEquals("http://www.potix.com", jq("a:eq(0)").attr("href"));
 			} else {
-				assertEquals("http://www.zkoss.org", jq("a:eq(0)").attr("href"));
-				assertEquals("http://jp.zkoss.org", jq("a:eq(1)").attr("href"));
-				assertEquals("http://zh.zkoss.org", jq("a:eq(2)").attr("href"));
+				verifyEquals("http://www.zkoss.org", jq("a:eq(0)").attr("href"));
+				verifyEquals("http://jp.zkoss.org", jq("a:eq(1)").attr("href"));
+				verifyEquals("http://zh.zkoss.org", jq("a:eq(2)").attr("href"));
 				click(btn);
-				assertEquals("http://www.potix.com", jq("a:eq(0)").attr("href"));
+				verifyEquals("http://www.potix.com", jq("a:eq(0)").attr("href"));
 			}
 		]]></client>
 	</case>

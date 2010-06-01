@@ -16,19 +16,19 @@
 		<client><![CDATA[
 			// Test visible
 			if (help.exists())
-				assertFalse(isVisible(help));
-			assertFalse(isVisible(t));
+				verifyFalse(isVisible(help));
+			verifyFalse(isVisible(t));
 			click(btn);
 			waitResponse();
 			if (help.exists())
-				assertFalse(isVisible(help));
-			assertTrue(isVisible(t));
+				verifyFalse(isVisible(help));
+			verifyTrue(isVisible(t));
 			
 			// Test invisible
 			click(btn);
 			if (help.exists())
-				assertFalse(isVisible(help));
-			assertFalse(isVisible(t));
+				verifyFalse(isVisible(help));
+			verifyFalse(isVisible(t));
 		]]></client>
 	</case>
 </test>

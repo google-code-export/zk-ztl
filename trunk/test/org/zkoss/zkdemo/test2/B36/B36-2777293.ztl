@@ -45,11 +45,11 @@
 		<client><![CDATA[
 			click(jq("@button[label=\"Test new model\"] button"));
 			waitResponse();
-			assertEquals(2, jq("tr.z-treerow").length());
+			verifyEquals(2, jq("tr.z-treerow").length());
 			
 			click(jq("@button[label=\"Test null model\"] button"));
 			waitResponse();
-			assertEquals(0, jq("tr.z-treerow").length());
+			verifyEquals(0, jq("tr.z-treerow").length());
 		]]></client>
 	</case>
 </test>

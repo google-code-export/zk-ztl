@@ -134,53 +134,53 @@ for(int i = 0; i < 20; i++)
 </zk>
 		 --></server>
 		<client><![CDATA[
-			assertFalse(jq("@listbox > @listitem").exists());
+			verifyFalse(jq("@listbox > @listitem").exists());
 			select(select, "Blah 2");
 			waitResponse();
-			assertEquals("Blah 2", widget(jq("@listbox > @listitem")).get("label"));
+			verifyEquals("Blah 2", widget(jq("@listbox > @listitem")).get("label"));
 			select(select, "Blah 4");
 			waitResponse();
-			assertEquals("Blah 4", widget(jq("@listbox > @listitem:last-child")).get("label"));
+			verifyEquals("Blah 4", widget(jq("@listbox > @listitem:last-child")).get("label"));
 			select(select, "Blah 9");
 			waitResponse();
-			assertEquals("Blah 9", widget(jq("@listbox > @listitem:last-child")).get("label"));
+			verifyEquals("Blah 9", widget(jq("@listbox > @listitem:last-child")).get("label"));
 			click(parentModel);
 			waitResponse();
-			assertEquals("{Blah 2=2, Blah 4=4, Blah 9=9}", jq("@window[mode=\"modal\"] @label").text());
+			verifyEquals("{Blah 2=2, Blah 4=4, Blah 9=9}", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
 			click(parents);
 			waitResponse();
-			assertEquals("{Blah 2=2, Blah 4=4, Blah 9=9}", jq("@window[mode=\"modal\"] @label").text());
+			verifyEquals("{Blah 2=2, Blah 4=4, Blah 9=9}", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
 			click(jq("@listbox > @listitem:last-child"));
 			click(selectionInModel);
 			waitResponse();
-			assertEquals("Blah 2=2,Blah 4=4,Blah 9=9", jq("@window[mode=\"modal\"] @label").text());
+			verifyEquals("Blah 2=2,Blah 4=4,Blah 9=9", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
 			doubleClick(jq("@listbox > @listitem:last-child"));
 			waitResponse();
-			assertEquals("Blah 4", widget(jq("@listbox > @listitem:last-child")).get("label"));
+			verifyEquals("Blah 4", widget(jq("@listbox > @listitem:last-child")).get("label"));
 			click(parents);
 			waitResponse();
-			assertEquals("{Blah 2=2, Blah 4=4}", jq("@window[mode=\"modal\"] @label").text());
+			verifyEquals("{Blah 2=2, Blah 4=4}", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
 			click(parentModel);
 			waitResponse();
-			assertEquals("{Blah 2=2, Blah 4=4}", jq("@window[mode=\"modal\"] @label").text());
+			verifyEquals("{Blah 2=2, Blah 4=4}", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
 			doubleClick(jq("@listbox > @listitem:first-child"));
 			waitResponse();
-			assertEquals("Blah 4", widget(jq("@listbox > @listitem")).get("label"));
+			verifyEquals("Blah 4", widget(jq("@listbox > @listitem")).get("label"));
 			click(parents);
 			waitResponse();
-			assertEquals("{Blah 4=4}", jq("@window[mode=\"modal\"] @label").text());
+			verifyEquals("{Blah 4=4}", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
 			click(parentModel);
 			waitResponse();
-			assertEquals("{Blah 4=4}", jq("@window[mode=\"modal\"] @label").text());
+			verifyEquals("{Blah 4=4}", jq("@window[mode=\"modal\"] @label").text());
 			click(jq("@window[mode=\"modal\"] @button"));
 			// including listhead
-			assertEquals("2", parentsList.nChildren());
+			verifyEquals("2", parentsList.nChildren());
 		]]></client>
 	</case>
 </test>

@@ -21,7 +21,7 @@
 		<client wait="100"><![CDATA[
 			click(setBtn);
 			click(getBtn);
-			assertEquals("row", jq(msg).html());
+			verifyEquals("row", jq(msg).html());
 		]]></client>
 	</case>
 </test>

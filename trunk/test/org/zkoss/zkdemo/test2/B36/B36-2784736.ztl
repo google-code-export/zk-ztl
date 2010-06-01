@@ -39,7 +39,7 @@
 		--></server>
 		<client><![CDATA[
 			click(jq("@menu[label=\"Help\"] button.z-menu-btn"));
-			assertTrue(jq("div.z-menu-popup").outerWidth() > jq("@menu:eq(1)").outerWidth());
+			verifyTrue(jq("div.z-menu-popup").outerWidth() > jq("@menu:eq(1)").outerWidth());
 		]]></client>
 	</case>
 </test>
