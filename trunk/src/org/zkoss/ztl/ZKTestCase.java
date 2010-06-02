@@ -86,6 +86,34 @@ public class ZKTestCase extends SeleneseTestCase implements Selenium {
 	 * The keycode of the ESC key
 	 */
 	public static final String ESC = "27";
+	/**
+	 * The keycode of the SHIFT key
+	 */
+	public static final String SHIFT = "16";
+	/**
+	 * The keycode of the CTRL key
+	 */
+	public static final String CTRL = "17";
+	/**
+	 * The keycode of the ALT key
+	 */
+	public static final String ALT = "18";
+	/**
+	 * The keycode of the A key
+	 */
+	public static final String A = "65";
+	/**
+	 * The keycode of the C key
+	 */
+	public static final String C = "67";
+	/**
+	 * The keycode of the V key
+	 */
+	public static final String V = "86";
+	/**
+	 * The keycode of the X key
+	 */
+	public static final String X = "88";
 	
 	/**
 	 * The prefix is depended on what the ID generator is.
