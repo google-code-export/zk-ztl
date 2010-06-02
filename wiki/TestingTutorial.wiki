@@ -154,7 +154,7 @@ verifyTrue(3 > parseInt(jq("@spinner input.z-spinner-inp").val()));
  ==== Right Click ====
  You need to use *contextMenu*, rather than invoking the mouseDownRight() method.
  
-For example,
+ For example,
  {{{
 contextMenu(jq("@image"));
 }}}
