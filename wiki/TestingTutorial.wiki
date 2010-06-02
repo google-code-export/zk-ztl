@@ -170,7 +170,7 @@ dragdropTo(jq("@window > div[id$=\"cap\"]"), "10,10", "160,160");
  As you can see, the selector matches a any div with an id ending with *cap* inside a _window_ component.
 
 === Textbox===
- ==== Copy Paste ====
+ ==== Copy and Paste ====
  In _textbox_, you can use _keyDownNative_, _keyPressNative_ and _keyUpNative_ to execute ctrl + A, ctrl + X, ctrl + C and ctrl + V.
 
  For example,
@@ -183,17 +183,13 @@ keyPressNative("88");
 keyPressNative("86");
 keyUpNative("17");
 }}}
-keycode:
-    ctrl: 17
+ * keycode:
+     # Ctrl: 17
+     # A: 65
+     # V: 86
+     # X: 88
+ * Note: You have to call *keyUpNative("17");* when you call *keyDownNative("17");*, otherwise your compute will *keep hold _ctrl_ key.*
 
-       A: 65
-
-       V: 86
-
-       X: 88
-You have to call _keyUpNative("17");_ at last when you call _keyDownNative("17");_.
-
-otherwise your compute will keep hold _ctrl_ key.
 
 ----
 == Troubleshooting == 
