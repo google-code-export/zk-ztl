@@ -150,6 +150,15 @@ mouseUp(jq("@spinner i.z-spinner-btn"));
 verifyTrue(3 > parseInt(jq("@spinner input.z-spinner-inp").val()));
 }}}
 
+=== Menupopup ===
+ ==== Right Click ====
+ You need to use *contextMenu*, rather than invoking the mouseDownRight() method.
+ 
+For example,
+ {{{
+contextMenu(jq("@image"));
+}}}
+
 === Tree ===
  ==== Open ====
  In treeitem, you have to click upon the _open_ sub-element.
@@ -189,7 +198,6 @@ keyUpNative("17");
      # V: 86
      # X: 88
  * Note: You have to call *keyUpNative("17");* when you call *keyDownNative("17");*, otherwise your compute will *keep hold _ctrl_ key.*
-
 
 ----
 == Troubleshooting == 
