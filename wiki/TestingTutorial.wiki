@@ -151,7 +151,7 @@ mouseUp(jq("@spinner i.z-spinner-btn"));
 verifyTrue(jq("@spinner i.z-spinner-btn"));
 verifyTrue(3 > parseInt(jq("@spinner input.z-spinner-inp").val()));
 }}}
-  *You have to use *blur()*, otherwise it will not save the value to server
+  * You have to use *blur()*, otherwise it will not save the value to server
 === Menupopup ===
  ==== Right Click ====
  You need to use *contextMenu*, rather than invoking the mouseDownRight() method.
