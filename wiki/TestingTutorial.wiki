@@ -144,12 +144,14 @@ verifyEquals("abc", msg.get("value"));
  {{{
 mouseDownAt(jq("@spinner i.z-spinner-btn"), "0,0");
 mouseUp(jq("@spinner i.z-spinner-btn"));
+blur(jq("@spinner i.z-spinner-btn"));
 verifyTrue(5 < parseInt(jq("@spinner input.z-spinner-inp").val()));
 mouseDownAt(jq("@spinner i.z-spinner-btn"), "3,20");
 mouseUp(jq("@spinner i.z-spinner-btn"));
+verifyTrue(jq("@spinner i.z-spinner-btn"));
 verifyTrue(3 > parseInt(jq("@spinner input.z-spinner-inp").val()));
 }}}
-
+  *You have to use *blur()*, otherwise it will not save the value to server
 === Menupopup ===
  ==== Right Click ====
  You need to use *contextMenu*, rather than invoking the mouseDownRight() method.
