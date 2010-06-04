@@ -1,0 +1,40 @@
+<test tags="Timebox">
+	<case id="value">
+		<server><!--
+			<zk>
+			<window title="Timebox Bug test" border="normal">
+				1.Please click the Up/Down icon of the first timebox.
+				<separator/>
+				2.And then click the Up/Down icon of the second timebox.
+				<separator/>
+				3.Click the "Run Report" to see the result.
+			<zscript>
+				Date now = new Date();
+				void showValues() {
+					if (startTime.getValue().getTime() == now.getTime()) {
+						alert("Error! This is a bug!");
+					} else if ( endTime.getValue().getTime() == now.getTime()) {
+						alert("Error! This is a bug!");
+					} else {
+						alert("Correct! The bug is fixed!");
+					}
+				}
+			</zscript>
+				<timebox id="startTime" value="${now}" />
+				<timebox id="endTime" value="${now}" />
+				<button id="runReport" label="Run Report" onClick="showValues()"/>
+			</window>
+			</zk>
+		 --></server>
+		<client><![CDATA[
+			clickAt(jq("$startTime i.z-timebox-btn"), "0,0");
+			blur(jq("$startTime .z-timebox-inp"));
+			clickAt(jq("$endTime i.z-timebox-btn"), "0,0");
+			blur(jq("$endTime .z-timebox-inp"));
+			click(jq("$runReport td.z-button-cm"));
+			waitResponse();
+			verifyEquals("Correct! The bug is fixed!", getText(jq("@window[mode=\"modal\"][title=\"ZK\"] @label")));
+			click(jq("$btn1 td.z-button-cm"));
+		]]></client>
+	</case>
+</test>
