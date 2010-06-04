@@ -108,6 +108,12 @@ public class JQuery extends ClientWidget {
 		return new JQuery(_out, ".parent()");
 	}
 	/**
+	 * Returns the parent element in JQuery object.
+	 */
+	public JQuery parent(String selector) {
+		return new JQuery(_out, ".parent('"+selector+"')");
+	}
+	/**
 	 * Returns the text content
 	 */
 	public String text() {
