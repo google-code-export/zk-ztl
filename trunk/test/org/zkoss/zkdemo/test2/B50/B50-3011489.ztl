@@ -1,0 +1,11 @@
+<test tags="decimalbox">
+	<case id="format">
+		<server><![CDATA[
+			<decimalbox format="##0.00%" value="3.5"/>
+		]]></server>
+		<client><![CDATA[
+			type(jq("@decimalbox"),"3.5");
+			verifyEquals("350.00%",getValue(jq("@decimalbox ")));
+		]]></client>
+	</case>
+</test>
