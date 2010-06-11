@@ -53,7 +53,7 @@ is the same as what is shown on the page<br/>
 				verifyEquals("http://zh.zkoss.org/", jq("a:eq(2)").attr("href"));
 				click(btn);
 				if (ZK.is("ie6_"))
-					verifyEquals("http://www.potix.com/", jq("a:eq(0)").attr("href"));
+					verifyEquals("http://www.potix.com", jq("a:eq(0)").attr("href"));
 				else
 					verifyEquals("http://www.potix.com", jq("a:eq(0)").attr("href"));
 			} else {
