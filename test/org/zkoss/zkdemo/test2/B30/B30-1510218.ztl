@@ -47,7 +47,7 @@
 			click(btn1);
 			waitResponse();
 			verifyEquals("btn1 OK", jq(".z-messagebox > span").text());
-			click(jq("button.z-messagebox-btn"));
+			click(jq("div.z-window-modal-close"));
 			verifyFalse(isVisible(inner1));
 			
 			// Test Overlapped
@@ -58,7 +58,7 @@
 			click(btn2);
 			waitResponse();
 			verifyEquals("btn2 OK", jq(".z-messagebox > span").text());
-			click(jq("button.z-messagebox-btn"));
+			click(jq("div.z-window-modal-close"));
 			verifyTrue(isVisible(inner2));
 		]]></client>
 	</case>

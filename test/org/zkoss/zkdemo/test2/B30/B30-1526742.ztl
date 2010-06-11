@@ -14,8 +14,13 @@
 			</window>
 		--></server>
 		<client wait="100"><![CDATA[
-				int totalWidth = getElementWidth(parent).intValue();
-				verifyEquals(totalWidth * 0.2, getElementWidth(space));
+			int totalWidth = jq("td.z-caption-r").outerWidth();
+			int spaceWidth = jq(space).outerWidth();
+			int spaceOuterWidth = jq(space).outerWidth(true);
+			if (spaceWidth != spaceOuterWidth)// FF will add the width of self's body 
+				spaceOuterWidth -= spaceWidth;
+			
+			verifyEquals( (int) (totalWidth * 0.2), spaceOuterWidth);
 		]]></client>
 	</case>
 </test>
