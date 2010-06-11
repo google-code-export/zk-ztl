@@ -174,11 +174,29 @@ public class JQuery extends ClientWidget {
 	}
 	
 	/**
+	 * Returns the current computed width for the first element,
+	 * including padding and border, it will including margin, if true
+	 * @param boolean includeMargin
+	 */
+	public int outerWidth(boolean includeMargin) {
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".outerWidth(" + includeMargin + ")"));
+	}
+	
+	/**
 	 * Returns the current computed height for the first element,
 	 * including padding and border.
 	 */
 	public int outerHeight() {
 		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".outerHeight()"));
+	}
+	
+	/**
+	 * Returns the current computed height for the first element,
+	 * including padding and border, it will including margin, if true
+	 * @param boolean includeMargin
+	 */
+	public int outerHeight(boolean includeMargin) {
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".outerHeight(" + includeMargin + ")"));
 	}
 	
 	/**
