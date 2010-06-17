@@ -1,0 +1,37 @@
+<test tags="Panel">
+	<case id="closed">
+		<server>
+			<!--
+<zk>
+<textbox width="500px" value="Please press Backspace, the browser should do nothing." focus="true" readonly="true"/>
+</zk>
+			-->
+		</server>
+		<client wait="100">	<![CDATA[
+			
+       				JQuery tb = jq("@textbox");
+    				String before = jq("@textbox").val();
+    				focus(tb);
+    				waitResponse();
+    				keyPress(tb, "\\37");
+    				waitResponse();
+    				keyPress(tb, "\\37");
+    				waitResponse();
+    				keyPress(tb, "\\37");
+    				waitResponse();
+    				keyPress(tb, "\\37");
+    				waitResponse();
+    				keyPress(tb, "\\37");
+    				waitResponse();
+    				
+    				keyPress(tb, "\\8");
+    				waitResponse();
+    				keyPress(tb, "\\8");
+    				waitResponse();
+    				
+    				String after = jq("@textbox").val();
+    				
+    				verifyEquals(before, after);			
+			]]></client>
+	</case>
+</test>
