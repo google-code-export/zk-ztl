@@ -102,6 +102,20 @@ public class JQuery extends ClientWidget {
 	}
 
 	/**
+	 * Returns the child element in JQuery object.
+	 */
+	public JQuery children() {
+		return new JQuery(_out, ".children()");
+	}
+
+	/**
+	 * Returns the child element in JQuery object.
+	 */
+	public JQuery children(String selector) {
+		return new JQuery(_out, ".children('"+selector+"')");
+	}
+
+	/**
 	 * Returns the parent element in JQuery object.
 	 */
 	public JQuery parent() {
