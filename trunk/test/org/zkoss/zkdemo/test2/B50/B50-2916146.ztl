@@ -8,30 +8,13 @@
 			-->
 		</server>
 		<client wait="100">	<![CDATA[
-			
-       				JQuery tb = jq("@textbox");
-    				String before = jq("@textbox").val();
-    				focus(tb);
-    				waitResponse();
-    				keyPress(tb, "\\37");
-    				waitResponse();
-    				keyPress(tb, "\\37");
-    				waitResponse();
-    				keyPress(tb, "\\37");
-    				waitResponse();
-    				keyPress(tb, "\\37");
-    				waitResponse();
-    				keyPress(tb, "\\37");
-    				waitResponse();
-    				
-    				keyPress(tb, "\\8");
-    				waitResponse();
-    				keyPress(tb, "\\8");
-    				waitResponse();
-    				
-    				String after = jq("@textbox").val();
-    				
-    				verifyEquals(before, after);			
+       			keyPressNative(END);
+				keyPressNative(BACKSPACE);
+				waitResponse();
+				verifyTrue(jq("@textbox").exists());
+				keyPressNative(BACKSPACE);
+				waitResponse();
+				verifyTrue(jq("@textbox").exists());
 			]]></client>
 	</case>
 </test>
