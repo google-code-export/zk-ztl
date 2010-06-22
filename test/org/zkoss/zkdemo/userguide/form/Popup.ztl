@@ -5,7 +5,7 @@
 		sleep(1000);
 		verifyTrue(jq("$mail div.z-popup-cm").exists());
 		click(jq("$view @textbox:eq(0)"));
-		verifyFalse(jq("$mail div.z-popup-cm").exists());
+		verifyEquals("none", jq("@popup").css("display"));
 		click(jq("$view @label:eq(4)"));
 		verifyTrue(jq("$view @html").exists());
 		]]></client>
