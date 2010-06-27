@@ -37,7 +37,7 @@
 		<server ref="zulCode"/>
 		<client><![CDATA[
 			click(returnDate.$n("btn"));
-			focus(jq("@timebox input"));
+			click(jq("@timebox input"));
 			keyPressNative(END);
 			keyDownNative(DOWN);
 			String time = jq("@timebox input").val();

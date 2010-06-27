@@ -4,20 +4,20 @@
 			<zk>
 				You should see the window displays on the center.
 				<window id="win" title="Position Issue" closable="true" position="center"
-				border="normal" mode="overlapped">
+				border="normal" mode="overlapped" width="300px">
 				<label value="Hello world!" />
 				</window>
 			</zk>
 		--></server>
 		<client><![CDATA[
 			Element node = win.$n();
-			int screenWidth = jq(node.parentNode()).innerWidth();
+			JQuery $node = jq(node);
+			int screenWidth = jq(node.parentNode()).outerWidth();
 			int screenHeight = jq(node.parentNode()).innerHeight();
-			int offsetLeft = parseInt(node.get("offsetLeft"));
-			int offsetTop = parseInt(node.get("offsetTop"));
-			int winWidth = jq(node).width();
-			int winHeight = jq(node).height();
-			
+			int offsetLeft = $node.offsetLeft();
+			int offsetTop = $node.offsetTop();
+			int winWidth = $node.width();
+			int winHeight = $node.height();
 			verifyEquals((screenWidth - winWidth)/2, offsetLeft);
 			verifyEquals((screenHeight - winHeight)/2, offsetTop);
 		]]></client>

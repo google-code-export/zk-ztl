@@ -84,16 +84,23 @@
 			waitResponse();
 			int tableScrollTop = table.outerHeight() - table.find("tr:last").outerHeight();
 			int scrollTop = Integer.parseInt(body.attr("scrollTop")) + body.outerHeight();
+			if (ZK.is("ie6_") || ZK.is("ie7_"))
+				tableScrollTop++;//IE6,7 has a border at the upper of the first item of the listbox
 			verifyEquals(tableScrollTop, scrollTop);
 			click(jq("@button[label=\"add under bottom\"] td.z-button-cm"));
 			waitResponse();
 			tableScrollTop = table.outerHeight() - table.find("tr:last").outerHeight();
 			scrollTop = Integer.parseInt(body.attr("scrollTop")) + body.outerHeight();
+			if (ZK.is("ie6_") || ZK.is("ie7_"))
+				tableScrollTop++;//IE6,7 has a border at the upper of the first item of the listbox
 			verifyEquals(tableScrollTop, scrollTop);
 			click(jq("@button[label=\"add upon top\"] td.z-button-cm"));
-			verifyEquals("0", body.attr("scrollTop"));
+			String expected = "0";
+			if (ZK.is("ie6_") || ZK.is("ie7_"))
+				expected = "1";//IE6,7 has a border at the upper of the first item of the listbox
+			verifyEquals(expected, body.attr("scrollTop"));
 			click(jq("@button[label=\"add upon top\"] td.z-button-cm"));
-			verifyEquals("0", body.attr("scrollTop"));
+			verifyEquals(expected, body.attr("scrollTop"));
 		]]></client>
 	</case>
 </test>
