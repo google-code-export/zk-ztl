@@ -39,6 +39,7 @@
 		]]></server>
 		<client><![CDATA[
 			click(jq("@treecell[label=\"1.1.1\"] div.z-overflow-hidden"));
+			blur(jq("a"));
 			click(jq("@page @treerow span.z-tree-root-open"));
 			Element node = tree.$n().firstChild();
 			verifyEquals(node.get("clientHeight"), node.get("scrollHeight"));

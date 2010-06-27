@@ -17,7 +17,7 @@
 			int ppZindex = zindex.equals("auto") ? 0 : Integer.parseInt(zindex);
 			zindex = jq(popup).css("z-index");
 			int popipZindex = zindex.equals("auto") ? 0 : Integer.parseInt(zindex);
-			assertTrue("The z-index of the popup: " +popipZindex + " isn't greate then the pp of the combobox: "+ppZindex,popipZindex > ppZindex);
+			verifyTrue(popipZindex > ppZindex);
 		]]></client>
 	</case>
 </test>

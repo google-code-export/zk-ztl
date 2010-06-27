@@ -20,7 +20,7 @@
 			if (spaceWidth != spaceOuterWidth)// FF will add the width of self's body 
 				spaceOuterWidth -= spaceWidth;
 			
-			verifyEquals( (int) (totalWidth * 0.2), spaceOuterWidth);
+			verifyEquals( Math.round(totalWidth * 0.2), spaceOuterWidth);
 		]]></client>
 	</case>
 </test>
