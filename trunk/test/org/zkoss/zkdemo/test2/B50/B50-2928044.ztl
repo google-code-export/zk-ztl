@@ -1,0 +1,28 @@
+<test tags="Panel">
+	<case id="closed">
+		<server>
+			<!--
+<zk>
+You should not type the words more than 3.
+<textbox maxlength="3"/>
+</zk>
+			-->
+		</server>
+		<client wait="100">	<![CDATA[
+//type(jq("@textbox"), "1234");
+focus(jq("@textbox"));
+keyDown(jq("@textbox"),A);
+waitResponse();
+keyDown(jq("@textbox"),C);
+waitResponse();
+keyDown(jq("@textbox"),C);
+waitResponse();
+keyDown(jq("@textbox"),V);
+waitResponse();
+
+verifyEquals("ACC", jq("@textbox").val());
+
+		                   	         
+		]]></client>
+	</case>
+</test>
