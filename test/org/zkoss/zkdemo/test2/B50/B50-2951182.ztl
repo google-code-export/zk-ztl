@@ -1,0 +1,25 @@
+<test tags="Panel">
+	<case id="closed">
+		<server>
+			<!--
+<zk>
+    <window id="testWindow" width="200px">
+If you can see the words, the bug is fixed.
+          <button id="addBtn" label="Add" />
+    </window>
+    <zscript>
+        testWindow.doHighlighted();
+        testWindow.getFellow("addBtn").visible = false;
+
+    </zscript>
+
+
+</zk>
+			-->
+		</server>
+		<client wait="100">	<![CDATA[
+			
+			verifyTrue(isVisible(jq("$testWindow")));			
+			]]></client>
+	</case>
+</test>
