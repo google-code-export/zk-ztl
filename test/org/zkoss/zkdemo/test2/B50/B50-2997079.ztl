@@ -1,0 +1,30 @@
+<test tags="Panel">
+	<case id="closed">
+		<server>
+			<!--
+<window id="main" xmlns:w="http://www.zkoss.org/2005/zk/client">
+	<label id="i" value="Click test1 and then test2. Then, you shall see the background becomes blue"/>
+	<button label="test1">
+		<attribute name="onClick"><![CDATA[
+	Script s = new Script();
+	s.setContent("function chkgnd(n) {n.setStyle('background:blue');}");
+	s.setParent(main);
+		]]></attribute>
+	</button>
+	<button label="test2" w:onClick="chkgnd(this.$f().i)"/>
+</window>
+			-->
+		</server>
+		<client wait="100">	<![CDATA[
+			
+   				click(jq("@button[label=\"test1\"]"));
+  				waitResponse();				
+  				click(jq("@button[label=\"test2\"]"));
+  				waitResponse();
+  				
+  				verifyTrue(jq(".z-label").css("background").contains("blue"));
+		            				
+			
+			]]></client>
+	</case>
+</test>
