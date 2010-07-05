@@ -1,0 +1,35 @@
+<test tags="Panel">
+	<case id="closed">
+		<server>
+			<!--
+<zk>
+<zscript>
+import org.zkoss.zk.ui.util.*;
+</zscript>
+<div height="100px" width="300px" id="div">
+  <attribute name="onLater">
+  Thread.sleep(3000);
+  Clients.clearBusy();
+alert(event.data);
+  </attribute>
+</div>
+<button label="Click Me">
+	<attribute name="onClick">
+		Clients.showBusy("You should see an alert about the result after 2 seconds.");
+		Events.echoEvent("onLater", div, "If you can see the message, the bug is fixed!");
+	</attribute>
+</button>
+</zk>
+			-->
+		</server>
+		<client wait="100">	<![CDATA[
+			
+   				click(jq("@button"));
+  				
+  				waitResponse(3000);
+  				
+  				verifyFalse(jq(".z-window-highlighted").exists());
+			
+			]]></client>
+	</case>
+</test>
