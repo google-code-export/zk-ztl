@@ -974,4 +974,11 @@ public class ZKTestCase extends SeleneseTestCase implements Selenium {
 		getCurrent().selectPopUp(arg0);
 	}
 
+	public void verifyEquals(Object obj1, Object obj2){
+		if(obj1 == obj2)return;
+		
+		if( obj1!=null && obj2!=null && (obj1 instanceof Number) && (obj2 instanceof Number)){
+			super.verifyEquals(""+obj1, ""+obj2);
+		} else super.verifyEquals(obj1, obj2);
+	}
 }

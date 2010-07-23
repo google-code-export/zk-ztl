@@ -187,7 +187,7 @@ public class ZtlGenerator {
 			log("\n");
 			log("Usage:\n");
 			log("1.Generate the java class\n");
-			log("	java org.zkoss.ztl.util.ZtlGenerator -src ./test -dest ./codegen");
+			log("	java org.zkoss.ztl.util.ZtlGenerator -src ./test -dist ./codegen");
 			log("\n2.Or run with tags\n");
 			log("	java org.zkoss.ztl.util.ZtlGenerator -run [srcdir] [grid,listbox,button...]");
 			log("\n3.Or run with case\n");
