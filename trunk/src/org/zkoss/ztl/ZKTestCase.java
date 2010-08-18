@@ -28,7 +28,7 @@ import com.thoughtworks.selenium.Selenium;
  * @author jumperchen
  *
  */
-public class ZKTestCase extends SeleneseTestCase implements Selenium {
+public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	protected static final ThreadLocal<Selenium> _selenium = new ThreadLocal<Selenium>();
 	/**
 	 * The keycode of the PAGE_UP key
@@ -131,6 +131,7 @@ public class ZKTestCase extends SeleneseTestCase implements Selenium {
 		selenium.start();
 		selenium.open(target);
 		_selenium.set(selenium);
+		this.selenium = selenium;
 	}
 	
 	/**
