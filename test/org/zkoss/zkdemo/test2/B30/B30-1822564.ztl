@@ -48,7 +48,7 @@ It still doesn't work even add row after creation.
 			verifyTrue(w <= jq(col1).outerWidth());
 			// the following is the rough test, because the grid is sized by content.
 			click(btn2);
-			verifyTrue(30 < jq(col1).outerWidth());
+			verifyTrue(20 <= jq(col1).outerWidth());
 			verifyEquals(jq(col1).outerWidth(), jq("@row > td").outerWidth());
 			click(btn3);
 			verifyTrue(100 >= jq(col1).outerWidth());
