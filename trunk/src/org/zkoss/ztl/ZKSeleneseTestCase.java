@@ -104,8 +104,18 @@ public class ZKSeleneseTestCase extends TestCase {
     }
     
     /** Like assertEquals, but fails at the end of the test (during tearDown) */
+    public void verifyEquals(String message, boolean arg1, boolean arg2) {
+        stb.verifyEquals(message, arg1, arg2, selenium);
+    }
+    
+    /** Like assertEquals, but fails at the end of the test (during tearDown) */
     public void verifyEquals(Object s1, Object s2) {
         stb.verifyEquals(s1, s2, selenium);
+    }
+    
+    /** Like assertEquals, but fails at the end of the test (during tearDown) */
+    public void verifyEquals(String message, Object s1, Object s2) {
+        stb.verifyEquals(message, s1, s2, selenium);
     }
     
     /** Like assertEquals, but fails at the end of the test (during tearDown) */
@@ -113,9 +123,18 @@ public class ZKSeleneseTestCase extends TestCase {
         stb.verifyEquals(s1, s2, selenium);
     }
     
+    /** Like assertEquals, but fails at the end of the test (during tearDown) */
+    public void verifyEquals(String message, String[] s1, String[] s2) {
+        stb.verifyEquals(message, s1, s2, selenium);
+    }
+
     /** Like assertFalse, but fails at the end of the test (during tearDown) */
     public void verifyFalse(boolean b) {
-        stb.verifyFalse(b, selenium);
+        stb.verifyFalse("verification should be false", b, selenium);
+    }
+    /** Like assertFalse, but fails at the end of the test (during tearDown) */
+    public void verifyFalse(String message, boolean b) {
+        stb.verifyFalse(message, b, selenium);
     }
     
     /** Like assertNotEquals, but fails at the end of the test (during tearDown) */
@@ -124,13 +143,28 @@ public class ZKSeleneseTestCase extends TestCase {
     }
     
     /** Like assertNotEquals, but fails at the end of the test (during tearDown) */
+    public void verifyNotEquals(String message, boolean s1, boolean s2) {
+        stb.verifyNotEquals(message, s1, s2, selenium);
+    }
+    
+    /** Like assertNotEquals, but fails at the end of the test (during tearDown) */
     public void verifyNotEquals(Object s1, Object s2) {
         stb.verifyNotEquals(s1, s2, selenium);
     }
     
+    /** Like assertNotEquals, but fails at the end of the test (during tearDown) */
+    public void verifyNotEquals(String message, Object s1, Object s2) {
+        stb.verifyNotEquals(message, s1, s2, selenium);
+    }
+
     /** Like assertTrue, but fails at the end of the test (during tearDown) */
     public void verifyTrue(boolean b) {
-        stb.verifyTrue(b, selenium);
+        stb.verifyTrue("verification should be true", b, selenium);
+    }
+    
+    /** Like assertTrue, but fails at the end of the test (during tearDown) */
+    public void verifyTrue(String message, boolean b) {
+        stb.verifyTrue(message, b, selenium);
     }
 
     /** Like JUnit's Assert.assertEquals, but knows how to compare string arrays */

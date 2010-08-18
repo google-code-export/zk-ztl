@@ -119,18 +119,18 @@ public class ZKSeleneseTestBase {
 	    }
 
 	    /** Like assertTrue, but fails at the end of the test (during tearDown) */
-	    public void verifyTrue(boolean b, Selenium selenium) {
+	    public void verifyTrue(String message, boolean b, Selenium selenium) {
 	        try {
-	            assertTrue(b);
+	            assertTrue(message, b);
 	        } catch (Error e) {
 	            error(throwableToString(e), selenium);
 	        }
 	    }
 	    
 	    /** Like assertFalse, but fails at the end of the test (during tearDown) */
-	    public void verifyFalse(boolean b, Selenium selenium) {
+	    public void verifyFalse(String message, boolean b, Selenium selenium) {
 	        try {
-	            assertFalse(b);
+	            assertFalse(message, b);
 	        } catch (Error e) {
 	        	error(throwableToString(e), selenium);
 	        }
@@ -144,7 +144,16 @@ public class ZKSeleneseTestBase {
 	    /** Like assertEquals, but fails at the end of the test (during tearDown) */
 	    public void verifyEquals(Object s1, Object s2, Selenium selenium) {
 	        try {
-	            assertEquals(s1, s2);
+	            assertEquals(null, s1, s2);
+	        } catch (Error e) {
+	        	error(throwableToString(e), selenium);
+	        }
+	    }
+
+	    /** Like assertEquals, but fails at the end of the test (during tearDown) */
+	    public void verifyEquals(String message, Object s1, Object s2, Selenium selenium) {
+	        try {
+	            assertEquals(message, s1, s2);
 	        } catch (Error e) {
 	        	error(throwableToString(e), selenium);
 	        }
@@ -153,14 +162,23 @@ public class ZKSeleneseTestBase {
 	    /** Like assertEquals, but fails at the end of the test (during tearDown) */
 	    public void verifyEquals(boolean s1, boolean s2, Selenium selenium) {
 	        try {
-	            assertEquals(new Boolean(s1), new Boolean(s2));
+	            assertEquals(null, new Boolean(s1), new Boolean(s2));
+	        } catch (Error e) {
+	        	error(throwableToString(e), selenium);
+	        }
+	    }
+	    
+	    /** Like assertEquals, but fails at the end of the test (during tearDown) */
+	    public void verifyEquals(String message, boolean s1, boolean s2, Selenium selenium) {
+	        try {
+	            assertEquals(message, new Boolean(s1), new Boolean(s2));
 	        } catch (Error e) {
 	        	error(throwableToString(e), selenium);
 	        }
 	    }
 
 	    /** Like JUnit's Assert.assertEquals, but knows how to compare string arrays */
-	    public static void assertEquals(Object s1, Object s2) {
+	    public static void assertEquals(String message, Object s1, Object s2) {
 	        if (s1 instanceof String && s2 instanceof String) {
 	            assertEquals((String)s1, (String)s2);
 	        } else if (s1 instanceof String && s2 instanceof String[]) {
@@ -174,7 +192,10 @@ public class ZKSeleneseTestBase {
 	                String[] sa1 = (String[]) s1;
 	                String[] sa2 = (String[]) s2;
 	                if (sa1.length!=sa2.length) {
-	                    throw new Error("Expected " + sa1 + " but saw " + sa2);
+	                	if (message != null)
+	                		throw new Error(message + "\nExpected " + sa1 + " but saw " + sa2);
+	                	else
+	                		throw new Error("Expected " + sa1 + " but saw " + sa2);
 	                }
 	                for (int j = 0; j < sa1.length; j++) {
 	                    assertEquals(sa1[j], sa2[j]);
@@ -182,10 +203,14 @@ public class ZKSeleneseTestBase {
 	            }
 	        }
 	    }
-	    
+
 	    /** Like JUnit's Assert.assertEquals, but handles "regexp:" strings like HTML Selenese */ 
 	    public static void assertEquals(String s1, String s2) {
 	        assertTrue("Expected \"" + s1 + "\" but saw \"" + s2 + "\" instead", seleniumEquals(s1, s2));
+	    }
+	    /** Like JUnit's Assert.assertEquals, but handles "regexp:" strings like HTML Selenese */ 
+	    public static void assertEquals(String message, String s1, String s2) {
+	        assertTrue(message, seleniumEquals(s1, s2));
 	    }
 	    
 	    /** Like JUnit's Assert.assertEquals, but joins the string array with commas, and 
@@ -334,11 +359,29 @@ public class ZKSeleneseTestBase {
 	        	error(throwableToString(e), selenium);
 	        }
 	    }
+
+	    /** Like assertNotEquals, but fails at the end of the test (during tearDown) */
+	    public void verifyNotEquals(String message, Object s1, Object s2, Selenium selenium) {
+	        try {
+	            assertNotEquals(message, s1, s2);
+	        } catch (AssertionFailedError e) {
+	        	error(throwableToString(e), selenium);
+	        }
+	    }
 	    
 	    /** Like assertNotEquals, but fails at the end of the test (during tearDown) */
 	    public void verifyNotEquals(boolean s1, boolean s2, Selenium selenium) {
 	        try {
 	            assertNotEquals(new Boolean(s1), new Boolean(s2));
+	        } catch (AssertionFailedError e) {
+	        	error(throwableToString(e), selenium);
+	        }
+	    }
+	    
+	    /** Like assertNotEquals, but fails at the end of the test (during tearDown) */
+	    public void verifyNotEquals(String message, boolean s1, boolean s2, Selenium selenium) {
+	        try {
+	            assertNotEquals(message, new Boolean(s1), new Boolean(s2));
 	        } catch (AssertionFailedError e) {
 	        	error(throwableToString(e), selenium);
 	        }
@@ -355,6 +398,13 @@ public class ZKSeleneseTestBase {
 	    public static void assertNotEquals(Object obj1, Object obj2) {
 	        if (obj1.equals(obj2)) {
 	            fail("did not expect values to be equal (" + obj1.toString() + ")");
+	        }
+	    }
+	    
+	    /** Asserts that two objects are not the same (compares using .equals()) */
+	    public static void assertNotEquals(String message, Object obj1, Object obj2) {
+	        if (obj1.equals(obj2)) {
+	            fail(message + "\ndid not expect values to be equal (" + obj1.toString() + ")");
 	        }
 	    }
 	    
