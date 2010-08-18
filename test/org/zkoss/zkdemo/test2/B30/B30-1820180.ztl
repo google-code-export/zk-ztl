@@ -62,11 +62,12 @@ left pane should not occupy the whole page, leaving no space to the right pane. 
 		<client><![CDATA[
 			int width = jq(tabbox).outerWidth();
 			windowResizeTo(500, 500);
-			verifyEquals(width, jq(tabbox).outerWidth());
+			verifyTrue(width - jq(tabbox).outerWidth() < 2);
 			windowMaximize();
-			verifyEquals(width, jq(tabbox).outerWidth());
+			verifyTrue(width - jq(tabbox).outerWidth() < 2);
+			width = jq(tabbox).outerWidth();
 			dragdropTo(split, "0,0", "-20,0");
-			verifyEquals(width, jq(tabbox).outerWidth());
+			verifyEquals(width - 20, jq(tabbox).outerWidth());
 		]]></client>
 	</case>
 </test>

@@ -131,9 +131,10 @@ public class ConfigHelper {
 
 		Selenium browser = _browserHolder.get(key);
 		if (browser == null) {
-			browser = new DefaultSelenium(new HttpCommandProcessor(_client
-					+ "/selenium-server/driver/", _browserNameMap.get(key),
-					_server));
+			final String browserBrand = _browserNameMap.get(key); 
+			browser = new ZKSelenium(new HttpCommandProcessor(_client
+					+ "/selenium-server/driver/", browserBrand,
+					_server), browserBrand);
 			browser.setSpeed(getDelay());
 			_browserHolder.put(key, browser);
 		}
