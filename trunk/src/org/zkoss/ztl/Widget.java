@@ -179,7 +179,14 @@ public class Widget extends ClientWidget {
 	public Element $n(String subname) {
 		return new Element(_out + ".$n('"+ subname +"')");
 	}
-
+	
+	/**
+	 * Detaches the widget
+	 */
+	public void detach() {
+		ZKTestCase.getCurrent().getEval(_out.toString() + ".detach()");
+	}
+	
 	/**
 	 * Returns whether the widget exists or not.
 	 */

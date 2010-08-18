@@ -46,6 +46,16 @@ public class ZKClientTestCase extends ZKTestCase {
 			}
 		}
 	}
+	
+	/**
+	 * Remove all of the children of the given widget.(internal use only)
+	 */
+	protected void removeChildren(Widget w) {
+		Widget f = w.firstChild();
+		while (f.exists()) {
+			f.detach();
+		}
+	}
 
     /**	
      * Causes the currently executing thread to sleep for the specified number
