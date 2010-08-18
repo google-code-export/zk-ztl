@@ -31,7 +31,7 @@ gg.appendChild(c);
 </window>
 			-->
 		</server>
-		<client wait="100">	<![CDATA[
+		<client>	<![CDATA[
 			
 		verifyEquals("1", c1.get("label"));
 		verifyEquals("2", c2.get("label"));
@@ -39,9 +39,9 @@ gg.appendChild(c);
 		click(jq("@button"));
 		waitResponse();
 		//how to modify to newly added column?
-		verifyEquals("11", c1.get("label"));
-		verifyEquals("22", c2.get("label"));
-		verifyEquals("33", c3.get("label"));			
+		verifyEquals("11", jq("@column:eq(0)").text());
+		verifyEquals("22", jq("@column:eq(1)").text());
+		verifyEquals("33", jq("@column:eq(2)").text());			
 			]]></client>
 	</case>
 </test>

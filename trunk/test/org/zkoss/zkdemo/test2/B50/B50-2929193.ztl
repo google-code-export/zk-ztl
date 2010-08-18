@@ -18,7 +18,7 @@
  				click(jq("$db i.z-datebox-btn"));
 				waitResponse();
 				verifyTrue(jq("@calendar").exists());
-				click(jq("@calendar a:eq(16)"));
+				click(jq("@calendar a:eq(16)").parent());
 				//waitResponse();
 				verifyFalse(jq("@calendar").exists());	
 						

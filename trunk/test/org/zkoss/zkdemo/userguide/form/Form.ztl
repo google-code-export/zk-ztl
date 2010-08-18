@@ -2,6 +2,9 @@
 		 action="userguide/#f2">
 	<case id="Form">
 		<client><![CDATA[
+		    // first time to access this page will take a long time.
+		    sleep(1500);
+			waitResponse();
 			click(jq("$view @textbox:eq(0)"));
 			type(jq("$view @textbox:eq(0)"), "Jumper");
 			verifyEquals("Jumper", getValue(jq("$view @textbox:eq(0)")));
@@ -20,10 +23,10 @@
 			click(jq("@decimalbox"));
 			type(jq("@decimalbox"), "12.345");
 			verifyEquals("12.34", getValue(jq("@decimalbox")));
-			
 			/** datebox (it may fail on different browser language)*/
 			click(jq("$db i.z-datebox-btn"));
 			click(jq("@calendar td:eq(23)"));
+			type(jq("$db input"), "Jun 10, 2010");
 			verifyEquals("Jun 10, 2010", getValue(jq("$db input.z-datebox-inp")));
 			click(jq("@select"));
 			select(jq("@select"), "label=yyyy/MM/dd hh:mm a");
@@ -37,7 +40,6 @@
 			select(jq("@select"), "label=MM-dd-yy");
 			click(jq("@option[label=\"MM-dd-yy\"]"));
 			verifyEquals("06-10-10", getValue(jq("$db input.z-datebox-inp")));
-			
 			/** constraint */
 			type(jq("$view @textbox:eq(4)"), "zk");
 			verifyEquals("Please enter an e-mail address", getText(jq("@errorbox div.z-errbox-center")));
@@ -45,7 +47,6 @@
 			type(jq("$view @textbox:eq(4)"), "zk@zkoss.org");
 			click(jq("$intro"));
 			verifyFalse(jq("@errorbox div.z-errbox-center").exists());
-			
 			/** spinner */
 			mouseDownAt(jq("@spinner i.z-spinner-btn"), "0,0");
 			mouseUp(jq("@spinner i.z-spinner-btn"));
@@ -53,7 +54,6 @@
 			mouseDownAt(jq("@spinner i.z-spinner-btn"), "3,20");
 			mouseUp(jq("@spinner i.z-spinner-btn"));
 			verifyTrue(4 > parseInt(jq("@spinner input.z-spinner-inp").val()));
-			
 			/** colorbox */
 			click(jq("@colorbox i.z-colorbox-currcolor"));
 			click(jq("$view @widget div.z-colorpalette-colorbox:eq(56)"));
