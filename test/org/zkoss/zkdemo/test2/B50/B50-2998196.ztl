@@ -46,10 +46,10 @@
 </zk>
 			-->
 		</server>
-		<client wait="100">	<![CDATA[
+		<client>	<![CDATA[
 			
    				click(jq("@button"));
-  				
+  				waitResponse();
   				verifyEquals("154.23", jq(".z-decimalbox").attr("value"));			
 			]]></client>
 	</case>

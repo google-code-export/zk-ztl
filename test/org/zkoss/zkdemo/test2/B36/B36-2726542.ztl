@@ -10,6 +10,7 @@
 		--></server>
 		<client><![CDATA[
 			click(jq("@button td.z-button-cm"));
+			waitResponse();
 			verifyEquals("top, 0", jq("#zk_log").val().trim());
 		]]></client>
 	</case>

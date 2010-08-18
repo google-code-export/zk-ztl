@@ -6,7 +6,7 @@
 				<separator/>
 				<label id="i"/>
 				<zscript>
-					public void test(){i.value = self+":"+event+":"+componentScope+":"+b;}
+					public void test(){i.value = self+":"+event.getName()+":"+b;}
 				</zscript>
 				<window>
 				<button id="b" label="test" onClick="test()"/>
@@ -15,7 +15,7 @@
 		--></server>
 		<client><![CDATA[
 			click(b);
-			verifyEquals("<Button b>:[MouseEvent onClick <Button b>]:{}:void",i.get("value"));
+			verifyEquals("<Button b>:onClick:void",i.get("value"));
 		]]></client>
 	</case>
 </test>
