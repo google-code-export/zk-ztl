@@ -11,7 +11,7 @@
 		<client>
 			verifyTrue(jq(":submit").exists());
 			click(jq(":submit"));
-			waitResponse();
+			sleep(1000);
 			verifyFalse(jq("div.z-error").exists());
 		</client>
 	</case>
