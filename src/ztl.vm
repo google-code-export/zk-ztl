@@ -49,7 +49,9 @@ public class ${ztl.fileName} extends ZKClientTestCase {
 				Widget engine = new Widget(new StringBuffer("zk.Desktop._dt"));
 				
 				// remove all of unnecessary children
-				removeChildren(engine.firstChild());
+				if (target.endsWith("/service.zul"))
+					removeChildren(engine.firstChild());
+					
 				/** start **/
 #foreach ($source in $case.children)
 	#if ( $source.getType() == "Server")
