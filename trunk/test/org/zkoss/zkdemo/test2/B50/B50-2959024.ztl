@@ -22,13 +22,13 @@ alert(event.data);
 </zk>
 			-->
 		</server>
-		<client wait="100">	<![CDATA[
+		<client>	<![CDATA[
 			
    				click(jq("@button"));
   				
-  				waitResponse(3000);
+  				sleep(3000);
   				
-  				verifyFalse(jq(".z-window-highlighted").exists());
+  				verifyFalse(jq("@window").exists());
 			
 			]]></client>
 	</case>

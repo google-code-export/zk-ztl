@@ -45,7 +45,7 @@ Messagebox.show("If you can see the message, the bug is fixed.");
 			
 			click(jq("$btn"));
 			waitResponse();				
-			verifyTrue(jq(".z-window-highlighted").exists());			
+			verifyEquals("If you can see the message, the bug is fixed.", jq("@window[mode!=\"embedded\"] @label").text());			
 			]]></client>
 	</case>
 </test>
