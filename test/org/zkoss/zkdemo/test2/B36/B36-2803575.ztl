@@ -29,10 +29,10 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			verifyEquals("blue", jq("$label1").css("color"));
+			verifyTrue("Color is : " + jq("$label1").css("color"), "blue#0000ff".indexOf(jq("$label1").css("color")) > -1);
 			click(jq("$btn td.z-button-cm"));
 			waitResponse();
-			verifyEquals("red", jq("$label1").css("color"));
+			verifyTrue("Color is : " + jq("$label1").css("color"), "red#ff0000".indexOf(jq("$label1").css("color")) > -1);
 		]]></client>
 	</case>
 </test>
