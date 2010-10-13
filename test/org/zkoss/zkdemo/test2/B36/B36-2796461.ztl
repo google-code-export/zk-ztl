@@ -18,7 +18,12 @@
 			click(db.$n("btn"));
 			waitResponse();
 			Element pp = db.$n("pp");
-			verifyEquals(pp.get("scrollHeight"), pp.get("clientHeight"));
+			// gecko = firefox(all version)
+            if (ZK.is("gecko")) {
+                verifyEquals(pp.get("scrollHeight"), jq(pp).outerHeight());
+            } else {
+                verifyEquals(pp.get("scrollHeight"), pp.get("clientHeight"));
+            }
 		]]></client>
 	</case>
 </test>

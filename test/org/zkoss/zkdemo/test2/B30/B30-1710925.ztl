@@ -32,19 +32,19 @@
 			click(btn1);
 			waitResponse();
 			String color = jq("body").css("backgroundColor");
-			verifyTrue("rgb(255, 255, 0)".equals(color) || "yellow".equals(color));
+			verifyTrue("rgb(255, 255, 0)#ffff00".contains(color) || "yellow".equals(color));
 				
 			click(btn2);
 			waitResponse();
 			color = jq("body").css("backgroundColor");
-			verifyTrue("rgb(0, 0, 255)".equals(color) || "blue".equals(color));
+			verifyTrue("rgb(0, 0, 255)#0000ff".contains(color) || "blue".equals(color));
 			
 			// IE6 cannot display correctly when remove the style with a blank content.
 			if (!ZK.is("ie6_")) {
 				click(btn3);
 				waitResponse();
 				color = jq("body").css("backgroundColor");
-				verifyTrue("rgba(0, 0, 0, 0)".equals(color) || "transparent".equals(color));
+				verifyTrue("rgba(0, 0, 0, 0)#0000ff".contains(color) || "transparent".equals(color));
 			}
 		]]></client>
 	</case>
