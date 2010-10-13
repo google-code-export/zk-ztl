@@ -20,8 +20,13 @@
 				verifyTrue(jq("@calendar").exists());
 				click(jq("@calendar a:eq(16)").parent());
 				//waitResponse();
-				verifyFalse(jq("@calendar").exists());	
-						
+
+				//TonyQ:the origin test case expected the calendar will remove ,
+				//but the source code just hide the datebox-pp ,
+				//so I change the rule for test datebox-pp is hide or not .
+				//verifyFalse(jq("@calendar").exists());
+				verifyEquals(jq("@calendar").parent().css("display"),"none");
+
 			]]></client>
 	</case>
 </test>
