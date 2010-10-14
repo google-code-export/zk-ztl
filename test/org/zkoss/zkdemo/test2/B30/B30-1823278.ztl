@@ -5,7 +5,7 @@
 <zscript><![CDATA[
 	import java.util.ArrayList;
 	ArrayList list = new ArrayList();
-	
+
 	for(int i=1;i<=50;i++)
 	{
 		list.add("entry "+i);
@@ -21,7 +21,7 @@
 		 --></server>
 		<client wait="100"><![CDATA[
 	 		click(listbox.firstChild().nextSibling());
-	 				
+
 			for (int i = 0; i < 15; i++) {
                 keyPressNative(DOWN);
             }
@@ -29,6 +29,7 @@
             for (int i = 0; i < 15; i++) {
                 keyPressNative(UP);
             }
+            sleep(500);
 			verifyTrue(3 > parseInt(listbox.$n("body").get("scrollTop")));
 		]]></client>
 	</case>
