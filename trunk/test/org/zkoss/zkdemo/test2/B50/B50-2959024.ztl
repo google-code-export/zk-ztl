@@ -28,7 +28,7 @@ alert(event.data);
   				
   				sleep(3000);
   				
-  				verifyFalse(jq("@window").exists());
+  				verifyTrue(jq("@window").exists());
 			
 			]]></client>
 	</case>

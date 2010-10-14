@@ -18,8 +18,10 @@
 			int offsetTop = $node.offsetTop();
 			int winWidth = $node.width();
 			int winHeight = $node.height();
-			verifyEquals((screenWidth - winWidth)/2, offsetLeft);
-			verifyEquals((screenHeight - winHeight)/2, offsetTop);
+			int widthDiff = Math.abs(((screenWidth - winWidth)/2) - offsetLeft);
+			int heightDiff = Math.abs(((screenHeight - winHeight)/2) - offsetTop);
+			verifyTrue(widthDiff <= 3 && widthDiff >= 0);
+			verifyTrue(heightDiff <= 3 && heightDiff >= 0);
 		]]></client>
 	</case>
 </test>
