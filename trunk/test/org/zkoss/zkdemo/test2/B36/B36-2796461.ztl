@@ -19,7 +19,7 @@
 			waitResponse();
 			Element pp = db.$n("pp");
 			// gecko = firefox(all version)
-            if (ZK.is("gecko")) {
+            if (ZK.is("gecko") || ZK.is("opera")) {
                 verifyEquals(pp.get("scrollHeight"), jq(pp).outerHeight());
             } else {
                 verifyEquals(pp.get("scrollHeight"), pp.get("clientHeight"));
