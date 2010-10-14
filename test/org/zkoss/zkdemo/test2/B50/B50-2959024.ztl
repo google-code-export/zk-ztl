@@ -26,7 +26,7 @@ alert(event.data);
 			
    				click(jq("@button"));
   				
-  				sleep(3000);
+  				sleep(5000);
   				
   				verifyTrue(jq("@window").exists());
 			
