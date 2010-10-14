@@ -2,22 +2,22 @@
 	action="/test2/B30-1813518.zhtml">
 	<case id="Style">
 		<client><![CDATA[
-			if (ZK.is("ie")) {
-				verifyEquals("blue 1px solid", jq("@rows:eq(0) td").css("border"));
-				verifyEquals("#333333", jq("@rows:eq(0) td").css("color"));
-				verifyEquals("#e3ebf6", jq("@rows:eq(0) td").css("backgroundColor"));
-
-				verifyEquals("null", jq("@rows:eq(1) td").css("border"));
-				verifyEquals("#000000", jq("@rows:eq(1) td").css("color"));
-				verifyEquals("white", jq("@rows:eq(1) td").css("backgroundColor"));
-			} else {
-				verifyTrue(borderCss.equals("1px solid blue") || borderCss.equals("1px solid #0000ff"));
-				verifyTrue("rgb(51, 51, 51)#333333".contains(jq("@rows:eq(0) td").css("color")));
-				verifyTrue("rgb(227, 235, 246)#e3ebf6".contains(jq("@rows:eq(0) td").css("backgroundColor")));
-				verifyEquals("", jq("@rows:eq(1) td").css("border"));
-				verifyTrue("rgb(0, 0, 0)#000000".contains(jq("@rows:eq(1) td").css("color")));
-				verifyTrue("rgb(255, 255, 255)#ffffff".contains(jq("@rows:eq(1) td").css("backgroundColor")));
-			}
+			String borderCss = jq("@rows:eq(0) td").css("border");
+                if (ZK.is("ie")) {
+                    verifyEquals("blue 1px solid", borderCss);
+                    verifyEquals("#333333", jq("@rows:eq(0) td").css("color"));
+                    verifyEquals("#e3ebf6", jq("@rows:eq(0) td").css("backgroundColor"));
+                    verifyEquals("null", jq("@rows:eq(1) td").css("border"));
+                    verifyEquals("#000000", jq("@rows:eq(1) td").css("color"));
+                    verifyEquals("white", jq("@rows:eq(1) td").css("backgroundColor"));
+                } else {
+                    verifyTrue(borderCss.equals("1px solid blue") || borderCss.equals("1px solid #0000ff"));
+                    verifyTrue("rgb(51, 51, 51)#333333".contains(jq("@rows:eq(0) td").css("color")));
+                    verifyTrue("rgb(227, 235, 246)#e3ebf6".contains(jq("@rows:eq(0) td").css("backgroundColor")));
+                    verifyEquals("", jq("@rows:eq(1) td").css("border"));
+                    verifyTrue("rgb(0, 0, 0)#000000".contains(jq("@rows:eq(1) td").css("color")));
+                    verifyTrue("rgb(255, 255, 255)#ffffff".contains(jq("@rows:eq(1) td").css("backgroundColor")));
+                }
 		]]></client>
 	</case>
 </test>
