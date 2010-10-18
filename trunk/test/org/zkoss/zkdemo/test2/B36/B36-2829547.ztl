@@ -33,6 +33,7 @@
 			blur(jq("$endTime .z-timebox-inp"));
 			click(jq("$runReport td.z-button-cm"));
 			waitResponse();
+			sleep(1000);
 			verifyEquals("Correct! The bug is fixed!", getText(jq("@window[mode=\"modal\"][title=\"ZK\"] @label")));
 			click(jq("$btn1 td.z-button-cm"));
 		]]></client>
