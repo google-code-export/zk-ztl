@@ -42,8 +42,9 @@
 		--></server>
 		<client><![CDATA[
 			click(jq("@button td.z-button-cm"));
-			JQuery tr = jq("div.z-window-embedded-tr");
-			JQuery cnt = jq("div.z-window-embedded-cnt:eq(1)");
+			JQuery tr = jq("$bidSessionSelectorTabBox div.z-window-embedded-tr");
+			JQuery cnt = jq("$bidSessionSelectorTabBox div.z-window-embedded-cl").exists() ? 
+						 jq("$bidSessionSelectorTabBox div.z-window-embedded-cl") : jq("div.z-window-embedded-cnt:eq(1)");
 			verifyEquals(cnt.offsetLeft() + cnt.outerWidth(), tr.offsetLeft() + tr.outerWidth());
 		]]></client>
 	</case>
