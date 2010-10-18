@@ -44,8 +44,11 @@
 </zk>
 		--></server>
 		<client><![CDATA[
-        	verifyEquals(jq(c1).outerWidth(), jq(c2).outerWidth());
-       		verifyEquals(jq(c3).outerWidth(), jq(c4).outerWidth());
+        	int diffC1C2 = Math.abs(jq(c1).outerWidth() - jq(c2).outerWidth());
+			int diffC3C4 = Math.abs(jq(c3).outerWidth() - jq(c4).outerWidth());
+			
+			verifyTrue(diffC1C2 <= 3);
+			verifyTrue(diffC3C4 <= 3);
 		]]></client>
 	</case>
 </test>
