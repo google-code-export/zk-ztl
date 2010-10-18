@@ -13,18 +13,18 @@
 			<tab label="Tab 22222222222222222222222222" closable="true"/>
 			<tab label="Tab 32222222222222222" closable="true"/>
 			<tab label="Tab 4222222222222222222222" closable="true"/>
-			
+
 			<tab label="Tab 522222222222222222222222" closable="true"/>
 			<tab label="Tab 522222222222222222222222" closable="true"/>
 			<tab label="Tab 522222222222222222222222" closable="true"/>
 			<tab label="Tab 522222222222222222222222" closable="true"/>
 			<tab label="Tab 522222222222222222222222" closable="true"/>
 			<tab label="Tab 522222222222222222222222" closable="true"/>
-			
+
 			<tab label="Tab 522222222222222222222222" closable="true"/>
 			<tab label="Tab 522222222222222222222222" closable="true"/>
 			<tab label="Tab 522222222222222222222222" closable="true"/>
-			
+
 			<tab label="Tab 522222222222222222222222" closable="true"/>
 			<tab label="Tab 522222222222222222222222" closable="true"/>
 			<tab label="Tab 522222222222222222222222" closable="true"/>
@@ -52,8 +52,10 @@
 		<client><![CDATA[
             	Element header = tabs.$n("header");
             	Element tab = last.$n();
-            	verifyEquals(parseInt(header.get("scrollLeft")) + parseInt(header.get("offsetWidth")),
-            			parseInt(tab.get("offsetLeft")) + parseInt(tab.get("offsetWidth")));
+
+            	// one px tolerant would be ok .
+				verifyTolerant(parseInt(header.get("scrollLeft")) + parseInt(header.get("offsetWidth")),
+				parseInt(tab.get("offsetLeft")) + parseInt(tab.get("offsetWidth")),1);
 		]]></client>
 	</case>
 </test>
