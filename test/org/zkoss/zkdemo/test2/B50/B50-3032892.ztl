@@ -87,29 +87,23 @@
 </zk>
 		--></server>
 		<client><![CDATA[
-		focus(ti1.$n("real"));
-		verifyEquals(jq(ti1).outerWidth(), jq(t1).outerWidth());
+			focus(ti1.$n("real"));
+			verifyEquals(jq(ti1).outerWidth(), jq(t1).outerWidth());
+			focus(ti2.$n("real"));
+			verifyTolerant(jq(ti2).outerWidth() ,  jq(t2).outerWidth(), 1);
+			focus(ti3.$n("real"));
+			verifyEquals(jq(ti3).outerWidth(), jq(t3).outerWidth());
+			focus(ti4.$n("real"));
+			verifyEquals(jq(ti4).outerWidth(), jq(t4).outerWidth());
+			focus(ci1.$n("real"));
+			verifyEquals(jq(ci1).outerWidth(), jq(c1).outerWidth());
+			focus(ci2.$n("real"));
 
-		focus(ti2.$n("real"));
-		verifyTrue(Math.abs(jq(ti2).outerWidth() -  jq(t2).outerWidth()) < 2);
-
-		focus(ti3.$n("real"));
-		verifyEquals(jq(ti3).outerWidth(), jq(t3).outerWidth());
-
-		focus(ti4.$n("real"));
-		verifyEquals(jq(ti4).outerWidth(), jq(t4).outerWidth());
-
-		focus(ci1.$n("real"));
-		verifyEquals(jq(ci1).outerWidth(), jq(c1).outerWidth());
-
-		focus(ci2.$n("real"));
-		verifyTrue(Math.abs(jq(ci2).outerWidth() -  jq(c2).outerWidth()) < 2);
-
-		focus(ci3.$n("real"));
-		verifyEquals(jq(ci3).outerWidth(), jq(c3).outerWidth());
-
-		focus(ci4.$n("real"));
-		verifyEquals(jq(ci4).outerWidth(), jq(c4).outerWidth());
+			verifyTolerant(jq(ci2).outerWidth() ,  jq(c2).outerWidth(),1);
+			focus(ci3.$n("real"));
+			verifyEquals(jq(ci3).outerWidth(), jq(c3).outerWidth());
+			focus(ci4.$n("real"));
+			verifyEquals(jq(ci4).outerWidth(), jq(c4).outerWidth());
 		]]></client>
 	</case>
 </test>
