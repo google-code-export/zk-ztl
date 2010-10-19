@@ -7,9 +7,7 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			sleep(200);
-			focus(jq("@intbox"));
-			sleep(200);
+			jq("@intbox").eval("select()");
 			keyDownNative(CTRL);
 			keyPressNative(A);
 			keyPressNative(X);
