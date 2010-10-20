@@ -10,7 +10,7 @@
 				<vbox>6.click on "validate by set" and then click "cleanup" then you should see errors being cleaned up.</vbox>
 				<vbox>7.click on "validate by set" again, then click "retrieve and cleanup", you should see error message cleaned up and displayed at bottom of this window.</vbox>
 				<vbox>8.click on "cleanup by update" and you should see errors cleaned up and textbox appear 'ab'.</vbox>
-				
+
 				<vbox>
 				<textbox id="box" constraint="no empty:Fail validation!!" />
 				<button id="btn1" onClick="box.getValue()" label="Validate by get (it shall fail if error is not cleaned up)"/>
@@ -48,31 +48,35 @@
 			click(btn1);
 			verifyTrue($jq.exists());
 			verifyEquals("Fail validation!!", $jq.html());
-			
+
 			click(btn3);
 			verifyEquals("Failed!!!", $jq.html());
-			
+
 			click(btn4);
 			verifyEquals("Failed!!!", jq("@window .z-messagebox .z-label").html());
-			click(jq("@window[mode=\"modal\"] @button"));
-			
+			//for event thread compatible
+			click(jq("@window[mode=\"modal\"] @button,@window[mode=\"highlighted\"] @button"));
+
+
 			click(btn5);
-			verifyFalse(jq("@window[mode=\"modal\"]").exists());
+			//for event thread compatible
+			verifyFalse(jq("@window[mode=\"modal\"],@window[mode=\"highlighted\"]").exists());
+
 			verifyFalse($jq.exists());
-			
+
 			click(btn2);
 			verifyTrue($jq.exists());
 			click(btn5);
 			verifyFalse($jq.exists());
-			
+
 			click(btn2);
 			verifyTrue($jq.exists());
 			verifyEquals("", jq(info).html());
-			
+
 			click(btn6);
 			verifyFalse($jq.exists());
 			verifyEquals("Fail validation!!", jq(info).html());
-			
+
 			click(btn7);
 			verifyEquals("ab", jq(box).val());
 		</client>

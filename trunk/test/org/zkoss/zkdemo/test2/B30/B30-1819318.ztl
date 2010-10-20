@@ -15,7 +15,7 @@
 ]]></html>
 
 <window closable="true" id="testArticoloWind" width="200px" title="Test"
- xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xmlns="http://www.zkoss.org/2005/zul" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd ">
 <zscript><![CDATA[
 public class BlahComparator implements Comparator {
@@ -33,55 +33,55 @@ public class BlahComparator implements Comparator {
 
 class Person {
 	TreeSet parents = new TreeSet(new BlahComparator());
-	
+
 	public TreeSet getParents(){
 		return parents;
 	}
-	
+
 	public void addParent(Object o){
 		parents.add(o);
 	}
-	
+
 }
 
 class Blah implements Comparable{
 	int number = 0;
 	private String name ;
 	private static int counter = 1;
-	
+
 	public Blah(){
 		name = "Blah " + Integer.toString((number = counter++));
 	}
-	
+
 	public void setName(String n){
 		name  = n;
 	}
-	
+
 	public String getName(){
 		return name;
 	}
 	public String toString(){
 		return name;
 	}
-	
+
 	public int getNumber(){
 		return number;
 	}
-	
+
 	public int compareTo(Object o){
 		int n = ((Blah)o).getNumber();
 		if(number > n) return 1;
 		if(number < n) return -1;
 		return 0;
 	}
-	
+
 }
 Person person = new Person();
 int actionCounter = 1;
 ArrayList l = new ArrayList(20);
 for(int i = 0; i < 20; i++)
 	l.add(new Blah());
-	
+
 ]]></zscript>
 
 <groupbox>
@@ -117,65 +117,56 @@ for(int i = 0; i < 20; i++)
 </zk>
 		 --></server>
 		<client><![CDATA[
-			verifyFalse(jq("@listbox > @listitem").exists());
-			select(select, "Blah 2");
-			waitResponse();
-			verifyEquals("Blah 2", widget(jq("@listbox > @listitem")).get("label"));
-			
-			select(select, "Blah 4");
-			waitResponse();
-			verifyEquals("Blah 4", widget(jq("@listbox > @listitem:last-child")).get("label"));
-			
-			select(select, "Blah 9");
-			waitResponse();
-			verifyEquals("Blah 9", widget(jq("@listbox > @listitem:last-child")).get("label"));
-			
-			click(parentModel);
-			waitResponse();
-			verifyEquals("[Blah 2, Blah 4, Blah 9]", jq("@window[mode=\"modal\"] @label").html());
-			click(jq("@window[mode=\"modal\"] @button"));
-			
-			click(parents);
-			waitResponse();
-			verifyEquals("[Blah 2, Blah 4, Blah 9]", jq("@window[mode=\"modal\"] @label").html());
-			click(jq("@window[mode=\"modal\"] @button"));
-			
-			click(jq("@listbox > @listitem:last-child"));
-			click(selectionInModel);
-			waitResponse();
-			verifyEquals("[Blah 9]", jq("@window[mode=\"modal\"] @label").html());
-			click(jq("@window[mode=\"modal\"] @button"));
-			
-			doubleClick(jq("@listbox > @listitem:last-child"));
-			waitResponse();
-			verifyEquals("Blah 4", widget(jq("@listbox > @listitem:last-child")).get("label"));
 
-			click(parents);
-			waitResponse();
-			verifyEquals("[Blah 2, Blah 4]", jq("@window[mode=\"modal\"] @label").html());
-			click(jq("@window[mode=\"modal\"] @button"));
+				verifyFalse(jq("@listbox > @listitem").exists());
+				select(select, "Blah 2");
+				waitResponse();
+				verifyEquals("Blah 2", widget(jq("@listbox > @listitem")).get("label"));
+				select(select, "Blah 4");
+				waitResponse();
+				verifyEquals("Blah 4", widget(jq("@listbox > @listitem:last-child")).get("label"));
+				select(select, "Blah 9");
+				waitResponse();
+				verifyEquals("Blah 9", widget(jq("@listbox > @listitem:last-child")).get("label"));
+				click(parentModel);
+				waitResponse();
+				//for event thread compatible
+				verifyEquals("[Blah 2, Blah 4, Blah 9]", jq("@window[title=\"ZK\"] @label").html());
+				click(jq("@window[title=\"ZK\"] @button"));
+				click(parents);
+				waitResponse();
+				verifyEquals("[Blah 2, Blah 4, Blah 9]", jq("@window[title=\"ZK\"] @label").html());
+				click(jq("@window[title=\"ZK\"] @button"));
+				click(jq("@listbox > @listitem:last-child"));
+				click(selectionInModel);
+				waitResponse();
+				verifyEquals("[Blah 9]", jq("@window[title=\"ZK\"] @label").html());
+				click(jq("@window[title=\"ZK\"] @button"));
+				doubleClick(jq("@listbox > @listitem:last-child"));
+				waitResponse();
+				verifyEquals("Blah 4", widget(jq("@listbox > @listitem:last-child")).get("label"));
+				click(parents);
+				waitResponse();
+				verifyEquals("[Blah 2, Blah 4]", jq("@window[title=\"ZK\"] @label").html());
+				click(jq("@window[title=\"ZK\"] @button"));
+				click(parentModel);
+				waitResponse();
+				verifyEquals("[Blah 2, Blah 4]", jq("@window[title=\"ZK\"] @label").html());
+				click(jq("@window[title=\"ZK\"] @button"));
+				doubleClick(jq("@listbox > @listitem:first-child"));
+				waitResponse();
+				verifyEquals("Blah 4", widget(jq("@listbox > @listitem")).get("label"));
+				click(parents);
+				waitResponse();
+				verifyEquals("[Blah 4]", jq("@window[title=\"ZK\"] @label").html());
+				click(jq("@window[title=\"ZK\"] @button"));
+				click(parentModel);
+				waitResponse();
+				verifyEquals("[Blah 4]", jq("@window[title=\"ZK\"] @label").html());
+				click(jq("@window[title=\"ZK\"] @button"));
+				// including listhead
+				verifyEquals("2", parentsList.nChildren());
 
-			click(parentModel);
-			waitResponse();
-			verifyEquals("[Blah 2, Blah 4]", jq("@window[mode=\"modal\"] @label").html());
-			click(jq("@window[mode=\"modal\"] @button"));
-			
-			doubleClick(jq("@listbox > @listitem:first-child"));
-			waitResponse();
-			verifyEquals("Blah 4", widget(jq("@listbox > @listitem")).get("label"));
-
-			click(parents);
-			waitResponse();
-			verifyEquals("[Blah 4]", jq("@window[mode=\"modal\"] @label").html());
-			click(jq("@window[mode=\"modal\"] @button"));
-
-			click(parentModel);
-			waitResponse();
-			verifyEquals("[Blah 4]", jq("@window[mode=\"modal\"] @label").html());
-			click(jq("@window[mode=\"modal\"] @button"));
-			
-			// including listhead
-			verifyEquals("2", parentsList.nChildren());
 		]]></client>
 	</case>
 </test>
