@@ -34,7 +34,7 @@
 			click(jq("$runReport td.z-button-cm"));
 			waitResponse();
 			sleep(1000);
-			verifyEquals("Correct! The bug is fixed!", getText(jq("@window[mode=\"modal\"][title=\"ZK\"] @label")));
+			verifyEquals("Correct! The bug is fixed!", getText(jq(".z-window-highlighted @label")));
 			click(jq("$btn1 td.z-button-cm"));
 		]]></client>
 	</case>
