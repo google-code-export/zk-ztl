@@ -22,10 +22,8 @@
             if (ZK.is("gecko") || ZK.is("opera")) {
                 verifyEquals(pp.get("scrollHeight"), jq(pp).outerHeight());
             } else {
-                int scrollHeight = Integer.parseInt(pp.get("scrollHeight"));
-				int clientHeight = Integer.parseInt(pp.get("clientHeight"));
-				
-				verifyTrue(Math.abs(scrollHeight - clientHeight) < 10);
+				//it seems fine in safari . when scrollHeight is bigger then clientHeight 6
+				verifyTolerant( parseInt(pp.get("scrollHeight")), parseInt(pp.get("clientHeight")), 6);
             }
 		]]></client>
 	</case>
