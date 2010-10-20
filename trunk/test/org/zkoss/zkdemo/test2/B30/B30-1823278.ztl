@@ -25,6 +25,7 @@
 			for (int i = 0; i < 15; i++) {
                 keyPressNative(DOWN);
             }
+            sleep(500);//add sleep time to make sure it's finished
             verifyTrue(150 < parseInt(listbox.$n("body").get("scrollTop")));
             for (int i = 0; i < 15; i++) {
                 keyPressNative(UP);

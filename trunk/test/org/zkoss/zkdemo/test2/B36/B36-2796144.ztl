@@ -14,7 +14,7 @@
 			format="MM/dd/yyyy hh:mm a" >
 			<attribute name="onChange" >
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd @ hh:mm:ss a") ;
-			
+
 			dateValue.setValue(sdf.format(self.getValue()) ) ;
 			dateValue2.setValue(self.getText()) ;
 			</attribute>
@@ -43,6 +43,7 @@
 			String time = jq("@timebox input").val();
 			click(jq("td.z-calendar-seld"));
 			waitResponse();
+			sleep(500);
 			verifyTrue(dateValue2.get("value").indexOf(time) > 0);
 		]]></client>
 	</case>
