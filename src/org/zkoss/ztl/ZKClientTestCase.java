@@ -2,9 +2,9 @@
 
 {{IS_NOTE
 	Purpose:
-		
+
 	Description:
-		
+
 	History:
 		Dec 4, 2009 9:50:12 AM , Created by jumperchen
 }}IS_NOTE
@@ -23,16 +23,16 @@ package org.zkoss.ztl;
  */
 public class ZKClientTestCase extends ZKTestCase {
 	protected int _timeout;
-	
+
 	/**
 	 * Waits for Ajax response.
 	 * <p>By default the timeout time is specified in config.properties
-	 * @see #waitResponse(int) 
+	 * @see #waitResponse(int)
 	 */
 	protected void waitResponse() {
 		waitResponse(_timeout);
 	}
-	
+
 	/**
 	 * Waits for Ajax response according to the timeout attribute.
 	 * @param timeout the time. (millisecond).
@@ -46,7 +46,7 @@ public class ZKClientTestCase extends ZKTestCase {
 			}
 		}
 	}
-	
+
 	/**
 	 * Remove all of the children of the given widget.(internal use only)
 	 */
@@ -57,7 +57,7 @@ public class ZKClientTestCase extends ZKTestCase {
 		}
 	}
 
-    /**	
+    /**
      * Causes the currently executing thread to sleep for the specified number
      * of milliseconds, subject to the precision and accuracy of system timers
      * and schedulers. The thread does not lose ownership of any monitors.
@@ -69,11 +69,11 @@ public class ZKClientTestCase extends ZKTestCase {
 		} catch (InterruptedException e) {
 		}
 	}
-	
+
 	protected void runZscript(String zscript) {
 		getEval("zAu.send(new zk.Event(null, 'onZTLService', '"+ zscript + "', 10))");
 	}
-	
+
 	/**
 	 * Returns the Widget object of the UUID.
 	 * @param number the number of the widget ID.
@@ -83,7 +83,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	protected Widget widget(int number) {
 		return widget(uuid(number));
 	}
-	
+
 	/**
 	 * Returns the Widget object of the UUID.
 	 * @param uuid the widget ID.
@@ -91,7 +91,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	protected Widget widget(String uuid) {
 		return new Widget(uuid);
 	}
-	
+
 	/**
 	 * Returns the Widget object from the JQuery object.
 	 * @param jQuery the JQuery object.
@@ -99,7 +99,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	protected Widget widget(JQuery jQuery) {
 		return new Widget(jQuery);
 	}
-	
+
 	/**
 	 * Returns the Jquery object of the selector
 	 * <p> Default: without "#" sign
@@ -108,7 +108,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	protected JQuery jq(String selector) {
 		return new JQuery(selector);
 	}
-	
+
 	/**
 	 * Returns the Jquery object of the ZKClientObject.
 	 * @param el the ZKClientObject
@@ -116,7 +116,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	protected JQuery jq(ClientWidget el) {
 		return new JQuery(el);
 	}
-	
+
 	/**
 	 * Returns the ZK object of the ZKClientObject.
 	 * @param el the ZKClientObject
@@ -124,7 +124,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	protected ZK zk(ClientWidget el) {
 		return new ZK(el);
 	}
-	
+
 	/**
 	 * Returns the ZK object of the selector
 	 * @param selector the selector of the element
@@ -134,7 +134,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	}
 	/**
 	 * Returns the int value from the given string number.
-	 * @param number the string number, if null, 0 is assumed.
+	 * @param number the string number, if null or empty, 0 is assumed.
 	 */
 	public static int parseInt(String number) {
 		if (number != null) {
@@ -142,7 +142,12 @@ public class ZKClientTestCase extends ZKTestCase {
 			int decimal = number.indexOf('.');
 			if (decimal > 0)
 				number = number.substring(0, decimal);
-			return Integer.parseInt(number);
+
+			if(!"".equals(number.trim())){
+				return Integer.parseInt(number);
+			}else{
+				return 0;
+			}
 		}
 		return 0;
 	}
@@ -165,7 +170,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	public void clickAt(ClientWidget locator, String coordString) {
 		super.clickAt(locator.toString(), coordString);
 	}
-	
+
 	public void contextMenu(ClientWidget locator) {
 		super.contextMenu(locator.toString());
 	}
@@ -186,17 +191,17 @@ public class ZKClientTestCase extends ZKTestCase {
 		public void dragAndDrop(ClientWidget locator, String movementsString) {
 		super.dragAndDrop(locator.toString(), movementsString);
 	}
-	
+
 	public void dragdropTo(ClientWidget locatorOfObjectToBeDragged, String from, String to) {
 		super.dragdropTo(locatorOfObjectToBeDragged.toString(), from, to);
 	}
-	
+
 	public void dragdropToObject(ClientWidget locatorOfObjectToBeDragged,
 			ClientWidget locatorOfDragDestinationObject, String from, String to) {
 		super.dragdropToObject(locatorOfObjectToBeDragged.toString(),
 				locatorOfDragDestinationObject.toString(), from, to);
 	}
-	
+
 	public void dragAndDropToObject(ClientWidget locatorOfObjectToBeDragged,
 			ClientWidget locatorOfDragDestinationObject) {
 		super.dragAndDropToObject(locatorOfObjectToBeDragged.toString(), locatorOfDragDestinationObject.toString());
@@ -213,7 +218,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	public void focus(ClientWidget locator) {
 		super.focus(locator.toString());
 	}
-	
+
 	public void blur(ClientWidget locator) {
 		super.fireEvent(locator.toString(), "blur");
 	}
@@ -354,7 +359,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	}
 
 	public void mouseDownRightAt(ClientWidget locator, String coordString) {
-		super.mouseDownRightAt(locator.toString(), coordString);		
+		super.mouseDownRightAt(locator.toString(), coordString);
 	}
 
 	public void mouseMove(ClientWidget locator) {
@@ -416,7 +421,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	public void setCursorPosition(ClientWidget locator, String position) {
 		super.setCursorPosition(locator.toString(), position);
 	}
-	
+
 	public void submit(ClientWidget formLocator) {
 		super.submit(formLocator.toString());
 	}
@@ -444,5 +449,5 @@ public class ZKClientTestCase extends ZKTestCase {
 	public void uncheck(ClientWidget locator) {
 		super.uncheck(locator.toString());
 	}
-	
+
 }
