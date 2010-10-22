@@ -2,7 +2,6 @@ package org.zkoss.ztl.util;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 /**
  *
@@ -12,20 +11,23 @@ import java.util.regex.Pattern;
 public class ColorVerifingHelper {
 
 	private static ColorVerifingHelper instance;
-
-	private Map<String, String> colorMap;
-
-	public static final String RED = "red";
-
-	public static final String GREEN = "green";
-
-	public static final String BLUE = "blue";
+	private static final String TEMP_HEX = "^\\#[0-9a-fA-F]+[0-9a-fA-F]+[0-9a-fA-F]+";
+	private static final String BYTE_NUMBER = "((1?[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))";
+	private static final String TEMP_RGB = "^(?i)[r][g][b]\\(" + BYTE_NUMBER +"," +
+														" *" + BYTE_NUMBER +"," +
+														" *" + BYTE_NUMBER +"\\)";
+	private static final String TEMP_NAMED_COLOR = "[a-zA-Z]+";
+	private static final Map<String, String> commonColorMap = new HashMap<String, String>();
+	
+	static {
+		// You can refer this link to improve color map.
+		// http://web.njit.edu/~kevin/rgb.txt.html
+		commonColorMap.put("red", "#ff0000");
+		commonColorMap.put("green", "#00ff00");
+		commonColorMap.put("blue", "#0000ff");
+	}
 
 	private ColorVerifingHelper() {
-		colorMap = new HashMap<String, String>();
-		colorMap.put(RED, "(?i)((rgb\\( *255 *, *0 *, *0 *\\))|(#ff0000)|(red))");
-		colorMap.put(GREEN, "(?i)((rgb\\( *0 *, *255 *, *0 *\\))|(#00ff00)|(green))");
-		colorMap.put(BLUE, "(?i)((rgb\\( *0 *, *0 *, *255 *\\))|(#0000ff)|(blue))");
 	}
 
 	public static ColorVerifingHelper getInstance() {
@@ -34,11 +36,6 @@ public class ColorVerifingHelper {
 		}
 
 		return instance;
-	}
-
-	public boolean isColorMatch(String value1, String value2) {
-		String colorString = colorMap.get(value1);
-		return colorString.contains(value2);
 	}
 
 //	test case for red
@@ -63,26 +60,44 @@ public class ColorVerifingHelper {
 //		System.out.println("false=>" + "redd".matches(insensitivePattern));
 //		System.out.println("true=>" + "rEd".matches(insensitivePattern));
 //	}
+	
+	public boolean isEqualColor(String value1, String value2) {
+		if (value1 == null || value2 == null) {
+			throw new IllegalArgumentException("Incorrect String! Please check again.");
+		}
+		
+		String color1 = transform(value1.toLowerCase());
+		String color2 = transform(value2.toLowerCase());
+		
+		if (color1 == null || color2 == null) {
+			return false;
+		}
+		
+		return color1.equals(color2);
+	}
 
-	// public boolean compare(String value1, String value2) {
-	//
-	// if(value1==null || value2==null)
-	// throw new IllegalArgumentException("can't be NULL!");
-	//
-	// String color1 = transform(value1);
-	// String color2 = transform(value2);
-	//
-	// return color1.equals(color2);
-	//
-	//
-	// }
-	//
-	// private static final String HEX =
-	// "^\\#[0-9a-fA-F]+[0-9a-fA-F]+[0-9a-fA-F]+";
-	// private static final String RGB = "^rgb\\(";
-	// private static final String NAMED_COLOR = "[a-zA-z]+";
-	//
-	// public String transform(String value1) {
-	// return null;
-	// }
+	public String transform(String value) {
+		if (value.matches(TEMP_HEX)) {
+			return value;
+		} else if (value.matches(TEMP_RGB)) {
+			String temp = value.replace("rgb(", "");
+			temp = temp.replace(")", "");
+			temp = temp.replace(" ", "");
+			String[] colorCodes = temp.split(",");
+			StringBuffer strBuff = new StringBuffer("#");
+			
+			for(String s : colorCodes) {
+				int colorNum = Integer.parseInt(s);
+				String hexString = Integer.toHexString(colorNum);
+				hexString = hexString.length() > 1 ? hexString : "0" + hexString;
+				strBuff.append(hexString);
+			}
+			
+			return strBuff.toString();
+		} else if (value.matches(TEMP_NAMED_COLOR)) {
+			return commonColorMap.get(value);
+		}
+		
+		throw new IllegalArgumentException("Not a color: \"" + value+"\"");
+	}
 }
