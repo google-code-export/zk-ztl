@@ -15,18 +15,15 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			click(btn);
-			waitResponse();
-			JQuery jq = jq("@window");
-			int left = parseInt(jq.css("left"));
-			int top = parseInt(jq.css("top"));
-			dragdropTo(jq("@window div[id$=\"cap\"]"), "10,10", "160,160");
-			int currentLeft = parseInt(jq.css("left"));
-			int currentTop = parseInt(jq.css("top"));
-			int leftDiff = Math.abs((left+150) - currentLeft);
-			int topDiff = Math.abs((top+150) - currentTop);
-			verifyTrue(leftDiff <= 3);
-			verifyTrue(topDiff <= 3);
+				click(btn);
+				waitResponse();
+				JQuery win= jq("@window");
+				int left = parseInt(win.css("left"));
+				int top = parseInt(win.css("top"));
+				dragdropTo(jq("@window div[id$=\"cap\"]"), "10,10", "160,160");
+
+				verifyTolerant((left+150) , parseInt(win.css("left")) ,3);
+				verifyTolerant((top+150) , parseInt(win.css("top")) ,3);
 		]]></client>
 	</case>
 </test>
