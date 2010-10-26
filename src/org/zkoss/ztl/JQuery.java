@@ -79,6 +79,24 @@ public class JQuery extends ClientWidget {
 	}
 
 	/**
+	 * check the jquery element match the selector. (We port this from jQuery);
+	 *
+	 * @param selector
+	 *            the JQuery allowed
+	 * @return
+	 */
+	public boolean is(String selector) {
+		return Boolean.valueOf((ZKTestCase.getCurrent().getEval(_out.toString() + ".is('" + selector + "')")));
+	}
+
+	/**
+	 * a short cut for visble
+	 */
+	public boolean isVisible() {
+		return is(":visible");
+	}
+
+	/**
 	 * Finds the element from the given selector.
 	 *
 	 * @param selector
@@ -279,16 +297,19 @@ public class JQuery extends ClientWidget {
 	}
 
 	/**
-	 * Returns the current computed positionLeft (the offsetLeft relative to
-	 * the parent) for the first element
+	 * Returns the current computed positionLeft (the offsetLeft relative to the
+	 * parent) for the first element
+	 *
 	 * @return
 	 */
 	public int positionLeft() {
 		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".position().left"));
 	}
+
 	/**
-	 * Returns the current computed positionTop (the offsetTop relative to
-	 * the parent) for the first element
+	 * Returns the current computed positionTop (the offsetTop relative to the
+	 * parent) for the first element
+	 *
 	 * @return
 	 */
 	public int positionTop() {
