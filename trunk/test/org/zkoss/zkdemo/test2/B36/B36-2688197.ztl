@@ -49,9 +49,13 @@
 				JQuery setHeight = jq("@button[label=\"set height\"] button");
 				JQuery noHeight = jq("@button[label=\"no height\"] button");
 				JQuery label = jq("@label");
+
 				click(setWidth);
+				waitResponse();
 				click(noHeight);
+				waitResponse();
 				click(label);
+				waitResponse();
 				JQuery node = jq(title.$n());
 
 				JQuery tl = jq("div.z-popup-tl");
@@ -77,8 +81,11 @@
 				verifyEquals(300, node.outerWidth());
 				verifyEquals(300, cl.outerWidth());
 				click(noWidth);
+				waitResponse();
 				click(setHeight);
+				waitResponse();
 				click(label);
+				waitResponse();
 
 				int width = node.outerWidth();
 				if (tlExist) {
@@ -96,9 +103,11 @@
 
 
 				click(noWidth);
+				waitResponse();
 				click(noHeight);
+				waitResponse();
 				click(label);
-
+				waitResponse();
 				if(tlExist){
 					sumHeight = tl.outerHeight() + cl.outerHeight() + bl.outerHeight();
 					int tlWidth = tl.outerWidth() + parseInt(tl.css("margin-right"));
