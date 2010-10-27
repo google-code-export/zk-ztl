@@ -215,10 +215,17 @@ public class ZKClientTestCase extends ZKTestCase {
 		super.fireEvent(locator.toString(), eventName);
 	}
 
+	/**
+	 * @browsers ie6,ie7,ie8,chrome7,firefox363,safari402
+	 * @param locator
+	 */
 	public void focus(ClientWidget locator) {
 		super.focus(locator.toString());
 	}
-
+	/**
+	 * @browsers ie6,ie7,ie8,chrome7,firefox363,safari402
+	 * @param locator
+	 */
 	public void blur(ClientWidget locator) {
 		super.fireEvent(locator.toString(), "blur");
 	}
@@ -341,6 +348,28 @@ public class ZKClientTestCase extends ZKTestCase {
 		super.keyPress(locator.toString(), keySequence);
 	}
 
+	/**
+	 * <pre>
+	 * 2010/10/27 TonyQ:
+	 * because there exist a lot of problem to press enter for ENTER key ,
+	 * so we build the method for it.
+	 *
+	 * <b>NOTICE:</b>Because we use the keyPressNative , so you need to
+	 * 	let computer focus on browser when you run the test case  which use this method,
+	 *  or the native key press will NOT work anyway.
+	 *
+	 * If you want modify this ,please make sure that browser compatibility is ok .
+	 * This is a hard method anyway.
+	 *
+	 * It is a issue for selenium.
+	 * </pre>
+	 * @browsers firefox,safari402,chrome,ie8,ie7,ie6 .
+	 */
+	public void keyPressEnter(ClientWidget locator){
+		keyDown(locator,"13"); // ie8,firefox3 need this
+		keyPressNative("10");  //safari ,chrome need this
+
+	}
 
 	public void keyUp(ClientWidget locator, String keySequence) {
 		super.keyUp(locator.toString(), keySequence);
