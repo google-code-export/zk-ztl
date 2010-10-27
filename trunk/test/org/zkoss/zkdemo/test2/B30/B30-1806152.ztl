@@ -28,18 +28,21 @@ model.add(">>Item Y :"+new java.util.Date());
 		<client><![CDATA[
 		verifyEquals("0", lb.nChildren());
 		click(btn);
+		waitResponse();
 		verifyEquals("1", lb.nChildren());
 		verifyTrue(lb.firstChild().get("label").startsWith(">>Item Y :"));
 		click(btn);
+		waitResponse();
 		verifyEquals("2", lb.nChildren());
 		verifyTrue(lb.lastChild().get("label").startsWith(">>Item Y :"));
-		
+
 		click(btn);
+		waitResponse();
 		verifyEquals("3", lb.nChildren());
-		
+
 		// assumed the height of the label is 15px
 		verifyTrue(jq(lb).outerHeight() > 15 * 3);
-		
+
 		verifyTrue(jq("@listitem:odd").hasClass("z-listbox-odd"));
 		]]></client>
 	</case>

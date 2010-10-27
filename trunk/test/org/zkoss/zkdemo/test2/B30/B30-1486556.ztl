@@ -14,6 +14,7 @@
 		<client>
 			focus(tb);
 			blur(tb);
+			sleep(200);
 			verifyTrue(jq(tb).hasClass("z-textbox-text-invalid"));
 		</client>
 	</case>
@@ -23,6 +24,7 @@
 		<client>
 			focus(tb);
 			click(btn);
+			waitResponse();
 			verifyTrue(jq(tb).hasClass("z-textbox-text-invalid"));
 		</client>
 	</case>

@@ -28,21 +28,25 @@
     	int hgh = jq(tabpanel1).outerHeight();
    		int tabhgh = jq(tabpanel2).outerHeight();
 		click(tb2.$n("close"));
+		waitResponse();
 		int hgh2 = jq(tabpanel1).outerHeight();
 		verifyEquals(hgh2 - hgh, tabhgh);
 
 		hgh = hgh2;
 		click(tb3.$n("close"));
+		waitResponse();
 		hgh2 = jq(tabpanel1).outerHeight();
 		verifyEquals(hgh2 - hgh, tabhgh);
 
 		hgh = hgh2;
 		click(tb4.$n("close"));
+		waitResponse();
 		hgh2 = jq(tabpanel1).outerHeight();
 		verifyEquals(hgh2 - hgh, tabhgh);
-		
+
 		hgh = hgh2;
 		click(tb5.$n("close"));
+		waitResponse();
 		hgh2 = jq(tabpanel1).outerHeight();
 		verifyEquals(hgh2 - hgh, tabhgh);
 		]]></client>
