@@ -12,11 +12,11 @@
 		</window>
 		 --></server>
 		<client><![CDATA[
-			click(btn);
+			click(btn);// here there doesn't exsit anything in zk session
 			waitResponse();
 			verifyTrue(btn.exists());
-			click(btn);
-			waitResponse();
+			click(btn);// here will be a timeout
+			sleep(1000);
 			verifyFalse(btn.exists());
 		]]></client>
 	</case>

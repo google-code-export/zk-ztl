@@ -6,13 +6,13 @@
 			  <zscript>
 				void createMenu(Menupopup popup) {
 				  popup.appendChild(new Menuitem("Index"));
-				
+
 				  Menu about = new Menu("About");
 				  Menupopup p = new Menupopup();
 				  about.appendChild(p);
 				  popup.appendChild(new Menuseparator());
 				  popup.appendChild(about);
-				
+
 				  p.addEventListener("onOpen", new EventListener() {
 				    public void onEvent(Event event) {
 				      event.getTarget().appendChild(new Menuitem("About ZK"));
@@ -21,7 +21,7 @@
 				  });
 				}
 			  </zscript>
-			
+
 			  <menubar>
 			    <menu label="File">
 			      <menupopup>
@@ -39,6 +39,7 @@
 		--></server>
 		<client><![CDATA[
 			click(jq("@menu[label=\"Help\"]"));
+			waitResponse();
 			verifyTrue(jq("div.z-menu-popup").outerWidth() > jq("@menu:eq(1)").outerWidth());
 		]]></client>
 	</case>
