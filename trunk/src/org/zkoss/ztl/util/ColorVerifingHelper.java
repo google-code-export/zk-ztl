@@ -18,13 +18,13 @@ public class ColorVerifingHelper {
 														" *" + BYTE_NUMBER +"\\)";
 	private static final String TEMP_NAMED_COLOR = "[a-zA-Z]+";
 	private static final Map<String, String> commonColorMap = new HashMap<String, String>();
-	
+
 	static {
 		// You can refer this link to improve color map.
 		// http://web.njit.edu/~kevin/rgb.txt.html
-		commonColorMap.put("red", "#ff0000");
-		commonColorMap.put("green", "#00ff00");
-		commonColorMap.put("blue", "#0000ff");
+		commonColorMap.put("red", "ff0000");
+		commonColorMap.put("green", "00ff00");
+		commonColorMap.put("blue", "0000ff");
 		commonColorMap.put("Grey", "545454");
 		commonColorMap.put("grey", "BEBEBE");
 		commonColorMap.put("LightGray", "D3D3D3");
@@ -722,20 +722,20 @@ public class ColorVerifingHelper {
 //		System.out.println("false=>" + "redd".matches(insensitivePattern));
 //		System.out.println("true=>" + "rEd".matches(insensitivePattern));
 //	}
-	
+
 	public boolean isEqualColor(String value1, String value2) {
 		if (value1 == null || value2 == null) {
 			throw new IllegalArgumentException("Incorrect String! Please check again.");
 		}
-		
+
 		String color1 = transform(value1.toLowerCase());
 		String color2 = transform(value2.toLowerCase());
-		
+
 		if (color1 == null || color2 == null) {
 			return false;
 		}
-		
-		return color1.equals(color2);
+
+		return color1.equalsIgnoreCase(color2);
 	}
 
 	public String transform(String value) {
@@ -747,19 +747,19 @@ public class ColorVerifingHelper {
 			temp = temp.replace(" ", "");
 			String[] colorCodes = temp.split(",");
 			StringBuffer strBuff = new StringBuffer("#");
-			
+
 			for(String s : colorCodes) {
 				int colorNum = Integer.parseInt(s);
 				String hexString = Integer.toHexString(colorNum);
 				hexString = hexString.length() > 1 ? hexString : "0" + hexString;
 				strBuff.append(hexString);
 			}
-			
+
 			return strBuff.toString();
 		} else if (value.matches(TEMP_NAMED_COLOR)) {
-			return commonColorMap.get(value);
+			return "#" + commonColorMap.get(value);
 		}
-		
+
 		throw new IllegalArgumentException("Not a color: \"" + value+"\"");
 	}
 }
