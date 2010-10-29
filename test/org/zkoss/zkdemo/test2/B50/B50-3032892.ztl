@@ -90,7 +90,7 @@
 			focus(ti1.$n("real"));
 			verifyEquals(jq(ti1).outerWidth(), jq(t1).outerWidth());
 			focus(ti2.$n("real"));
-			verifyTolerant(jq(ti2).outerWidth() ,  jq(t2).outerWidth(), 1);
+			verifyTolerant(jq(ti2).outerWidth() ,  jq(t2).outerWidth(), 5);
 			focus(ti3.$n("real"));
 			verifyEquals(jq(ti3).outerWidth(), jq(t3).outerWidth());
 			focus(ti4.$n("real"));
@@ -99,7 +99,7 @@
 			verifyEquals(jq(ci1).outerWidth(), jq(c1).outerWidth());
 			focus(ci2.$n("real"));
 
-			verifyTolerant(jq(ci2).outerWidth() ,  jq(c2).outerWidth(),1);
+			verifyTolerant(jq(ci2).outerWidth() ,  jq(c2).outerWidth(), 5);
 			focus(ci3.$n("real"));
 			verifyEquals(jq(ci3).outerWidth(), jq(c3).outerWidth());
 			focus(ci4.$n("real"));
