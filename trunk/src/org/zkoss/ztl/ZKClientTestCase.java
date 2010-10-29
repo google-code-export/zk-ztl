@@ -343,7 +343,12 @@ public class ZKClientTestCase extends ZKTestCase {
 	public void keyDown(ClientWidget locator, String keySequence) {
 		super.keyDown(locator.toString(), keySequence);
 	}
-
+	
+	/**
+	 * 2010/10/29 TonyQ:note: when typing number in chrome , it failed 
+	 * @param locator
+	 * @param keySequence
+	 */
 	public void keyPress(ClientWidget locator, String keySequence) {
 		super.keyPress(locator.toString(), keySequence);
 	}
