@@ -18,7 +18,6 @@ import java.util.List;
 
 import org.zkoss.ztl.util.ConfigHelper;
 
-import com.thoughtworks.selenium.SeleneseTestCase;
 import com.thoughtworks.selenium.Selenium;
 /**
  * A skeleton of ZK Selenium test, which implements all of the methods of {@link Selenium}
@@ -70,6 +69,10 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	 * The keycode of the DELETE key
 	 */
 	public static final String DELETE = "46";
+	/**
+	 * keypressNative native follow java.awt.Event's keycode .
+	 */
+	public static final String DELETE_NATIVE = "127";
 	/**
 	 * The keycode of the BACKSPACE key
 	 */
