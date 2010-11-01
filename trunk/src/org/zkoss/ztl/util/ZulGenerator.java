@@ -58,7 +58,7 @@ public class ZulGenerator {
 		return content.replaceAll("(?s)(?m)<\\!--.*?-->", "")
 			//filter the pattern because it will cause service say error.
 			//<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-			.replaceAll("<\\?xml.*?\\?>","");
+			.replaceAll("<\\?(xml|taglib).*?\\?>","");
 
 	}
 
