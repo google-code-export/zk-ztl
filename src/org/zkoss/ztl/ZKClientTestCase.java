@@ -371,9 +371,9 @@ public class ZKClientTestCase extends ZKTestCase {
 	 * @browsers firefox,safari402,chrome,ie8,ie7,ie6 .
 	 */
 	public void keyPressEnter(ClientWidget locator){
-		keyDown(locator,"13"); // ie8,firefox3 need this
+		focus(locator);
+//		keyDown(locator,"13"); // ie8,firefox3 need this
 		keyPressNative("10");  //safari ,chrome need this
-
 	}
 
 	public void keyUp(ClientWidget locator, String keySequence) {
@@ -468,6 +468,20 @@ public class ZKClientTestCase extends ZKTestCase {
 		focus(locator);
 		super.type(locator.toString(), value);
 		blur(locator);
+	}
+	
+	/**
+	 * a shortcur for getting alert message.
+	 * (Take care about the dom class and model will be different 
+	 * 	when event-thread is enable/disable , so we use title .)  
+	 * @return
+	 */
+	public String getAlertMessage(){
+		return jq("@window[title=\"ZK\"] @label").text();
+	}
+	
+	public void clickAlert(){
+		click(jq("@window[title=\"ZK\"] @button"));
 	}
 
 	/**
