@@ -40,6 +40,19 @@ Usage:
 			<fileset dir="${classes.dir}" includes="**"/>
 		</jar>
 	</target>
+	<target name="genzul" depends="compile,jar">
+		<java classname="org.zkoss.ztl.util.ZulGenerator"
+           	fork="true">
+         <arg value="${src}"/>
+         <arg value="${dist}"/>
+         <classpath>
+           <pathelement path="${classes.dir}"/>
+			<fileset dir="${lib.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+         </classpath>
+       </java>
+	</target>    
 	<target name="generate" depends="compile,jar">
 		<java classname="org.zkoss.ztl.util.ZtlGenerator"
            	fork="true">
