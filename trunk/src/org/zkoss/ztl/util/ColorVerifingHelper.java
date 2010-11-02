@@ -225,7 +225,6 @@ public class ColorVerifingHelper {
 		commonColorMap.put("azure2", "E0EEEE");
 		commonColorMap.put("azure3", "C1CDCD");
 		commonColorMap.put("azure4", "838B8B");
-		commonColorMap.put("blue", "0000FF");
 		commonColorMap.put("blue1", "0000FF");
 		commonColorMap.put("blue2", "0000EE");
 		commonColorMap.put("blue3", "0000CD");
@@ -498,7 +497,6 @@ public class ColorVerifingHelper {
 		commonColorMap.put("pink4", "8B636C");
 		commonColorMap.put("Flesh", "F5CCB0");
 		commonColorMap.put("Feldspar", "D19275");
-		commonColorMap.put("red", "FF0000");
 		commonColorMap.put("red1", "FF0000");
 		commonColorMap.put("red2", "EE0000");
 		commonColorMap.put("red3", "CD0000");
@@ -723,7 +721,7 @@ public class ColorVerifingHelper {
 //		System.out.println("true=>" + "rEd".matches(insensitivePattern));
 //	}
 
-	public boolean isEqualColor(String value1, String value2) {
+	public static boolean isEqualColor(String value1, String value2) {
 		if (value1 == null || value2 == null) {
 			throw new IllegalArgumentException("Incorrect String! Please check again.");
 		}
@@ -738,7 +736,7 @@ public class ColorVerifingHelper {
 		return color1.equalsIgnoreCase(color2);
 	}
 
-	public String transform(String value) {
+	public static String transform(String value) {
 		if (value.matches(TEMP_HEX)) {
 			return value;
 		} else if (value.matches(TEMP_RGB)) {
