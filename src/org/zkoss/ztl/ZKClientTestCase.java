@@ -367,6 +367,8 @@ public class ZKClientTestCase extends ZKTestCase {
 	 * This is a hard method anyway.
 	 *
 	 * It is a issue for selenium.
+	 * 
+	 * @note it will trigger onChanging that we unexpect.
 	 * </pre>
 	 * @browsers firefox,safari402,chrome,ie8,ie7,ie6 .
 	 */
