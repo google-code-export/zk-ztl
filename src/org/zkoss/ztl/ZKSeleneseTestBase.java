@@ -22,9 +22,9 @@ import java.io.StringWriter;
 import java.lang.reflect.Method;
 import java.util.regex.Pattern;
 
-import org.zkoss.ztl.util.ZKSelenium;
-
 import junit.framework.AssertionFailedError;
+
+import org.zkoss.ztl.util.ZKSelenium;
 
 import com.thoughtworks.selenium.DefaultSelenium;
 import com.thoughtworks.selenium.Selenium;
@@ -388,9 +388,11 @@ public class ZKSeleneseTestBase {
 	    }
 	    
 	    private void error(String s, Selenium selenium) {
-	    	if (selenium instanceof ZKSelenium)
-	    		verificationErrors.append("[Browser Brand]: ").append(((ZKSelenium)selenium).getBrowserBrand() + "\n").append(s);
-	    	else
+	    	if (selenium instanceof ZKSelenium){
+	    		ZKSelenium zselenium = ((ZKSelenium)selenium);
+	    		verificationErrors.append("[Browser Brand]: ").append(zselenium.getBrowserBrand())
+	    			.append(" *"+zselenium.getBrowserName()+"\n").append(s);
+	    	}else
 	    		verificationErrors.append(s);
 	    }
 	    

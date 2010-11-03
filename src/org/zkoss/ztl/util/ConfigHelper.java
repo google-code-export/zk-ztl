@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import com.thoughtworks.selenium.DefaultSelenium;
 import com.thoughtworks.selenium.HttpCommandProcessor;
 import com.thoughtworks.selenium.Selenium;
 import com.unitedinternet.portal.selenium.utils.logging.HtmlResultFormatter;
@@ -39,33 +38,50 @@ import com.unitedinternet.portal.selenium.utils.logging.LoggingUtils;
 
 /**
  * ZTL configuration helper.
+ * 
  * @author sam
  * 
  */
 public class ConfigHelper {
 
-	private final static String[] BROWSER_NAMES = new String[] { "firefox",
-			"chrome", "safari", "opera", "ie", "iexplore", "ff" };
+	private final static String[] BROWSER_NAMES = new String[] { "firefox", "chrome", "safari" ,"safari5", "opera", "ie", "ie6",
+			"ie7", "ie8", "iexplore", "ff" };
 
-	//private final static String[] PORTABLE_BROWSERS = new String[] { "firefox" };
+	// private final static String[] PORTABLE_BROWSERS = new String[] {
+	// "firefox" };
 
 	private final static String ALL_BROWSERS = "all";
+
 	private static List<String> _allBrowsers = new LinkedList<String>();
 
 	private String _client;
+
 	private String _server;
+
 	private String _contextPath;
+
 	private String _action;
+
 	private String _timeout;
+
 	private String _delay;
+
 	private String _browser;
+
 	private Properties _prop;
+
 	private long _lastModified;
+
 	private static ConfigHelper ch = new ConfigHelper();
+
 	/**
 	 * key : Firefox, IE ... value : *firefox, *iexplore ...
 	 */
 	private HashMap<String, String> _browserNameMap;
+
+	private HashMap<String, String> _browserPathMap;
+
+	private HashMap<String, String> _browserClient;
 
 	/**
 	 * key : Firefox, IE ... value : Selenium browser
@@ -74,7 +90,7 @@ public class ConfigHelper {
 
 	private ConfigHelper() {
 	}
-	
+
 	public static ConfigHelper getInstance() {
 		try {
 			ch.init();
@@ -87,6 +103,7 @@ public class ConfigHelper {
 		}
 		return ch;
 	}
+
 	public String getClient() {
 		return _client;
 	}
@@ -114,9 +131,13 @@ public class ConfigHelper {
 	public String getBrowser() {
 		return _browser;
 	}
-	
+
 	public long lastModified() {
 		return _lastModified;
+	}
+
+	public String getBrowserBand(String key) {
+		return _browserNameMap.get(key);
 	}
 
 	/**
@@ -131,16 +152,24 @@ public class ConfigHelper {
 
 		Selenium browser = _browserHolder.get(key);
 		if (browser == null) {
-			final String browserBrand = _browserNameMap.get(key); 
-			browser = new ZKSelenium(new HttpCommandProcessor(_client
-					+ "/selenium-server/driver/", browserBrand,
-					_server), browserBrand);
+			// @Todo add multiple client support
+			final String browserpath = _browserPathMap.get(key);
+
+			String browserBand = getBrowserBand(key) + ("".equals(browserpath) ? "" : " " + browserpath);
+			if (_browserClient.containsKey(key)) {
+				browser = new ZKSelenium(new HttpCommandProcessor(_browserClient.get(key) + "/selenium-server/driver/",
+						browserBand, _server), browserBand,key);
+			} else {
+				browser = new ZKSelenium(new HttpCommandProcessor(_client + "/selenium-server/driver/", browserBand,
+						_server), browserBand,key);
+			}
+			System.out.println("connecting "+key);
 			browser.setSpeed(getDelay());
 			_browserHolder.put(key, browser);
 		}
 		return browser;
 	}
-	
+
 	public List<Selenium> getBrowsers(String keys) {
 		List<String> browser = Arrays.asList(keys.split(","));
 		List<Selenium> list = new ArrayList<Selenium>();
@@ -153,37 +182,51 @@ public class ConfigHelper {
 			list.add(getBrowserFromHolder(key));
 		return list;
 	}
-	
+
 	private void init() throws IOException, Exception {
 		if (_browserNameMap == null) {
 			_browserNameMap = new HashMap<String, String>();
 
 			_browserNameMap.put("firefox", "*firefox");
 			_browserNameMap.put("ie", "*iexplore");
+			_browserNameMap.put("ie6", "*iexplore");
+			_browserNameMap.put("ie7", "*iexplore");
+			_browserNameMap.put("ie8", "*iexplore");
 			_browserNameMap.put("chrome", "*googlechrome");
 			_browserNameMap.put("safari", "*safari");
+			_browserNameMap.put("safari5", "*safariproxy");
 			_browserNameMap.put("opera", "*opera");
+		}
+
+		if (_browserPathMap == null) {
+			_browserPathMap = new HashMap<String, String>();
+		}
+		if (_browserClient == null) {
+			_browserClient = new HashMap<String, String>();
 		}
 
 		initProperty();
 	}
 
-	private void addBrowserNameSetting(String browserName,
-			String browserPath) {
+	private void addBrowserNameSetting(String browserName, String browserPath) {
 		/**
-		String browser = null;
-		for (String portable : BROWSER_NAMES) {
-			if (browserName.toLowerCase().startsWith(portable)) {
-				browser = portable;
-				break;
-			}
-		}
-		if (browser == null)
-			return;
-		*/
+		 * String browser = null; for (String portable : BROWSER_NAMES) { if
+		 * (browserName.toLowerCase().startsWith(portable)) { browser =
+		 * portable; break; } } if (browser == null) return;
+		 */
 		browserName = browserName.toLowerCase();
-		String setting = "*" + browserName + " " + browserPath;
-		_browserNameMap.put(browserName, setting);
+		String setting = browserPath;
+		if (browserPath.indexOf(";") != -1) {
+			String[] tokens = browserPath.split(";");
+			_browserClient.put(browserName, tokens[0]);
+			if(tokens.length >1){
+				browserPath = tokens[1];
+			}else{
+				browserPath = "";
+			}
+			setting = browserPath;
+		}
+		_browserPathMap.put(browserName, setting);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -203,19 +246,16 @@ public class ConfigHelper {
 				_browser = _prop.getProperty("browser");
 				_timeout = _prop.getProperty("timeout");
 
-				for (Iterator iter = _prop.entrySet().iterator(); iter
-						.hasNext();) {
+				for (Iterator iter = _prop.entrySet().iterator(); iter.hasNext();) {
 					final Map.Entry setting = (Map.Entry) iter.next();
 					String strKey = (String) setting.getKey();
 					if (isBrowserSetting(strKey)) {
-						addBrowserNameSetting(strKey, (String) setting
-								.getValue());
+						addBrowserNameSetting(strKey, (String) setting.getValue());
 						continue;
 					}
 				}
 
-				String[] allBrowsers = _prop.getProperty(ALL_BROWSERS).split(
-						",");
+				String[] allBrowsers = _prop.getProperty(ALL_BROWSERS).split(",");
 				for (String browser : allBrowsers) {
 					String browserKey = browser.trim();
 					if (_browserNameMap.containsKey(browserKey)) {
@@ -238,66 +278,63 @@ public class ConfigHelper {
 		return false;
 	}
 
-	
 	/**
-	 *  TODO Logging untested yet
+	 * TODO Logging untested yet
 	 */
 	protected static final String RESULT_FILE_ENCODING = "UTF-8";
+
 	protected static final String SCREENSHOT_PATH = "screenshots";
+
 	protected static final String RESULTS_BASE_PATH = "Log";
+
 	protected String screenshotsResultsPath;
-	
-	private LoggingSelenium createLoggingSelenium(String browserType, BufferedWriter loggingWriter){
+
+	private LoggingSelenium createLoggingSelenium(String browserType, BufferedWriter loggingWriter) {
 		LoggingSelenium browser = new LoggingDefaultSelenium(createLoggingProcessor(browserType, loggingWriter));
 		browser.setSpeed(getDelay());
-		
+
 		return browser;
 	}
-	
-	private LoggingCommandProcessor createLoggingProcessor(String browserType, BufferedWriter loggingWriter){
+
+	private LoggingCommandProcessor createLoggingProcessor(String browserType, BufferedWriter loggingWriter) {
 		screenshotsResultsPath = new File(RESULTS_BASE_PATH + File.separator + SCREENSHOT_PATH).getAbsolutePath();
 		if (!new File(screenshotsResultsPath).exists()) {
-			 new File(screenshotsResultsPath).mkdirs();
+			new File(screenshotsResultsPath).mkdirs();
 		}
-		
+
 		LoggingResultsFormatter htmlFormatter = new HtmlResultFormatter(loggingWriter, RESULT_FILE_ENCODING);
-		htmlFormatter.setScreenShotBaseUri(SCREENSHOT_PATH+"/");
+		htmlFormatter.setScreenShotBaseUri(SCREENSHOT_PATH + "/");
 		htmlFormatter.setAutomaticScreenshotPath(screenshotsResultsPath);
-		LoggingCommandProcessor myProcessor = 
-			new LoggingCommandProcessor(new HttpCommandProcessor(getClient() + "/selenium-server/driver/",
-																 browserType,
-																 getServer()), htmlFormatter);
-		
+		LoggingCommandProcessor myProcessor = new LoggingCommandProcessor(new HttpCommandProcessor(getClient()
+				+ "/selenium-server/driver/", browserType, getServer()), htmlFormatter);
+
 		return myProcessor;
 	}
 
-	
-	public List<LoggingSelenium> getLoggingBrowsers(String keys, BufferedWriter writer){
+	public List<LoggingSelenium> getLoggingBrowsers(String keys, BufferedWriter writer) {
 		List<String> browser = Arrays.asList(keys.split(","));
 		List<LoggingSelenium> list = new ArrayList<LoggingSelenium>();
 		if (browser.contains(ALL_BROWSERS)) {
 			for (String key : _allBrowsers)
-				list.add(createLoggingSelenium(key, writer ));
+				list.add(createLoggingSelenium(key, writer));
 			return list;
 		}
 		for (String key : browser)
 			list.add(createLoggingSelenium(key, writer));
 		return list;
 	}
-	
-	
-	protected String getCaptureScreenshotPath(){
+
+	protected String getCaptureScreenshotPath() {
 		return screenshotsResultsPath + File.separator + LoggingUtils.timeStampForFileName() + ".png";
 	}
-	
-	protected BufferedWriter createLoggerWriter(String target){
+
+	protected BufferedWriter createLoggerWriter(String target) {
 		String resultsPath = new File(RESULTS_BASE_PATH).getAbsolutePath();
 		String resultHtmlFileName = resultsPath + File.separator + target + "_TestResult.html";
 		if (!new File(resultHtmlFileName).exists()) {
-			 new File(resultHtmlFileName).mkdirs();
+			new File(resultHtmlFileName).mkdirs();
 		}
-		BufferedWriter loggingWriter = LoggingUtils.createWriter(resultHtmlFileName,
-																  RESULT_FILE_ENCODING, true);
+		BufferedWriter loggingWriter = LoggingUtils.createWriter(resultHtmlFileName, RESULT_FILE_ENCODING, true);
 		return loggingWriter;
 	}
 

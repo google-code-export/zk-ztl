@@ -17,6 +17,7 @@ package org.zkoss.ztl;
 import java.util.List;
 
 import org.zkoss.ztl.util.ConfigHelper;
+import org.zkoss.ztl.util.ZKSelenium;
 
 import com.thoughtworks.selenium.Selenium;
 /**
@@ -131,6 +132,7 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	 * Launches the browser with a new Selenium session
 	 */
 	protected void start(Selenium selenium) {
+		System.out.println("testing:"+((ZKSelenium)selenium).getBrowserName());
 		selenium.start();
 		selenium.open(target);
 		_selenium.set(selenium);
