@@ -315,5 +315,12 @@ public class JQuery extends ClientWidget {
 	public int positionTop() {
 		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".position().top"));
 	}
+	
+	public int scrollTop(){
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".scrollTop()"));
+	}
 
+	public int scrollTop(int value){
+		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".scrollTop(\""+value+"\")"));
+	}
 }
