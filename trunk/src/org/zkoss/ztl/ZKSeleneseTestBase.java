@@ -355,7 +355,7 @@ public class ZKSeleneseTestBase {
 	    public void verifyNotEquals(Object s1, Object s2, Selenium selenium) {
 	        try {
 	            assertNotEquals(s1, s2);
-	        } catch (AssertionFailedError e) {
+	        } catch (Error e) {
 	        	error(throwableToString(e), selenium);
 	        }
 	    }

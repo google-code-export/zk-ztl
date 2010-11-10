@@ -315,12 +315,48 @@ public class JQuery extends ClientWidget {
 	public int positionTop() {
 		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".position().top"));
 	}
-	
+	/**
+	 * getter for scrollTop
+	 * if multiple result , will receive first value.
+	 * @return
+	 */
 	public int scrollTop(){
 		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".scrollTop()"));
 	}
-
+	
+	/**
+	 * setter for scrollTop 
+	 * @param value
+	 * @return
+	 */
 	public int scrollTop(int value){
 		return ZKClientTestCase.parseInt(ZKTestCase.getCurrent().getEval(_out.toString() + ".scrollTop(\""+value+"\")"));
+	}
+	
+	/**
+	 * Note:This not a jQuery base method.
+	 * just a short cut ,in javascript's world equals get(0).scrollHeight
+	 * @return
+	 */
+	public int scrollHeight(){
+		return ZKClientTestCase.parseInt(get(0).get("scrollHeight"));
+	}
+	
+	/**
+	 * proxy for jQuery get method
+	 * @param index
+	 * @return Element  the dom element
+	 */
+	public Element get(int index){
+		return new Element(_out.toString()+"[" + index + "]");
+	}
+	
+	/**
+	 * proxy for jQuery eq method
+	 * @param index
+	 * @return
+	 */
+	public JQuery eq(int index){
+		return new JQuery(_out,".eq(" + index + ")");
 	}
 }
