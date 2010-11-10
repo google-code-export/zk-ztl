@@ -16,6 +16,9 @@ Copyright (C) 2009 Potix Corporation. All Rights Reserved.
  */
 package org.zkoss.ztl;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * A simulator of JQuery client side object, which wraps the JQuery client side
  * API.
@@ -23,7 +26,7 @@ package org.zkoss.ztl;
  * @author jumperchen
  *
  */
-public class JQuery extends ClientWidget {
+public class JQuery extends ClientWidget implements Iterable<JQuery>{
 
 	/**
 	 * The script of get jq by UUID
@@ -358,5 +361,48 @@ public class JQuery extends ClientWidget {
 	 */
 	public JQuery eq(int index){
 		return new JQuery(_out,".eq(" + index + ")");
+	}
+
+	@Override
+	public Iterator<JQuery> iterator() {
+		return new JQueryIerator(this);
+	}
+	/**
+	 * I use private class to prevent more complexly code in util.
+	 * No body should know how it works , 
+	 * just know that it return the JQuery object in order.
+	 * In fact , this is useful I think. 
+	 * @author Tony
+	 *
+	 */
+	private class JQueryIerator implements Iterator<JQuery>{
+		private JQuery _context;
+		private int _count;
+		private int _index = 0 ;
+		public JQueryIerator(JQuery context){
+			_context = context;
+			_count = _context.length();
+		}
+		@Override
+		public boolean hasNext() {
+			return _index == _count;
+		}
+		@Override
+		public JQuery next() {
+			if(!hasNext()){
+				throw new NoSuchElementException();
+			}
+			JQuery result = _context.eq(_index);
+			++ _index ;
+			return result;
+		}
+		/**
+		 * why we don't support remove in this time?
+		 * Because we don't really got a jQuery instance in this time.
+		 */
+		@Override
+		public void remove() {
+			throw new UnsupportedOperationException();
+		}
 	}
 }
