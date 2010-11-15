@@ -367,6 +367,14 @@ public class JQuery extends ClientWidget implements Iterable<JQuery>{
 	public Iterator<JQuery> iterator() {
 		return new JQueryIerator(this);
 	}
+	
+	/**
+	 * translate to widget. (a shortcut for  new Widget($obj) );
+	 * @return
+	 */
+	public Widget toWidget(){
+		return new Widget(this);
+	}
 	/**
 	 * I use private class to prevent more complexly code in util.
 	 * No body should know how it works , 
