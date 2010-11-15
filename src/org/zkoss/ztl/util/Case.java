@@ -2,9 +2,9 @@
 
 {{IS_NOTE
 	Purpose:
-		
+
 	Description:
-		
+
 	History:
 		Mar 4, 2010 12:03:53 PM , Created by jumperchen
 }}IS_NOTE
@@ -35,7 +35,7 @@ public class Case {
 	/**package*/ void setTest(Test t) {
 		_test = t;
 	}
-	
+
 	public void add(Source c) {
 		if (c instanceof Client)
 			((Client) c).setCase(this);
