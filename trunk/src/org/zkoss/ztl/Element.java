@@ -95,6 +95,6 @@ public class Element extends ClientWidget {
 	 * Returns whether the element exists or not.
 	 */
 	public boolean exists() {
-		return Boolean.valueOf(ZKTestCase.getCurrent().getEval(_out.toString() + " == null"));
+		return Boolean.valueOf(ZKTestCase.getCurrent().getEval(_out.toString() + " != null"));
 	}
 }
