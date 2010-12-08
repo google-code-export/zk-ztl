@@ -1,0 +1,56 @@
+##
+# config.properties
+#
+# For example
+#
+# Browser Type :
+#
+#		Define Custom Firefox Browser :
+#				[Name]=[Path]
+#				 Note : Name must begin with Firefox
+#
+#				define example : Firefox_3.5.3=C:\\FirefoxPortable\\Firefox_3.5.3\\FirefoxPortable.exe
+##
+
+#selenium server setting
+client=http://localhost:4444
+#server=http://hudson:8888
+server=http://hudson:8888
+context-path=/zk5
+delay=200
+action=service.zul
+timeout=60000
+
+browser=all
+
+
+#Browser setting
+###
+#Windows 64 bit needs to use the following setting.
+#firefox=C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe
+#firefox=C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe
+#safari=C:\\Program Files (x86)\\Safari\\safari.exe
+#opera=C:\\Program Files (x86)\\Opera\\opera.exe
+
+
+
+
+#for safari5 , we use *safariproxy protocal for selenium
+
+chrome=http://10.1.3.246:4444;
+safari5=http://10.1.3.246:4444;
+firefox=http://10.1.3.245:4444;
+opera=http://10.1.3.245:4444;
+ie6=http://10.1.3.247:4444;
+ie7=http://10.1.3.246:4444;
+ie8=http://10.1.3.245:4444;
+
+
+
+###
+#Firefox2=C:\\FirefoxPortable\\Firefox_2.0.0.20\\App\\Firefox\\firefox.exe
+#Firefox3=C:\\FirefoxPortable\\Firefox_3.0.14\\App\\Firefox\\firefox.exe
+#Firefox35=C:\\FirefoxPortable\\Firefox_3.5.3\\App\\Firefox\\firefox.exe
+
+all=firefox,chrome,opera,safari5,ie6,ie7,ie8
+#all=firefox,chrome,opera,safari5,ie8
