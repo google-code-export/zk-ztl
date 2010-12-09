@@ -153,7 +153,7 @@ public class ConfigHelper {
 		Selenium browser = _browserHolder.get(key);
 		if (browser == null) {
 			// @Todo add multiple client support
-			final String browserpath = _browserPathMap.get(key);
+			final String browserpath = _browserPathMap.containsKey(key) ? _browserPathMap.get(key):"";
 
 			String browserBand = getBrowserBand(key) + ("".equals(browserpath) ? "" : " " + browserpath);
 			if (_browserClient.containsKey(key)) {
@@ -187,13 +187,15 @@ public class ConfigHelper {
 		if (_browserNameMap == null) {
 			_browserNameMap = new HashMap<String, String>();
 
+			_browserNameMap.put("ff", "*firefox");
 			_browserNameMap.put("firefox", "*firefox");
 			_browserNameMap.put("ie", "*iexplore");
 			_browserNameMap.put("ie6", "*iexplore");
 			_browserNameMap.put("ie7", "*iexplore");
 			_browserNameMap.put("ie8", "*iexplore");
 			_browserNameMap.put("chrome", "*googlechrome");
-			_browserNameMap.put("safari", "*safari");
+			_browserNameMap.put("safari", "*safariproxy");
+			_browserNameMap.put("safari4", "*safari");
 			_browserNameMap.put("safari5", "*safariproxy");
 			_browserNameMap.put("opera", "*opera");
 		}
