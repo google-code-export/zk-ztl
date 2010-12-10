@@ -27,11 +27,38 @@ public class ZKSelenium extends DefaultSelenium {
 	private String _browserbrand;
 	private String _browsername;
 	
-	public ZKSelenium(CommandProcessor processor) {
-		super(processor);
+	private boolean _openonce = false;
+	private boolean isBrowserOpened = false;
+	@Override
+	public void start() {
+		if(_openonce){
+			if(!isBrowserOpened){
+				super.start();
+				isBrowserOpened = true;
+			}
+		}else{
+			super.start();
+		}
 	}
-	public ZKSelenium(CommandProcessor processor, String browserbrand, String browsername) {
+	@Override
+	public void close() {
+		if(!_openonce)
+			super.close();
+	}
+	@Override
+	public void stop() {
+		if(!_openonce)
+			super.stop();
+	}
+	
+	public ZKSelenium(CommandProcessor processor,boolean openonce) {
 		super(processor);
+		this._openonce=openonce;
+	}
+	public ZKSelenium(CommandProcessor processor, String browserbrand, 
+			String browsername,boolean openonce) {
+		super(processor);
+		this._openonce=openonce;
 		_browserbrand = browserbrand;
 		_browsername = browsername;
 	}
