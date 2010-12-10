@@ -71,6 +71,8 @@ public class ConfigHelper {
 	private Properties _prop;
 
 	private long _lastModified;
+	
+	private boolean _openonce = false;
 
 	private static ConfigHelper ch = new ConfigHelper();
 
@@ -158,10 +160,10 @@ public class ConfigHelper {
 			String browserBand = getBrowserBand(key) + ("".equals(browserpath) ? "" : " " + browserpath);
 			if (_browserClient.containsKey(key)) {
 				browser = new ZKSelenium(new HttpCommandProcessor(_browserClient.get(key) + "/selenium-server/driver/",
-						browserBand, _server), browserBand,key);
+						browserBand, _server), browserBand,key,_openonce);
 			} else {
 				browser = new ZKSelenium(new HttpCommandProcessor(_client + "/selenium-server/driver/", browserBand,
-						_server), browserBand,key);
+						_server), browserBand,key,_openonce);
 			}
 			System.out.println("connecting "+key);
 			browser.setSpeed(getDelay());
@@ -239,6 +241,8 @@ public class ConfigHelper {
 				in = ClassLoader.getSystemResourceAsStream("config.properties");
 				_prop = new Properties();
 				_prop.load(in);
+				_openonce = Boolean.parseBoolean(_prop.getProperty("openonce","false"));
+				System.out.println("openonce="+_openonce);
 				_lastModified = new File(ClassLoader.getSystemResource("config.properties").getFile()).lastModified();
 				_client = _prop.getProperty("client");
 				_server = _prop.getProperty("server");

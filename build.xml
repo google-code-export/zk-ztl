@@ -137,6 +137,24 @@ Usage:
          </classpath>
        </java>
 	</target>
+	<target name="junitOne" depends="generate,compileztl">
+		<junit printsummary="on" fork="true" forkmode="once" haltonfailure="false"
+			   showoutput="true">
+			<classpath>
+				<pathelement path="${classes.dir}" />
+				<pathelement path="${test.dir}" />
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+			<formatter type="xml" />
+			<batchtest todir="${report.dir}">
+				<fileset dir="${test.dir}" >
+					<include name="**/*Test.*" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>	
 	<target name="junit" depends="generate,compileztl">
 		<junit printsummary="on" fork="true" haltonfailure="false"
 			   showoutput="true">
