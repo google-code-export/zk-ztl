@@ -18,8 +18,7 @@ it will be useful, but WITHOUT ANY WARRANTY.
 			
 
 
-<window title="Context Menu and Right Click" border="normal"
-width="450px">
+<window title="Context Menu and Right Click" border="normal" width="450px">
 Right click at all following labels. It shall bring the context menu.
 <separator bar="true"/>
 <label id="lb1" value="Direct assign" context="editPopup"/>
