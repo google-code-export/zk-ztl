@@ -1,5 +1,12 @@
-<test tags="Window" action="userguide/">
+<test tags="Window"  >
 	<case id="Hello">
+		<server><!--
+		<window title="My First window" border="normal" width="200px">
+			Hello, World!
+			<button label="Hi" onClick='alert("Welcome")'/>
+		</window>
+				  
+		--></server>
 		<client><![CDATA[
 		verifyEquals("My First Window", getText(jq("@window[mode=\"embedded\"][title=\"My First Window\"] div.z-window-embedded-header")));
 		verifyEquals("Hello, World!", getText(jq("@window[mode=\"embedded\"][title=\"My First Window\"] @label")));
