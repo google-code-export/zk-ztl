@@ -28,10 +28,19 @@ public class ZKSelenium extends DefaultSelenium {
 	private String _browsername;
 	
 	private boolean _openonce = false;
+	private int _cyclecount = 0;
+	
 	private boolean isBrowserOpened = false;
 	@Override
 	public void start() {
 		if(_openonce){
+			_cyclecount++;
+			if(_cyclecount % 20 == 0){
+				super.close();
+				super.stop();
+				super.start();
+			}
+				
 			if(!isBrowserOpened){
 				super.start();
 				isBrowserOpened = true;
