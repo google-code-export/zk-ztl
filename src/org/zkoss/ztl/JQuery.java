@@ -393,7 +393,7 @@ public class JQuery extends ClientWidget implements Iterable<JQuery>{
 		}
 		@Override
 		public boolean hasNext() {
-			return _index == _count;
+			return _index != _count;
 		}
 		@Override
 		public JQuery next() {
