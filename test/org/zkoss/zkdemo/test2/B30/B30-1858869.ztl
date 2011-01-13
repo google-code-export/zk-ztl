@@ -29,13 +29,11 @@ void test() {
 
 		--></server>
 		<client><![CDATA[
-			verifyEquals(0, jq("@label").length());
-			
+			verifyEquals(0, jq(".z-label").length());
 			type(jq("$test"),"I am test string");
 			keyPressEnter(jq("$test"));
 			waitResponse();
-			
-			verifyEquals("I am test string" , jq("@label").text());
+			verifyEquals("I am test string" , jq(".z-label").text());
 		]]></client>
 	</case>
 </test>
