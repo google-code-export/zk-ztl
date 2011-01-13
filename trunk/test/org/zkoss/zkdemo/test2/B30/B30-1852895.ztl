@@ -23,6 +23,7 @@
 			click(jq(".z-combobox-pp .z-comboitem:eq(0)"));
 			waitResponse();
 			click(jq("span.z-button"));
+			waitResponse();
 			String result = jq(".z-window-highlighted .z-messagebox").text().trim();
 			verifyEquals("1", result);
 		]]></client>
