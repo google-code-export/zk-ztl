@@ -18,7 +18,7 @@
  				click(jq("$db i.z-datebox-btn"));
 				waitResponse();
 				verifyTrue(jq("@calendar").exists());
-				click(jq("@calendar a:eq(16)").parent());
+				click(jq("@calendar .z-calendar-wkday:eq(10)"));
 				//waitResponse();
 
 				//TonyQ:the origin test case expected the calendar will remove ,
