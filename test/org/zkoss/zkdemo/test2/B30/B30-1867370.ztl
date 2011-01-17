@@ -51,74 +51,41 @@ it will be useful, but WITHOUT ANY WARRANTY.
 			</row>
 		</rows>
 	</grid>
-	<button label="hide/show" onClick='col1.visible = !col1.visible;' />
+	<button id="mybutton" label="hide/show" onClick='col1.visible = !col1.visible;' />
 </zk>
 
 
 		--></server>
 		<client><![CDATA[
-			int columnCount= 3;
-			//In startup every rows and columns is 3
-			verifyEquals(columnCount,jq("@columns"));
-			for(JQuery rows:jq("@rows")){
-				verifyEquals(columnCount,rows.find("row").length());
-			}
-			
-			click(jq("@button:last"));
+			click(mybutton);
 			waitResponse();
-			columnCount = 2;
-			
-			verifyEquals(2,jq("@rows"));
-			verifyEquals(columnCount,jq("@columns"));
-			for(JQuery rows:jq("@rows")){
-				verifyEquals(columnCount,rows.find("row").length());
-			}
-			
+			verifyEquals("none", jq(".z-row:eq(0) .z-row-inner:eq(1)").css("display"));
+            verifyEquals("none", jq(".z-row:eq(0) .z-row-inner:eq(1)").css("display"));
+            
 			click(jq("@paging").toWidget().$n("next"));
 			waitResponse();
-			
-			verifyEquals(1,jq("@rows"));
-			verifyEquals(columnCount,jq("@columns"));
-			for(JQuery rows:jq("@rows")){
-				verifyEquals(columnCount,rows.find("row").length());
-			}
+			verifyEquals(1,jq(".z-row"));
+			verifyEquals("none", jq(".z-row:eq(0) .z-row-inner:eq(1)").css("display"));
+            
+			click(jq("@paging").toWidget().$n("prev"));
+			waitResponse();
+			verifyEquals("none", jq(".z-row:eq(0) .z-row-inner:eq(1)").css("display"));
+            verifyEquals("none", jq(".z-row:eq(0) .z-row-inner:eq(1)").css("display"));
+            
+            click(mybutton);
+			waitResponse();
+			verifyNotEquals("none", jq(".z-row:eq(0) .z-row-inner:eq(1)").css("display"));
+            verifyNotEquals("none", jq(".z-row:eq(0) .z-row-inner:eq(1)").css("display"));
+            
+			click(jq("@paging").toWidget().$n("next"));
+			waitResponse();
+			verifyNotEquals("none", jq(".z-row:eq(0) .z-row-inner:eq(1)").css("display"));
+            verifyNotEquals("none", jq(".z-row:eq(0) .z-row-inner:eq(1)").css("display"));
 			
 			click(jq("@paging").toWidget().$n("prev"));
 			waitResponse();
-	
-			verifyEquals(columnCount,jq("@rows"));
-			verifyEquals(columnCount,jq("@columns"));
-			for(JQuery rows:jq("@rows")){
-				verifyEquals(columnCount,rows.find("row").length());
-			}
-			
-			click(jq("@button:last"));
-			waitResponse();
-			
-			columnCount= 3;
-			verifyEquals(columnCount,jq("@rows"));
-			verifyEquals(columnCount,jq("@columns"));
-			for(JQuery rows:jq("@rows")){
-				verifyEquals(columnCount,rows.find("row").length());
-			}
-			
-			click(jq("@paging").toWidget().$n("next"));
-			waitResponse();
-			
-			verifyEquals(1,jq("@rows"));
-			verifyEquals(columnCount,jq("@columns"));
-			for(JQuery rows:jq("@rows")){
-				verifyEquals(columnCount,rows.find("row").length());
-			}
-			
-			click(jq("@paging").toWidget().$n("prev"));
-			waitResponse();
-	
-			verifyEquals(2,jq("@rows"));
-			verifyEquals(columnCount,jq("@columns"));
-			for(JQuery rows:jq("@rows")){
-				verifyEquals(columnCount,rows.find("row").length());
-			}
+			verifyNotEquals("none", jq(".z-row:eq(0) .z-row-inner:eq(1)").css("display"));
+            verifyNotEquals("none", jq(".z-row:eq(0) .z-row-inner:eq(1)").css("display"));
 		]]></client>
 	</case>
 </test>
