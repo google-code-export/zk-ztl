@@ -2,45 +2,48 @@
 	<case id="Databind">
 		<server><!--
 		<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
-		<zk xmlns:a="http://www.zkoss.org/2005/zk/annotation">
+		<zk:window xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		           xmlns:zk="http://www.zkoss.org/2005/zul" 
+		           xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+		           xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd "
+		           border="normal" width="100%">
 		1. Select a value from one of the listboxes. 
 		2. If no NullPointerException, it is right.
-		    <zscript>
-		    	import org.zkoss.zkdemo.test.MyBean;
+		    <zk:zscript>
+		    	import org.zkoss.zktest.test.MyBean;
 		    	
 		    	MyBean mb = new MyBean();
-		    </zscript>
+		    </zk:zscript>
 			
 			<a:bind model="mb.codeFilterTypeValues" selectedItem="mb.codeFilterType"/>
-			<listbox id="codeFilterType" rows="1" mold="select">
+			<zk:listbox id="codeFilterType" rows="1" mold="select">
 				<a:bind _var="compType"/>
-				<listitem>
+				<zk:listitem>
 					<a:bind label="compType" value="compType"/>
-					<listcell/>
-				</listitem>
-			</listbox>
+					<zk:listcell/>
+				</zk:listitem>
+			</zk:listbox>
 			
 			<a:bind model="mb.titleFilterTypeValues" selectedItem="mb.titleFilterType"/>
-			<listbox id="titleFilterType" rows="1" mold="select">
+			<zk:listbox id="titleFilterType" rows="1" mold="select">
 				<a:bind _var="titleCompType"/>
-				<listitem>
+				<zk:listitem>
 					<a:bind label="titleCompType" value="titleCompType"/>
-					<listcell/>
-				</listitem>
-			</listbox>
+					<zk:listcell/>
+				</zk:listitem>
+			</zk:listbox>
 			
-		</zk>
+		</zk:window>
 		 --></server>
 		<client><![CDATA[
 			select(codeFilterType, "STARTS");
-			verifyFalse(jq("@window").exists());
+			verifyFalse(jq(".z-window-highlighted").exists());
 			select(codeFilterType, "CONTAINS");
-			verifyFalse(jq("@window").exists());
-			
+			verifyFalse(jq(".z-window-highlighted").exists());
 			select(titleFilterType, "STARTS");
-			verifyFalse(jq("@window").exists());
+			verifyFalse(jq(".z-window-highlighted").exists());
 			select(titleFilterType, "CONTAINS");
-			verifyFalse(jq("@window").exists());
+			verifyFalse(jq(".z-window-highlighted").exists());
 		]]></client>
 	</case>
 </test>
