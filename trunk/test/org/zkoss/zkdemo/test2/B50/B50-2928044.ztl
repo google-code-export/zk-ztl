@@ -26,25 +26,9 @@ You can not type the words more than 3.
 		--></server>
 		<client><![CDATA[
 			focus(txt);
-			
 			JQuery $txt = jq("$txt");
-			keyPressNative(A);
-			verifyEquals(1,$txt.val().length());
-			keyPressNative(A);
-			verifyEquals(2,$txt.val().length());
-			keyPressNative(A);
-			verifyEquals(3,$txt.val().length());
-			keyPressNative(A);
-			verifyEquals(3,$txt.val().length());
-			keyPressNative(A);
-			verifyEquals(3,$txt.val().length());
-	
-			keyPressNative(BACKSPACE);
-			verifyEquals(2,$txt.val().length());
-			
-			keyPressNative(A);
-			verifyEquals(3,$txt.val().length());
-			
+			type($txt, "AAAA");
+			verifyEquals(jq($txt).val().length(), 3);
 		]]></client>
 	</case>
 </test>
