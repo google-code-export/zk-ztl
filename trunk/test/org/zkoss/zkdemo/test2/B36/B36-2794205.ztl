@@ -1,4 +1,4 @@
-<test tags="listbox,errorbox">
+<test tags="listbox,errorbox" import="org.zkoss.ztl.util.ZKSelenium">
 	<case id="position">
 		<server><!--
 			<zk>
@@ -30,7 +30,13 @@
 			click(jq("@button"));
 			waitResponse();
 			int offsetLeft = jq("div.z-errbox").offsetLeft();
-			mouseDownAt(myDropdownList, "1,1");
+			if (((ZKSelenium)browser).getBrowserName().startsWith("safari")) {
+                select(myDropdownList, "zk");
+            } else {
+                mouseDownAt(myDropdownList, "1,1");
+                mouseUpAt(myDropdownList, "1,1");
+            }
+			
 			//open select tag with IE
 			focus(myDropdownList);
 			keyDownNative(ALT);
