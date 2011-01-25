@@ -58,7 +58,7 @@
 					</rows>
 				</grid>
 				<label id = "lb" />
-			<button label="submit">
+			<button id="submit" label="submit">
 			<attribute name="onClick">
 			lb.setValue((beginDate.getValue() == null ? "" : beginDate.getValue().toString())
 			+(endDate.getValue() == null ? "" : endDate.getValue().toString()) );
@@ -67,30 +67,21 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			// Test normal date
 			JQuery $b = jq("$beginDate > [id$=\"btn\"]");
 			JQuery $e = jq("$endDate > [id$=\"btn\"]");
 			click($b);
-			keyDown(beginDate, "40");
-			keyDown(beginDate, "13");
+			waitResponse();
+			verifyFalse(jq(".z-datebox-pp:eq(0)").css("display").equals("none"));
+			click(jq(".z-calendar-wkday:eq(19)"));
+			waitResponse();
 			click($e);
-			keyDown(endDate, "40");
-			keyDown(endDate, "40");
-			keyDown(endDate, "13");
-			verifyFalse(jq(".z-errbox").exists());
-			
-			// Test invalid date
-			click($b);
-			keyDown(beginDate, "40");
-			keyDown(beginDate, "40");
-			keyDown(beginDate, "13");
-			verifyTrue(jq(".z-errbox").exists());
-			
-			click($e);
-			keyDown(endDate, "40");
-			keyDown(endDate, "40");
-			keyDown(endDate, "13");
-			verifyFalse(jq(".z-errbox").exists());
+			waitResponse();
+			verifyFalse(jq(".z-datebox-pp:eq(1)").css("display").equals("none"));
+			click(jq(".z-datebox-pp:eq(1) .z-calendar-wkday:eq(14)"));
+            waitResponse();
+            click(jq("$submit"));
+            waitResponse();
+            verifyTrue(jq(".z-errbox").exists());
 		]]></client>
 	</case>
 </test>
