@@ -3,7 +3,12 @@
 		<server id="zul"><!--
 		<zk>
 			<window>
-				Case 1:
+				<vbox>
+					<label value="Case 1:" />
+					<label value="	1. Click 'doModal', it will pop up a dialog. If the focus is on the 'hide' button of the dialog, it is correct." />
+					<label value="	2. Click 'invalidate', the dialog will redraw. If the focus is still on the 'hide' button of the dialog, it is correct." />
+					<label value="	3. Click 'hide'." />
+				</vbox>
 				<window id="w" title="Modal" border="normal" mode="highlighted"
 					visible="false" width="200px" closable="true"
 					action="show: slideDown; invalidate: slideDown; hide: slideUp">
@@ -13,12 +18,14 @@
 				</window>
 				<button id="modalBtn" label="doModal" onClick="w.doModal()" />
 				<separator bar="true" />
-				Case 2:
+				<vbox>
+					<label value="Case 2:" />
+					<label value="	Click 'new', it will pop up a dialog. If the focus is on the textbox of the dialog, it is correct." />
+				</vbox>
 				<button id="newBtn" label="new">
 					<attribute name="onClick">
 					    Window w2 = new Window();
 					    w2.setTitle("New");
-					    //	w2.setMode("overlapped");
 					    w2.setMode("highlighted");
 					    w2.setClosable(true);
 					    w2.setBorder("normal");
