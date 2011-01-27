@@ -46,9 +46,8 @@ it will be useful, but WITHOUT ANY WARRANTY.
 			mouseDownAt(jq(".z-timebox-btn-lower"),"20,20");
 			mouseUp(jq(".z-timebox-btn-lower"));
 			sleep(100);
-			mouseDownAt(jq(".z-timebox-btn-lower"),"20,20");
-			mouseUp(jq(".z-timebox-btn-lower"));
-			sleep(100);
+			click(jq(".z-calendar-wkday:eq(19)"));
+			waitResponse();
 			clickAt(jq("$desp"),"10,10");
 			waitResponse();
 			String msg = jq("@label:last").text();
