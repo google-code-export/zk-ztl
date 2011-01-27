@@ -23,20 +23,15 @@
 		</server>
 		<client><![CDATA[
 			sleep(3000);
-
 			JQuery combobox = jq(".z-combobox-inp");
-			combobox.eval("select()");
-
-			keyDown(combobox, "c");
-			keyPress(combobox, "C");
+			focus(combobox);
+			keyDownNative(C);
 			waitResponse();
-
+			sleep(3000);
 			//2010/10/22 TonyQ:the comboitem should appear in window.
 			verifyTrue(jq("@comboitem:visible").exists());
-
 			click(jq("@comboitem:visible:eq(1)"));
 			waitResponse();
-
 			verifyEquals("Cool!",jq("$msg").text());
 		]]></client>
 	</case>
