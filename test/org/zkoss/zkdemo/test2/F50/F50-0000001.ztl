@@ -49,6 +49,7 @@
 			waitResponse();
 			click(invalidateBtn);
 			waitResponse();
+			sleep(1000);
 			verifyTrue(jq("$hideBtn .z-button-focus").exists());
 			keyDownNative(SHIFT);
 			keyDownNative(TAB);
@@ -57,15 +58,17 @@
 			verifyTrue(jq("$hideBtn .z-button-focus").exists());
 			click(jq(".z-window-modal-icon"));
 			waitResponse();
+			sleep(1000);
 			mouseMoveAt(newBtn, "15,8");
 			mouseDownAt(newBtn, "15,8");
 			mouseUpAt(newBtn, "15,8");
 			click(newBtn);
 			waitResponse();
-			waitResponse();
+			sleep(1000);
 			verifyTrue(jq(".z-textbox-focus").exists());
 			click(jq(".z-window-highlighted-icon"));
 			waitResponse();
+			sleep(1000);
 			verifyTrue(jq("$newBtn .z-button-focus").exists());
 		]]></client>
 	</case>

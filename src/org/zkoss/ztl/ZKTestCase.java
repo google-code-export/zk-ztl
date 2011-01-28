@@ -135,6 +135,9 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 		System.out.println("testing:"+((ZKSelenium)selenium).getBrowserName());
 		selenium.start();
 		selenium.open(target);
+		if (selenium == null)
+		    Thread.dumpStack();
+		
 		_selenium.set(selenium);
 		this.selenium = selenium;
 	}
@@ -143,7 +146,11 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	 * Returns the current browser.
 	 */
 	public static final Selenium getCurrent() {
-		return _selenium.get();
+	    Selenium selenium = _selenium.get();
+	    if (selenium == null)
+	        Thread.dumpStack();
+	    
+	    return selenium;
 	}
 
 	
