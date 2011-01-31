@@ -1,0 +1,27 @@
+<test tags="Combobox">
+	<case id="ErrMsg">
+		<server><!--
+			<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+				<n:p>
+					Please type some words into combobox, and then click its popup
+					button, and then click the blank of the drop-down list and click
+					the outside of the combobox. You should see the error message.
+				</n:p>
+				<combobox id="cb1" constraint="strict" />
+			</zk>
+		--></server>
+		<client><![CDATA[
+			sleep(3000);
+			type(jq(".z-combobox-inp"), "zk");
+			click(jq(".z-combobox-btn"));
+			waitResponse();
+			sleep(1000);
+			click(jq(".z-combobox-pp"));
+			waitResponse();
+			clickAt(jq("p"), "3,4");
+			waitResponse();
+			sleep(1000);
+			verifyTrue(jq(".z-errbox").exists());
+		]]></client>
+	</case>
+</test>
