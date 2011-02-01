@@ -16,6 +16,10 @@ public class ColorVerifingHelper {
 	private static final String TEMP_RGB = "^(?i)[r][g][b]\\(" + BYTE_NUMBER +"," +
 														" *" + BYTE_NUMBER +"," +
 														" *" + BYTE_NUMBER +"\\)";
+    private static final String TEMP_RGBA = "^(?i)[r][g][b][a]\\(" + BYTE_NUMBER + "," + 
+                                                            " *" + BYTE_NUMBER + "," + 
+                                                            " *" + BYTE_NUMBER + "," + 
+                                                            " *" + BYTE_NUMBER +"\\)";
 	private static final String TEMP_NAMED_COLOR = "[a-zA-Z]+";
 	private static final Map<String, String> commonColorMap = new HashMap<String, String>();
 
@@ -754,10 +758,35 @@ public class ColorVerifingHelper {
 			}
 
 			return strBuff.toString();
+		} else if (value.matches(TEMP_RGBA)) {
+		    String temp = value.replace("rgba(", "");
+            temp = temp.replace(")", "");
+            temp = temp.replace(" ", "");
+            String[] colorCodes = temp.split(",");
+            StringBuffer strBuff = new StringBuffer("#");
+            int i = 0;
+
+            for(String s : colorCodes) {
+                if (i == 3)
+                    break;
+                
+                int colorNum = Integer.parseInt(s);
+                String hexString = Integer.toHexString(colorNum);
+                hexString = hexString.length() > 1 ? hexString : "0" + hexString;
+                strBuff.append(hexString);
+                i++;
+            }
+
+            return strBuff.toString();
 		} else if (value.matches(TEMP_NAMED_COLOR)) {
 			return "#" + commonColorMap.get(value);
 		}
 
 		throw new IllegalArgumentException("Not a color: \"" + value+"\"");
+	}
+	
+	public static void main(String[] args) {
+	    String qoo = "rgba(0, 0, 0, 0)";
+	    System.out.println(transform(qoo));
 	}
 }
