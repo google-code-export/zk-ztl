@@ -33,6 +33,7 @@ void test() {
 			type(jq("$test"),"I am test string");
 			keyPressEnter(jq("$test"));
 			waitResponse();
+			sleep(2000);
 			verifyEquals("I am test string" , jq(".z-label").text());
 		]]></client>
 	</case>
