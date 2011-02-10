@@ -33,16 +33,11 @@
 			blur(jq("$endTime .z-timebox-inp"));
 			click(jq("$runReport td.z-button-cm"));
 			waitResponse();
-			sleep(1000);
-
+			sleep(2000);
 			// Tony:because when event thread enable it will be highlight mode ,
 			// when event thread disable will be modal mode ,
 			// so we just detect the title for it.
-			//verifyEquals("Correct! The bug is fixed!", getText(jq("@window[mode=\"modal\"][title=\"ZK\"] @label")));
-			//verifyEquals("Correct! The bug is fixed!", getText(jq(".z-window-highlighted @label")));
-			//
-			verifyEquals("Correct! The bug is fixed!", getText(jq("@window[title=\"ZK\"] @label")));
-
+			verifyEquals("Correct! The bug is fixed!", jq(".z-window-highlighted .z-label").text());
 			click(jq("$btn1 td.z-button-cm"));
 		]]></client>
 	</case>
