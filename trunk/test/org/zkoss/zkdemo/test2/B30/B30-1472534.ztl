@@ -20,6 +20,8 @@
 		<client><![CDATA[
 			sleep(3000);
 			click(jq("span.z-button"));
+			waitResponse();
+			sleep(2000);
 			verifyTrue(jq(".z-errbox").exists());
 		]]></client>
 	</case>

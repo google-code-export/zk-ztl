@@ -75,21 +75,20 @@ clicked")' />
 
 		--></server>
 		<client><![CDATA[
+			sleep(3000);
 			type(jq("$username"),"hello");
 			type(jq("$password"),"world");
-			
 			click(jq("$btn"));
-			waitResponse();		
-			
-			verifyEquals("Login buttonclicked",getAlertMessage());
-
-			
-			clickAlert();
+			waitResponse();
+			sleep(6000);
+			verifyEquals("Login buttonclicked",jq(".z-window-highlighted .z-label").text());
+			click(jq(".z-messagebox-btn"));
+			waitResponse();
+			sleep(3000);
 			keyPressEnter(jq("$password"));
 			waitResponse();
-			
-			verifyEquals("Window.onOK triggered, password=world",getAlertMessage());
-			
+			sleep(3000);
+			verifyEquals("Window.onOK triggered, password=world",jq(".z-window-highlighted .z-label").text());
 		]]></client>
 	</case>
 </test>
