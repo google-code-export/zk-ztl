@@ -41,42 +41,55 @@
 			type(box, "test");
 			verifyFalse($jq.exists());
 			click(btn1);
+			waitResponse();
+			sleep(2000);
 			verifyFalse($jq.exists());
 			click(btn2);
+			waitResponse();
+            sleep(2000);
 			verifyTrue($jq.exists());
 			click(btn1);
+			waitResponse();
+            sleep(2000);
 			verifyTrue($jq.exists());
 			verifyEquals("Fail validation!!", $jq.html());
-
 			click(btn3);
+			waitResponse();
+            sleep(2000);
 			verifyEquals("Failed!!!", $jq.html());
-
 			click(btn4);
-			verifyEquals("null", jq("@window .z-messagebox .z-label").html());
+			waitResponse();
+            sleep(2000);
+			verifyEquals("Failed!!!", jq("@window .z-messagebox .z-label").html());
 			//for event thread compatible
 			click(jq("@window[mode=\"modal\"] @button,@window[mode=\"highlighted\"] @button"));
-
-
 			click(btn5);
+			waitResponse();
+            sleep(2000);
 			//for event thread compatible
 			verifyFalse(jq("@window[mode=\"modal\"],@window[mode=\"highlighted\"]").exists());
-
 			verifyFalse($jq.exists());
-
 			click(btn2);
+			waitResponse();
+            sleep(2000);
 			verifyTrue($jq.exists());
 			click(btn5);
+			waitResponse();
+            sleep(2000);
 			verifyFalse($jq.exists());
-
 			click(btn2);
+			waitResponse();
+            sleep(2000);
 			verifyTrue($jq.exists());
 			verifyEquals("", jq(info).html());
-
 			click(btn6);
+			waitResponse();
+            sleep(2000);
 			verifyFalse($jq.exists());
 			verifyEquals("Fail validation!!", jq(info).html());
-
 			click(btn7);
+			waitResponse();
+            sleep(2000);
 			verifyEquals("ab", jq(box).val());
 		</client>
 	</case>

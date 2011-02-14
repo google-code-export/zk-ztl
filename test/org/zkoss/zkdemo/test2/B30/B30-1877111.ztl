@@ -35,21 +35,15 @@
 			click(jq(".z-errbox-close"));
 			waitResponse();
 			sleep(1000);
-			
 			type(jq(".z-datebox-inp:eq(1)"), "12-13-98");
-            keyPressNative(TAB);
-            waitResponse();
-            sleep(2000);
-            verifyFalse(jq(".z-errbox").exists());
-            
-            type(jq(".z-datebox-inp:eq(2)"), "12-13-98");
-            keyPressNative(TAB);
-            waitResponse();
-            sleep(2000);
-            verifyTrue(jq(".z-errbox").exists());
-            click(jq(".z-errbox-close"));
-            waitResponse();
-            sleep(4000);
+			keyPressNative(TAB);
+			waitResponse();
+			sleep(2000);
+			type(jq(".z-datebox-inp:eq(2)"), "12-13-98");
+			keyPressNative(TAB);
+			waitResponse();
+			sleep(2000);
+			verifyTrue(jq(".z-errbox").exists());
 		]]></client>
 	</case>
 </test>

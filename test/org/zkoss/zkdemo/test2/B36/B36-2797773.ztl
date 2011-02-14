@@ -14,6 +14,7 @@
 			verifyEquals("", getValue(jq("@intbox")));
 			keyPressNative(V);
 			keyUpNative(CTRL);
+			sleep(3000);
 			verifyEquals("1234567", getValue(jq("@intbox")));
 		]]></client>
 	</case>
