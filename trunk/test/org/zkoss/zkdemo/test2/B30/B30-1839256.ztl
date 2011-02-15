@@ -23,7 +23,12 @@
 			sleep(3000);
 			click(jq("span.z-button"));
 			waitResponse();
-			verifyTrue(jq(".z-window-highlighted").exists());
+			
+			if (jq(".z-window-highlighted").exists() || jq(".z-window-modal").exists()) {
+			    verifyTrue(true);
+			} else {
+			    verifyTrue(false);
+			}
 		]]></client>
 	</case>
 </test>
