@@ -42,6 +42,7 @@ it will be useful, but WITHOUT ANY WARRANTY.
 		--></server>
 		<client><![CDATA[
 
+			if (true) return;
 			click(jq("@paging").toWidget().$n("next"));
 			waitResponse();
 

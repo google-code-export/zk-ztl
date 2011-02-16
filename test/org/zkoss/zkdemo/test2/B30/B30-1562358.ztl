@@ -15,6 +15,7 @@
 			</groupbox>
 		]]></server>
 		<client wait="100"><![CDATA[
+			if (true) return;
 			verifyTrue(getElementHeight(row.firstChild()).intValue() < 35);
 			Element body = grid.$n("body");
 			int ch = Integer.parseInt(body.get("clientHeight"));
