@@ -32,6 +32,7 @@
 			verifyTrue(jq("@comboitem:visible").exists());
 			click(jq("@comboitem:visible:eq(1)"));
 			waitResponse();
+			sleep(3000);
 			verifyEquals("Cool!",jq("$msg").text());
 		]]></client>
 	</case>

@@ -37,21 +37,18 @@
 				*/
 				JQuery $nickname = jq("$nickname");
 				type($nickname, "123");
-
 				keyPressEnter($nickname);
-				sleep(1000);
 				waitResponse();
+				sleep(1000);
 				JQuery $msg = jq("$msg");
-
 				verifyTrue($msg.isVisible());
-
 				type($msg, "ryan is boring");
 				waitResponse();
 				sleep(1000);
 				keyPressEnter($msg);
 				waitResponse();
-
-				verifyEquals("ryan is boring", ms.get("value"));
+				sleep(1000);
+				verifyEquals("ryan is boring", ms.get("value"));  
 
 		]]></client>
 	</case>
