@@ -29,11 +29,14 @@ after input any words into following textbox." />
 
 		--></server>
 		<client><![CDATA[
+			sleep(3000);
 			type(jq(myTextbox), "k");
 			waitResponse();
+			sleep(2000);
 			verifyTrue("onChange event was not triggered!", jq(changeEvtLabel).isVisible());
 			keyPressEnter(jq(myTextbox));
 			waitResponse();
+			sleep(2000);
 			verifyTrue("onOk event was not triggered!", jq(okEvtLabel).isVisible());
 		]]></client>
 	</case>
