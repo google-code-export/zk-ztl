@@ -15,6 +15,8 @@
 		--></server>
 		<client><![CDATA[
 			click(b);
+			waitResponse();
+			sleep(2000);
 			verifyEquals("<Button b>:onClick:void",i.get("value"));
 		]]></client>
 	</case>
