@@ -39,11 +39,15 @@ public class ZKClientTestCase extends ZKTestCase {
 	 */
 	protected void waitResponse(int timeout) {
 		long s = System.currentTimeMillis();
-		while(Boolean.valueOf(this.getEval("!!zAu.processing()"))) {
-			if (System.currentTimeMillis() - s > timeout) {
-				assertTrue("Test case timeout!", false);
-				break;
+		int i = 0;
+		while (i < 3) { // make sure the command is triggered.
+			while(Boolean.valueOf(this.getEval("!!zAu.processing()"))) {
+				if (System.currentTimeMillis() - s > timeout) {
+					assertTrue("Test case timeout!", false);
+					break;
+				}
 			}
+			i++;
 		}
 	}
 
