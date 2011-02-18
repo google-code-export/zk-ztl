@@ -117,7 +117,6 @@
 		<client><![CDATA[
 			mouseOver(jq("$view @label:eq(2)"));
 			mouseOver(jq("$view @label:eq(2)"));
-			sleep(1000);
 			verifyTrue(jq("$mail").isVisible());
 			click(jq("$view @textbox:eq(0)"));
 
