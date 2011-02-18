@@ -374,8 +374,11 @@ public class ZKClientTestCase extends ZKTestCase {
 	 */
 	public void keyPressEnter(ClientWidget locator){
 		focus(locator);
-//		keyDown(locator,"13"); // ie8,firefox3 need this
-		keyPressNative("10");  //safari ,chrome need this
+		if (ZK.is("ie") || ZK.is("gecko")) {
+			keyDown(locator,"13"); // ie8,firefox3 need this
+		} else {
+			keyPressNative("10");  //safari ,chrome need this
+		}
 	}
 
 	public void keyUp(ClientWidget locator, String keySequence) {
