@@ -367,8 +367,13 @@ function triggerKeyEvent(element, eventType, keySequence, canBubble, controlKeyD
             evt.metaKey = metaKeyDown;
             evt.altKey = altKeyDown;
             evt.ctrlKey = controlKeyDown;
-            evt.keyCode = keycode;
-            evt.which = keycode;
+            try {
+            	evt.keyCode = parseInt(keycode, 10);
+            	evt.which = parseInt(keycode, 10);
+        	} catch (e) {
+        		evt.keyCode = keycode;
+            	evt.which = keycode;
+        	}
         }
 
         element.dispatchEvent(evt);
