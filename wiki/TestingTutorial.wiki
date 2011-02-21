@@ -135,7 +135,12 @@ click(checkbox.$n("real"));
 type(combobox.$n("real"), "abc");
 verifyEquals("abc", msg.get("value"));
 }}}
-
+ or
+{{{
+typeKeys(combobox.$n("real"), "abc");
+verifyEquals("abc", msg.get("value"));
+}}}
+ Note: the typeKeys will simulate the event in order keyDown, keyPress, and keyUp.
 === Spinner/Timebox ===
  ==== Click ====
  In the two widgets, you have to use mouseDownAt/mouseUp() instead of clickAt().
