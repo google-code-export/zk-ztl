@@ -40,14 +40,11 @@ Constraint ctt = new Constraint() {
 
 		--></server>
 		<client><![CDATA[
-			JQuery $txtbox = jq("$txtbox");
 			focus(txtbox);
-			
 			JQuery error=jq(".z-errbox");
 			verifyFalse(error.exists());//error box should not exist
-			
 			blur(txtbox);
-			verifyFalse(jq("@textbox").exists()); //txtbox should disappear
+			verifyFalse(jq(txtbox).exists()); //txtbox should disappear
 		]]></client>
 	</case>
 </test>

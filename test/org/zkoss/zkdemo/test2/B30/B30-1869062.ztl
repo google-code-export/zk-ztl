@@ -13,7 +13,7 @@
 							    }
 							</attribute>
 							<comboitem label="Simple and Rich" />
-							<comboitem label="Cool!" />
+							<comboitem id="cool" label="Cool!" />
 							<comboitem label="Thumbs Up!" />
 						</combobox>
 						<label id="msg" />
@@ -23,12 +23,12 @@
 		</server>
 		<client><![CDATA[
 			JQuery combobox = jq(".z-combobox-inp");
-			focus(combobox);
-			keyDownNative(C);
+			typeKeys(combobox, "C");
 			waitResponse();
 			//2010/10/22 TonyQ:the comboitem should appear in window.
-			verifyTrue(jq("@comboitem:visible").exists());
-			click(jq("@comboitem:visible:eq(1)"));
+			verifyTrue(jq(".z-combobox-pp").exists());
+			System.out.println(jq(cool).exists());
+			click(cool);
 			waitResponse();
 			verifyEquals("Cool!",jq("$msg").text());
 		]]></client>
