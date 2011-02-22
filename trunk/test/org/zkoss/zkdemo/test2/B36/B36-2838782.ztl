@@ -19,13 +19,14 @@
 		 --></server>
 		<client wait="2000"><![CDATA[
 			click(jq("@treecell[label=\"3\"] div.z-overflow-hidden"));
+			waitResponse();
 			click(jq("@page @treerow span.z-tree-root-open"));
 			waitResponse();
 			click(jq("@page @treerow span.z-tree-root-close"));
 			waitResponse();
-			keyPressNative(DOWN);
-			keyPressNative(DOWN);
-			keyPressNative(UP);
+			keyDown(jq("@treecell[label=\"3\"] div.z-overflow-hidden"), DOWN);
+			keyDown(jq("@treecell[label=\"7\"] div.z-overflow-hidden"), DOWN);
+			keyDown(jq("@treecell[label=\"15\"] div.z-overflow-hidden"), UP);
 			verifyTrue(jq("@treecell[label=\"7\"]").parent(".z-treerow").hasClass("z-treerow-seld"));
 		]]></client>
 	</case>
