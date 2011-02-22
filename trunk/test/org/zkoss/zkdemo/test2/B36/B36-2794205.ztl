@@ -31,17 +31,17 @@
 			waitResponse();
 			int offsetLeft = jq("div.z-errbox").offsetLeft();
 			if (((ZKSelenium)browser).getBrowserName().startsWith("safari")) {
-                select(myDropdownList, "zk");
-            } else {
-                mouseDownAt(myDropdownList, "1,1");
-                mouseUpAt(myDropdownList, "1,1");
-            }
-			
+			select(myDropdownList, "zk");
+			} else {
+			mouseDownAt(myDropdownList, "1,1");
+			mouseUpAt(myDropdownList, "1,1");
+			}
 			//open select tag with IE
 			focus(myDropdownList);
-			keyDownNative(ALT);
-			keyPressNative(DOWN);
-			keyUpNative(ALT);
+			altKeyDown();
+			keyDown(myDropdownList, DOWN);
+			keyDown(myDropdownList, DOWN);
+			altKeyUp();
 			verifyEquals(offsetLeft, jq("div.z-errbox").offsetLeft());
 		]]></client>
 	</case>

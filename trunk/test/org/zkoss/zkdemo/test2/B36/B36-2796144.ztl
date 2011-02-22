@@ -44,8 +44,8 @@
 			focus(inp);
 			click(returnDate.$n("btn"));
 			click(timeInp);
-			keyPressNative(END);
-			keyDownNative(DOWN);
+			keyDown(timeInp, END);
+			keyDown(timeInp, DOWN);
 			String time = timeInp.val();
 			blur(timeInp);
 			click(jq("td.z-calendar-seld"));
