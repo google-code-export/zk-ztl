@@ -7,13 +7,13 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			jq("@intbox").eval("select()");
-			keyDownNative(CTRL);
-			keyPressNative(A);
-			keyPressNative(X);
+			focus(jq("@intbox"));
+			controlKeyDown();
+			keyPress(jq("@intbox"), A);
+			keyPress(jq("@intbox"), X);
 			verifyEquals("", getValue(jq("@intbox")));
-			keyPressNative(V);
-			keyUpNative(CTRL);
+			keyPress(jq("@intbox"), V);
+			controlKeyUp();
 			verifyEquals("1234567", getValue(jq("@intbox")));
 		]]></client>
 	</case>
