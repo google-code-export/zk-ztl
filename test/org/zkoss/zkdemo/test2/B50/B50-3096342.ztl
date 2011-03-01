@@ -12,7 +12,7 @@ Copyright (C) 2010 Potix Corporation. All Rights Reserved.
 This program is distributed under Apache License Version 2.0 in the hope that
 it will be useful, but WITHOUT ANY WARRANTY.
 -->
-<test tags="B50-3096342.zul,A,E,Datebox,Timebox">
+<test tags="B50-3096342.zul,A,E,Datebox,Timebox" import="java.util.Calendar">
 	<case id="ztl">
 		<server><!--
 			<vlayout id="inf">
