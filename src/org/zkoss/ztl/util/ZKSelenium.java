@@ -79,4 +79,8 @@ public class ZKSelenium extends DefaultSelenium {
 		return _browsername;
 	}
 	
+	public CommandProcessor getCmdProcessor() {
+	    return commandProcessor;
+	}
+	
 }

@@ -73,6 +73,12 @@ public class ConfigHelper {
 	private long _lastModified;
 	
 	private boolean _openonce = false;
+	
+	// 2011-03-02. Edited by Phoenix.
+	// Add properties for image comparing.
+	private String _baseImgDir;
+	private String _compareImgResultDir;
+	private boolean _isCompare;
 
 	private static ConfigHelper ch = new ConfigHelper();
 
@@ -251,6 +257,9 @@ public class ConfigHelper {
 				_delay = _prop.getProperty("delay");
 				_browser = _prop.getProperty("browser");
 				_timeout = _prop.getProperty("timeout");
+				_baseImgDir = _prop.getProperty("baseimgdir");
+				_compareImgResultDir = _prop.getProperty("compareimgResult");
+				_isCompare = Boolean.parseBoolean(_prop.getProperty("iscompare", "false"));
 
 				for (Iterator iter = _prop.entrySet().iterator(); iter.hasNext();) {
 					final Map.Entry setting = (Map.Entry) iter.next();
@@ -343,5 +352,29 @@ public class ConfigHelper {
 		BufferedWriter loggingWriter = LoggingUtils.createWriter(resultHtmlFileName, RESULT_FILE_ENCODING, true);
 		return loggingWriter;
 	}
+
+    /**
+     * Property name in config.properties: <b>baseimgdir</b>
+     * @return base image path
+     */
+	public String getBaseImgDir() {
+        return _baseImgDir;
+    }
+
+    /**
+     * Property name in config.properties: <b>compareimgResult</b>
+     * @return compared result image path
+     */
+	public String getCompareImgResultDir() {
+        return _compareImgResultDir;
+    }
+
+    /**
+     * Property name in config.properties: <b>iscompare</b>
+     * @return Need to compare or not.
+     */
+	public boolean isCompare() {
+        return _isCompare;
+    }
 
 }
