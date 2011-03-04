@@ -14,11 +14,23 @@ it will be useful, but WITHOUT ANY WARRANTY.
 */
 package org.zkoss.ztl;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
-import org.zkoss.ztl.util.ConfigHelper;
-import org.zkoss.ztl.util.ZKSelenium;
+import javax.imageio.ImageIO;
 
+import org.zkoss.ztl.util.ConfigHelper;
+import org.zkoss.ztl.util.ImageUtil;
+import org.zkoss.ztl.util.ZKSelenium;
+import org.zkoss.ztl.util.image.Comparer;
+import org.zkoss.ztl.util.image.Comparison;
+import org.zkoss.ztl.util.image.State;
+
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import com.thoughtworks.selenium.Selenium;
 /**
  * A skeleton of ZK Selenium test, which implements all of the methods of {@link Selenium}
@@ -993,5 +1005,75 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 		if( obj1!=null && obj2!=null && (obj1 instanceof Number) && (obj2 instanceof Number)){
 			super.verifyEquals(""+obj1, ""+obj2);
 		} else super.verifyEquals(obj1, obj2);
+	}
+	
+	/**
+	 * Compare snapshot of test result.<br />
+	 * It is decided by property <b>iscompare</b>.<br />
+	 * <b>iscompare is true</b>, it will load base image from specified path, and compare current screen shot of test. <br />
+	 * <b>iscompare is false</b>, it just capture current screen shot and put into the base image path.
+	 */
+	public void verifyImage(String caseName, String browserName) {
+        ZKSelenium zkSelenium = (ZKSelenium) getCurrent();
+        ConfigHelper configHelper = ConfigHelper.getInstance();
+        String resultDirStr = configHelper.getCompareImgResultDir();
+        String baseDirStr = configHelper.getBaseImgDir();
+        
+        if (resultDirStr == null || resultDirStr.isEmpty() ||
+            baseDirStr == null || baseDirStr.isEmpty()) {
+            verifyTrue("Incorrect setting of images' outputing path. Please check config.properties.", false);
+            return;
+        }
+        
+        try {
+            File resultDir = new File(resultDirStr);
+            File baseDir = new File(baseDirStr);
+            
+            if (!baseDir.exists()) {
+                baseDir.mkdir();
+            }
+            
+            if (!resultDir.exists()) {
+                resultDir.mkdir();
+            }
+            
+            byte[] imgByteArr = Base64.decode(zkSelenium.getCmdProcessor().getString("compareImages", new String[] {}));
+            BufferedImage testBuffImg = ImageIO.read(new ByteArrayInputStream(imgByteArr));
+            
+            if (configHelper.isCompare()) {
+                BufferedImage baseBuffImg = ImageIO.read(new File(baseDir, caseName + "_" + browserName + ".png"));
+                State testState = new State(testBuffImg, 1, 1);
+                State baseState = new State(baseBuffImg, 1, 1);
+                Comparer ic = new Comparer(186, 138, 1);
+                Comparison c = ic.compare(testState, baseState);
+                
+                if (!c.isMatch()) {
+                    savePNG(ic.getChangeIndicator(), resultDirStr + "/" + caseName + "_" + browserName + "_result.png");
+                }
+            } else {
+                ImageIO.write(testBuffImg, "png", new File(baseDir, caseName + "_" + browserName + ".png"));
+            }
+        } catch (Exception e) {
+            super.verifyTrue(e.getMessage(), false);
+        }
+	}
+	
+	private void savePNG(Image img, String filename) {
+	    BufferedImage buffImg = ImageUtil.imageToBufferedImage(img);
+	    FileOutputStream out = null;
+	    
+	    try {
+	        ImageIO.write(buffImg, "png", new File(filename));
+	    } catch (Exception e) {
+	        super.verifyTrue(e.getMessage(), false);
+	    } finally {
+	        if (out != null) {
+	            try {
+                    out.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+	        }
+	    }
 	}
 }
