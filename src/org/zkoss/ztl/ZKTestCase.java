@@ -1010,8 +1010,8 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	/**
 	 * Compare snapshot of test result.<br />
 	 * It is decided by property <b>iscompare</b>.<br />
-	 * <b>iscompare is true</b>, it will load base image from specified path, and compare current screen shot of test. <br />
-	 * <b>iscompare is false</b>, it just capture current screen shot and put into the base image path.
+	 * <b>iscompare</b> is <b>true</b>, it will load base image from specified path, and compare current screen shot of test. <br />
+	 * <b>iscompare</b> is <b>false</b>, it just capture current screen shot and put into the base image path.
 	 */
 	public void verifyImage(String caseName, String browserName) {
         ZKSelenium zkSelenium = (ZKSelenium) getCurrent();
@@ -1045,7 +1045,7 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
                 State testState = new State(testBuffImg, 1, 1);
                 State baseState = new State(baseBuffImg, 1, 1);
                 Comparer ic = new Comparer(186, 138, 1);
-                Comparison c = ic.compare(testState, baseState);
+                Comparison c = ic.compare(baseState, testState);
                 
                 if (!c.isMatch()) {
                     savePNG(ic.getChangeIndicator(), resultDirStr + "/" + caseName + "_" + browserName + "_result.png");
