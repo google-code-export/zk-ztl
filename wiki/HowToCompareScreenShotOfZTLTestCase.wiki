@@ -13,4 +13,7 @@ Just call *verifyImage()* method. It will capture screen shot and save it into t
 Please make sure:
  * *baseimgdir* has been defined, and base images must already exit.
  * *compareimgResult* has been defined.
+ * *iscompare* must be true.
+Just call 'verifyImage()' method.
 == Output after comparing ==
+If the snapshot mismatches with base image, this test will fail, and it will output image of comparing result into the 'compareimgResult' path. Please look following picture. Mismatching part will be marked by rectangles which borders are red.
