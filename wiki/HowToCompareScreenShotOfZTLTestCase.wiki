@@ -1,9 +1,9 @@
 = How to compare screen shot of ZTL test case =
 == Define properties at config.properties ==
 There are three properties about image comparing:
- * baseimgdir: Saved base capture images wille be put this path.
- * compareimgResult: Images of conflict result will be put this path.
- * iscompare: To decide save capture images or compare them. It will compare images when this property is true, and save base images when it is false.
+ * *baseimgdir*: Saved base capture images wille be put this path.
+ * *compareimgResult*: Images of conflict result will be put this path.
+ * *iscompare*: To decide save capture images or compare them. It will compare images when this property is true, and save base images when it is false.
 == Save capture for base ==
 == Compare current screen shot of test case with base ==
 == Output after comparing ==
