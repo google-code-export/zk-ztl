@@ -3,7 +3,7 @@
 There are three properties about image comparing:
  * *baseimgdir*: Saved base capture images wille be put this path.
  * *compareimgResult*: Images of conflict result will be put this path.
- * *iscompare*: To decide save capture images or compare them. It will compare images when this property is true, and save base images when it is false.
+ * *iscompare*: To decide save capture images or compare them. It will compare images when this property is *true*, and save base images when it is *false*.
 == Save capture for base ==
 Please make sure:
  * *baseimgdir* has been defound. If not yet, it will fail the test that you use this function.
