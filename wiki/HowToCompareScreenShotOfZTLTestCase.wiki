@@ -16,4 +16,4 @@ Please make sure:
  * *iscompare* must be true.
 Just call *verifyImage()* method.
 == Output after comparing ==
-If the snapshot mismatches with base image, this test will fail, and it will output image of comparing result into the 'compareimgResult' path. Please look following picture. Mismatching part will be marked by rectangles which borders are red.
+If the snapshot mismatches with base image, this test will fail, and it will output image of comparing result into the 'compareimgResult' path. Mismatching part will be marked by rectangles which borders are red in the result image.
