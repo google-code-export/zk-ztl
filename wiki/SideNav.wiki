@@ -3,3 +3,4 @@
   * [TestingTutorial Testing Tutorial]
  * [DeveloperGuide Developer's Guide]
  * [ContributorGuide Contributor's Guide]
+ * [HowToCompareScreenShotOfZTLTestCase How to compare screen shot of ZTL test case]
