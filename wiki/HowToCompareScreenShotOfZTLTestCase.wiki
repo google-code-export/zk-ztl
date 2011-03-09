@@ -1,13 +1,16 @@
 = How to compare screen shot of ZTL test case =
 == Define properties at config.properties ==
 There are three properties about image comparing:
- * *baseimgdir*: Saved base capture images wille be put this path.
+ * *baseimgdir*: Saved base capture images will be put this path.
  * *compareimgResult*: Images of conflict result will be put this path.
  * *iscompare*: To decide save capture images or compare them. It will compare images when this property is *true*, and save base images when it is *false*.
 == Save capture for base ==
 Please make sure:
- * *baseimgdir* has been defound. If not yet, it will fail the test that you use this function.
+ * *baseimgdir* has been defined. If not yet, it will fail the test that you use this function.
  * *iscompare* must be false.
 Just call *verifyImage()* method. It will capture screen shot and save it into the base path.
 == Compare current screen shot of test case with base ==
+Please make sure:
+ * *baseimgdir* has been defined, and base images must already exit.
+ * *compareimgResult* has been defined.
 == Output after comparing ==
