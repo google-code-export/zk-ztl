@@ -1,0 +1,5 @@
+= How to compare screen shot of ZTL test case =
+== Define properties at config.properties ==
+== Save capture for base ==
+== Compare current screen shot of test case with base ==
+== Output after comparing ==
