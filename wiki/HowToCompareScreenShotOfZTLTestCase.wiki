@@ -1,4 +1,12 @@
+http://books.zkoss.org/images/a/ad/WarningTriangle-32x32.png *This page is under construction, so we cannot guarantee the accuracy of the content!*
 = How to compare screen shot of ZTL test case =
+
+== Demo ==
+<wiki:video url="http://www.youtube.com/watch?v=hsTxSuMq4kk"/>
+If you cannot see the youtube, please see this url instead. http://www.screencast.com/t/FAFodxwGM
+
+
+
 == Define properties at config.properties ==
 There are three properties about image comparing:
  * *baseimgdir*: Saved base capture images will be put this path.
