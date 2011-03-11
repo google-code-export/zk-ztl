@@ -26,3 +26,6 @@ Please make sure:
 Just call *verifyImage()* method.
 == Output after comparing ==
 If the snapshot mismatches with base image, this test will fail, and it will output image of comparing result into the 'compareimgResult' path. Mismatching part will be marked by rectangles which borders are red in the result image.
+
+== Environment limits ==
+Currently the API can only work on Windows - but we will improve it if needed.
