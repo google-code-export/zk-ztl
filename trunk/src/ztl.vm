@@ -35,6 +35,7 @@ public class ${ztl.fileName} extends ZKClientTestCase {
 		target = "$ztl.server$ztl.contextPath/$ztl.action";
 		browsers = getBrowsers("$ztl.browser");
 		_timeout = ${ztl.timeout};
+		caseID = getClass().getSimpleName();
 	}
 	
 #foreach($case in $ztl.children)

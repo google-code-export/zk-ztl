@@ -139,6 +139,7 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	// implicit variable
 	protected String target;
 	protected List<Selenium> browsers;
+	protected String caseID;
 
 	/**
 	 * Launches the browser with a new Selenium session
@@ -1013,8 +1014,9 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	 * <b>iscompare</b> is <b>true</b>, it will load base image from specified path, and compare current screen shot of test. <br />
 	 * <b>iscompare</b> is <b>false</b>, it just capture current screen shot and put into the base image path.
 	 */
-	public void verifyImage(String caseName, String browserName) {
+	public void verifyImage() {
         ZKSelenium zkSelenium = (ZKSelenium) getCurrent();
+        String browserName = zkSelenium.getBrowserName();
         ConfigHelper configHelper = ConfigHelper.getInstance();
         String resultDirStr = configHelper.getCompareImgResultDir();
         String baseDirStr = configHelper.getBaseImgDir();
@@ -1041,17 +1043,18 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
             BufferedImage testBuffImg = ImageIO.read(new ByteArrayInputStream(imgByteArr));
             
             if (configHelper.isCompare()) {
-                BufferedImage baseBuffImg = ImageIO.read(new File(baseDir, caseName + "_" + browserName + ".png"));
+                BufferedImage baseBuffImg = ImageIO.read(new File(baseDir, caseID + "_" + browserName + ".png"));
                 State testState = new State(testBuffImg, 1, 1);
                 State baseState = new State(baseBuffImg, 1, 1);
                 Comparer ic = new Comparer(186, 138, 1);
                 Comparison c = ic.compare(baseState, testState);
                 
                 if (!c.isMatch()) {
-                    savePNG(ic.getChangeIndicator(), resultDirStr + "/" + caseName + "_" + browserName + "_result.png");
+                    //savePNG(ic.getChangeIndicator(), resultDirStr + "/" + caseID + "_" + browserName + "_result.png");
+                    super.verifyTrue("Images are mismatch. Please check result.", false);
                 }
             } else {
-                ImageIO.write(testBuffImg, "png", new File(baseDir, caseName + "_" + browserName + ".png"));
+                ImageIO.write(testBuffImg, "png", new File(baseDir, caseID + "_" + browserName + ".png"));
             }
         } catch (Exception e) {
             super.verifyTrue(e.getMessage(), false);

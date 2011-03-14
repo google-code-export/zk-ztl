@@ -25,10 +25,7 @@ public class Comparer {
     }
 
     protected BufferedImage imgc = null;
-    // want to see some stuff in the console as the comparison is happening?
-    public void setDebugMode(int m) {
-        this.debugMode = m;
-    }
+    
     public BufferedImage getChangeIndicator() {
         return imgc;
     }
@@ -41,18 +38,18 @@ public class Comparer {
     }
     // compare two images.
     public Comparison compare(State s1, State s2) {
-        imgc = imageToBufferedImage(s2._img);
+        imgc = imageToBufferedImage(s2.getImg());
         Graphics2D gc = imgc.createGraphics();
         gc.setColor(Color.RED);
         int cx = comparex;
-        if (cx > s1.width) cx = s1.width;
+        if (cx > s1.getWidth()) cx = s1.getWidth();
         int cy = comparey;
-        if (cy > s1.height) cy = s1.height;
+        if (cy > s1.getHeight()) cy = s1.getHeight();
         
         // how many points per section
-        int bx = (int)(Math.floor(s1.width / cx));
+        int bx = (int)(Math.floor(s1.getWidth() / cx));
         if (bx <= 0) bx = 1;
-        int by = (int)(Math.floor(s1.height / cy));
+        int by = (int)(Math.floor(s1.getHeight() / cy));
         if (by <= 0) by = 1;
         int[][] variance = new int[cy][cx];
         
@@ -64,8 +61,8 @@ public class Comparer {
             if (debugMode > 0) System.out.print("|");
             ty = y*by;
             for (int x = 0; x < cx; x++) {
-                int b1 = aggregateMapArea(s1.map, x*bx, ty, bx, by);
-                int b2 = aggregateMapArea(s2.map, x*bx, ty, bx, by);
+                int b1 = aggregateMapArea(s1.getMap(), x*bx, ty, bx, by);
+                int b2 = aggregateMapArea(s2.getMap(), x*bx, ty, bx, by);
                 int diff = Math.abs(b1 - b2);
                 variance[y][x] = diff; 
                 if (diff > leniency) { // the difference in a certain region has passed the threshold value
@@ -90,20 +87,4 @@ public class Comparer {
         return (int)(t/(w*h));
     }
 
-    public int getComparex() {
-        return comparex;
-    }
-
-    public int getComparey() {
-        return comparey;
-    }
-
-    public int getLeniency() {
-        return leniency;
-    }
-
-    public int getDebugMode() {
-        return debugMode;
-    }
-    
 }
