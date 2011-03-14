@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 public class Comparison {
     protected State s1;
     protected State s2;
-    public int[][] variance;
+    private int[][] variance;
     protected int width; 
     protected int height; 
     private boolean match;
@@ -40,27 +40,7 @@ public class Comparison {
         return cx;
     }
     
-    public int[][] getVariance() {
-        return variance;
-    }
-    
-    public int getHeight() {
-        return height;
-    }
-    
-    public int getWidth() {
-        return width;
-    }
-    
     public boolean isMatch() {
         return match;
-    }
-    
-    public State getState1() {
-        return s1;
-    }
-    
-    public State getState2() {
-        return s2;
     }
 }

@@ -7,32 +7,72 @@ import org.zkoss.ztl.util.ImageUtil;
 
 public class State {
 
-    public int[][] map;
-    public int width;
-    public int height;
-    public int average;
-    public Image _img;
+    private int[][] map;
+    private int width;
+    private int height;
+    private int average;
+    private Image _img;
     
     public State(BufferedImage img, int resX, int resY) {
         // setup brightness map
-        width = (int)(img.getWidth() / resX);
-        height = (int)(img.getHeight() / resY);
-        map = new int[height][width];
-        _img = img;
+        setWidth((int)(img.getWidth() / resX));
+        setHeight((int)(img.getHeight() / resY));
+        setMap(new int[getHeight()][getWidth()]);
+        setImg(img);
         
         // build map and stats
-        average = 0;
+        setAverage(0);
         int ta = 0;
         
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
+        for (int y = 0; y < getHeight(); y++) {
+            for (int x = 0; x < getWidth(); x++) {
                 ta = (int)(100 * ImageUtil.getBrightnessAtPoint(img, x * resX, y * resY));
-                map[y][x] = ta;
-                average += ta;
+                getMap()[y][x] = ta;
+                setAverage(getAverage() + ta);
             }
         }
         
-        average = (int)(average / (width * height));
+        setAverage((int)(getAverage() / (getWidth() * getHeight())));
+    }
+
+    public void setMap(int[][] map) {
+        this.map = map;
+    }
+
+    public int[][] getMap() {
+        return map;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setAverage(int average) {
+        this.average = average;
+    }
+
+    public int getAverage() {
+        return average;
+    }
+
+    public void setImg(Image _img) {
+        this._img = _img;
+    }
+
+    public Image getImg() {
+        return _img;
     }
     
 }
