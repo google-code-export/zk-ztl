@@ -8,11 +8,11 @@ If you cannot see the youtube, please see this url instead. http://www.screencas
 
 == Define properties at config.properties ==
 There are three properties about image comparing:
- * *imgsrc*: Saved base capture images will be put this path.
- * *imgdest*: Images of conflict result will be put this path.
- * *comparable*: To decide save capture images or compare them. It will compare images when this property is _true_, and save base images when it is _false_.
+ * *imgsrc*: the path of the base images to be stored.
+ * *imgdest*: the path of the different images to be stored.
+ * *comparable*: To decide whether store the image or compare it. If true, it is comparable.
  * *granularity*: It is better to have 1~15, less is a precise comparison, but performance is slow. Don't specify too high, it may compare without any different.
- * *leniency*: It is better to have 1~10, less is a precise comparison.
+ * *leniency*: It is better to have 1~10, less is a precise comparison. The leniency is used to distinguish the brightness of each section point.
 
 == Save capture for base ==
 Please make sure:
