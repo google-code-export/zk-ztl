@@ -11,8 +11,8 @@ There are three properties about image comparing:
  * *imgsrc*: the path of the base images to be stored.
  * *imgdest*: the path of the different images to be stored.
  * *comparable*: To decide whether store the image or compare it. If true, it is comparable.
- * *granularity*: It is better to have 1~15, less is a precise comparison, but performance is slow. Don't specify too high, it may compare without any different.
- * *leniency*: It is better to have 1~10, less is a precise comparison. The leniency is used to distinguish the brightness of each section point.
+ * *granularity*: It is an integer to specify how big the section of the image to be compared. It is better to have 1~15, less is a precise comparison, but performance is slow. Don't specify too high, it may compare without any different.
+ * *leniency*: It is an integer to distinguish the brightness of each section point. It is better to have 1~10, less is a precise comparison. 
 
 == Save capture for base ==
 Please make sure:
