@@ -1,4 +1,4 @@
-<project name="zktest3" default="help" basedir=".">
+<project name="ZTL" default="help" basedir=".">
 	
 	<import file="build.prop.xml" />	
 	<target name="help">
