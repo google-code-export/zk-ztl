@@ -135,7 +135,7 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	 */
 	private static String PREFIX = "zk_comp_";
 
-	private static SimpleDateFormat format = new SimpleDateFormat("MMddhh");
+	private static SimpleDateFormat format = new SimpleDateFormat("MMddHH");
 	
 	// implicit variable
 	protected String target;
@@ -1045,8 +1045,9 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
             if (configHelper.isComparable()) {
                 BufferedImage baseBuffImg = ImageIO.read(new File(baseDir, caseID + "_" + browserName + ".png"));
                 if (baseBuffImg.getWidth() != testBuffImg.getWidth() || baseBuffImg.getHeight() != testBuffImg.getHeight()) {
-                	ImageIO.write(testBuffImg, "png", new File(resultDirStr + "/" + caseID + "_" + browserName + "_result.png"));
-                	super.verifyTrue("The size of images are not the same. Please check result.", false);
+                	String f = resultDirStr + "/" + caseID + "_" + browserName + "_result.png";
+                	ImageIO.write(testBuffImg, "png", new File(f));
+                	super.verifyTrue("The size of images are not the same. Please check result. - " + f, false);
                 	return;
                 }
                 Comparator ic = comparator == null ? new DefaultComparator(baseBuffImg.getWidth()/configHelper.getGranularity(),
@@ -1054,8 +1055,9 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
                     						comparator;
                 BufferedImage imgc = ic.compare(baseBuffImg, testBuffImg);
                 if (imgc != null) {
-                	ImageIO.write(imgc, "png", new File(resultDirStr + "/" + caseID + "_" + browserName + "_result.png"));
-                    super.verifyTrue("Images are mismatch. Please check result.", false);
+                	String f = resultDirStr + "/" + caseID + "_" + browserName + "_result.png";
+                	ImageIO.write(imgc, "png", new File(f));
+                    super.verifyTrue("Images are mismatch. Please check result. - " + f, false);
                 } else {
                 	File f = new File(resultDirStr + "/" + caseID + "_" + browserName + "_result.png");
                 	if (f.isFile()) {
