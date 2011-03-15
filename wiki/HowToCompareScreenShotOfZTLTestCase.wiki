@@ -6,24 +6,25 @@ http://books.zkoss.org/images/a/ad/WarningTriangle-32x32.png *This page is under
 
 If you cannot see the youtube, please see this url instead. http://www.screencast.com/t/FAFodxwGM
 
-
-
 == Define properties at config.properties ==
 There are three properties about image comparing:
- * *baseimgdir*: Saved base capture images will be put this path.
- * *compareimgResult*: Images of conflict result will be put this path.
- * *iscompare*: To decide save capture images or compare them. It will compare images when this property is *true*, and save base images when it is *false*.
+ * *imgsrc*: Saved base capture images will be put this path.
+ * *imgdest*: Images of conflict result will be put this path.
+ * *comparable*: To decide save capture images or compare them. It will compare images when this property is _true_, and save base images when it is _false_.
+ * *granularity*: It is better to have 1~15, less is a precise comparison, but performance is slow. Don't specify too high, it may compare without any different.
+ * *leniency*: It is better to have 1~10, less is a precise comparison.
+
 == Save capture for base ==
 Please make sure:
- * *baseimgdir* has been defined. If not yet, it will fail the test that you use this function.
- * *iscompare* must be false.
-Just call *verifyImage()* method. It will capture screen shot and save it into the base path.
+ * *imgsrc* has been defined. If not yet, it will fail the test that you use this function.
+ * *comparable* must be false.
+Just invoke *verifyImage()* method. It will capture screen shot and save it into the base path.
 == Compare current screen shot of test case with base ==
 Please make sure:
- * *baseimgdir* has been defined, and base images must already exit.
- * *compareimgResult* has been defined.
- * *iscompare* must be true.
-Just call *verifyImage()* method.
+ * *imgsrc* has been defined, and base images must already exit.
+ * *imgdest* has been defined.
+ * *comparable* must be true.
+Just invoke *verifyImage()* method.
 == Output after comparing ==
 If the snapshot mismatches with base image, this test will fail, and it will output image of comparing result into the 'compareimgResult' path. Mismatching part will be marked by rectangles which borders are red in the result image.
 
