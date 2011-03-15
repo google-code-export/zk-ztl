@@ -14,21 +14,20 @@ it will be useful, but WITHOUT ANY WARRANTY.
 */
 package org.zkoss.ztl;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.PrintStream;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.imageio.ImageIO;
 
 import org.zkoss.ztl.util.ConfigHelper;
-import org.zkoss.ztl.util.ImageUtil;
 import org.zkoss.ztl.util.ZKSelenium;
-import org.zkoss.ztl.util.image.Comparer;
-import org.zkoss.ztl.util.image.Comparison;
-import org.zkoss.ztl.util.image.State;
+import org.zkoss.ztl.util.image.Comparator;
+import org.zkoss.ztl.util.image.DefaultComparator;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import com.thoughtworks.selenium.Selenium;
@@ -135,6 +134,8 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	 * The prefix is depended on what the ID generator is.
 	 */
 	private static String PREFIX = "zk_comp_";
+
+	private static SimpleDateFormat format = new SimpleDateFormat("MMddhh");
 	
 	// implicit variable
 	protected String target;
@@ -1009,17 +1010,15 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	}
 	
 	/**
-	 * Compare snapshot of test result.<br />
-	 * It is decided by property <b>iscompare</b>.<br />
-	 * <b>iscompare</b> is <b>true</b>, it will load base image from specified path, and compare current screen shot of test. <br />
-	 * <b>iscompare</b> is <b>false</b>, it just capture current screen shot and put into the base image path.
+	 * 
+	 * @param comparator an image comparator.
 	 */
-	public void verifyImage() {
-        ZKSelenium zkSelenium = (ZKSelenium) getCurrent();
+	public void verifyImage(Comparator comparator) {
+		ZKSelenium zkSelenium = (ZKSelenium) getCurrent();
         String browserName = zkSelenium.getBrowserName();
         ConfigHelper configHelper = ConfigHelper.getInstance();
-        String resultDirStr = configHelper.getCompareImgResultDir();
-        String baseDirStr = configHelper.getBaseImgDir();
+        String resultDirStr = configHelper.getImageDest() + File.separator +  format.format(new java.util.Date());
+        String baseDirStr = configHelper.getImageSrc();
         
         if (resultDirStr == null || resultDirStr.isEmpty() ||
             baseDirStr == null || baseDirStr.isEmpty()) {
@@ -1038,45 +1037,52 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
             if (!resultDir.exists()) {
                 resultDir.mkdir();
             }
-            
-            byte[] imgByteArr = Base64.decode(zkSelenium.getCmdProcessor().getString("compareImages", new String[] {}));
+
+            String title = this.getEval("document.title");
+            byte[] imgByteArr = Base64.decode(zkSelenium.getCmdProcessor().getString("captureEntirePageScreenshotToString", new String[] {title, browserName}));
             BufferedImage testBuffImg = ImageIO.read(new ByteArrayInputStream(imgByteArr));
             
-            if (configHelper.isCompare()) {
+            if (configHelper.isComparable()) {
                 BufferedImage baseBuffImg = ImageIO.read(new File(baseDir, caseID + "_" + browserName + ".png"));
-                State testState = new State(testBuffImg, 1, 1);
-                State baseState = new State(baseBuffImg, 1, 1);
-                Comparer ic = new Comparer(186, 138, 1);
-                Comparison c = ic.compare(baseState, testState);
-                
-                if (!c.isMatch()) {
-                    //savePNG(ic.getChangeIndicator(), resultDirStr + "/" + caseID + "_" + browserName + "_result.png");
+                if (baseBuffImg.getWidth() != testBuffImg.getWidth() || baseBuffImg.getHeight() != testBuffImg.getHeight()) {
+                	ImageIO.write(testBuffImg, "png", new File(resultDirStr + "/" + caseID + "_" + browserName + "_result.png"));
+                	super.verifyTrue("The size of images are not the same. Please check result.", false);
+                	return;
+                }
+                Comparator ic = comparator == null ? new DefaultComparator(baseBuffImg.getWidth()/configHelper.getGranularity(),
+                		baseBuffImg.getHeight()/configHelper.getGranularity(), configHelper.getLeniency()):
+                    						comparator;
+                BufferedImage imgc = ic.compare(baseBuffImg, testBuffImg);
+                if (imgc != null) {
+                	ImageIO.write(imgc, "png", new File(resultDirStr + "/" + caseID + "_" + browserName + "_result.png"));
                     super.verifyTrue("Images are mismatch. Please check result.", false);
+                } else {
+                	File f = new File(resultDirStr + "/" + caseID + "_" + browserName + "_result.png");
+                	if (f.isFile()) {
+                		f.delete();
+                	}
                 }
             } else {
                 ImageIO.write(testBuffImg, "png", new File(baseDir, caseID + "_" + browserName + ".png"));
             }
         } catch (Exception e) {
-            super.verifyTrue(e.getMessage(), false);
+        	ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        	PrintStream ps = new PrintStream(baos);
+        	e.printStackTrace(ps);
+            super.fail(baos.toString());
         }
 	}
-	
-	private void savePNG(Image img, String filename) {
-	    BufferedImage buffImg = ImageUtil.imageToBufferedImage(img);
-	    FileOutputStream out = null;
-	    
-	    try {
-	        ImageIO.write(buffImg, "png", new File(filename));
-	    } catch (Exception e) {
-	        super.verifyTrue(e.getMessage(), false);
-	    } finally {
-	        if (out != null) {
-	            try {
-                    out.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-	        }
-	    }
+	/**
+	 * Compares the snapshot of the testing result.
+	 * It is decided by the config.properties <i>comparable</i>.
+	 * <p> If true, it will load base image from the specified path, and compare
+	 * the current screen shot of the testing result. Otherwise, it just captures
+	 * the current screen shot and put into the base image path.
+	 * <p> The default comparator is to use {@link Defaultcomparator}. You can
+	 * also use {@link #verifyImage(Comparator)} to specify your own comparator.
+	 * @see DefaultComparator
+	 */
+	public void verifyImage() {
+		verifyImage(null);
 	}
 }

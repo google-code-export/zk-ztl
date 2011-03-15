@@ -76,9 +76,10 @@ public class ConfigHelper {
 	
 	// 2011-03-02. Edited by Phoenix.
 	// Add properties for image comparing.
-	private String _baseImgDir;
-	private String _compareImgResultDir;
-	private boolean _isCompare;
+	private String _imgsrc;
+	private String _imgdest;
+	private boolean _comparable;
+	private int _granularity, _leniency;
 
 	private static ConfigHelper ch = new ConfigHelper();
 
@@ -257,10 +258,11 @@ public class ConfigHelper {
 				_delay = _prop.getProperty("delay");
 				_browser = _prop.getProperty("browser");
 				_timeout = _prop.getProperty("timeout");
-				_baseImgDir = _prop.getProperty("baseimgdir");
-				_compareImgResultDir = _prop.getProperty("compareimgResult");
-				_isCompare = Boolean.parseBoolean(_prop.getProperty("iscompare", "false"));
-
+				_imgsrc = _prop.getProperty("imgsrc");
+				_imgdest = _prop.getProperty("imgdest");
+				_comparable = Boolean.parseBoolean(_prop.getProperty("comparable", "false"));
+				_granularity = Integer.parseInt(_prop.getProperty("granularity"));
+				_leniency = Integer.parseInt(_prop.getProperty("leniency"));
 				for (Iterator iter = _prop.entrySet().iterator(); iter.hasNext();) {
 					final Map.Entry setting = (Map.Entry) iter.next();
 					String strKey = (String) setting.getKey();
@@ -354,27 +356,56 @@ public class ConfigHelper {
 	}
 
     /**
-     * Property name in config.properties: <b>baseimgdir</b>
-     * @return base image path
+     * Returns the path of the image source directory.
+     * <p>
+     * Property name in config.properties: <b>imgsrc</b>, which means the source
+     * directory of the base image.
      */
-	public String getBaseImgDir() {
-        return _baseImgDir;
+	public String getImageSrc() {
+        return _imgsrc;
     }
 
     /**
-     * Property name in config.properties: <b>compareimgResult</b>
-     * @return compared result image path
+     * Returns the path of the image destination directory.
+     * <p>
+     * Property name in config.properties: <b>imgdest</b>, which means the destination
+     * directory of the compared result, if fails.
      */
-	public String getCompareImgResultDir() {
-        return _compareImgResultDir;
+	public String getImageDest() {
+        return _imgdest;
     }
 
     /**
-     * Property name in config.properties: <b>iscompare</b>
-     * @return Need to compare or not.
+     * Returns whether in a comparable mode.
+     * <p>default: false.
+     * Property name in config.properties: <b>comparable</b>, which means the image
+     * comparison is in a comparable mode, if true specified. Otherwise, the image
+     * is stored to the imgsrc directory as the base images.
+     * 
      */
-	public boolean isCompare() {
-        return _isCompare;
+	public boolean isComparable() {
+        return _comparable;
     }
+	
+	/**
+	 * Returns the granularity for each comparing section.
+	 * <p>
+     * Property name in config.properties: <b>granularity</b>
+	 * <p> It is better to have 1~15, less is a precise comparison, but performance
+	 * is slow. Don't specify too high, it may compare without any different.
+	 */
+	public int getGranularity() {
+		return _granularity;
+	}
+	
+	/**
+	 * Returns the leniency for each comparing section.
+	 * <p>
+     * Property name in config.properties: <b>leniency</b>
+	 * <p> It is better to have 1~10, less is a precise comparison.
+	 */
+	public int getLeniency() {
+		return _leniency;
+	}
 
 }
