@@ -1,5 +1,4 @@
 #labels Featured
-http://books.zkoss.org/images/a/ad/WarningTriangle-32x32.png *This page is under construction, so we cannot guarantee the accuracy of the content!*
 = How to Use Vision Test for ZTL test case =
 
 == Demo ==
