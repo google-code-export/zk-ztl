@@ -1,0 +1,33 @@
+#labels Featured
+http://books.zkoss.org/images/a/ad/WarningTriangle-32x32.png *This page is under construction, so we cannot guarantee the accuracy of the content!*
+= How to Use Vision Test for ZTL test case =
+
+== Demo ==
+<wiki:video url="http://www.youtube.com/watch?v=hsTxSuMq4kk"/>
+
+If you cannot see the youtube, please see this url instead. http://www.screencast.com/t/FAFodxwGM
+
+== Define properties at config.properties ==
+There are three properties about image comparing:
+ * *imgsrc*: the path of the base images to be stored.
+ * *imgdest*: the path of the different images to be stored.
+ * *comparable*: To decide whether store the image or compare it. If true, it is comparable.
+ * *granularity*: It is an integer to specify how big the section of the image to be compared. It is better to have 1~15, less is a precise comparison, but performance is slow. Don't specify too high, it may compare without any different.
+ * *leniency*: It is an integer to distinguish the brightness of each section point. It is better to have 1~10, less is a precise comparison. 
+
+== Save capture for base ==
+Please make sure:
+ * *imgsrc* has been defined. If not yet, it will fail the test that you use this function.
+ * *comparable* must be false.
+Just invoke *verifyImage()* method. It will capture screen shot and save it into the base path.
+== Compare current screen shot of test case with base ==
+Please make sure:
+ * *imgsrc* has been defined, and base images must already exit.
+ * *imgdest* has been defined.
+ * *comparable* must be true.
+Just invoke *verifyImage()* method.
+== Output after comparing ==
+If the snapshot mismatches with base image, this test will fail, and it will output image of comparing result into the 'compareimgResult' path. Mismatching part will be marked by rectangles which borders are red in the result image.
+
+== Environment limits ==
+Currently the API can only work on Windows - but we will improve it if needed.
