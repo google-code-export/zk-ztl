@@ -31,4 +31,4 @@ Invoking *verifyImage()* method while running the test case, the result of the t
 *Note* that we will store the result by different testing name with its browser type(for example, _B30_1455584Test_chrome_result.png_) and classify them into a time naming folder, such as 031612 (_MMddHH_ date format).
 
 == Environment Limits ==
-Currently the API can only work on Windows - But we will improve it if needed.
+Currently the API can only work on Windows(I mean the selenium-server side, not Junit runner side.) - But we will improve it if needed.
