@@ -1,5 +1,5 @@
 #labels Featured
-= How to Use Vision Test for ZTL test case =
+= How to Use Vision Test for ZTL Test Case =
 
 == Demo ==
 <wiki:video url="http://www.youtube.com/watch?v=hsTxSuMq4kk"/>
