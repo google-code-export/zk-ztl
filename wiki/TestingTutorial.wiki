@@ -162,16 +162,16 @@ verifyTrue(3 > parseInt(jq("@spinner input.z-spinner-inp").val()));
  You need to click the button of the menuitem.
 For example,
  {{{
-		<server><!--
-			<zk>
-				<menubar>
-					<menuitem label="item" onClick='alert("you click")' />
-				</menubar>
-			</zk>
-		--></server>
-		<client>
-			click(new Widget(jq("@menuitem[label=\"item\"]:eq(0)")).$n("b"));
-		</client>
+<server><!--
+	<zk>
+		<menubar>
+			<menuitem label="item" onClick='alert("you click")' />
+		</menubar>
+	</zk>
+--></server>
+<client>
+	click(new Widget(jq("@menuitem[label=\"item\"]:eq(0)")).$n("b"));
+</client>
 }}}
 === Menupopup ===
  ==== Right Click ====
