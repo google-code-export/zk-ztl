@@ -157,6 +157,27 @@ blur(jq("@spinner i.z-spinner-btn"));
 verifyTrue(3 > parseInt(jq("@spinner input.z-spinner-inp").val()));
 }}}
   * You have to use *blur()*, otherwise it will not save the value to server.
+=== Menuitem ===
+ ==== Click ====
+ You need to click the button of the menuitem.
+For example,
+ {{{
+<test
+	tags="label">
+	<case id="Click">
+		<server><!--
+			<zk>
+				<menubar>
+					<menuitem label="item" onClick='alert("you click")' />
+				</menubar>
+			</zk>
+		--></server>
+		<client>
+			click(new Widget(jq("@menuitem[label=\"item\"]:eq(0)")).$n("b"));
+		</client>
+	</case>
+</test>
+}}}
 === Menupopup ===
  ==== Right Click ====
  You need to use *contextMenu*, rather than invoking the mouseDownRight() method.
