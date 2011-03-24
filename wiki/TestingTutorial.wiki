@@ -160,7 +160,7 @@ verifyTrue(3 > parseInt(jq("@spinner input.z-spinner-inp").val()));
 === Menuitem ===
  ==== Click ====
  You need to click the button of the menuitem.
-For example,
+ For example,
  {{{
 <server><!--
 	<zk>
