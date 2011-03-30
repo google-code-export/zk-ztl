@@ -60,8 +60,8 @@ BrowserBot.prototype.findElement = function(locator, win) {
 
 Selenium.prototype.getEval = function(script) {
     try {
-        var window = this.browserbot.getCurrentWindow(),
-        	result = (window.jq ? window.jq.evalJSON : eval)(script);
+        var window = this.browserbot.getUserWindow(),
+			result = (window.jq ? window.jq.evalJSON : eval)(script);
         // Selenium RC doesn't allow returning null
         if (null == result) return "null";
         return result;
