@@ -1,6 +1,7 @@
 <project name="selenium-server" default="help" basedir=".">
 	
 	<property name="source.dir" value="src/main/java/" />
+	<property name="resources.dir" value="src/main/resources/" />
 	<property name="build.dir" value="build/" />
 	<property name="lib.dir" value="lib/" />
 	<property name="classes.dir" value="${build.dir}/classes" />
@@ -19,9 +20,10 @@
 		<mkdir dir="${dist.dir}"/>
 		<jar jarfile="${dist.dir}/${jar.name}">
 			<fileset dir="${classes.dir}" includes="**/*SeleniumDriverResourceHandler* **/zkoss/**"/>
+			<fileset dir="${resources.dir}" includes="**/**.rdf"/>
 			<zipfileset src="${lib.dir}/jna.jar" includes="**"/>
 			<zipfileset src="${lib.dir}/platform.jar" includes="**"/>
-			<zipfileset src="${lib.dir}/selenium-server.jar" includes="**" excludes="**/*SeleniumDriverResourceHandler*"/>
+			<zipfileset src="${lib.dir}/selenium-server.jar" includes="**" excludes="**/*SeleniumDriverResourceHandler* **/**.rdf"/>
 			<manifest>
 		      <attribute name="Main-Class"
 		            value="org.openqa.selenium.server.SeleniumServer"/>
