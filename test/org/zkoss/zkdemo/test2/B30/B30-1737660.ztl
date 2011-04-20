@@ -1,5 +1,5 @@
-<test tags="B30-1737660.zul">
-	<case id="ztl">
+<test tags="Window,Listbox">
+	<case id="listboxwidth">
 		<server><!--
 			  
 			<?page title="ZKD Debug Page"
@@ -9,7 +9,7 @@
 			i.e., the width of -hdfaker ( upper line of header ) should be zero
 			if the header is hided 
 			
-			its correct on opera, incorrect on chrome, firefox, ie8, safari5
+			its incorrect on opera, correct on chrome, firefox, ie8, safari5
 				<window id="winTest"
 										top="15px"
 										left="15px"
@@ -50,7 +50,7 @@
 									lc.setParent(li);
 								}
 								// Hide a few rows on the second pass to show the bug
-								if (y < (z*2))
+								if (y < (z*2+1))
 									li.setVisible(false);
 								li.setParent(lb);
 							}
@@ -64,25 +64,20 @@
 
 		--></server>
 		<client><![CDATA[
-			for (JQuery jq = jq("@listbox"); jq.exists(); jq = jq.next()){
-
-				JQuery uppers = jq.find("tbody").first().find("th");
-				JQuery headers = jq.find("tbody").next().find("th");
+			
+			for(JQuery $lb:jq("@listbox")){
+				JQuery $lhr = $lb.find("@listhead").find("@listheader").first();
+				JQuery $lc = $lb.find("@listitem").find("@listcell").first();
+				for(;;){
+					if( (!$lhr.exists()) || (!$lc.exists()))
+						break;
+					verifyEquals($lhr.outerWidth(), $lc.outerWidth());
+					$lhr = $lhr.next();
+					$lc = $lc.next();
+				}
 				
-				int count1 = 0, count2 = 0;
-				boolean hasZero = false;
-				for(JQuery upper = uppers.first();upper.exists();upper = upper.next()){
-					if(upper.width() == 0)
-						hasZero = true;
-					count1 ++;
-				}
-				for(JQuery header = headers.first();header.exists();header = header.next()){
-					count2 ++;
-				}
-				if(count1 > count2)
-					verifyTrue( hasZero );
-
 			}
+			
 
 		]]></client>
 	</case>
