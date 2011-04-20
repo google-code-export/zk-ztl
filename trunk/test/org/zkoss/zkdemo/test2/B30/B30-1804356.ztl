@@ -1,4 +1,4 @@
-<test tags="Tabbox,Grid,Combobox">
+<test tags="Textbox,Databinding,Label">
 	<case id="Databinding">
 		<server><!--
 <?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
