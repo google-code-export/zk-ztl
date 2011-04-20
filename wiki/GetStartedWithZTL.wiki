@@ -1,4 +1,5 @@
 #summary Get started with the ZTL auto-testing.
+#labels Featured
 #sidebar SideNav
 
 <wiki:toc max_depth="2" />
