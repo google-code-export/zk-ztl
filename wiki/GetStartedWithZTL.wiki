@@ -97,3 +97,14 @@ help:
      [echo]             Generate the Javadoc
      [echo]
 }}}
+
+= Demo =
+in a nutshell
+ * prepare a project for zk server
+ * set the listener into zk.xml
+ * prepare your test case (remember to check)
+ * set config.properties 
+ * start selenium server and zk server
+ * test!
+
+<wiki:video url="http://www.youtube.com/watch?v=pu59ukAoOTU"/>
