@@ -101,7 +101,7 @@ help:
 = Demo =
 In a nutshell
  * prepare a project for zk server
- * set the listener into zk.xml
+ * add the listener into zk.xml
  * prepare your test case (remember to check)
  * set config.properties 
  * start selenium server and zk server
