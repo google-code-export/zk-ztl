@@ -99,7 +99,7 @@ help:
 }}}
 
 = Demo =
-in a nutshell
+In a nutshell
  * prepare a project for zk server
  * set the listener into zk.xml
  * prepare your test case (remember to check)
