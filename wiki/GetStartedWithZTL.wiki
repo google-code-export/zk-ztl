@@ -102,9 +102,9 @@ help:
 In a nutshell
  * prepare a project for zk server
  * add the listener into zk.xml
- * prepare your test case (remember to check)
- * set config.properties 
+ * set config.properties
+ * prepare your test case 
  * start selenium server and zk server
  * test!
 
-<wiki:video url="http://www.youtube.com/watch?v=pu59ukAoOTU"/>
+<wiki:video url="http://www.youtube.com/watch?v=Jcv5mGBXpW8"/>
