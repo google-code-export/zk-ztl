@@ -29,7 +29,7 @@
    			
    			click(btn);
    			click(b.$n("real"));
-   			verifyTrue(isVisible(b.$n("pp")));
+   			verifyFalse(isVisible(b.$n("pp")));
    			verifyEquals("0px", jq(b.$n("real")).css("border-right-width"));
    			
 			click(c.$n("real"));
