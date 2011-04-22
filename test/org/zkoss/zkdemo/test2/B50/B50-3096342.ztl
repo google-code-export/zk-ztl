@@ -12,7 +12,7 @@ Copyright (C) 2010 Potix Corporation. All Rights Reserved.
 This program is distributed under Apache License Version 2.0 in the hope that
 it will be useful, but WITHOUT ANY WARRANTY.
 -->
-<test tags="B50-3096342.zul,A,E,Datebox,Timebox,unstable" import="java.util.Calendar">
+<test tags="B50-3096342.zul,A,E,Datebox,Timebox" import="java.util.Calendar">
 	<case id="ztl">
 		<server><!--
 			<vlayout id="inf">
@@ -42,7 +42,6 @@ it will be useful, but WITHOUT ANY WARRANTY.
 
 		--></server>
 		<client><![CDATA[
-		/*
 			click(jq(".z-datebox-btn"));
 				mouseDownAt(jq(".z-timebox-btn-lower"),"20,20");
 				mouseUp(jq(".z-timebox-btn-lower"));
@@ -69,7 +68,6 @@ it will be useful, but WITHOUT ANY WARRANTY.
 				waitResponse();
 				msg = jq("@label:last").text();
 				verifyTrue(msg.indexOf("d2:onChange:")!=-1 && msg.indexOf("null") != -1);
-			*/
 		]]></client>
 	</case>
 </test>

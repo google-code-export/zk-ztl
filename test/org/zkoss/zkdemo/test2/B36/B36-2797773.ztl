@@ -1,4 +1,4 @@
-<test tags="intbox,unstable">
+<test tags="intbox">
 	<case id="paste">
 		<server><!--
 			<zk>
@@ -6,8 +6,7 @@
 				<intbox value="1234567"/>
 			</zk>
 		--></server>
-		<client><![CDATA[
-		/*
+		<client><![CDATA[	
 			focus(jq("@intbox"));
 			jq("@intbox").eval("select()");
 			keyDownNative(CTRL);
@@ -17,7 +16,6 @@
 			keyPressNative(V);
 			keyUpNative(CTRL);
 			verifyEquals("1234567", getValue(jq("@intbox")));
-		*/
 		]]></client>
 	</case>
 </test>
