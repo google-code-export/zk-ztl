@@ -1,7 +1,7 @@
 <test tags="textbox">
 	<case id="deleteChar">
 		<server id="zul"><![CDATA[
-			<zk>xxxxx
+			<zk>
 				<bandbox id="bb" readonly="true">
 					<bandpopup>
 						<textbox id="tb" value="test" />

@@ -2,7 +2,7 @@
 	<case id="paste">
 		<server><!--
 			<zk>
-				xxxxxnow support copy paste by ctrl key in intbox
+				now support copy paste by ctrl key in intbox
 				<intbox value="1234567"/>
 			</zk>
 		--></server>
