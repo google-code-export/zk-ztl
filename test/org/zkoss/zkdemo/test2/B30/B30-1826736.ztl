@@ -31,15 +31,13 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
+
 			clickAt(jq(".z-listheader-cnt"), "6,6");
 			waitResponse();
-			sleep(2000);
-			clickAt(jq(".z-listheader-cnt"), "6,6");
-            waitResponse();
-            verifyEquals("Tom", jq(".z-listcell:eq(0)").text());
+
+            verifyEquals("Tom", jq(".z-listcell:eq(2)").text());
             verifyEquals("Mary", jq(".z-listcell:eq(1)").text());
-            verifyEquals("John", jq(".z-listcell:eq(2)").text());
+            verifyEquals("John", jq(".z-listcell:eq(0)").text());
 		]]></client>
 	</case>
 </test>
