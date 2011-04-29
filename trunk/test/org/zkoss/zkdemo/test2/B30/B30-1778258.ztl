@@ -16,6 +16,7 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
+			sleep(200);
 			verifyFalse(jq("@box @div").exists());
 			click(btn1);
 			verifyTrue(jq("@box @div").exists());

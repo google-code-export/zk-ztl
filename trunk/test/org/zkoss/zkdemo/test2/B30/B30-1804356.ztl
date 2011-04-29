@@ -20,6 +20,7 @@ Make a textbox databinding access:load only. (This bug used to cause NullPointer
 </zk>
 		--></server>
 		<client><![CDATA[
+		sleep(200);
 		verifyEquals("ZK", jq(tb).val());
 		verifyEquals("ZK", jq(label).html());
 		type(tb, "Test");

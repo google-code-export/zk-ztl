@@ -26,6 +26,7 @@ If the popup of combox out of position, that is wrong.
 </window>
 		--></server>
 		<client><![CDATA[
+		sleep(200);
 		int[] offset1 = zk(cb).revisedOffset();
 		click(cb.$n("btn"));
 		int[] offset2 = zk(cb.$n("pp")).revisedOffset();
