@@ -16,7 +16,6 @@
 			keyPressNative(END);
 			keyPressNative(BACKSPACE);
 			verifyFalse(jq(tb).val().equals(before));
-			verifyImage();
 		]]></client>
 	</case>
 </test>
