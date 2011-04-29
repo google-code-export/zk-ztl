@@ -16,7 +16,6 @@
 			keyPressNative(V);
 			keyUpNative(CTRL);
 			verifyEquals("1234567", getValue(jq("@intbox")));
-			verifyImage();
 		]]></client>
 	</case>
 </test>

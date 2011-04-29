@@ -68,7 +68,6 @@ it will be useful, but WITHOUT ANY WARRANTY.
 				waitResponse();
 				msg = jq("@label:last").text();
 				verifyTrue(msg.indexOf("d2:onChange:")!=-1 && msg.indexOf("null") != -1);
-				     verifyImage();
 		]]></client>
 	</case>
 </test>
