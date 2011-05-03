@@ -31,6 +31,7 @@ Usage:
 		<mkdir dir="${classes.dir}"/>
 		<mkdir dir="${report.dir}" />
 		<mkdir dir="${test.dir}"/>
+		<mkdir dir="${codegen.dir}"/>
 	</target>
 	<target name="build" depends="generate,compileztl">
 	</target>
