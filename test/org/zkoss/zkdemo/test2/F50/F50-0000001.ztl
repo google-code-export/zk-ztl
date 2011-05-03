@@ -40,8 +40,8 @@
 			</window>
 		</zk>
 		--></server>
-		<client wait="3000"><![CDATA[
-			sleep(3000);
+		<client ><![CDATA[
+			sleep(200);
 			mouseMoveAt(modalBtn, "15,8");
 			mouseDownAt(modalBtn, "15,8");
 			mouseUpAt(modalBtn, "15,8");
