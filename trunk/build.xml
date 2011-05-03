@@ -109,6 +109,10 @@ Usage:
 		<echo>Tags: -Dtags=${tags}</echo>
 		<java classname="org.zkoss.ztl.util.ZtlGenerator"
            	fork="true">
+         <arg value="-src"/>
+         <arg value="test"/>
+         <arg value="-dist"/>
+         <arg value="codegen"/>           		
          <arg value="-run"/>
          <arg value="${test.dir}"/>
          <arg value="${tags}"/>
@@ -137,24 +141,6 @@ Usage:
          </classpath>
        </java>
 	</target>
-	<target name="junitRunTagOne" depends="run">
-		<junit printsummary="on" fork="true" forkmode="once" haltonfailure="false"
-			   showoutput="true">
-			<classpath>
-				<pathelement path="${classes.dir}" />
-				<pathelement path="${test.dir}" />
-				<fileset dir="${lib.dir}">
-					<include name="**/*.jar" />
-				</fileset>
-			</classpath>
-			<formatter type="xml" />
-			<batchtest todir="${report.dir}">
-				<fileset dir="${test.dir}" >
-					<include name="**/*Test.*" />
-				</fileset>
-			</batchtest>
-		</junit>
-	</target>		
 	<target name="junitOne" depends="generate,compileztl">
 		<junit printsummary="on" fork="true" forkmode="once" haltonfailure="false"
 			   showoutput="true">
