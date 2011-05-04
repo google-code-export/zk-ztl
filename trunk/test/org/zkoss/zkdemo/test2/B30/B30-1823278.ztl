@@ -19,7 +19,7 @@
 	</listbox>
 </zk>
 		 --></server>
-		<client wait="2000"><![CDATA[
+		<client ><![CDATA[
             click(jq(".z-listitem:eq(0)"));
 			waitResponse();
 			int temp = 0;
