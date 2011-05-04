@@ -35,9 +35,12 @@ public class Server implements Source {
 	private Map<String, String> _attrs;
 	private Case _case;
 	private Server _ref;
-	private static String[] ID_GROUP = {"id=( \"[^${].*?\"|\"[^${].*?\"|\'[^${].*?\')",
-				"id =( \"[^${].*?\"|\"[^${].*?\"|\'[^${].*?\')",
-				"setId\\((\"[^${].*?\")"};
+	/**
+	 * Bug fix for skip EL in ID definition 
+	 */
+	private static String[] ID_GROUP = {"id=( \"[^${][^{}]*?\"|\"[^${][^{}]*?\"|\'[^${][^{}]*?\')",
+				"id =( \"[^${][^{}]*?\"|\"[^${][^{}]*?\"|\'[^${][^{}]*?\')",
+				"setId\\((\"[^${][^{}]*?\")"};
 	public Server(Map<String,String> attrs) {
 		_attrs = attrs;
 	}
