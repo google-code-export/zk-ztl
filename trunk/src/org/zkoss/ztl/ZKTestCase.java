@@ -1017,6 +1017,11 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 		} else super.verifyEquals(obj1, obj2);
 	}
 	
+	public void verifyContains(String word1,String contains){
+    	String msg = "["+word1+"] didn't contains string ["+contains+"]";
+    	super.verifyContains(msg, word1, contains);
+	}
+	
 	/**
 	 * 
 	 * @param comparator an image comparator.
