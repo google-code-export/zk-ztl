@@ -56,10 +56,10 @@
 		--></server>
 		<client><![CDATA[
 			click(jq("@window @button[label=\"change label\"] td.z-button-cm:eq(0)"));
-			verifyEquals("test1", getText(jq("$i2 div.z-overflow-hidden")));
+			verifyTrue(getText(jq("$i2 div.z-overflow-hidden")).indexOf("test1") != -1);
 			click(jq("@window @button[label=\"change label\"] td.z-button-cm:eq(1)"));
 			click(jq("@paging button.z-paging-prev"));
-			verifyEquals("test2", getText(jq("$i1 div.z-overflow-hidden")));
+			verifyTrue(getText(jq("$i1 div.z-overflow-hidden")).indexOf("test2") != -1);
 		]]></client>
 	</case>
 </test>
