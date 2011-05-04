@@ -27,7 +27,7 @@
 		--></server>
 		<client><![CDATA[
 			click(testButton);	
-			sleep(500);
+			waitResponse();
 			verifyTrue(jq(".z-window-modal").exists());
 			verifyEquals("Illegal event method name(component id not specified or consecutive '$'): onClick$$testButton",jq(".z-messagebox > span.z-label").text());	
 		]]></client>

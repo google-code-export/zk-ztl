@@ -26,16 +26,16 @@
 		--></server>
 		<client><![CDATA[
 			verifyEquals("item4",jq(".z-listitem:eq(0)").text());
-				verifyEquals("item0",jq(".z-listitem:eq(1)").text());
-				verifyEquals("item1",jq(".z-listitem:eq(2)").text());
-				verifyEquals("item2",jq(".z-listitem:eq(3)").text());
-				verifyEquals("item3",jq(".z-listitem:eq(4)").text());
-				verifyEquals("item5",jq(".z-listitem:eq(5)").text());
-				verifyEquals("item6",jq(".z-listitem:eq(6)").text());
-				verifyEquals("item7",jq(".z-listitem:eq(7)").text());
-				verifyEquals("item8",jq(".z-listitem:eq(8)").text());
-				verifyEquals("item9",jq(".z-listitem:eq(9)").text());
-			
+			verifyEquals("item0",jq(".z-listitem:eq(1)").text());
+			verifyEquals("item1",jq(".z-listitem:eq(2)").text());
+			verifyEquals("item2",jq(".z-listitem:eq(3)").text());
+			verifyEquals("item3",jq(".z-listitem:eq(4)").text());				
+			verifyEquals("item5",jq(".z-listitem:eq(5)").text());
+			verifyEquals("item6",jq(".z-listitem:eq(6)").text());
+			verifyEquals("item7",jq(".z-listitem:eq(7)").text());
+		    verifyEquals("item8",jq(".z-listitem:eq(8)").text());				
+		    verifyEquals("item9",jq(".z-listitem:eq(9)").text());
+			verifyEquals(10,jq(".z-listitem").length());
 		]]></client>
 	</case>
 </test>

@@ -29,11 +29,13 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			int x = getElementPositionLeft(tab1).intValue();
-			click(btn);	
+			click(btn);
+			waitResponse();
 			int y = getElementPositionLeft(tab1).intValue();
-			verifyEquals(x+25,y);
-
+			click(jq(".z-tabs-left-scroll"));
+			waitResponse();
+			int y1 = getElementPositionLeft(tab1).intValue();
+			verifyEquals(y,y1);
 		]]></client>
 	</case>
 </test>

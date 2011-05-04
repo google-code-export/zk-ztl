@@ -31,7 +31,7 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			verifyFalse(isAlertPresent());
+			verifyFalse(jq(".z-error").exists());
 		]]></client>
 	</case>
 </test>
