@@ -171,10 +171,19 @@ public class ZKClientTestCase extends ZKTestCase {
 		super.click(locator.toString());
 	}
 
+	/**
+	 * TODO check IE9 
+	 * @param locator
+	 * @param coordString
+	 */
 	public void clickAt(ClientWidget locator, String coordString) {
 		super.clickAt(locator.toString(), coordString);
 	}
 
+	/**
+	 * TODO check IE9 
+	 * @param locator
+	 */
 	public void contextMenu(ClientWidget locator) {
 		super.contextMenu(locator.toString());
 	}
@@ -227,10 +236,13 @@ public class ZKClientTestCase extends ZKTestCase {
 		super.focus(locator.toString());
 	}
 	/**
-	 * @browsers ie6,ie7,ie8,chrome7,firefox363,safari402
+	 * TODO check IE9
+	 * @browsers ie6,ie7,ie8,ie9,chrome7,firefox363,safari402
 	 * @param locator
 	 */
 	public void blur(ClientWidget locator) {
+		
+		this.windowFocus(); //for IE9
 		super.fireEvent(locator.toString(), "blur");
 	}
 
@@ -344,6 +356,11 @@ public class ZKClientTestCase extends ZKTestCase {
 		return super.isVisible(locator.toString());
 	}
 
+	/**
+	 * TODO check IE9 support
+	 * @param locator
+	 * @param keySequence
+	 */
 	public void keyDown(ClientWidget locator, String keySequence) {
 		super.keyDown(locator.toString(), keySequence);
 	}
@@ -374,11 +391,13 @@ public class ZKClientTestCase extends ZKTestCase {
 	 * 
 	 * @note it will trigger onChanging that we unexpect.
 	 * </pre>
+	 * TODO Check IE9 support
 	 * @browsers firefox,safari402,chrome,ie8,ie7,ie6 .
 	 */
 	public void keyPressEnter(ClientWidget locator){
 		focus(locator);
 		keyDown(locator,"13");
+		//keyPressNative("10"); 		
 	}
 
 	public void keyUp(ClientWidget locator, String keySequence) {
@@ -388,7 +407,9 @@ public class ZKClientTestCase extends ZKTestCase {
 	public void mouseDown(ClientWidget locator) {
 		super.mouseDown(locator.toString());
 	}
-
+	/**
+	 * TODO:check IE9 support
+	 */
 	public void mouseDownAt(ClientWidget locator, String coordString) {
 		super.mouseDownAt(locator.toString(), coordString);
 	}
@@ -404,7 +425,9 @@ public class ZKClientTestCase extends ZKTestCase {
 	public void mouseMove(ClientWidget locator) {
 		super.mouseMove(locator.toString());
 	}
-
+	/**
+	 * TODO:check IE9 support
+	 */
 	public void mouseMoveAt(ClientWidget locator, String coordString) {
 		super.mouseMoveAt(locator.toString(), coordString);
 	}
@@ -412,7 +435,9 @@ public class ZKClientTestCase extends ZKTestCase {
 	public void mouseOut(ClientWidget locator) {
 		super.mouseOut(locator.toString());
 	}
-
+	/**
+	 * TODO:check IE9 support
+	 */
 	public void mouseOver(ClientWidget locator) {
 		super.mouseOver(locator.toString());
 	}
@@ -420,7 +445,9 @@ public class ZKClientTestCase extends ZKTestCase {
 	public void mouseUp(ClientWidget locator) {
 		super.mouseUp(locator.toString());
 	}
-
+	/**
+	 * TODO:check IE9 support
+	 */
 	public void mouseUpAt(ClientWidget locator, String coordString) {
 		super.mouseUpAt(locator.toString(), coordString);
 	}
@@ -482,16 +509,17 @@ public class ZKClientTestCase extends ZKTestCase {
 	 * @return
 	 */
 	public String getAlertMessage(){
-		return jq("@window[title=\"ZK\"] @label").text();
+		return jq("@window[title=\"ZK Test\"] @label").text();
 	}
 	
 	public void clickAlert(){
-		click(jq("@window[title=\"ZK\"] @button"));
+		click(jq("@window[title=\"ZK Test\"] @button"));
 	}
 
 	/**
 	 * Types the value to the locator.
 	 * <p> The method will call focus() before typing and blur() after typed.
+	 * TODO check IE9
 	 */
 	public void typeKeys(ClientWidget locator, String value) {
 		focus(locator);
