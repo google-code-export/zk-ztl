@@ -9,7 +9,7 @@
 		--></server>
 		<client><![CDATA[
 				click(tbb);
-				sleep(200);
+				waitResponse();
 				verifyFalse(jq(".z-window-highlighted").exists());
 		
 		]]></client>
