@@ -31,6 +31,7 @@ import org.zkoss.ztl.util.image.DefaultComparator;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import com.thoughtworks.selenium.Selenium;
+import com.thoughtworks.selenium.SeleniumException;
 /**
  * A skeleton of ZK Selenium test, which implements all of the methods of {@link Selenium}
  * interface.
@@ -148,7 +149,14 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	protected void start(Selenium selenium) {
 		System.out.println("testing:"+((ZKSelenium)selenium).getBrowserName());
 		selenium.start();
-		selenium.open(target);
+		try{
+			selenium.setTimeout("5000");
+			selenium.open(target);
+		}catch(SeleniumException e){
+			//Sometime it will get timeout , try one more time.
+			selenium.open(target);   
+		}
+		selenium.setTimeout("30000");
 		if (selenium == null)
 		    Thread.dumpStack();
 		
