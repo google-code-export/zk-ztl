@@ -29,13 +29,15 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
+			Element header = tabs.$n("header");
 			click(btn);
 			waitResponse();
-			int y = getElementPositionLeft(tab1).intValue();
-			click(jq(".z-tabs-left-scroll"));
+			int x = parseInt(header.get("scrollLeft"));
+			click(jq(".z-tabs-right-scroll"));
 			waitResponse();
-			int y1 = getElementPositionLeft(tab1).intValue();
-			verifyEquals(y,y1);
+			int y = parseInt(header.get("scrollLeft"));
+			verifyTrue(x == 0);
+			verifyTrue(y > x);	
 		]]></client>
 	</case>
 </test>

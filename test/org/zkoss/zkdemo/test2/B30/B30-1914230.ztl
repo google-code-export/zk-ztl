@@ -29,7 +29,10 @@
 		<client><![CDATA[
 			focus(cb.$n("real"));
 			type(cb.$n("real"),"xxx");
+			keyPressNative(TAB);
+			waitResponse();
 			verifyEquals("",jq(msg1).text());
+			verifyEquals("",jq(msg2).text());
 		]]></client>
 	</case>
 </test>
