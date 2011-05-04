@@ -22,7 +22,7 @@
 		<server ref="zulCode"/>
 		<server ref="javaCode"/>
 		<client>
-			focus(tb.$());
+			focus(tb.$n());
 			click(btn);
 			waitResponse();
 			verifyTrue(jq(tb).hasClass("z-textbox-text-invalid"));
