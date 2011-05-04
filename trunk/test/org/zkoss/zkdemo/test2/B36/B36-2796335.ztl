@@ -36,17 +36,15 @@
 			click(bottom);
 			waitResponse();
 			verifyEquals("50", div1.get("scrollTop"));
-			String scrollTop = "80";
-			if (ZK.is("ie6_")|| ZK.is("ie7_"))
-				scrollTop = "84";//IE6,7 has a border at the upper of the first item of the listbox
-			verifyEquals(scrollTop, div2.get("scrollTop"));
+			int scrollTop = 84 ;
+			
+			verifyTolerant(scrollTop, Integer.parseInt(div2.get("scrollTop")),6);
 			click(top);
 			waitResponse();
+			
+			scrollTop = 0;
 			verifyEquals("0", div1.get("scrollTop"));
-			scrollTop = "0";
-			if (ZK.is("ie6_")|| ZK.is("ie7_"))
-				scrollTop = "3";//IE6,7 has a border at the upper of the first item of the listbox
-			verifyEquals(scrollTop, div2.get("scrollTop"));
+			verifyTolerant(scrollTop, Integer.parseInt(div2.get("scrollTop")),6);
 		]]></client>
 	</case>
 </test>
