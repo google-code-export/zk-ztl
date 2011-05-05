@@ -104,10 +104,8 @@ public class ConfigHelper {
 		try {
 			ch.init();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ch;
@@ -162,15 +160,16 @@ public class ConfigHelper {
 		Selenium browser = _browserHolder.get(key);
 		if (browser == null) {
 			// @Todo add multiple client support
-			final String browserpath = _browserPathMap.containsKey(key) ? _browserPathMap.get(key):"";
-
-			String browserBand = getBrowserBand(key) + ("".equals(browserpath) ? "" : " " + browserpath);
+			String browserpath = _browserPathMap.containsKey(key) ? _browserPathMap.get(key):"";
+			browserpath = ("".equals(browserpath) ? "" : " " + browserpath);
+			
+			String browserBand = getBrowserBand(key) ;
 			if (_browserClient.containsKey(key)) {
 				browser = new ZKSelenium(new HttpCommandProcessor(_browserClient.get(key) + "/selenium-server/driver/",
-						browserBand, _server), browserBand,key,_openonce);
+						browserBand + browserpath, _server), browserpath, browserBand,key,_openonce);
 			} else {
-				browser = new ZKSelenium(new HttpCommandProcessor(_client + "/selenium-server/driver/", browserBand,
-						_server), browserBand,key,_openonce);
+				browser = new ZKSelenium(new HttpCommandProcessor(_client + "/selenium-server/driver/", browserBand + browserpath,
+						_server), browserpath , browserBand,key,_openonce);
 			}
 			System.out.println("connecting "+key);
 			browser.setSpeed(getDelay());

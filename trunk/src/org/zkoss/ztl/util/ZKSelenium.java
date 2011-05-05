@@ -25,6 +25,7 @@ import com.thoughtworks.selenium.DefaultSelenium;
  */
 public class ZKSelenium extends DefaultSelenium {
 	private String _browserbrand;
+	private String _browserpath;
 	private String _browsername;
 	
 	private boolean _openonce = false;
@@ -35,11 +36,6 @@ public class ZKSelenium extends DefaultSelenium {
 	public void start() {
 		if(_openonce){
 			_cyclecount++;
-			if(_cyclecount % 20 == 0){
-				super.close();
-				super.stop();
-				super.start();
-			}
 				
 			if(!isBrowserOpened){
 				super.start();
@@ -51,23 +47,28 @@ public class ZKSelenium extends DefaultSelenium {
 	}
 	@Override
 	public void close() {
-		if(!_openonce)
+		if(!_openonce || _cyclecount % 20 == 0){
 			super.close();
+			isBrowserOpened = false;
+		}
 	}
 	@Override
 	public void stop() {
-		if(!_openonce)
+		if(!_openonce  || _cyclecount % 20 == 0){
 			super.stop();
+			isBrowserOpened = false;
+		}
 	}
 	
 	public ZKSelenium(CommandProcessor processor,boolean openonce) {
 		super(processor);
 		this._openonce=openonce;
 	}
-	public ZKSelenium(CommandProcessor processor, String browserbrand, 
+	public ZKSelenium(CommandProcessor processor,String browserpath,  String browserbrand, 
 			String browsername,boolean openonce) {
 		super(processor);
 		this._openonce=openonce;
+		_browserpath = browserpath;
 		_browserbrand = browserbrand;
 		_browsername = browsername;
 	}
@@ -77,6 +78,10 @@ public class ZKSelenium extends DefaultSelenium {
 	
 	public String getBrowserName() {
 		return _browsername;
+	}
+	
+	public String getBrowserpath() {
+		return _browserpath;
 	}
 	
 	public CommandProcessor getCmdProcessor() {
