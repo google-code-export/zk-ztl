@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Method;
+import java.util.HashSet;
 import java.util.regex.Pattern;
 
 import junit.framework.AssertionFailedError;
@@ -42,6 +43,7 @@ public class ZKSeleneseTestBase {
 	    /** Use this object to run all of your selenium tests */
 	    protected Selenium selenium;
 	    
+		HashSet browsers = new HashSet();
 	    StringBuffer verificationErrors = new StringBuffer();
 	    
 	    public ZKSeleneseTestBase() {
@@ -401,9 +403,10 @@ public class ZKSeleneseTestBase {
 	    
 	    private void error(String s, Selenium selenium) {
 	    	if (selenium instanceof ZKSelenium){
+	    		
 	    		ZKSelenium zselenium = ((ZKSelenium)selenium);
-	    		verificationErrors.append("[Browser Brand]: ").append(zselenium.getBrowserBrand())
-	    			.append(" *"+zselenium.getBrowserName()+"\n").append(s);
+	    		browsers.add("#{{"+zselenium.getBrowserName()+"}}");
+	    		verificationErrors.append("[Browser Brand]: ").append(zselenium.getBrowserBrand()).append(" *"+zselenium.getBrowserName()+"\n").append(s);
 	    	}else
 	    		verificationErrors.append(s);
 	    }
@@ -459,9 +462,11 @@ public class ZKSeleneseTestBase {
 	    /** Asserts that there were no verification errors during the current test, failing immediately if any are found */
 	    public void checkForVerificationErrors() {
 	        String verificationErrorString = verificationErrors.toString();
+	        String browserMsg = browsers.toString() ;
 	        clearVerificationErrors();
+	        browsers.clear();
 	        if (!"".equals(verificationErrorString)) {
-	            fail(verificationErrorString);
+	            fail(verificationErrorString+"\n==Failed browser:"+browserMsg);
 	        }
 	    }
 
