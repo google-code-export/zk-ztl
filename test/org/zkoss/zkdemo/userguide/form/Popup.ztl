@@ -119,10 +119,10 @@
 			mouseOver(jq("$view @label:eq(2)"));
 			verifyTrue(jq("$mail").isVisible());
 			click(jq("$view @textbox:eq(0)"));
-
+			waitResponse();
 			verifyFalse(jq("@popup").isVisible());
-
 			click(jq("$view @label:eq(4)"));
+			waitResponse();
 			verifyTrue(jq("$view @html").exists());
 		]]></client>
 	</case>
