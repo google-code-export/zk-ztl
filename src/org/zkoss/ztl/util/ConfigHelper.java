@@ -44,7 +44,7 @@ import com.unitedinternet.portal.selenium.utils.logging.LoggingUtils;
  */
 public class ConfigHelper {
 
-	private final static String[] BROWSER_NAMES = new String[] { "firefox", "chrome", "safari" ,"safari5", "opera", "ie", "ie6",
+	private final static String[] BROWSER_NAMES = new String[] { "firefox", "firefox4", "chrome", "safari" ,"safari5", "opera", "ie", "ie6",
 			"ie7", "ie8", "iexplore", "ff" };
 
 	// private final static String[] PORTABLE_BROWSERS = new String[] {
