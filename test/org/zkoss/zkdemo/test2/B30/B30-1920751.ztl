@@ -13,9 +13,9 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			focus(cb1.$n("real"));
-			type(cb1.$n("real"),"s");
-			keyDownNative(UP);
+			focus(cb1.$n("real"));waitResponse();
+			type(cb1.$n("real"),"s");waitResponse();
+			keyPressNative("38");waitResponse();
 			verifyEquals("Cool!",jq(".z-combobox-inp").val());
 		]]></client>
 	</case>
