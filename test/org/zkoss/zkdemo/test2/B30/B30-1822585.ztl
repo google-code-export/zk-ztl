@@ -37,16 +37,18 @@ Grid:onColSize event.getColIndex() alwyas return 1
 		int w3 = jq(col3).outerWidth();
 		int w4 = jq(col4).outerWidth();
 		int w5 = jq(col5).outerWidth();
-		dragdropTo(col5, w5 + ",0", w5+10 + ",0");
-		verifyEquals(lab.get("value"), "4");
-		dragdropTo(col4, w4 + ",0", w4+10+ ",0");
-		verifyEquals(lab.get("value"), "3");
-		dragdropTo(col3, w3 + ",0", w3+10+ ",0");
-		verifyEquals(lab.get("value"), "2");
-		dragdropTo(col2, w2 + ",0", w2+10+ ",0");
-		verifyEquals(lab.get("value"), "1");
-		dragdropTo(col1, w1 + ",0", w1+10+ ",0");
-		verifyEquals(lab.get("value"), "0");
+		
+		//here chrome has some bug so add 25 to workround
+				dragdropTo(col5, w5 + ",0", w5+10 + ",0");
+				verifyEquals(lab.get("value"), "4");
+				dragdropTo(col4, w4+25 + ",0", w4+10+ ",0");
+				verifyEquals(lab.get("value"), "3");
+				dragdropTo(col3, w3+25 + ",0", w3+10+ ",0");
+				verifyEquals(lab.get("value"), "2");
+				dragdropTo(col2, w2+25 + ",0", w2+10+ ",0");
+				verifyEquals(lab.get("value"), "1");
+				dragdropTo(col1, w1+25 + ",0", w1+10+ ",0");
+				verifyEquals(lab.get("value"), "0");
 		]]></client>
 	</case>
 </test>
