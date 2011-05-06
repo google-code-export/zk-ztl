@@ -74,10 +74,8 @@
 						
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			click(myBtn);
 			waitResponse();
-			sleep(2000);
 			// First validation.
 			String pattern = "name\\d*";
 			String nameValue = jq(parentsListBox).val();
@@ -85,14 +83,12 @@
             verifyEquals("C", jq(driversListbox).val());
 			click(myBtn);
 			waitResponse();
-			sleep(2000);
 			// Second validation.
 			nameValue = jq(parentsListBox).val();
             verifyTrue(nameValue.matches(pattern));
             verifyEquals("A", jq(driversListbox).val());
 			click(myBtn);
 			waitResponse();
-			sleep(2000);
 			// Third validation.
 			nameValue = jq(parentsListBox).val();
             verifyTrue(nameValue.matches(pattern));

@@ -55,13 +55,10 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			click(jq(".z-combobox-btn"));
 			waitResponse();
-			sleep(2000);
 			click(jq(".z-comboitem:eq(5)"));
 			waitResponse();
-			sleep(2000);
 			verifyEquals("OrderNumber - 5", jq(oNumberLbl).text());
 			verifyEquals("OrderName - 5", jq(oNameLbl).text());
 		]]></client>

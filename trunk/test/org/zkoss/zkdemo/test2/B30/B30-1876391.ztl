@@ -21,7 +21,6 @@
 		<client><![CDATA[
 			click(jq("span.z-button"));
 			waitResponse();
-			sleep(1000);
 			verifyEquals("BB", jq(".z-combobox-inp").val());
 			verifyEquals("OK", jq(".z-label:eq(1)").text());
 		]]></client>

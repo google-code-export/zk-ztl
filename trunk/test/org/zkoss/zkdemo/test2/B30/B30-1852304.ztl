@@ -43,7 +43,6 @@
 			 -->
 		</server>
 		<client><![CDATA[
-			sleep(3000);
 			mouseOver(jq(".z-menu-btn").parent());
 			click(jq(".z-menu-item"));
 			waitResponse();

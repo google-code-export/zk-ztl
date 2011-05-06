@@ -36,7 +36,6 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			int margin = 10;
 			for (int i = 0; i < 9; i++) {
 			    verifyTolerant(jq("$column" + i).width(), (jq(".z-row-inner:eq(" + i + ")").width() + margin), 5);

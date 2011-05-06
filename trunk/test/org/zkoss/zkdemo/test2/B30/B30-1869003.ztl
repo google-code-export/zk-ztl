@@ -68,7 +68,6 @@
 			 -->
 		</server>
 		<client><![CDATA[
-			sleep(3000);
 			click(jq(".z-checkbox input[id*=\"real\"]:eq(0)"));
 			waitResponse();
 			verifyTrue(jq(".z-checkbox input[id*=\"real\"]:eq(0)").attr("checked").equals("true"));

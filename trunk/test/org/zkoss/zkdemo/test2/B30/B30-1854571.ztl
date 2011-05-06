@@ -18,12 +18,11 @@
 			 -->
 		</server>
 		<client><![CDATA[
-			sleep(200);
 			click(jq(myBtn));
 			waitResponse();
 			verifyTrue(jq(".z-window-highlighted").exists());
 			click(jq(".z-window-highlighted-icon"));
-			sleep(200);
+			waitResponse();
 			verifyFalse(jq(".z-window-highlighted").exists());
 		]]></client>
 	</case>

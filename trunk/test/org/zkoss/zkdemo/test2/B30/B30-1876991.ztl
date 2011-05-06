@@ -19,13 +19,11 @@
 			type(myIntbox, "100");
             keyPressNative(TAB);
             waitResponse();
-            sleep(2000);
             verifyFalse(jq(".z-errbox").exists());
             
 			type(myIntbox, "-100");
 			keyPressNative(TAB);
 			waitResponse();
-            sleep(2000);
             verifyTrue(jq(".z-errbox").exists());
 		]]></client>
 	</case>

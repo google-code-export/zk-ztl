@@ -30,10 +30,8 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			click(myBtn);
 			waitResponse();
-			sleep(2000);
 			verifyTrue(jq(".z-window-modal").exists());
 			verifyEquals("arg0/root has to be String, Component, or Page: null", jq(".z-window-modal .z-label").text());
 		]]></client>

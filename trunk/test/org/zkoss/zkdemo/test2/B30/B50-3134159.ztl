@@ -53,9 +53,6 @@ Case 2: With IE6,
 		--></server>
 		<client><![CDATA[
 				
-				
-				sleep(1000);
-				
 				JQuery $progress = jq("@progressmeter");
 				JQuery $img = jq($progress.toWidget().$n("img"));
 				verifyTolerant(30,($img.width()*100)/$progress.width(), 3);

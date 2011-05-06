@@ -52,8 +52,7 @@
 			 -->
 		</server>
 		<client><![CDATA[
-			sleep(3000);
-			click(jq(bt1));
+				click(jq(bt1));
 				waitResponse();
 				
 				if (jq(grid).exists()) {

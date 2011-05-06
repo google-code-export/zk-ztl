@@ -320,14 +320,13 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			// TODO
-			sleep(3000);
+
 			click(myBtn);
 			waitResponse();
-			sleep(3000);
+
 			verifyTrue(jq(".z-window-highlighted").exists());
 			click(jq(".z-messagebox-btn"));
-			sleep(7000);
+			waitResponse();
 			verifyFalse(jq(".z-window-highlighted").exists());
 		]]></client>
 	</case>

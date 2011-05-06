@@ -52,10 +52,6 @@ Case 2: With IE6,
 
 		--></server>
 		<client><![CDATA[
-				
-				
-				sleep(1000);
-				
 				JQuery $progress = jq("@progressmeter");
 				JQuery $img = jq($progress.toWidget().$n("img"));
 				verifyTolerant(30,($img.width()*100)/$progress.width(), 3);
@@ -63,13 +59,11 @@ Case 2: With IE6,
 				verifyEquals(100,$progress.width());
 				click(jq("@button:eq(4)")); //width 200
 				waitResponse();
-				sleep(1000);
 				verifyTolerant(30,($img.width()*100)/$progress.width(), 3);
 				verifyEquals(60,$img.width());
 				verifyEquals(200,$progress.width());
 				click(jq("@button:eq(2)"));//set 80
 				waitResponse();
-				sleep(1000);
 				verifyEquals(160,$img.width());
 				verifyEquals(200,$progress.width());
 				click(jq("@button:eq(6)")); //hide
@@ -78,7 +72,6 @@ Case 2: With IE6,
 				waitResponse();
 				click(jq("@button:eq(7)")); //show
 				waitResponse();
-				sleep(1000);
 				verifyTolerant(80,($img.width()*100)/$progress.width(), 3);
 				verifyEquals(80,$img.width());
 				verifyEquals(100,$progress.width());

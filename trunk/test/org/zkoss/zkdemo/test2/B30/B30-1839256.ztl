@@ -20,7 +20,6 @@
 			 -->
 		</server>
 		<client><![CDATA[
-			sleep(3000);
 			click(jq("span.z-button"));
 			waitResponse();
 			

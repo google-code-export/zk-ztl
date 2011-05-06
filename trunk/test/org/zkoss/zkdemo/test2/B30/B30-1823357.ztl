@@ -21,7 +21,6 @@
 			 -->
 		</server>
 		<client><![CDATA[
-			sleep(3000);
 			click(jq("span.z-button"));
 			//System.out.println("colspan: " + jq(Phi).attr("colspan"));
 			verifyEquals("3", jq(Phi).attr("colspan"));

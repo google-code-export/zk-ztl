@@ -36,7 +36,7 @@
 				</zscript>
 			</window>
 		--></server>
-		<client wait="500">
+		<client>
 			JQuery $jq = jq(".z-errbox-center");
 			type(box, "test");
 			verifyFalse($jq.exists());

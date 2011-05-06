@@ -73,12 +73,10 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			JQuery comboboxInp = jq(".z-combobox-inp");
 			verifyEquals("OrderName - 3", comboboxInp.val());
 			click(loadNewVal);
 			waitResponse();
-			sleep(1000);
 			verifyEquals("OrderName - 6", comboboxInp.val());
 			verifyEquals("OrderNumber - 6", jq(numLbl).text());
 			verifyEquals("OrderName - 6", jq(nameLbl).text());
