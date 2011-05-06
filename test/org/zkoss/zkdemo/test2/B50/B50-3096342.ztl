@@ -44,6 +44,7 @@ it will be useful, but WITHOUT ANY WARRANTY.
 		<client><![CDATA[
 			click(jq(".z-datebox-btn"));
 				mouseDownAt(jq(".z-timebox-btn-lower"),"20,20");
+				waitResponse();
 				mouseUp(jq(".z-timebox-btn-lower"));
 				int index = 19;
 				JQuery dayOnCalendar = jq(".z-calendar-wkday:eq(" + index + ")");
@@ -62,7 +63,7 @@ it will be useful, but WITHOUT ANY WARRANTY.
 				String msg = jq("@label:last").text();
 				verifyTrue(msg.indexOf("d2:onChange:")!=-1 && msg.indexOf("null") == -1);
 				JQuery dateInput = jq(".z-datebox-inp");
-				focus(dateInput);
+				focus(dateInput.$n());
 				dateInput.eval("val(\"\")");
 				keyPressNative(TAB);
 				waitResponse();
