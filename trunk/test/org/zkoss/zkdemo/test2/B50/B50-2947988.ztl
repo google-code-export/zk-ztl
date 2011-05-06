@@ -25,6 +25,7 @@
 			click(jq("$add"));
 			waitResponse();
 			verifyFalse(jq(".z-errbox").exists());
+			verifyFalse(jq(".z-error").exists());
 			
 			]]></client>
 	</case>

@@ -18,7 +18,8 @@ If you can see the words, the bug is fixed.
 			-->
 		</server>
 		<client wait="100">	<![CDATA[
-			
+			sleep(500);
+			verifyFalse(jq(".z-error").exists());
 			verifyTrue(isVisible(jq("$testWindow")));			
 			]]></client>
 	</case>

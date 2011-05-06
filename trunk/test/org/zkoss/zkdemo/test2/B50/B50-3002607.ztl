@@ -12,7 +12,7 @@
 		<client><![CDATA[
 			click(bb.$n("btn"));
 			String before = jq(tb).val();
-			focus(tb);
+			focus(tb.$n());
 			keyPressNative(END);
 			keyPressNative(BACKSPACE);
 			verifyFalse(jq(tb).val().equals(before));
