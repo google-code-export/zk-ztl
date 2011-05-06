@@ -41,7 +41,6 @@
 			 -->
 		</server>
 		<client><![CDATA[
-			sleep(3000);
 			int listboxWidth = jq(".z-listbox").width();
 			int listitemWidth = jq(".z-listitem:eq(0)").width();
             //System.out.println(listboxWidth);

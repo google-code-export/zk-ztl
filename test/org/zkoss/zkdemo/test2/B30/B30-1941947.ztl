@@ -52,12 +52,8 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			type(cateTxtbox, "Cat2");
-			sleep(1000);
-			keyPressNative(TAB);
-			sleep(1000);
-			
+			keyPressNative(TAB);			
 			if (!jq(".z-window-highlighted").exists() && !jq(".z-window-modal").exists()) {
 			    verifyTrue(true);
 			} else {

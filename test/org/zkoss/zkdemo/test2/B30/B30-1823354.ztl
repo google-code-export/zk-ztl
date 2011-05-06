@@ -29,7 +29,6 @@
 			 -->
 		</server>
 		<client><![CDATA[
-			sleep(3000);
 			int originalListCellHeight = jq(".z-listcell:eq(0)").height();
 			//System.out.println("Original height: " + originalListCellHeight);
 			int winHeight = jq(win).height();

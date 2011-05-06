@@ -9,7 +9,6 @@
 			 -->
 		</server>
 		<client><![CDATA[
-			sleep(3000);
 			focus(jq(".z-decimalbox:eq(0)"));
 			waitResponse();
 			type(jq(".z-decimalbox:eq(0)"), "6");

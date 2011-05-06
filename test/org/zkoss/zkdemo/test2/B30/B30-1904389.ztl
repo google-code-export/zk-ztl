@@ -77,7 +77,6 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			verifyEquals("CA", jq(".z-textbox:eq(0)").val());
 			verifyEquals("TX", jq(".z-textbox:eq(1)").val());
 			verifyEquals("WA", jq(".z-textbox:eq(2)").val());

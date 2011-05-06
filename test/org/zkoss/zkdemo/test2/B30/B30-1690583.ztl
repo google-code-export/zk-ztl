@@ -26,6 +26,7 @@
 			
 			// Test invisible
 			click(btn);
+			waitResponse();
 			if (help.exists())
 				verifyFalse(isVisible(help));
 			verifyFalse(isVisible(t));

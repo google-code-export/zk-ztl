@@ -19,20 +19,16 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			click(oneHd);
 			waitResponse();
-			sleep(3000);
 			verifyEquals(100, jq(t).height());
 			
 			click(twoHd);
             waitResponse();
-            sleep(3000);
             verifyEquals(200, jq(t).height());
             
             click(threeHd);
             waitResponse();
-            sleep(3000);
             verifyEquals(300, jq(t).height());
 		]]></client>
 	</case>

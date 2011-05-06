@@ -18,7 +18,6 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			click(goBtn);
 			waitResponse();
 			click(win2Btn);

@@ -26,7 +26,6 @@
 			focus(txtbox);
 			blur(txtbox);
 			// In safari, error message display may delay a few seconds.
-			sleep(2000);
 			verifyTrue(jq(errlb).text().length() > 0);
 		]]></client>
 	</case>

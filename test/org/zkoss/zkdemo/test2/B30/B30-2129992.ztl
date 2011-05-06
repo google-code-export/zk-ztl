@@ -75,7 +75,6 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			for (int i = 0; i < 3; i++) {
 			    verifyEquals("Tom" + i + "Hanks" + i, jq(".z-listitem:eq(" + i + ")").text());
 			}

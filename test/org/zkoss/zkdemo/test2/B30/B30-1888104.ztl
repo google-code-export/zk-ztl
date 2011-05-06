@@ -18,14 +18,12 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			click(clickLbl);
 			waitResponse();
 			verifyTrue(jq(mypopup).height() > 0);
 			focus(myIntbox);
 			waitResponse();
 			type(myIntbox, "5");
-			sleep(1000);
 			JQuery errbox = jq(".z-errbox");
             verifyTrue(errbox.exists());
             

@@ -82,10 +82,8 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			click(jq(".z-label:eq(2)"));
 			waitResponse();
-			sleep(2000);
 			verifyEquals("$18", jq(".z-decimalbox").val());
 		]]></client>
 	</case>

@@ -31,14 +31,12 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			String rowId_01 = jq(".z-rows tr.z-row:eq(1)").attr("id");
 			String rowId_02 = jq(".z-grid-odd").attr("id");
 			verifyEquals(rowId_01, rowId_02);
 			
 			click(doModal);
 			waitResponse();
-			sleep(3000);
 			
 			rowId_01 = jq(".z-rows tr.z-row:eq(1)").attr("id");
             rowId_02 = jq(".z-grid-odd").attr("id");

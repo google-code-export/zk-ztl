@@ -55,7 +55,6 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			
 			for (int i = 0; i < 3; i++) {
 			    JQuery label = jq(".z-label:eq(" + i + ")");

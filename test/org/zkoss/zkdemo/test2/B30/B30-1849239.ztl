@@ -41,7 +41,6 @@
 			 -->
 		</server>
 		<client><![CDATA[
-			sleep(3000);
 			click(jq("span.z-button:eq(0)"));
 			waitResponse();
 			click(jq("span.z-button:eq(1)"));

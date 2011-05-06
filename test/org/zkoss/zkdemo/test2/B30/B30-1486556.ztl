@@ -14,7 +14,7 @@
 		<client>
 			focus(tb.$n());
 			blur(tb);
-			sleep(200);
+			waitResponse();
 			verifyTrue(jq(tb).hasClass("z-textbox-text-invalid"));
 		</client>
 	</case>

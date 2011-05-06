@@ -86,20 +86,16 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			sleep(3000);
 			click(jq("$listbox .z-listitem:eq(1)"));
 			waitResponse();
-			sleep(2000);
 			// First validation
 			verifyEquals("minny", jq(textboxDesc).val());
 			select(currentListbox, "5");
 			waitResponse();
-			sleep(1000);
 			verifyEquals("minny2", jq("$listbox .z-listitem:eq(1)").text());
 			// Second validation
 			click(saveButton);
 			waitResponse();
-			sleep(2000);
 			verifyEquals("minny5", jq("$listbox .z-listitem:eq(1)").text());
 		]]></client>
 	</case>
