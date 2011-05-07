@@ -3,7 +3,7 @@
 		<server><!--
 			<window>
 				Click the test button and you shall see "OK" being appended.
-				<button label="test">
+				<button id="ok" label="test">
 					<attribute name="onClick"><![CDATA[
 				cb.setText("BB");
 				Comboitem ci = cb.getSelectedItem();
@@ -19,7 +19,8 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			click(jq("span.z-button"));
+			click(cb.$n(btn"));
+			click(ok);
 			waitResponse();
 			verifyEquals("BB", jq(".z-combobox-inp").val());
 			verifyEquals("OK", jq(".z-label:eq(1)").text());
