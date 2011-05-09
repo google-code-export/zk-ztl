@@ -64,7 +64,7 @@ Case 2: With IE6,
 				verifyEquals(200,$progress.width());
 				click(jq("@button:eq(2)"));//set 80
 				waitResponse();
-				verifyEquals(160,$img.width());
+				verifyTolerant(160,$img.width(),1);
 				verifyEquals(200,$progress.width());
 				click(jq("@button:eq(6)")); //hide
 				waitResponse();
