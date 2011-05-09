@@ -54,20 +54,20 @@ NOTE: The mentioned bug occurs only if you add item via ListModel and ListDataEv
 		 --></server>
 		<client><![CDATA[
 			verifyTrue(isVisible(h1));
-			verifyTrue(isVisible(h2));
-			verifyTrue(jq(h1).height() > 10);
-			verifyTrue(jq(h1).width() > 30);
-			verifyTrue(jq(h2).height() > 10);
-			verifyTrue(jq(h2).width() > 30);
-			verifyEquals(jq(lb).width(), jq(lb.$n("head")).outerWidth());
-			verifyEquals(jq(lb).height(), jq(lb.$n("head")).outerHeight());
-			verifyEquals(0, jq(lb.$n("body")).height());
-			click(btn);
-			verifyEquals(jq(lb).height(), jq(lb.$n("head")).outerHeight() +
-					jq(lb.$n("body")).outerHeight());
-			verifyNotEquals(0, jq(lb.$n("body")).height());
-			verifyEquals(jq(lb.$n("body")).outerHeight(), jq(lb.$n("cave")).outerHeight());
-			verifyEquals(jq(lb.$n("body")).outerWidth(), jq(lb.$n("cave")).outerWidth());
-		]]></client>
-	</case>
+				verifyTrue(isVisible(h2));
+				verifyTrue(jq(h1).height() > 10);
+				verifyTrue(jq(h1).width() > 30);
+				verifyTrue(jq(h2).height() > 10);
+				verifyTrue(jq(h2).width() > 30);
+				verifyEquals(jq(lb).width(), jq(lb.$n("head")).outerWidth());
+				verifyTolerant(jq(lb).height(), jq(lb.$n("head")).outerHeight(),1);
+				verifyTolerant(0, jq(lb.$n("body")).height(),1);
+				click(btn);
+				verifyEquals(jq(lb).height(), jq(lb.$n("head")).outerHeight() +
+				jq(lb.$n("body")).outerHeight());
+				verifyNotEquals(0, jq(lb.$n("body")).height());
+				verifyEquals(jq(lb.$n("body")).outerHeight(), jq(lb.$n("cave")).outerHeight());
+				verifyEquals(jq(lb.$n("body")).outerWidth(), jq(lb.$n("cave")).outerWidth());
+				
+	]]></client></case>
 </test>

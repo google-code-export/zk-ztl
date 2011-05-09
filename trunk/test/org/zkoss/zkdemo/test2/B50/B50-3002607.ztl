@@ -11,11 +11,14 @@
 		]]></server>
 		<client><![CDATA[
 			click(bb.$n("btn"));
-			String before = jq(tb).val();
-			focus(tb.$n());
-			keyPressNative(END);
-			keyPressNative(BACKSPACE);
-			verifyFalse(jq(tb).val().equals(before));
+				waitResponse();
+				String before = jq(tb).val();
+				focus(tb.$n());
+				keyPressNative(END);
+				waitResponse();
+				keyPressNative(BACKSPACE);
+				waitResponse();
+				verifyFalse(jq(tb).val().equals(before));
 		]]></client>
 	</case>
 </test>

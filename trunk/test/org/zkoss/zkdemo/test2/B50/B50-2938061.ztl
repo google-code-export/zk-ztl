@@ -26,22 +26,29 @@
 				waitResponse();
 				click(jq(".z-combobox-pp .z-comboitem:eq(0)"));
 				waitResponse();
-				if(!("rgb(0, 128, 0)".equals(jq(c).css("backgroundColor"))||"green".equals(jq(c).css("backgroundColor"))))
-					verifyTrue(false);
 				
+				boolean color = org.zkoss.ztl.util.ColorVerifingHelper.getInstance().
+				isEqualColor("green",jq(c).css("backgroundColor"));				
+				verifyTrue(color);
+
 				click(c.$n("btn"));
 				waitResponse();
 				click(jq(".z-combobox-pp .z-comboitem:eq(1)"));
 				waitResponse();
-				if(!("rgb(0, 0, 255)".equals(jq(c).css("backgroundColor"))||"blue".equals(jq(c).css("backgroundColor"))))
-					verifyTrue(false);
 				
+				boolean color1 = org.zkoss.ztl.util.ColorVerifingHelper.getInstance().
+				isEqualColor("blue",jq(c).css("backgroundColor"));				
+				verifyTrue(color1);
+
 				click(c.$n("btn"));
 				waitResponse();
 				click(jq(".z-combobox-pp .z-comboitem:eq(2)"));
-				waitResponse();
-				if(!("rgb(255, 0, 0)".equals(jq(c).css("backgroundColor"))||"red".equals(jq(c).css("backgroundColor"))))
-					verifyTrue(false);
+				waitResponse();				
+				
+				boolean color2 = org.zkoss.ztl.util.ColorVerifingHelper.getInstance().
+				isEqualColor("red",jq(c).css("backgroundColor"));				
+				verifyTrue(color2);
+				
 			]]></client>
 	</case>
 </test>
