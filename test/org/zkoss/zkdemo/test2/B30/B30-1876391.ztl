@@ -19,7 +19,7 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			click(cb.$n(btn"));
+			click(cb.$n("btn"));
 			click(ok);
 			waitResponse();
 			verifyEquals("BB", jq(".z-combobox-inp").val());
