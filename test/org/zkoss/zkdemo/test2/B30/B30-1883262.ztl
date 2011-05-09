@@ -47,7 +47,7 @@ Constraint ctt = new Constraint() {
 			mouseDown(blur);
 			waitResponse();
 			verifyFalse(jq(txtbox).exists()); //txtbox should disappear
-			mouseUp(blur);
+			
 		]]></client>
 	</case>
 </test>
