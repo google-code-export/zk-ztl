@@ -1,0 +1,35 @@
+<test tags="B50-2945219.zul,A,E,onCtrlKey">
+	<case id="closed">
+		<server>
+			<!--
+				<zk>
+					<window id="ZkAdhoc">
+						<attribute name="onCreate">
+							self.addEventListener(Events.ON_CTRL_KEY, new org.zkoss.zk.ui.event.EventListener() {
+										public void onEvent(Event event) throws Exception {
+											Messagebox.show("Key " + event.getKeyCode() + " is clicked");
+										}				
+									});
+							self.setCtrlKeys("#f1#f2#f3#f4#f5#f6#f7#f8#f9#f10#f11#f12$#f1$#f2$#f3$#f4$#f5$#f6$#f7$#f8$#f9$#f10$#f11$#f12");
+						</attribute>
+						1. focus on the textbox below by click it
+						<separator/>
+						2. Fellow orders to click F1 ~ F12 button, after click button, the messagebox will popup and show key code
+						<separator/>
+						<textbox></textbox>
+					</window>
+				</zk>
+			-->
+		</server>
+		<client wait="100">	<![CDATA[
+				click(jq(".z-textbox"));
+				for(int i = 112; i < 124 ; i++ ){
+					keyDown(jq(".z-textbox"),""+i);
+					waitResponse();
+					verifyEquals("Key "+i+" is clicked",getAlertMessage());
+					clickAlert();				
+					waitResponse();			
+				}
+			]]></client>
+	</case>
+</test>
