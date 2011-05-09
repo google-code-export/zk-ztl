@@ -147,6 +147,7 @@ for(int i = 0; i < 20; i++)
 				verifyEquals("Blah 9", widget(jq("@listbox > @listitem:last-child")).get("label"));
 				click(parentModel);
 				waitResponse();
+				sleep(500);
 				verifyEquals("{Blah 2=2, Blah 4=4, Blah 9=9}", getAlertMessage());
 				clickAlert();
 				click(parents);

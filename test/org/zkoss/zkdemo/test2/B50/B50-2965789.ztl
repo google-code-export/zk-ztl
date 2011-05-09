@@ -22,7 +22,7 @@
 		click(jq("@button"));
 		waitResponse();
 		verifyFalse(jq(".z-errbox").exists());
-			
+		verifyFalse(jq(".z-error").exists());	
 			]]></client>
 	</case>
 </test>

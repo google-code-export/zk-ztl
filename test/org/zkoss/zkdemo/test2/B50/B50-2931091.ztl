@@ -21,8 +21,8 @@
 		<client wait="100">	<![CDATA[
  				verifyFalse(jq(".z-menu-body-over").exists());
 				mouseOver(jq(".z-menu-btn").parent()) ;
-				sleep(500);
 				waitResponse();
+				sleep(500);
 				verifyTrue(jq(".z-menu-body-over").exists());
 				mouseOut(jq(".z-menu-btn").parent()) ;				
 				waitResponse();
