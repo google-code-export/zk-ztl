@@ -63,7 +63,7 @@ it will be useful, but WITHOUT ANY WARRANTY.
 				String msg = jq("@label:last").text();
 				verifyTrue(msg.indexOf("d2:onChange:")!=-1 && msg.indexOf("null") == -1);
 				JQuery dateInput = jq(".z-datebox-inp");
-				focus(dateInput.$n());
+				focus(dateInput);
 				dateInput.eval("val(\"\")");
 				keyPressNative(TAB);
 				waitResponse();
