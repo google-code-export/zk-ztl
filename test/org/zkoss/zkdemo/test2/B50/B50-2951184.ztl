@@ -30,7 +30,6 @@
 		</server>
 		<client wait="100">	<![CDATA[
 				verifyEquals(1,jq(".z-treerow").length());	
-				verifyEquals(1,jq(".z-treerow").length());
 				click(jq(".z-tree-root-close"));
 				waitResponse();
 				verifyEquals(2,jq(".z-treerow").length());
