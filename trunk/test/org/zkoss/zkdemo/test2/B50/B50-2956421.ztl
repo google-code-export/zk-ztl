@@ -29,10 +29,16 @@
 		</server>
 		<client>
 		<![CDATA[
-			click(a1);
-			verifyTrue(item1.is("selected"));
-			click(b1);
-   			verifyTrue(item2.is("selected"));			
+				click(a1);
+				waitResponse();
+				verifyTrue(item1.is("selected"));
+				verifyTrue(jq(item1).hasClass("z-listitem-seld"));
+				
+				click(b1);
+				waitResponse();
+				verifyTrue(item2.is("selected"));			
+				verifyFalse(jq(item1).hasClass("z-listitem-seld"));
+				verifyTrue(jq(item2	).hasClass("z-listitem-seld"));
 			]]></client>
 	</case>
 </test>
