@@ -1,4 +1,4 @@
-<test tags="Grid,Databind,Timer,Progressmeter" browser="ie">
+<test tags="Grid,Databind,Timer,Progressmeter" >
 	<case id="Progressmeter">
 		<server><!--
 			<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>

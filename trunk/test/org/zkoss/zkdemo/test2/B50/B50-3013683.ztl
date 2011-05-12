@@ -1,4 +1,4 @@
-<test tags="grid,columns" browser="ie">
+<test tags="grid,columns" >
 	<case id="columnsWidth">
 		<server id="zul"><![CDATA[
 			<zk>
