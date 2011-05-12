@@ -42,14 +42,15 @@
 		</server>
 		<client wait="100">	<![CDATA[
        			focus(jq(".z-combobox-inp"));
+				shiftKeyDown();
 				keyPressNative("65");
+				shiftKeyUp();
+				waitResponse();		
+				verifyNotEquals("A",jq(".z-combobox-inp").val());
+				verifyTrue(isVisible(jq(".z-comboitem")));
+				click(jq(".z-comboitem:eq(0)"));
 				waitResponse();
-				sleep(500);
-				verifyTrue(jq(".z-combobox-focus").exists());
-				click(jq(".z-combobox-pp .z-comboitem:eq(0)"));
-				waitResponse();
-				verifyFalse(jq(".z-combobox-focus").exists());
-				click(jq(".z-window-highlighted-cl td.z-button-cm"));
+				click(jq(".z-window-highlighted-cl @button"));
 				waitResponse();
 				verifyEquals("abacus",jq(msg).text());
 				verifyTrue(jq(".z-combobox-focus").exists());

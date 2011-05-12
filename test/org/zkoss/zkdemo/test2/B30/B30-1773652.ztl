@@ -12,7 +12,6 @@
 		--></server>
 		<client><![CDATA[
 			selectFrame(frameid);
-			System.out.println(getHtmlSource());
 			verifyTrue( getHtmlSource().toLowerCase().contains("file not found") && getHtmlSource().toLowerCase().contains("abc.zs"));
 		]]></client>
 	</case>

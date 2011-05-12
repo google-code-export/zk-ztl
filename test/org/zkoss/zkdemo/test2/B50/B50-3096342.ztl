@@ -43,9 +43,9 @@ it will be useful, but WITHOUT ANY WARRANTY.
 		--></server>
 		<client><![CDATA[
 			click(jq(".z-datebox-btn"));
-				mouseDownAt(jq(".z-timebox-btn-lower"),"20,20");
+				mouseDownAt(jq(".z-timebox-btn"),"20,20");
 				waitResponse();
-				mouseUp(jq(".z-timebox-btn-lower"));
+				mouseUp(jq(".z-timebox-btn"));
 				int index = 19;
 				JQuery dayOnCalendar = jq(".z-calendar-wkday:eq(" + index + ")");
                 int dayOfMonth = Integer.parseInt(dayOnCalendar.text());
