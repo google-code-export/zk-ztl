@@ -10,15 +10,15 @@
 			</zk>
 		]]></server>
 		<client><![CDATA[
-			click(bb.$n("btn"));
+				click(bb.$n("btn"));
 				waitResponse();
-				String before = jq(tb).val();
+				String before = jq(".z-textbox").val();
 				focus(tb.$n());
 				keyPressNative(END);
 				waitResponse();
 				keyPressNative(BACKSPACE);
 				waitResponse();
-				verifyFalse(jq(tb).val().equals(before));
+				verifyFalse(jq(".z-textbox").val().equals(before));
 		]]></client>
 	</case>
 </test>

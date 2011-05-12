@@ -1,4 +1,4 @@
-<test tags="B30-1920751.zul,B,E,Combobox">
+<test tags="B30-1920751.zul,B,E,Combobox,Unstable">
 	<case id="combobox">
 		<server><!--
 			<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
@@ -13,10 +13,10 @@
 			</zk>
 		--></server>
 		<client><![CDATA[
-			focus(cb1.$n("real"));waitResponse();
-			type(cb1.$n("real"),"s");waitResponse();
-			keyPressNative("38");waitResponse();
-			verifyEquals("Cool!",jq(".z-combobox-inp").val());
+				focus(cb1.$n("real"));waitResponse();
+				keyPressNative("83");waitResponse();
+				keyPressNative(UP);waitResponse();
+				verifyEquals("Cool!",jq(".z-combobox-inp").val());
 		]]></client>
 	</case>
 </test>

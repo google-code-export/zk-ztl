@@ -27,7 +27,6 @@
 			waitResponse();
 			//2010/10/22 TonyQ:the comboitem should appear in window.
 			verifyTrue(jq(".z-combobox-pp").exists());
-			System.out.println(jq(cool).exists());
 			click(cool);
 			waitResponse();
 			verifyEquals("Cool!",jq("$msg").text());

@@ -1,4 +1,4 @@
-<test tags="Grid,Dragdrop">
+<test tags="Grid,Dragdrop,Unstable">
 	<case id="Dragdrop">
 		<server><!--
 <zk>

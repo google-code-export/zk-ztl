@@ -59,12 +59,14 @@ Case 2: With IE6,
 				verifyEquals(100,$progress.width());
 				click(jq("@button:eq(4)")); //width 200
 				waitResponse();
-				verifyTolerant(30,($img.width()*100)/$progress.width(), 3);
+				sleep(300);
+				verifyEquals(30,($img.width()*100)/$progress.width());
 				verifyEquals(60,$img.width());
 				verifyEquals(200,$progress.width());
 				click(jq("@button:eq(2)"));//set 80
 				waitResponse();
-				verifyTolerant(160,$img.width(),1);
+				sleep(300);
+				verifyEquals(160,$img.width());
 				verifyEquals(200,$progress.width());
 				click(jq("@button:eq(6)")); //hide
 				waitResponse();
@@ -75,8 +77,6 @@ Case 2: With IE6,
 				verifyTolerant(80,($img.width()*100)/$progress.width(), 3);
 				verifyEquals(80,$img.width());
 				verifyEquals(100,$progress.width());
-		
-				
 		]]></client>
 	</case>
 </test>

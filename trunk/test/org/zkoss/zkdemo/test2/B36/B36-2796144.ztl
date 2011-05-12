@@ -52,8 +52,6 @@
 			blur(inp);
 			waitResponse();
 			sleep(500);
-			System.out.println(dateValue2.get("value"));
-			System.out.println(time);
 			verifyTrue(dateValue2.get("value").indexOf(time) > 0);
 		]]></client>
 	</case>
