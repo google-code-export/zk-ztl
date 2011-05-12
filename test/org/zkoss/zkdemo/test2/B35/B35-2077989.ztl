@@ -30,7 +30,7 @@ In this case, you have to test two cases as follows.
 		--></server>
 		<client><![CDATA[
 			verifyEquals(true, jq("$win").isVisible());
-			click("$hidebtn");
+			click(jq("$hidebtn"));
 			
 			waitResponse();
 			verifyEquals(false, jq("$win").isVisible());				
