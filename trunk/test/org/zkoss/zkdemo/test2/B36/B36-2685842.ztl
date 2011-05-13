@@ -1,4 +1,4 @@
-<test tags="window">
+<test tags="window,Unstable">
 	<case id="titleCorner">
 		<server><!--
 			<hbox id="mainBox" widths="20%,1024px,20%" height="768px"

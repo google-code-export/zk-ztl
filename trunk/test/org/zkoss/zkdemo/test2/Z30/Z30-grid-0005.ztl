@@ -86,7 +86,7 @@
 			if (!ZK.is("ie6_"))
 				verifyEquals(width.intValue() - 20, getElementWidth(uuid).intValue());
 			else
-				verifyTrue(width.intValue() - 20 - getElementWidth(uuid).intValue() < 2);
+				verifyTrue(width.intValue() - 20 - getElementWidth(uuid).intValue() <= 2);
 		]]></client>
 	</case>
 </test>
