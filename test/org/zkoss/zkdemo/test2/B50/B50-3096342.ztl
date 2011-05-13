@@ -42,20 +42,18 @@ it will be useful, but WITHOUT ANY WARRANTY.
 
 		--></server>
 		<client><![CDATA[
-			click(jq(".z-datebox-btn"));
+				click(jq(".z-datebox-btn"));
 				mouseDownAt(jq(".z-timebox-btn"),"20,20");
 				waitResponse();
 				mouseUp(jq(".z-timebox-btn"));
 				int index = 19;
 				JQuery dayOnCalendar = jq(".z-calendar-wkday:eq(" + index + ")");
-                int dayOfMonth = Integer.parseInt(dayOnCalendar.text());
-                Calendar calendar = Calendar.getInstance();
-                
-                if (dayOfMonth == calendar.get(Calendar.DAY_OF_MONTH)) {
-                    index = dayOfMonth == 1 ? dayOfMonth + 1 : dayOfMonth - 1;
-                    dayOnCalendar = jq(".z-calendar-wkday:eq(" + index + ")");
-                }
-                
+				int dayOfMonth = Integer.parseInt(dayOnCalendar.text());
+				Calendar calendar = Calendar.getInstance();
+				if (dayOfMonth == calendar.get(Calendar.DAY_OF_MONTH)) {
+				index = dayOfMonth == 1 ? dayOfMonth + 1 : dayOfMonth - 1;
+				dayOnCalendar = jq(".z-calendar-wkday:eq(" + index + ")");
+				}
 				click(dayOnCalendar);
 				waitResponse();
 				clickAt(jq("$desp"),"10,10");
@@ -68,7 +66,9 @@ it will be useful, but WITHOUT ANY WARRANTY.
 				keyPressNative(TAB);
 				waitResponse();
 				msg = jq("@label:last").text();
+				verifyEquals("d2:onChange: null",jq("@label:last").text());
 				verifyTrue(msg.indexOf("d2:onChange:")!=-1 && msg.indexOf("null") != -1);
+				
 		]]></client>
 	</case>
 </test>

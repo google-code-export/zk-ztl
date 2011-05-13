@@ -1,4 +1,4 @@
-<test tags="textbox">
+<test tags="textbox,Unstable">
 	<case id="deleteChar">
 		<server id="zul"><![CDATA[
 			<zk>
@@ -14,7 +14,11 @@
 				waitResponse();
 				String before = jq(".z-textbox").val();
 				focus(tb.$n());
-				keyPressNative(END);
+				waitResponse();
+				verifyTrue(jq(".z-textbox-focus").exists());
+				keyPressNative("39");waitResponse();
+				keyPressNative("39");waitResponse();
+				keyPressNative("39");
 				waitResponse();
 				keyPressNative(BACKSPACE);
 				waitResponse();
