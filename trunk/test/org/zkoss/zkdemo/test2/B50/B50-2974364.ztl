@@ -37,14 +37,14 @@
 		<client><![CDATA[
 				click(btn);
 				waitResponse();
-				boolean color = org.zkoss.ztl.util.ColorVerifingHelper.getInstance().
+				boolean color = ColorVerifingHelper.getInstance().
 				isEqualColor("green",jq(".z-bandbox-inp").css("color"));
 				verifyTrue(color);
 				if (!("bold".equals(jq(bb.$n("real")).css("font-weight"))|| "700".equals(jq(bb.$n("real")).css("font-weight"))))
 				verifyTrue(false);
 				click(btn);
 				waitResponse();
-				boolean color1 = org.zkoss.ztl.util.ColorVerifingHelper.getInstance().
+				boolean color1 = ColorVerifingHelper.getInstance().
 				isEqualColor("black",jq(".z-bandbox-inp").css("color"));
 				verifyTrue(color1);
 				if (!("normal".equals(jq(bb.$n("real"))

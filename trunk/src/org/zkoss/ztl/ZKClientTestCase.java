@@ -503,7 +503,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	}
 	
 	/**
-	 * a shortcur for getting alert message.
+	 * a shortcut for getting alert message.
 	 * (Take care about the dom class and model will be different 
 	 * 	when event-thread is enable/disable , so we use title .)  
 	 * @return

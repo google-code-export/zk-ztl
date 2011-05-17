@@ -22,6 +22,7 @@ import org.zkoss.ztl.Tags;
 import org.zkoss.ztl.Widget;
 import org.zkoss.ztl.ZK;
 import org.zkoss.ztl.ZKClientTestCase;
+import org.zkoss.ztl.util.ColorVerifingHelper;
 
 import com.thoughtworks.selenium.Selenium;
 #foreach($item in $ztl.import)
