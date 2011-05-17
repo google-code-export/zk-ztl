@@ -1,4 +1,4 @@
-<test tags="Panel" import="org.zkoss.ztl.util.ColorVerifingHelper">
+<test tags="Panel">
 	<case id="closed">
 		<server>
 			<!--
