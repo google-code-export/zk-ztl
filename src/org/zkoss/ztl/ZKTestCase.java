@@ -361,11 +361,11 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	 */
 	public void dragdropTo(String locatorOfObjectToBeDragged, String from, String to) {
 		Selenium browser = getCurrent();
+		browser.mouseMoveAt(locatorOfObjectToBeDragged, from);
 		browser.mouseDownAt(locatorOfObjectToBeDragged, from);
 		browser.mouseMoveAt(locatorOfObjectToBeDragged, to);
 		browser.mouseUpAt(locatorOfObjectToBeDragged, to);
 	}
-	
 	/**
 	 * Drags and drops the specific element from its specific area to another element.
 	 * <p>For example,<br/>
