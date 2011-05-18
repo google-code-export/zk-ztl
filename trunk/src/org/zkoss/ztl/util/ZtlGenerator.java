@@ -161,7 +161,7 @@ public class ZtlGenerator {
 
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
-		String src = null, dist = null, tags = "", bin = "";
+		String src = null, dist = null, tags = null, bin = "",excludetags = null;
 		boolean run = false;
 		int i = 0;
 		for (String s : args) {
@@ -171,6 +171,12 @@ public class ZtlGenerator {
 			} else if ("-dist".equalsIgnoreCase(s)) {
 				dist = args[i + 1];
 				log("dist=" + dist);
+			} else if ("-tags".equalsIgnoreCase(s)) {
+				log("tags="+args[i+1]);
+				tags = args[i+1];
+			} else if ("-excludetags".equalsIgnoreCase(s)) {
+				log("excludeTags="+args[i+1]);
+				excludetags = args[i+1];
 			} else if ("-run".equalsIgnoreCase(s)) {
 				run = true;
 				bin = args[i + 1];
@@ -198,11 +204,57 @@ public class ZtlGenerator {
 		if (!run) {
 			ZtlGenerator t = new ZtlGenerator();
 			File dir = new File(src);
-			for (File f : getFiles(dir, new ArrayList<File>(30), ".ztl"))
-				t.run(t.load(f, dir.getPath()), dist);
+			
+			String[] includetag = tags == null || tags.trim().equals("") ? null : tags.split(",");
+			String[] excludetag = excludetags == null || excludetags.trim().equals("") ? null : excludetags.split(",");
+//			List<String> testSuite = new ArrayList<String>();
+			StringBuffer testcases= new StringBuffer();
+			boolean init = false ;
+			for (File f : getFiles(dir, new ArrayList<File>(30), ".ztl")){
+				Test test = t.load(f, dir.getPath());
+				
+				boolean included = true;
+				
+				if(tags != null)
+					included = test.containsTag(includetag);
+				
+				if(excludetag != null) //if it's not included , we need not to count it anyway.
+					included = included && !test.containsTag(excludetag);
+				
+				if(included){
+					//testSuite.add(test.getPackage()+"."+test.getFileName()+".class");
+					if(init){
+						testcases.append("," + test.getPackage()+"."+test.getFileName()+".class\n");
+					}else{
+						init = true;
+						testcases.append(test.getPackage()+"."+test.getFileName()+".class\n");
+					}
+					
+				}
+					//tags
+				t.run(test, dist);
+			}
+			
+			if(includetag!= null || excludetag != null ){
+				String testSuiteName = "TagSuite";
+				
+				VelocityContext context = new VelocityContext();
+				context.put("suitename", testSuiteName);
+				context.put("cases", testcases);
+				try {
+					File folder = new File(dist+File.separator+"test"+File.separator);
+					if(!folder.exists()) folder.mkdirs();
+					ZulGenerator.fillTemplate(dist+File.separator+"test"+File.separator+testSuiteName+".java", context, "testsuite.vm");
+					System.out.println(dist+"/test/"+testSuiteName+".java");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			
+			
 		} else {
 			try {
-				tags = tags.toLowerCase();
+				tags = tags == null ? "" : tags.toLowerCase();
 				String[] tag = tags.split(",");
 				List<File> files = getFiles(new File(bin), new ArrayList<File>(
 						30), "Test.class");

@@ -21,7 +21,7 @@ Usage:
 		</echo>
 	</target>
 	<target name="clean">
-		<delete dir="${build.dir}" />
+		<!-- <delete dir="${build.dir}" /> -->
 		<delete dir="${report.dir}" />
 		<delete dir="${codegen.dir}"/>
 		<delete dir="${test.dir}"/>
@@ -61,6 +61,10 @@ Usage:
          <arg value="test"/>
          <arg value="-dist"/>
          <arg value="codegen"/>
+         <arg value="-tags"/>
+         <arg value="${tags}"/>
+		 <arg value="-excludetags"/>
+         <arg value="${excludetags}"/>
          <classpath>
            <pathelement path="${classes.dir}"/>
 			<fileset dir="${lib.dir}">
@@ -142,6 +146,24 @@ Usage:
          </classpath>
        </java>
 	</target>
+	<target name="junitTag" depends="generate,compileztl">
+		<junit printsummary="on" fork="true" forkmode="once" haltonfailure="false"
+			   showoutput="true">
+			<classpath>
+				<pathelement path="${classes.dir}" />
+				<pathelement path="${test.dir}" />
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+			<formatter type="xml" />
+			<batchtest todir="${report.dir}">
+				<fileset dir="${test.dir}" >
+					<include name="test/TagSuite*" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>		
 	<target name="junitOne" depends="generate,compileztl">
 		<junit printsummary="on" fork="true" forkmode="once" haltonfailure="false"
 			   showoutput="true">

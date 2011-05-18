@@ -123,7 +123,7 @@ public class ZulGenerator {
 	 * @throws FileNotFoundException
 	 * @throws Exception
 	 */
-	private void fillTemplate(String outputFile, VelocityContext context, String templateName) throws Exception {
+	public static void fillTemplate(String outputFile, VelocityContext context, String templateName) throws Exception {
 		Velocity.init(ClassLoader.getSystemResource("velocity.properties")
 				.getPath());
 		Template template = Velocity.getTemplate(templateName);
