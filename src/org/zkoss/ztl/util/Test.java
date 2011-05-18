@@ -62,6 +62,23 @@ public class Test {
 			return imports.split(",");
 		return new String[0];
 	}
+
+	public boolean containsTag(String[] check){
+		if(check == null || check.length==0) return false;
+
+		String tags = getTags();
+		if("".equals(tags)) return false;
+
+		String[] items = tags.split(",");
+
+		for(String tag:items){
+			for(String str : check){
+				if( tag.trim().equalsIgnoreCase(str.trim())) return true;
+			}
+		}
+		return false;
+
+	}
 	public String getTags() {
 		String tags = _attrs.get("tags");
 		if (tags != null)
