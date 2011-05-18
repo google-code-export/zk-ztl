@@ -157,20 +157,25 @@ blur(jq("@spinner i.z-spinner-btn"));
 verifyTrue(3 > parseInt(jq("@spinner input.z-spinner-inp").val()));
 }}}
   * You have to use *blur()*, otherwise it will not save the value to server.
-=== Menuitem ===
- ==== Click ====
- You need to click the button of the menuitem.
+=== Menu ===
+ ==== Click right arrow ====
+ You need to click the arrow area of the menu.
  For example,
  {{{
 <server><!--
 	<zk>
 		<menubar>
-			<menuitem label="item" onClick='alert("you click")' />
+			<menu label="click me" onClick="">
+				<menupopup>
+					<menuitem label="item" onClick='alert("you click")' />
+				</menupopup>
+			</menu>
 		</menubar>
 	</zk>
 --></server>
 <client>
-	click(new Widget(jq("@menuitem[label=\"item\"]:eq(0)")).$n("b"));
+	JQuery menu = jq("@menu[label=\"click me\"]");
+	clickAt(menu, ""+(menu.width() - 5)+",5");
 </client>
 }}}
 === Menupopup ===
