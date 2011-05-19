@@ -53,15 +53,15 @@ NOTE: The mentioned bug occurs only if you add item via ListModel and ListDataEv
 </zk>
 		 --></server>
 		<client><![CDATA[
-			verifyTrue(isVisible(h1));
+				verifyTrue(isVisible(h1));
 				verifyTrue(isVisible(h2));
 				verifyTrue(jq(h1).height() > 10);
 				verifyTrue(jq(h1).width() > 30);
 				verifyTrue(jq(h2).height() > 10);
 				verifyTrue(jq(h2).width() > 30);
 				verifyEquals(jq(lb).width(), jq(lb.$n("head")).outerWidth());
-				verifyTolerant(jq(lb).height(), jq(lb.$n("head")).outerHeight(),1);
-				verifyTolerant(0, jq(lb.$n("body")).height(),1);
+				verifyEquals(jq(lb).height(), jq(lb.$n("head")).outerHeight());
+				verifyEquals(0, jq(lb.$n("body")).height());
 				click(btn);
 				waitResponse();
 				verifyEquals(jq(lb).height(), jq(lb.$n("head")).outerHeight() +

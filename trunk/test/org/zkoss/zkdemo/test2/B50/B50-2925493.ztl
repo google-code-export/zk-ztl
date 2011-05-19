@@ -1,4 +1,4 @@
-<test tags="B50-2925493.zul,A,E,Listbox">
+<test tags="B50-2925493.zul,A,E,Listbox,Command">
 	<case id="closed">
 		<server>
 			<!--
