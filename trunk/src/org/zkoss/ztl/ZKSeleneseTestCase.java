@@ -118,6 +118,10 @@ public class ZKSeleneseTestCase extends TestCase {
 		stb.verifyContains(message, s1, s2, selenium);
     }
     
+    public void verifyNotContains(String message,String s1,String s2){
+		stb.verifyNotContains(message, s1, s2, selenium);
+    }
+    
     /** Like assertEquals, but fails at the end of the test (during tearDown) */
     public void verifyEquals(String message, Object s1, Object s2) {
         stb.verifyEquals(message, s1, s2, selenium);
