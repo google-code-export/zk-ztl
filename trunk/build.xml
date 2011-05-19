@@ -21,7 +21,7 @@ Usage:
 		</echo>
 	</target>
 	<target name="clean">
-		<!-- <delete dir="${build.dir}" /> -->
+		<delete dir="${build.dir}" />
 		<delete dir="${report.dir}" />
 		<delete dir="${codegen.dir}"/>
 		<delete dir="${test.dir}"/>
@@ -89,7 +89,7 @@ Usage:
 		</javac>
 		
 		<copy todir="${classes.dir}" preservelastmodified="yes">
-			<fileset dir="${source.dir}" includes="config.properties,velocity.properties,ztl.vm"/>
+			<fileset dir="${source.dir}" includes="config.properties,velocity.properties,ztl.vm,zul.vm,testsuite.vm"/>
 		</copy>
 	</target>
 	<target name="compileztl" depends="init">
