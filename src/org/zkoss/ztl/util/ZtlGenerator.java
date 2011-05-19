@@ -206,7 +206,6 @@ public class ZtlGenerator {
 			File dir = new File(src);
 			
 			String[] includetag = tags == null || tags.trim().equals("") || tags.trim().equals("all") ? null : tags.split(",");
-			System.out.println(includetag.length);
 			String[] excludetag = excludetags == null || excludetags.trim().equals("") ? null : excludetags.split(",");
 //			List<String> testSuite = new ArrayList<String>();
 			StringBuffer testcases= new StringBuffer();
