@@ -173,6 +173,17 @@ public class ZKSeleneseTestBase {
 	        }
 	    }
 	    
+	    /** Like assertNotEquals, but fails at the end of the test (during tearDown) */
+	    public void verifyNotContains(String message, String s1, String s2, Selenium selenium) {
+	        try {
+	
+	        	assertFalse(message, s1 == null || s2 == null);
+	        	assertEquals(message, s1.indexOf(s2), -1);
+	        } catch (Error e) {
+	        	error(throwableToString(e), selenium);
+	        }
+	    }
+	    
 	    /** Like assertEquals, but fails at the end of the test (during tearDown) */
 	    public void verifyEquals(boolean s1, boolean s2, Selenium selenium) {
 	        try {
