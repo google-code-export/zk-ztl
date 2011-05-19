@@ -210,6 +210,7 @@ public class ZtlGenerator {
 //			List<String> testSuite = new ArrayList<String>();
 			StringBuffer testcases= new StringBuffer();
 			boolean init = false ;
+			int count = 0;
 			for (File f : getFiles(dir, new ArrayList<File>(30), ".ztl")){
 				Test test = t.load(f, dir.getPath());
 				
@@ -229,6 +230,7 @@ public class ZtlGenerator {
 						init = true;
 						testcases.append(test.getPackage()+"."+test.getFileName()+".class\n");
 					}
+					count ++;
 					
 				}
 					//tags
@@ -245,7 +247,7 @@ public class ZtlGenerator {
 					File folder = new File(dist+File.separator+"test"+File.separator);
 					if(!folder.exists()) folder.mkdirs();
 					ZulGenerator.fillTemplate(dist+File.separator+"test"+File.separator+testSuiteName+".java", context, "testsuite.vm");
-					System.out.println(dist+"/test/"+testSuiteName+".java");
+					System.out.println(dist+"/test/"+testSuiteName+".java , test case amount:" + count);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
