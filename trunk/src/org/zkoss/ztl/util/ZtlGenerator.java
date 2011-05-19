@@ -205,7 +205,7 @@ public class ZtlGenerator {
 			ZtlGenerator t = new ZtlGenerator();
 			File dir = new File(src);
 			
-			String[] includetag = tags == null || tags.trim().equals("") || tags.trim().equals("all") ? null : tags.split(",");
+			String[] includetag = tags == null || tags.trim().equals("") ? null : tags.split(",");
 			String[] excludetag = excludetags == null || excludetags.trim().equals("") ? null : excludetags.split(",");
 //			List<String> testSuite = new ArrayList<String>();
 			StringBuffer testcases= new StringBuffer();
@@ -216,7 +216,7 @@ public class ZtlGenerator {
 				
 				boolean included = true;
 				
-				if(tags != null)
+				if(tags != null && includetag !=null)
 					included = test.containsTag(includetag);
 				
 				if(excludetag != null) //if it's not included , we need not to count it anyway.
