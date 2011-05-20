@@ -1,4 +1,4 @@
-<test tags="constraint,A,E,Combobox,Constraint,Unstable">
+<test tags="constraint,A,E,Combobox,Constraint">
 	<case id="Session">
 		<server><!--
 		<window title="Memory Leak Test">
@@ -29,7 +29,6 @@
 		<client><![CDATA[
 			focus(cb.$n("real"));
 			type(cb.$n("real"),"xxx");
-			keyPressNative(TAB);
 			waitResponse();
 			verifyEquals("",jq(msg1).text());
 			verifyEquals("",jq(msg2).text());

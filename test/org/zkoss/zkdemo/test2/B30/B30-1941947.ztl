@@ -1,4 +1,4 @@
-<test tags="Databind,BI,Unstable">
+<test tags="Databind,BI">
 	<case id="Binding">
 		<server><!--
 			<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
@@ -52,8 +52,8 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			type(cateTxtbox, "Cat2");
-			keyPressNative(TAB);			
+			//dont need to press tab , type() will blur the widget
+			type(cateTxtbox, "Cat2");		
 			if (!jq(".z-window-highlighted").exists() && !jq(".z-window-modal").exists()) {
 			    verifyTrue(true);
 			} else {

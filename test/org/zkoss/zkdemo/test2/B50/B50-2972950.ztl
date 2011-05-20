@@ -1,4 +1,4 @@
-<test tags="Panel,Unstable">
+<test tags="Panel">
 	<case id="closed">
 		<server>
 			<!--
@@ -19,8 +19,8 @@
 				click(btn);
 				waitResponse();
    				verifyFalse(jq(".z-error").exists());
+   				//type will blur the widget so dont need to press tab
 				type(intbox,"-1");
-				keyPressNative(TAB);
 				verifyTrue(jq(".z-errbox").exists());
 			]]></client>
 	</case>
