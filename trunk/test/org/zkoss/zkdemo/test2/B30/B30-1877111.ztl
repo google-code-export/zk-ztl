@@ -1,4 +1,4 @@
-<test tags="Datebox,Calendar,Unstable">
+<test tags="Datebox,Calendar">
 	<case id="Lenient">
 		<server><!--
 			<zk>
@@ -27,18 +27,15 @@
 		--></server>
 		<client><![CDATA[
 			type(jq(".z-datebox-inp:eq(0)"), "12-13-98");
-			keyPressNative(TAB);
-			waitResponse();
-			verifyTrue(jq(".z-errbox").exists());
-			click(jq(".z-errbox-close"));
-			waitResponse();
-			type(jq(".z-datebox-inp:eq(1)"), "12-13-98");
-			keyPressNative(TAB);
-			waitResponse();
-			type(jq(".z-datebox-inp:eq(2)"), "12-13-98");
-			keyPressNative(TAB);
-			waitResponse();
-			verifyTrue(jq(".z-errbox").exists());
+				waitResponse();
+				verifyTrue(jq(".z-errbox").exists());
+				click(jq(".z-errbox-close"));
+				waitResponse();
+				type(jq(".z-datebox-inp:eq(1)"), "12-13-98");
+				waitResponse();
+				type(jq(".z-datebox-inp:eq(2)"), "12-13-98");
+				waitResponse();
+				verifyTrue(jq(".z-errbox").exists());
 		]]></client>
 	</case>
 </test>

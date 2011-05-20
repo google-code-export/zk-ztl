@@ -1,4 +1,4 @@
-<test tags="Textbox,Intbox,Constraint,Unstable">
+<test tags="Textbox,Intbox,Constraint">
 	<case id="Constraint">
 		<server><!--
 			<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
@@ -17,12 +17,10 @@
 		--></server>
 		<client><![CDATA[
 			type(myIntbox, "100");
-            keyPressNative(TAB);
             waitResponse();
             verifyFalse(jq(".z-errbox").exists());
             
 			type(myIntbox, "-100");
-			keyPressNative(TAB);
 			waitResponse();
             verifyTrue(jq(".z-errbox").exists());
 		]]></client>
