@@ -114,6 +114,38 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	 * The keycode of the ALT key
 	 */
 	public static final String ALT = "18";
+	
+	/** * The keycode of the Num_0 */
+	public static final String NUM_0 = "48";
+
+	/**
+	 * The keycode of the Num_1
+	 * */
+	public static final String NUM_1 = "49";
+
+	/** * The keycode of the Num_2 */
+	public static final String NUM_2 = "50";
+
+	/** * The keycode of the Num_3 */
+	public static final String NUM_3 = "51";
+
+	/** * The keycode of the Num_4 */
+	public static final String NUM_4 = "52";
+
+	/** * The keycode of the Num_5 */
+	public static final String NUM_5 = "53";
+
+	/** * The keycode of the Num_6 */
+	public static final String NUM_6 = "54";
+
+	/** * The keycode of the Num_7 */
+	public static final String NUM_7 = "55";
+
+	/** * The keycode of the Num_8 */
+	public static final String NUM_8 = "56";
+
+	/** * The keycode of the Num_9 */
+	public static final String NUM_9 = "57";	
 	/**
 	 * The keycode of the A key
 	 */
