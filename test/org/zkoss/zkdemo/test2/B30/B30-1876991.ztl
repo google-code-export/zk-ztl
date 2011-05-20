@@ -1,4 +1,4 @@
-<test tags="Textbox,Intbox,Constraint">
+<test tags="Textbox,Intbox,Constraint,Unstable">
 	<case id="Constraint">
 		<server><!--
 			<zk xmlns:n="http://www.zkoss.org/2005/zk/native">

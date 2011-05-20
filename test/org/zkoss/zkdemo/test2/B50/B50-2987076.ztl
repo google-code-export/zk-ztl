@@ -1,4 +1,4 @@
-<test tags="tree,treeitem,treerow,treecell">
+<test tags="tree,treeitem,treerow,treecell,Unstable">
 	<case id="tooltiptext">
 		<server id="zul"><![CDATA[
 			<zk>
@@ -20,7 +20,9 @@
 		]]></server>
 		<client wait="100"><![CDATA[
 			click(setBtn);
+			waitResponse();
 			click(getBtn);
+			waitResponse();
 			verifyEquals("row", jq(msg).html());
 		]]></client>
 	</case>

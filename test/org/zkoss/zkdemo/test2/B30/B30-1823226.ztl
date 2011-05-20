@@ -1,4 +1,4 @@
-<test tags="Hbox,Splitter">
+<test tags="Hbox,Splitter,Unstable">
 	<case id="Dragdrop">
 		<server><!--
 <zk>

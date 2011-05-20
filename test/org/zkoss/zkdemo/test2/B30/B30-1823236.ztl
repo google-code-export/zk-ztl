@@ -1,4 +1,4 @@
-<test tags="Listbox">
+<test tags="Listbox,Unstable">
 	<case id="Layout">
 		<server><!--
 <zk>

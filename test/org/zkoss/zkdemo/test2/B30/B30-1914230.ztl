@@ -1,4 +1,4 @@
-<test tags="constraint,A,E,Combobox,Constraint">
+<test tags="constraint,A,E,Combobox,Constraint,Unstable">
 	<case id="Session">
 		<server><!--
 		<window title="Memory Leak Test">

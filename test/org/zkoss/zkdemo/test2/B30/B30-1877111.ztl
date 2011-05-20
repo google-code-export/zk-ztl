@@ -1,4 +1,4 @@
-<test tags="Datebox,Calendar">
+<test tags="Datebox,Calendar,Unstable">
 	<case id="Lenient">
 		<server><!--
 			<zk>

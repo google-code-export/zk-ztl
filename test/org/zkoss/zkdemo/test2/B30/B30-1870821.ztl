@@ -1,4 +1,4 @@
-<test tags="Grid">
+<test tags="Grid,Unstable">
 	<case id="DataBinding">
 		<server>
 			<!-- 

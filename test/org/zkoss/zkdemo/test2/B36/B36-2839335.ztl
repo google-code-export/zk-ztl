@@ -1,4 +1,4 @@
-<test tags="timebox">
+<test tags="timebox,Unstable">
 	<case id="type">
 		<server><!--
 			<zk>
