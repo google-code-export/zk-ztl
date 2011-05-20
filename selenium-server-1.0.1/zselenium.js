@@ -34,6 +34,7 @@ BrowserBot.prototype.findAttribute = function(locator) {
 };
 
 BrowserBot.prototype.findElement = function(locator, win) {
+	initIE9Support(this);
 	if (locator.indexOf("zk.") == 0 || locator.indexOf("zk(") == 0
 			|| locator.indexOf("jq") == 0) {
 		locator = selenium.getEval(locator);
@@ -57,7 +58,6 @@ BrowserBot.prototype.findElement = function(locator, win) {
     if (element == null) throw new SeleniumError("Element " + locator + " not found");
     return element;
 }
-
 Selenium.prototype.getEval = function(script) {
     try {
         var window = this.browserbot.getUserWindow(),
