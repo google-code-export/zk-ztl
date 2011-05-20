@@ -1,4 +1,4 @@
-<test tags="Panel">
+<test tags="Panel,Unstable">
 	<case id="closed">
 		<server>
 			<!--

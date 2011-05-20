@@ -1,4 +1,4 @@
-<test tags="Hbox,Tabbox,Tree,Splitter">
+<test tags="Hbox,Tabbox,Tree,Splitter,Unstable">
 	<case id="Sizing">
 		<server><!--
 <?xml version="1.0" encoding="UTF-8"?>

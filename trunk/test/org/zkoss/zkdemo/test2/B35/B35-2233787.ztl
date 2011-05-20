@@ -1,4 +1,4 @@
-<test tags="B35-2233787.zul,radiobutton">
+<test tags="B35-2233787.zul,radiobutton,Unstable">
 	<case id="ztl">
 		<server><!--
 			<window title="Radiogroup and checkbox" border="normal">

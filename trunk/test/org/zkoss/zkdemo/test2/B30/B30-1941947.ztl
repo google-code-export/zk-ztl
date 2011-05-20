@@ -1,4 +1,4 @@
-<test tags="Databind,BI">
+<test tags="Databind,BI,Unstable">
 	<case id="Binding">
 		<server><!--
 			<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
