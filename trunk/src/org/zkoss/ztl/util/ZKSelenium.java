@@ -80,6 +80,15 @@ public class ZKSelenium extends DefaultSelenium {
 		return _browsername;
 	}
 	
+	/**
+	 * Do ZK way eval
+	 * @param script
+	 * @return
+	 */
+	public String getEval(String script) {
+		return commandProcessor.getString("getUserEval", new String[] {script,});
+	}
+	
 	public String getBrowserpath() {
 		return _browserpath;
 	}

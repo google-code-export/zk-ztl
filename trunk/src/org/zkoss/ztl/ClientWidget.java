@@ -64,7 +64,12 @@ public abstract class ClientWidget {
 	public String eval(String script, boolean withDot) {
 		return ZKTestCase.getCurrent().getEval(_out.toString() + (withDot ? "." : "") + script);
 	}
-	
+	/**
+	 * Returns the evaluation string that is JavaScript format. 
+	 */
+	public String toLocator() {
+		return "zk="+ _out.toString();
+	}
 	/**
 	 * Returns the evaluation string that is JavaScript format. 
 	 */
