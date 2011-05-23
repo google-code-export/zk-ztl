@@ -65,7 +65,7 @@ public class ${ztl.fileName} extends ZKClientTestCase {
 			;
 				runZscript(zscript);
 		#foreach($ids in $source.idArray)
-		Widget $ids = engine.$f("$ids");
+		Widget $ids = engine.\$f("$ids");
 		#end
 		waitResponse();
 	#else
