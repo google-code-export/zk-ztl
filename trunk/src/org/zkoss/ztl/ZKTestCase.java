@@ -1137,4 +1137,17 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	public void verifyImage() {
 		verifyImage(null);
 	}
+
+
+	public String getLog() {
+		return getCurrent().getLog();
+	}
+
+	public void open(String url, String ignoreResponseCode) {
+		getCurrent().open(url, ignoreResponseCode);
+	}
+
+	public Number getCssCount(String css) {
+		return getCurrent().getCssCount(css);
+	}
 }
