@@ -45,7 +45,7 @@ Then click the red area, it shall become the first child.
 				}
 					
 				click(jq("div > div > div:eq(1)"));
-				
+				waitResponse();
 				for(int i=0;i<3;i++){
 					int y = i+1;
 					verifyEquals("Item A." + y, jq("div > div > div:eq(1) > h1:eq(" + i + ")").text());
