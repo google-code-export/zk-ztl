@@ -156,76 +156,67 @@ public class ZKClientTestCase extends ZKTestCase {
 		return 0;
 	}
 	public void addSelection(ClientWidget locator, String optionLocator) {
-		super.addSelection(locator.toString(), optionLocator);
+		super.addSelection(locator.toLocator(), optionLocator);
 	}
 
 	public void assignId(ClientWidget locator, String identifier) {
-		super.assignId(locator.toString(), identifier);
+		super.assignId(locator.toLocator(), identifier);
 	}
 
 	public void check(ClientWidget locator) {
-		super.check(locator.toString());
+		super.check(locator.toLocator());
 	}
 
 	public void click(ClientWidget locator) {
-		super.click(locator.toString());
+		super.click(locator.toLocator());
 	}
 
-	/**
-	 * TODO check IE9 
-	 * @param locator
-	 * @param coordString
-	 */
 	public void clickAt(ClientWidget locator, String coordString) {
-		super.clickAt(locator.toString(), coordString);
+		super.clickAt(locator.toLocator(), coordString);
 	}
 
-	/**
-	 * TODO check IE9 
-	 * @param locator
-	 */
 	public void contextMenu(ClientWidget locator) {
-		super.contextMenu(locator.toString());
+		super.contextMenu(locator.toLocator());
 	}
 
 	public void contextMenuAt(ClientWidget locator, String coordString) {
-		super.contextMenuAt(locator.toString(), coordString);
+		super.contextMenuAt(locator.toLocator(), coordString);
 	}
 
 	public void doubleClick(ClientWidget locator) {
 		// don't use doubleClick(), because it fails in IE
-		super.doubleClickAt(locator.toString(), "0,0");
+		super.doubleClickAt(locator.toLocator(), "0,0");
 	}
 
 	public void doubleClickAt(ClientWidget locator, String coordString) {
-		super.doubleClickAt(locator.toString(), coordString);
+		super.doubleClickAt(locator.toLocator(), coordString);
 	}
 
 		public void dragAndDrop(ClientWidget locator, String movementsString) {
-		super.dragAndDrop(locator.toString(), movementsString);
+		super.dragAndDrop(locator.toLocator(), movementsString);
 	}
 
 	public void dragdropTo(ClientWidget locatorOfObjectToBeDragged, String from, String to) {
-		super.dragdropTo(locatorOfObjectToBeDragged.toString(), from, to);
+		super.dragdropTo(locatorOfObjectToBeDragged.toLocator(), from, to);
 	}
 
 	public void dragdropToObject(ClientWidget locatorOfObjectToBeDragged,
 			ClientWidget locatorOfDragDestinationObject, String from, String to) {
-		super.dragdropToObject(locatorOfObjectToBeDragged.toString(),
-				locatorOfDragDestinationObject.toString(), from, to);
+		super.dragdropToObject(locatorOfObjectToBeDragged.toLocator(),
+				locatorOfDragDestinationObject.toLocator(), from, to);
 	}
 
 	public void dragAndDropToObject(ClientWidget locatorOfObjectToBeDragged,
 			ClientWidget locatorOfDragDestinationObject) {
-		super.dragAndDropToObject(locatorOfObjectToBeDragged.toString(), locatorOfDragDestinationObject.toString());
+		super.dragAndDropToObject(locatorOfObjectToBeDragged.toLocator(), locatorOfDragDestinationObject.toLocator());
 	}
 
 	public void dragdrop(ClientWidget locator, String movementsString) {
-		super.dragdrop(locator.toString(), movementsString);
+		super.dragdrop(locator.toLocator(), movementsString);
 	}
 
 	public void fireEvent(ClientWidget locator, String eventName) {
-		super.fireEvent(locator.toString(), eventName);
+		super.fireEvent(locator.toLocator(), eventName);
 	}
 
 	/**
@@ -233,118 +224,115 @@ public class ZKClientTestCase extends ZKTestCase {
 	 * @param locator
 	 */
 	public void focus(ClientWidget locator) {
-		super.focus(locator.toString());
+		super.focus(locator.toLocator());
 	}
 	/**
-	 * TODO check IE9
-	 * @browsers ie6,ie7,ie8,ie9,chrome7,firefox363,safari402
+	 * @browsers ie6,ie7,ie8,chrome7,firefox363,safari402
 	 * @param locator
 	 */
 	public void blur(ClientWidget locator) {
-		
-		this.windowFocus(); //for IE9
-		super.fireEvent(locator.toString(), "blur");
+		super.fireEvent(locator.toLocator(), "blur");
 	}
 
 	public String getAttribute(ClientWidget attributeLocator) {
-		return super.getAttribute(attributeLocator.toString());
+		return super.getAttribute(attributeLocator.toLocator());
 	}
 
 	public Number getCursorPosition(ClientWidget locator) {
-		return super.getCursorPosition(locator.toString());
+		return super.getCursorPosition(locator.toLocator());
 	}
 
 	public Number getElementHeight(ClientWidget locator) {
-		return super.getElementHeight(locator.toString());
+		return super.getElementHeight(locator.toLocator());
 	}
 
 	public Number getElementIndex(ClientWidget locator) {
-		return super.getElementIndex(locator.toString());
+		return super.getElementIndex(locator.toLocator());
 	}
 
 	public Number getElementPositionLeft(ClientWidget locator) {
-		return super.getElementPositionLeft(locator.toString());
+		return super.getElementPositionLeft(locator.toLocator());
 	}
 
 	public Number getElementPositionTop(ClientWidget locator) {
-		return super.getElementPositionTop(locator.toString());
+		return super.getElementPositionTop(locator.toLocator());
 	}
 
 	public Number getElementWidth(ClientWidget locator) {
-		return super.getElementWidth(locator.toString());
+		return super.getElementWidth(locator.toLocator());
 	}
 
 	public String[] getSelectOptions(ClientWidget selectLocator) {
-		return super.getSelectOptions(selectLocator.toString());
+		return super.getSelectOptions(selectLocator.toLocator());
 	}
 
 	public String getSelectedId(ClientWidget selectLocator) {
-		return super.getSelectedId(selectLocator.toString());
+		return super.getSelectedId(selectLocator.toLocator());
 	}
 
 	public String[] getSelectedIds(ClientWidget selectLocator) {
-		return super.getSelectedIds(selectLocator.toString());
+		return super.getSelectedIds(selectLocator.toLocator());
 	}
 
 	public String getSelectedIndex(ClientWidget selectLocator) {
-		return getCurrent().getSelectedIndex(selectLocator.toString());
+		return getCurrent().getSelectedIndex(selectLocator.toLocator());
 	}
 
 	public String[] getSelectedIndexes(ClientWidget selectLocator) {
-		return super.getSelectedIndexes(selectLocator.toString());
+		return super.getSelectedIndexes(selectLocator.toLocator());
 	}
 
 	public String getSelectedLabel(ClientWidget selectLocator) {
-		return super.getSelectedLabel(selectLocator.toString());
+		return super.getSelectedLabel(selectLocator.toLocator());
 	}
 
 	public String[] getSelectedLabels(ClientWidget selectLocator) {
-		return super.getSelectedLabels(selectLocator.toString());
+		return super.getSelectedLabels(selectLocator.toLocator());
 	}
 
 	public String getSelectedValue(ClientWidget selectLocator) {
-		return super.getSelectedValue(selectLocator.toString());
+		return super.getSelectedValue(selectLocator.toLocator());
 	}
 
 	public String[] getSelectedValues(ClientWidget selectLocator) {
-		return super.getSelectedValues(selectLocator.toString());
+		return super.getSelectedValues(selectLocator.toLocator());
 	}
 
 
 	public String getTable(ClientWidget tableCellAddress) {
-		return super.getTable(tableCellAddress.toString());
+		return super.getTable(tableCellAddress.toLocator());
 	}
 
 	public String getText(ClientWidget locator) {
-		return super.getText(locator.toString());
+		return super.getText(locator.toLocator());
 	}
 
 	public String getValue(ClientWidget locator) {
-		return super.getValue(locator.toString());
+		return super.getValue(locator.toLocator());
 	}
 
 	public void highlight(ClientWidget locator) {
-		super.highlight(locator.toString());
+		super.highlight(locator.toLocator());
 	}
 
 	public boolean isChecked(ClientWidget locator) {
-		return super.isChecked(locator.toString());
+		return super.isChecked(locator.toLocator());
 	}
 
 	public boolean isEditable(ClientWidget locator) {
-		return super.isEditable(locator.toString());
+		return super.isEditable(locator.toLocator());
 	}
 
 	public boolean isElementPresent(ClientWidget locator) {
-		return super.isElementPresent(locator.toString());
+		return super.isElementPresent(locator.toLocator());
 	}
 
 	public boolean isOrdered(ClientWidget locator1, ClientWidget locator2) {
-		return super.isOrdered(locator1.toString(), locator2.toString());
+		return super.isOrdered(locator1.toLocator(), locator2.toLocator());
 	}
 
 	public boolean isSomethingSelected(ClientWidget selectLocator) {
-		return super.isSomethingSelected(selectLocator.toString());
+		return super.isSomethingSelected(selectLocator.toLocator());
 	}
 
 	@Override
@@ -353,16 +341,11 @@ public class ZKClientTestCase extends ZKTestCase {
 	}
 
 	public boolean isVisible(ClientWidget locator) {
-		return super.isVisible(locator.toString());
+		return super.isVisible(locator.toLocator());
 	}
 
-	/**
-	 * TODO check IE9 support
-	 * @param locator
-	 * @param keySequence
-	 */
 	public void keyDown(ClientWidget locator, String keySequence) {
-		super.keyDown(locator.toString(), keySequence);
+		super.keyDown(locator.toLocator(), keySequence);
 	}
 	
 	/**
@@ -371,7 +354,7 @@ public class ZKClientTestCase extends ZKTestCase {
 	 * @param keySequence
 	 */
 	public void keyPress(ClientWidget locator, String keySequence) {
-		super.keyPress(locator.toString(), keySequence);
+		super.keyPress(locator.toLocator(), keySequence);
 	}
 
 	/**
@@ -391,105 +374,95 @@ public class ZKClientTestCase extends ZKTestCase {
 	 * 
 	 * @note it will trigger onChanging that we unexpect.
 	 * </pre>
-	 * TODO Check IE9 support
 	 * @browsers firefox,safari402,chrome,ie8,ie7,ie6 .
 	 */
 	public void keyPressEnter(ClientWidget locator){
 		focus(locator);
 		keyDown(locator,"13");
-		//keyPressNative("10"); 		
 	}
 
 	public void keyUp(ClientWidget locator, String keySequence) {
-		super.keyUp(locator.toString(), keySequence);
+		super.keyUp(locator.toLocator(), keySequence);
 	}
 
 	public void mouseDown(ClientWidget locator) {
-		super.mouseDown(locator.toString());
+		super.mouseDown(locator.toLocator());
 	}
-	/**
-	 * TODO:check IE9 support
-	 */
+
 	public void mouseDownAt(ClientWidget locator, String coordString) {
-		super.mouseDownAt(locator.toString(), coordString);
+		super.mouseDownAt(locator.toLocator(), coordString);
 	}
 
 	public void mouseDownRight(ClientWidget locator) {
-		super.mouseDownRight(locator.toString());
+		super.mouseDownRight(locator.toLocator());
 	}
 
 	public void mouseDownRightAt(ClientWidget locator, String coordString) {
-		super.mouseDownRightAt(locator.toString(), coordString);
+		super.mouseDownRightAt(locator.toLocator(), coordString);
 	}
 
 	public void mouseMove(ClientWidget locator) {
-		super.mouseMove(locator.toString());
+		super.mouseMove(locator.toLocator());
 	}
-	/**
-	 * TODO:check IE9 support
-	 */
+
 	public void mouseMoveAt(ClientWidget locator, String coordString) {
-		super.mouseMoveAt(locator.toString(), coordString);
+		super.mouseMoveAt(locator.toLocator(), coordString);
 	}
 
 	public void mouseOut(ClientWidget locator) {
-		super.mouseOut(locator.toString());
+		super.mouseOut(locator.toLocator());
 	}
-	/**
-	 * TODO:check IE9 support
-	 */
+
 	public void mouseOver(ClientWidget locator) {
-		super.mouseOver(locator.toString());
+		super.mouseOver(locator.toLocator());
 	}
 
 	public void mouseUp(ClientWidget locator) {
-		super.mouseUp(locator.toString());
+		super.mouseUp(locator.toLocator());
 	}
-	/**
-	 * TODO:check IE9 support
-	 */
+
 	public void mouseUpAt(ClientWidget locator, String coordString) {
-		super.mouseUpAt(locator.toString(), coordString);
+		super.mouseUpAt(locator.toLocator(), coordString);
 	}
 
 	public void mouseUpRight(ClientWidget locator) {
-		super.mouseUpRight(locator.toString());
+		super.mouseUpRight(locator.toLocator());
 	}
 
 	public void mouseUpRightAt(ClientWidget locator, String coordString) {
-		super.mouseUpRightAt(locator.toString(), coordString);
+		super.mouseUpRightAt(locator.toLocator(), coordString);
 	}
 
 	public void removeAllSelections(ClientWidget locator) {
-		super.removeAllSelections(locator.toString());
+		super.removeAllSelections(locator.toLocator());
 	}
 
 	public void removeSelection(ClientWidget locator, String optionLocator) {
-		super.removeSelection(locator.toString(), optionLocator);
+		super.removeSelection(locator.toLocator(), optionLocator);
 	}
 
 	public void rollup(ClientWidget rollupName, String kwargs) {
-		super.rollup(rollupName.toString(), kwargs);
+		super.rollup(rollupName.toLocator(), kwargs);
 	}
 
 	public void select(ClientWidget selectLocator, String optionLocator) {
-		super.select(selectLocator.toString(), optionLocator);
+		super.select(selectLocator.toLocator(), optionLocator);
 	}
 
 	public void selectFrame(ClientWidget locator) {
-		super.selectFrame(locator.toString());
+		super.selectFrame(locator.toLocator());
 	}
 
 	public void setContext(ClientWidget context) {
-		super.setContext(context.toString());
+		super.setContext(context.toLocator());
 	}
 
 	public void setCursorPosition(ClientWidget locator, String position) {
-		super.setCursorPosition(locator.toString(), position);
+		super.setCursorPosition(locator.toLocator(), position);
 	}
 
 	public void submit(ClientWidget formLocator) {
-		super.submit(formLocator.toString());
+		super.submit(formLocator.toLocator());
 	}
 
 	/**
@@ -498,37 +471,36 @@ public class ZKClientTestCase extends ZKTestCase {
 	 */
 	public void type(ClientWidget locator, String value) {
 		focus(locator);
-		super.type(locator.toString(), value);
+		super.type(locator.toLocator(), value);
 		blur(locator);
 	}
 	
 	/**
-	 * a shortcut for getting alert message.
+	 * a shortcur for getting alert message.
 	 * (Take care about the dom class and model will be different 
 	 * 	when event-thread is enable/disable , so we use title .)  
 	 * @return
 	 */
 	public String getAlertMessage(){
-		return jq("@window[title=\"ZK Test\"] @label").text();
+		return jq("@window[title=\"ZK\"] @label").text();
 	}
 	
 	public void clickAlert(){
-		click(jq("@window[title=\"ZK Test\"] @button"));
+		click(jq("@window[title=\"ZK\"] @button"));
 	}
 
 	/**
 	 * Types the value to the locator.
 	 * <p> The method will call focus() before typing and blur() after typed.
-	 * TODO check IE9
 	 */
 	public void typeKeys(ClientWidget locator, String value) {
 		focus(locator);
-		super.typeKeys(locator.toString(), value);
+		super.typeKeys(locator.toLocator(), value);
 		blur(locator);
 	}
 
 	public void uncheck(ClientWidget locator) {
-		super.uncheck(locator.toString());
+		super.uncheck(locator.toLocator());
 	}
 
 }
