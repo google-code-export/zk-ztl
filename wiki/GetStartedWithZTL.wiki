@@ -12,7 +12,7 @@
 = How to run the ZTL test cases =
 == Checkout Source Code ==
 You need to check out the ZTL project from [http://code.google.com/p/zk-ztl/source/checkout here].
-You should now be able to the following folders under *ztl*:
+You should now be able to see the following folders under *ztl*:
  * *javadoc* the Javadoc of the ZTL core.
  * *lib* the libraries required for this project.
  * *selenium-server...* the selenium server.
