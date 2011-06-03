@@ -482,11 +482,11 @@ public class ZKClientTestCase extends ZKTestCase {
 	 * @return
 	 */
 	public String getAlertMessage(){
-		return jq("@window[title=\"ZK\"] @label").text();
+		return jq("@window[title=\"ZK Test\"] @label").text();
 	}
 	
 	public void clickAlert(){
-		click(jq("@window[title=\"ZK\"] @button"));
+		click(jq("@window[title=\"ZK Test\"] @button"));
 	}
 
 	/**
