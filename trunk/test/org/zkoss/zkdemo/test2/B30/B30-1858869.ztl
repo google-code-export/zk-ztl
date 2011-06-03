@@ -31,7 +31,8 @@ void test() {
 		<client><![CDATA[
 			verifyEquals(0, jq(".z-label").length());
 			type(jq("$test"),"I am test string");
-			keyPressEnter(jq("$test"));
+			focus(jq("$test"));
+			keyPressNative("10");
 			waitResponse();
 			verifyEquals("I am test string" , jq(".z-label").text());
 		]]></client>

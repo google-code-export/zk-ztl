@@ -97,7 +97,7 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	/**
 	 * The keycode of the ENTER key
 	 */
-	public static final String ENTER = "13";
+	public static final String ENTER = "10";
 	/**
 	 * The keycode of the ESC key
 	 */

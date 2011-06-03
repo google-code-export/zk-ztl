@@ -82,7 +82,8 @@ clicked")' />
 			verifyEquals("Login buttonclicked",jq(".z-window-highlighted .z-label").text());
 			click(jq(".z-messagebox-btn"));
 			waitResponse();
-			keyPressEnter(jq("$password"));
+			focus(jq("$password"));
+			keyPressNative("10");
 			waitResponse();
 			verifyEquals("Window.onOK triggered, password=world",jq(".z-window-highlighted .z-label").text());
 		]]></client>

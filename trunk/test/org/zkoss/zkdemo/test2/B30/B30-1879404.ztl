@@ -1,4 +1,4 @@
-<test tags="A,E,Textbox">
+<test tags="A,E,Textbox,Unstable">
 	<case id="textBoxOnOk">
 		<server><!--
 <zk xmlns:n="http://www.zkoss.org/2005/zk/native">
@@ -37,15 +37,17 @@
 				*/
 				JQuery $nickname = jq("$nickname");
 				type($nickname, "123");
-				keyPressEnter($nickname);
+				focus($nickname);
+				keyPressNative(ENTER);
 				waitResponse();
 				JQuery $msg = jq("$msg");
 				verifyTrue($msg.isVisible());
 				type($msg, "ryan is boring");
 				waitResponse();
-				keyPressEnter($msg);
+				focus($msg);
+				keyPressNative(ENTER);
 				waitResponse();
-				verifyEquals("ryan is boring", ms.get("value"));  
+				verifyEquals("ryan is boring", ms.get("value"));
 
 		]]></client>
 	</case>
