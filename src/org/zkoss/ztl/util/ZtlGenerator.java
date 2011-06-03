@@ -128,7 +128,14 @@ public class ZtlGenerator {
 			ConfigHelper ch = ConfigHelper.getInstance();
 			
 			/** config filed ***/
-			Test test = SAXParser.parser(f);
+			Test test;
+			try{
+				test = SAXParser.parser(f);
+			}catch(Exception e){
+				System.out.println("fail to generate when parsing ["+f.getAbsolutePath()+"]");
+				throw e;
+			}
+			
 			
 			// if config.properties is changed, we need to regenerate Java.
 			test.setLastModified(f.lastModified() < ch.lastModified() ?

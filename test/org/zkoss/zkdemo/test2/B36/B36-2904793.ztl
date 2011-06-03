@@ -32,7 +32,8 @@ after input any words into following textbox." />
 			type(jq(myTextbox), "k");
 			waitResponse();
 			verifyTrue("onChange event was not triggered!", jq(changeEvtLabel).isVisible());
-			keyPressEnter(jq(myTextbox));
+			focus(jq(myTextbox));
+			keyPressNative("10");
 			waitResponse();
 			verifyTrue("onOk event was not triggered!", jq(okEvtLabel).isVisible());
 		]]></client>
