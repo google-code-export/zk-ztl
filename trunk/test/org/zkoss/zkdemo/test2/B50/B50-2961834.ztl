@@ -1,4 +1,4 @@
-<test tags="window,onMaximize,Unstable">
+<test tags="B50-2961834.zul,window,onMaximize,Unstable">
 	<case id="Size">
 		<server id="zul"><!--
 			<zk>

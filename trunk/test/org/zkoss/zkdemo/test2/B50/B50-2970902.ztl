@@ -1,4 +1,4 @@
-<test tags="combobox">
+<test tags="B50-2970902.zul,combobox">
 	<case id="Visible">
 		<server id="zul"><![CDATA[
 			<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./win"?>

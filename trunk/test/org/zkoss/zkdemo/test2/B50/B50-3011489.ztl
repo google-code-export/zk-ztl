@@ -1,4 +1,4 @@
-<test tags="decimalbox">
+<test tags="B50-3011489.zul,decimalbox">
 	<case id="format">
 		<server><![CDATA[
 			<decimalbox format="##0.00%" value="3.5"/>

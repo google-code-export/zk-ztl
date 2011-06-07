@@ -1,4 +1,4 @@
-<test tags="Panel">
+<test tags="B50-2936095.zul,A,E,Combobox,onOpen">
 	<case id="closed">
 		<server>
 			<!--

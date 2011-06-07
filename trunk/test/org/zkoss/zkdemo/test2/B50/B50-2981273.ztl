@@ -1,4 +1,4 @@
-<test import="java.text.*,java.util.*" tags="datebox">
+<test import="java.text.*,java.util.*" tags="B50-2981273.zul,datebox">
 	<case id="Dateformat">
 		<server><![CDATA[
 			<datebox id="db" format="dd.MMM.yyyy" onCreate="self.value = new Date();"/>

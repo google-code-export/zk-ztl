@@ -1,4 +1,4 @@
-<test tags="B50-2931091.zul,A,E,Menu">
+<test tags="B50-2931091.zul,Menu">
 	<case id="closed">
 		<server>
 			<!--

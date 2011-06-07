@@ -1,4 +1,4 @@
-<test tags="portallayout,panel">
+<test tags="B50-3004588.zul,portallayout,panel">
 	<case id="maximized">
 		<server id="zul"><![CDATA[
 			<zk>

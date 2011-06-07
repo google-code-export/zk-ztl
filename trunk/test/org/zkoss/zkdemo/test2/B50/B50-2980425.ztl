@@ -1,4 +1,4 @@
-<test tags="listbox,listfooter,grid,footer">
+<test tags="B50-2980425.zul,listbox,listfooter,grid,footer">
 	<case id="Align">
 		<server><!--
 		<listbox width="200px">

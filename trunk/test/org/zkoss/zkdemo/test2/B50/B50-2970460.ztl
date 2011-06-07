@@ -1,4 +1,4 @@
-<test tags="window,onMaximize">
+<test tags="B50-2970460.zul,window,onMaximize">
 	<case id="Size">
 		<server id="zul"><!--
 			<window id="win" border="normal" sizable="true" onMaximize="onMaximizeWin()"

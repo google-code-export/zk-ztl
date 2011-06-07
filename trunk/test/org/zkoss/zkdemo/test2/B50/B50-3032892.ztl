@@ -1,4 +1,4 @@
-<test tags="Combobox,Bandbox,Timebox,Datebox,Spinner">
+<test tags="B50-3032892.zul,Combobox,Bandbox,Timebox,Datebox,Spinner">
 	<case id="LayoutSize">
 		<server><!--
 <zk>

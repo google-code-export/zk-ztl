@@ -1,4 +1,4 @@
-<test tags="Tabbox">
+<test tags="B50-3033022.zul,Tabbox">
 	<case id="Resize">
 		<server><!--
 <zk>

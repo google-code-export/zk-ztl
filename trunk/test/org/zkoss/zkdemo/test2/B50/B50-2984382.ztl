@@ -1,4 +1,4 @@
-<test tags="grid,combobox">
+<test tags="B50-2984382.zul,grid,combobox">
         <case id="dropdownList">
                 <server><!--
 					<zk>

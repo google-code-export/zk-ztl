@@ -1,4 +1,4 @@
-<test tags="tree,treeitem">
+<test tags="B50-3006762.zul,tree,treeitem">
 	<case id="scrollHeight">
 		<server id="zul"><![CDATA[
 			<zk>

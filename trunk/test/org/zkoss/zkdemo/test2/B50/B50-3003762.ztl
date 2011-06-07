@@ -1,4 +1,4 @@
-<test tags="Checkbox,Radio,Textbox">
+<test tags="B50-3003762.zul,Checkbox,Radio,Textbox">
 	<case id="onCheck">
 		<server><![CDATA[
 <vbox width="100%" align="stretch"> 

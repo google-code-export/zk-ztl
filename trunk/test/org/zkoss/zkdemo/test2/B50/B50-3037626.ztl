@@ -1,4 +1,4 @@
-<test tags="Hbox,Splitter,Grid">
+<test tags="B50-3037626.zul,Hbox,Splitter,Grid">
 	<case id="Splitter">
 		<server><!--
 <hbox width="100%" height="100%">

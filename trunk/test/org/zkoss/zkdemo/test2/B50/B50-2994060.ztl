@@ -1,4 +1,4 @@
-<test tags="treeitem">
+<test tags="B50-2994060.zul,treeitem">
 	<case id="setdisable">
 		<server id="zul"><![CDATA[
 			<zk>

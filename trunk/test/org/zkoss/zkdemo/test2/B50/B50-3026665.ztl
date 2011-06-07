@@ -1,4 +1,4 @@
-<test tags="Bandbox,Focus">
+<test tags="B50-3026665.zul,Bandbox,Focus">
 	<case id="FocusStyle">
 		<server><![CDATA[
 <?page title="Bandbox gets focus from children focus" contentType="text/html;charset=UTF-8"?>

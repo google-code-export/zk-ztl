@@ -1,4 +1,4 @@
-<test tags="Panel">
+<test tags="B50-2946917.zul,B,E,Textbox,Custom,Constraint">
 	<case id="closed">
 		<server>
 			<!--

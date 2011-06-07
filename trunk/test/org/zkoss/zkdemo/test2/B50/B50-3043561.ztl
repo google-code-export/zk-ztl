@@ -1,4 +1,4 @@
-<test tags="Decimalbox,Format">
+<test tags="B50-3043561.zul,Decimalbox,Format">
 	<case id="Format">
 		<server><!--
 <decimalbox format="######.##" value="20.0100002288818359375"/>

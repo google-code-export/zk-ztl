@@ -12,7 +12,7 @@ Copyright (C) 2011 Potix Corporation. All Rights Reserved.
 This program is distributed under Apache License Version 2.0 in the hope that
 it will be useful, but WITHOUT ANY WARRANTY.
 -->
-<test tags="B50-3219005.zul">
+<test tags="B50-3219005.zul,A,E,Grid,Model,CE,PE">
 	<case id="ztl">
 		<server><!--
 			

@@ -1,4 +1,4 @@
-<test tags="Panel">
+<test tags="B50-2970695.zul,A,E,Errorbox">
 	<case id="closed">
 		<server>
 			<!--

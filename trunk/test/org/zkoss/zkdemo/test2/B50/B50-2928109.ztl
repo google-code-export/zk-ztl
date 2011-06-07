@@ -1,4 +1,4 @@
-<test tags="B50-2928109.zul,A,E,Window,Hflex">
+<test tags="B50-2928109.zul,Window,Hflex">
 	<case id="closed">
 		<server>
 			<!--

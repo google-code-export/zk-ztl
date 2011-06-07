@@ -1,4 +1,4 @@
-<test tags="menu">
+<test tags="B50-2995770.zul,menu">
 	<case id="ChangeIcon">
 		<server id="zul"><![CDATA[
 <zk>

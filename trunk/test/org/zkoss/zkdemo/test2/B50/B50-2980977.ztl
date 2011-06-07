@@ -1,4 +1,4 @@
-<test tags="grid,row">
+<test tags="B50-2984977.zul,grid,row">
 	<case id="Setspan">
 		<server><!--
 			<zk>

@@ -1,4 +1,4 @@
-<test tags="grid,columns" >
+<test tags="B50-3013683.zul,grid,columns" >
 	<case id="columnsWidth">
 		<server id="zul"><![CDATA[
 			<zk>

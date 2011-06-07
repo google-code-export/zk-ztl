@@ -1,4 +1,4 @@
-<test tags="Combobox">
+<test tags="B50-3014660.zul,Combobox">
 	<case id="onChanging">
 		<server><!-- 
 <zk>

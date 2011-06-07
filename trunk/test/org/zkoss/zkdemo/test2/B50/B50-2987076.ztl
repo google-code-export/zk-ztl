@@ -1,4 +1,4 @@
-<test tags="tree,treeitem,treerow,treecell,Unstable">
+<test tags="B50-2987076.zul,tree,treeitem,treerow,treecell,Unstable">
 	<case id="tooltiptext">
 		<server id="zul"><![CDATA[
 			<zk>

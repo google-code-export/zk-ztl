@@ -1,4 +1,4 @@
-<test tags="combobox,textbox">
+<test tags="B50-2984235.zul,combobox,textbox">
 	<case id="popup">
 		<server id="zul"><![CDATA[
 			<zk>

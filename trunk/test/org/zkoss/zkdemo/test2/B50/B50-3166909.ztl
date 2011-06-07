@@ -12,7 +12,7 @@ Copyright (C) 2011 Potix Corporation. All Rights Reserved.
 This program is distributed under Apache License Version 2.0 in the hope that
 it will be useful, but WITHOUT ANY WARRANTY.
 -->
-<test tags="B50-3166909.zul">
+<test tags="B50-3166909.zul,A,E,Listbox,Select">
 	<case id="ztl">
 		<server><!--
 			
@@ -88,12 +88,16 @@ it will be useful, but WITHOUT ANY WARRANTY.
 		--></server>
 		<client><![CDATA[
 				select(parentsListBox,"Name-1");
+				waitResponse();
 				verifyEquals("B",jq(driversListbox).val());
 				
 				select(parentsListBox,"Name-2");
+				waitResponse();
 				verifyEquals("C",jq(driversListbox).val());
 				
+				
 				select(parentsListBox,"Name-3");
+				waitResponse();
 				verifyEquals("A",jq(driversListbox).val());
 				verifyFalse(jq(".z-error").exists());
 		]]></client>
