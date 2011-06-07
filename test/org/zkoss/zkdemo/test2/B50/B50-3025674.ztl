@@ -1,4 +1,4 @@
-<test tags="clients">
+<test tags="B50-3025674.zul,clients">
 	<case id="reloadMessages">
 		<server id="zul"><![CDATA[
 			<zk>

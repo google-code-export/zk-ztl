@@ -12,7 +12,7 @@ Copyright (C) 2011 Potix Corporation. All Rights Reserved.
 This program is distributed under Apache License Version 2.0 in the hope that
 it will be useful, but WITHOUT ANY WARRANTY.
 -->
-<test tags="B50-3190542.zul">
+<test tags="B50-3190542.zul,A,E,Portallayout,Panel">
 	<case id="ztl">
 		<server><!--
 			
@@ -48,8 +48,7 @@ it will be useful, but WITHOUT ANY WARRANTY.
 				verifyTrue(screenwidth < x1+10);
 				click(jq(".z-panel-icon"));
 				waitResponse();
-				verifyFalse(jq(".z-window").exists());
-				verifyFalse(jq(".z-window-highlighted").exists());
+				verifyFalse(jq("@window[title=\"ZK Test\"]").exists());
 		]]></client>
 	</case>
 </test>

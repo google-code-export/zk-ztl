@@ -12,7 +12,7 @@ Copyright (C) 2011 Potix Corporation. All Rights Reserved.
 This program is distributed under Apache License Version 2.0 in the hope that
 it will be useful, but WITHOUT ANY WARRANTY.
 -->
-<test tags="B50-3175465.zul">
+<test tags="B50-3175465.zul,A,E,Tree,Paging">
 	<case id="ztl">
 		<server><!--
 			
@@ -44,6 +44,7 @@ Please open the treeitem "item" and you should see the treeitem "child item" is 
 				click(jq(".z-tree-root-close"));
 				waitResponse();
 				verifyEquals(2,jq("@treerow").length());
+				verifyContains(jq(".z-treerow:eq(1)").text(), "child item");
 		]]></client>
 	</case>
 </test>

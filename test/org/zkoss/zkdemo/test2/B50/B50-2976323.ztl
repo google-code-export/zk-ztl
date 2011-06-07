@@ -1,4 +1,4 @@
-<test tags="menu">
+<test tags="B50-2976323.zul,menu">
 	<case id="Dragdrop">
 		<server><!--
 		<zk>

@@ -12,7 +12,7 @@ Copyright (C) 2011 Potix Corporation. All Rights Reserved.
 This program is distributed under Apache License Version 2.0 in the hope that
 it will be useful, but WITHOUT ANY WARRANTY.
 -->
-<test tags="B50-3259998.zul">
+<test tags="B50-3259998.zul,A,E,Tabbox,Tab,Tabpanels,Tabpanel">
 	<case id="ztl">
 		<server><!--
 			

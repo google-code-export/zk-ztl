@@ -1,4 +1,4 @@
-<test tags="hbox,tabbox">
+<test tags="B50-3000881.zul,hbox,tabbox">
 	<case id="Width">
 		<server><![CDATA[
 <hbox>

@@ -1,4 +1,4 @@
-<test tags="tree, treeitem">
+<test tags="B50-2991309.zul,tree, treeitem">
 	<case id="selecttreeitem">
 		<server><![CDATA[
 			<zk>

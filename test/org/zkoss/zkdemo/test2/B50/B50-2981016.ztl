@@ -1,4 +1,4 @@
-<test tags="combobox">
+<test tags="B50-2981016.zul,combobox">
 	<case id="width">
 		<server id="zul"><![CDATA[
 			<zk>

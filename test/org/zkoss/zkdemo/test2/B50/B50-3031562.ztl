@@ -1,4 +1,4 @@
-<test tags="clients">
+<test tags="B50-3031562.zul,clients">
 	<case id="hbox">
 		<server id="zul"><![CDATA[
 		<zk>

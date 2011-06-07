@@ -1,4 +1,4 @@
-<test tags="datebox,calendar">
+<test tags="B50-2980894.zul,datebox,calendar">
 	<case id="selectDate">
 		<server id="zul"><![CDATA[
 			<datebox id="db" readonly="true" />

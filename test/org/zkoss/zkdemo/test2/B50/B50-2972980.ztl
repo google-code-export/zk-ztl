@@ -1,4 +1,4 @@
-<test tags="Panel">
+<test tags="B50-2972980.zul,A,E,Widget,Listener">
 	<case id="closed">
 		<server>
 			<!--

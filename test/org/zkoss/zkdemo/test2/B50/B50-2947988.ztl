@@ -1,4 +1,4 @@
-<test tags="Panel">
+<test tags="B50-2947988.zul,A,E,Tree,Model">
 	<case id="closed">
 		<server>
 			<!--

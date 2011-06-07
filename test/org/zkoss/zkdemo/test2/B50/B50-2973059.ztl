@@ -1,4 +1,4 @@
-<test tags="combobox">
+<test tags="B50-2973059.zul,combobox">
 	<case id="Visible">
 		<server id="zul"><!--
 			<zk>

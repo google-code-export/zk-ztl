@@ -1,4 +1,4 @@
-<test tags="Slider">
+<test tags="B50-3006313.zul,Slider">
 	<case id="SliderGetCurpos">
 		<server><![CDATA[
 			<zk xmlns:w="http://www.zkoss.org/2005/zk/client">

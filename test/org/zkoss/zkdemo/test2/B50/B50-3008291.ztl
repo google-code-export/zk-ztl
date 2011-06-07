@@ -1,4 +1,4 @@
-<test tags="Listbox,Focus">
+<test tags="B50-3008291.zul,Listbox,Focus">
 	<case id="Focus">
 		<server><![CDATA[
 	<zk>

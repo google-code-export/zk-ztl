@@ -1,4 +1,4 @@
-<test tags="listbox,select,Unstable">
+<test tags="B50-3000987.zul,listbox,select,Unstable">
 	<case id="ChangeLabel">
 		<server><![CDATA[
 <zk>

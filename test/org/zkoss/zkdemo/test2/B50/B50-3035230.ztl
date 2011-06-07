@@ -1,4 +1,4 @@
-<test tags="Grid,SizedByContent">
+<test tags="B50-3035230.zul,Grid,SizedByContent">
 	<case id="ColumnSize">
 		<server><!--
 <zk>

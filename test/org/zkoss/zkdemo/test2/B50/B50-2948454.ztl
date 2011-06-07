@@ -1,4 +1,4 @@
-<test tags="Panel">
+<test tags="B50-2948454.zul,A,E,IdSpace,Zscript">
 	<case id="closed">
 		<server>
 			<!--

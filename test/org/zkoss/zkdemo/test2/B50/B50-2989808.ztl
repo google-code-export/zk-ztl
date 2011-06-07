@@ -1,4 +1,4 @@
-<test tags="decimalbox">
+<test tags="B50-2989808.zul,decimalbox">
 	<case id="Format">
 		<server><!--
 		<zk>

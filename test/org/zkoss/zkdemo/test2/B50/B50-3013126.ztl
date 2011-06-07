@@ -1,4 +1,4 @@
-<test tags="Tree,Disable">
+<test tags="B50-3013126.zul,Tree,Disable">
 	<case id="Disable">
 		<server><!-- 
 		<zk>

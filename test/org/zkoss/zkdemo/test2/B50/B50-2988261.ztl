@@ -1,4 +1,4 @@
-<test tags="portallayout,panel,popup">
+<test tags="B50-2988261.zul,portallayout,panel,popup">
 	<case id="Popup">
 		<server><!--
 		<zk>

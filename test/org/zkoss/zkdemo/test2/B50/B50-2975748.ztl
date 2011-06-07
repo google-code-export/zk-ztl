@@ -1,4 +1,4 @@
-<test tags="button,popup">
+<test tags="B50-2975748.zul,button,popup">
 	<case id="popup">
 		<server id="zul"><![CDATA[
 			<zk>

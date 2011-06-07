@@ -1,4 +1,4 @@
-<test tags="Combobox,Bandbox,Datebox,Timebox,Spinner">
+<test tags="B50-3032885.zul,Combobox,Bandbox,Datebox,Timebox,Spinner">
 	<case id="Inplace">
 		<server><!--
 <zk>

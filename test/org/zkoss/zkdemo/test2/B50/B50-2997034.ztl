@@ -1,4 +1,4 @@
-<test tags="listbox">
+<test tags="B50-2997034.zul,listbox">
 	<case id="Scroll">
 		<server><![CDATA[
 <zk>

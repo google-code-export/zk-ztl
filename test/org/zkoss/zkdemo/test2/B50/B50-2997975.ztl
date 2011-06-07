@@ -1,4 +1,4 @@
-<test tags="bandbox,combobox,datebox,timebox,spinner">
+<test tags="B50-2997975.zul,bandbox,combobox,datebox,timebox,spinner">
 	<case id="ButtonVisible">
 		<server><![CDATA[
 <zk>

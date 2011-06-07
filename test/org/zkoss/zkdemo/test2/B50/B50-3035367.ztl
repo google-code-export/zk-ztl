@@ -1,4 +1,4 @@
-<test tags="Grid,Listbox,Tabbox,ROD">
+<test tags="B50-3035367.zul,Grid,Listbox,Tabbox,ROD">
 	<case id="ROD">
 		<server><![CDATA[ 
 <window title="Test Case: Updating list model of not yet rendered listbox" border="normal" width="500px" height="400px">

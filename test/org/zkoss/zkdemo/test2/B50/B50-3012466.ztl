@@ -1,4 +1,4 @@
-<test tags="Listbox,Select">
+<test tags="B50-3012466.zul,Listbox,Select">
 	<case id="Select">
 		<server><!-- 
 		<zk>

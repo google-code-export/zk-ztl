@@ -1,4 +1,4 @@
-<test tags="Panel">
+<test tags="B50-2959024.zul,A,E,EchoEvent,Server">
 	<case id="closed">
 		<server>
 			<!--

@@ -1,4 +1,4 @@
-<test tags="Panel">
+<test tags="B50-2998196.zul,A,E,Decimalbox,Format">
 	<case id="closed">
 		<server>
 			<!--

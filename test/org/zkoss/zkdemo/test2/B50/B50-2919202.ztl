@@ -1,4 +1,4 @@
-<test tags="B50-2919202.zul,A,E,Errorbox,wrongValue">
+<test tags="B50-2919202.zul,Errorbox,wrongValue">
 	<case id="closed">
 		<server>
 			<!--
