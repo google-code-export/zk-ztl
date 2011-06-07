@@ -51,10 +51,14 @@
 			-->
 		</server>
 		<client wait="100">	<![CDATA[
-				keyDown(jq("$tb"),"38");
+			
+				focus(jq("$tb"));
+				keyPressNative("38");
 				waitResponse();
-				verifyEquals("38",jq("$l").text());				
-				keyDown(jq("$tb"),"40");
+				verifyEquals("38",jq("$l").text());
+				
+				focus(jq("$tb"));
+				keyPressNative("40");
 				waitResponse();
 				verifyEquals("40",jq("$l").text());
 			]]></client>
