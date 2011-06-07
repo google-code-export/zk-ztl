@@ -1,0 +1,38 @@
+<!-- B50-3184673.ztl.java
+
+	Purpose:for testing B50-3184673.ztl .
+
+	Description:
+
+	History:
+		05, 31, 2011 20:12:21
+
+Copyright (C) 2011 Potix Corporation. All Rights Reserved.
+
+This program is distributed under Apache License Version 2.0 in the hope that
+it will be useful, but WITHOUT ANY WARRANTY.
+-->
+<test tags="B50-3184673.zul">
+	<case id="ztl">
+		<server><!--
+			
+
+
+<zk>
+	In IE6, there is a small gap(less than 10px) between the blue and red block, if not, that is a bug.
+	<hlayout>
+		<div width="220px" height="270px" style="border:1px solid blue"/>
+		<separator bar="true"/>
+		<div width="220px" height="270px" style="border:1px solid red"/>
+	</hlayout>
+</zk>
+
+		--></server>
+		<client><![CDATA[
+						int x = getElementWidth(jq("@div:eq(0)")).intValue();
+						int x1 = getElementPositionLeft(jq("@div:eq(0)")).intValue();
+						int y1 = getElementPositionLeft(jq("@div:eq(1)")).intValue();
+						verifyTrue((x1+x) >= (y1-10));
+		]]></client>
+	</case>
+</test>
