@@ -13,7 +13,7 @@
 							    }
 							</attribute>
 							<comboitem label="Simple and Rich" />
-							<comboitem id="cool" label="Cool!" />
+							<comboitem label="Cool!" />
 							<comboitem label="Thumbs Up!" />
 						</combobox>
 						<label id="msg" />
@@ -23,13 +23,13 @@
 		</server>
 		<client><![CDATA[
 			JQuery combobox = jq(".z-combobox-inp");
-			typeKeys(combobox, "C");
-			waitResponse();
-			//2010/10/22 TonyQ:the comboitem should appear in window.
-			verifyTrue(jq(".z-combobox-pp").exists());
-			click(cool);
-			waitResponse();
-			verifyEquals("Cool!",jq("$msg").text());
+				typeKeys(combobox, "C");
+				waitResponse();
+				//2010/10/22 TonyQ:the comboitem should appear in window.
+				verifyTrue(jq(".z-combobox-pp").exists());
+				click(jq(".z-comboitem:eq(1)"));
+				waitResponse();
+				verifyEquals("Cool!",jq("$msg").text());
 		]]></client>
 	</case>
 </test>
