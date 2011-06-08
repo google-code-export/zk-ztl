@@ -48,7 +48,7 @@ it will be useful, but WITHOUT ANY WARRANTY.
 				verifyTrue(screenwidth < x1+10);
 				click(jq(".z-panel-icon"));
 				waitResponse();
-				verifyFalse(jq("@window[title=\"ZK Test\"]").exists());
+				verifyFalse(jq("@window").exists());
 		]]></client>
 	</case>
 </test>
