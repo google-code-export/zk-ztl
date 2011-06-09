@@ -1,4 +1,4 @@
-<test tags="Fileupload">
+<test tags="B30-1498895.zul,Fileupload,ie9">
 	<case id="FocusOn">
 		<server>
 			<!-- 

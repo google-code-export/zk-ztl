@@ -1,4 +1,4 @@
-<test tags="B30-2562880.zul,A,E,Popup,Listbox">
+<test tags="B30-2562880.zul,A,E,Popup,Listbox,ie9">
 	<case id="ztl">
 		<server><!--		
 			<zk>

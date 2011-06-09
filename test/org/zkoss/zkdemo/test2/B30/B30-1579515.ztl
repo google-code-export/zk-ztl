@@ -1,4 +1,4 @@
-<test tags="menupopup">
+<test tags="B30-1579515.zul,menupopup,ie9">
 	<case id="RightClick">
 		<server><!--
 			<window id="win" context="menu" border="normal" contentStyle="background-color:blue">

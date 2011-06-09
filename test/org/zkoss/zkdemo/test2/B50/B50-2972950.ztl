@@ -1,4 +1,4 @@
-<test tags="B50-2972950.zul,A,E,Constraint">
+<test tags="B50-2972950.zul,A,E,Constraint,ie9">
 	<case id="closed">
 		<server>
 			<!--

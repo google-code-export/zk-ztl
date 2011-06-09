@@ -1,4 +1,4 @@
-<test tags="B50-2980383.zul,tabbox">
+<test tags="B50-2980383.zul,tabbox,Unstable">
 	<case id="Tabscroll">
 		<server><!--
 			<zk xmlns:n="http://www.zkoss.org/2005/zk/native">

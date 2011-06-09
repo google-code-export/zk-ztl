@@ -1,4 +1,4 @@
-<test tags="B50-2973059.zul,combobox">
+<test tags="B50-2973059.zul,combobox,ie9">
 	<case id="Visible">
 		<server id="zul"><!--
 			<zk>

@@ -1,4 +1,4 @@
-<test tags="listbox,paging">
+<test tags="B30-1575048.zul,listbox,paging,ie9">
 	<case id="Delete">
 		<server lang="java"><![CDATA[
 		import org.zkoss.zul.Listitem;

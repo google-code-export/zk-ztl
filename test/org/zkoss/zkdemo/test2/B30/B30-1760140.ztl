@@ -1,4 +1,4 @@
-<test tags="Window,Combobox">
+<test tags="B30-1760140.zul,Window,Combobox,ie9">
 	<case id="Dragdrop">
 		<server><!--
 		<zk xmlns:n="http://www.zkoss.org/2005/zk/native">

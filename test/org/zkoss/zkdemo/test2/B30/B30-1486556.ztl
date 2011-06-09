@@ -1,4 +1,4 @@
-<test tags="textbox,button,constraint,focus">
+<test tags="B30-1486556.zul,textbox,button,constraint,focus,ie9">
 	<case id="Constraint1">
 		<server id="zulCode"><!--
 			<zk>

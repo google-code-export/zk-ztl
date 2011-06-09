@@ -1,4 +1,4 @@
-<test tags="Datebox,Calendar">
+<test tags="B30-1877111.zul,Datebox,Calendar,ie9">
 	<case id="Lenient">
 		<server><!--
 			<zk>

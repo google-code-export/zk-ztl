@@ -1,4 +1,4 @@
-<test tags="listhead">
+<test tags="B36-2799258.zul,listhead,ie9">
 	<case id="scrollbar">
 		<server><!--
 			<zk>

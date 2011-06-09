@@ -1,4 +1,4 @@
-<test tags="Textbox,Borderlayout,Errorbox,Constraint">
+<test tags="B30-1819264.zul,Textbox,Borderlayout,Errorbox,Constraint,ie9">
 	<case id="Constraint">
 		<server><!--
 <borderlayout height="300px">

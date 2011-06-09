@@ -1,4 +1,4 @@
-<test tags="slider">
+<test tags="B36-2811990.zul,slider,ie9">
 	<case id="title">
 		<server><!--
 			<window title="My First Window" border="normal" width="600px">

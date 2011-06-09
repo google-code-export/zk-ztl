@@ -1,4 +1,4 @@
-<test tags="Combobox">
+<test tags="B30-1879511.zul,Combobox,ie9">
 	<case id="ErrMsg">
 		<server><!--
 			<zk xmlns:n="http://www.zkoss.org/2005/zk/native">

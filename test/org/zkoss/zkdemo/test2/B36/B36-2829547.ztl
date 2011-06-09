@@ -1,4 +1,4 @@
-<test tags="Timebox">
+<test tags="B36-2829547.zul,Timebox,ie9">
 	<case id="value">
 		<server><!--
 			<zk>

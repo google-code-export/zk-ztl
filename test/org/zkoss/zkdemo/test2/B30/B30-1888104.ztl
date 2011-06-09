@@ -1,4 +1,4 @@
-<test tags="Popup,Intbox,Constraint">
+<test tags="B30-1888104.zul,Popup,Intbox,Constraint,ie9">
 	<case id="ZIndex">
 		<server><!--
 			<zk xmlns:n="http://www.zkoss.org/2005/zk/native">

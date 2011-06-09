@@ -1,4 +1,4 @@
-<test tags="Listbox,Databind,Grid">
+<test tags="B30-1769047.zul,Listbox,Databind,Grid,ie9">
 	<case id="Databinding">
 		<server><!--
 		<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>

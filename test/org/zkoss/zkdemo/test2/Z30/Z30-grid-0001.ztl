@@ -1,4 +1,4 @@
-<test tags="grid,onClick,onRightClick,context">
+<test tags="grid,onClick,onRightClick,context,ie9">
 	<case id="Add">
 		<server id="zul"><![CDATA[
 			<zk>

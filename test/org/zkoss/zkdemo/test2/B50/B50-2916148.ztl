@@ -1,4 +1,4 @@
-<test tags="B50-2916148.zul,Errorbox">
+<test tags="B50-2916148.zul,Errorbox,ie9,blur">
 	<case id="closed">
 		<server>
 			<!--
