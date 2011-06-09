@@ -1,4 +1,4 @@
-<test tags="B50-2956449.zul,A,E,Bandbox,Combobox,Textbox,onCtrlKey">
+<test tags="B50-2956449.zul,A,E,Bandbox,Combobox,Textbox,onCtrlKey,Unstable">
 	<case id="closed">
 		<server>
 			<!--

@@ -1,4 +1,4 @@
-<test tags="B,E,Tree,Textbox">
+<test tags="B30-1881557.zul,B,E,Tree,Textbox,ie9">
 	<case id="testboxOnchange">
 		<server><!--
 <zk xmlns:n="http://www.zkoss.org/2005/zk/native">

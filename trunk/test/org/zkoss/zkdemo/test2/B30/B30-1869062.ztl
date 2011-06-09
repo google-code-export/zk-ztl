@@ -1,4 +1,4 @@
-<test tags="Combobox">
+<test tags="B30-1869062.zul,Combobox,ie9">
 	<case id="closed">
 		<server>
 			<!-- 

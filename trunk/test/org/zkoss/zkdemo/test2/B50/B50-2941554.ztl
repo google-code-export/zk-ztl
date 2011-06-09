@@ -1,4 +1,4 @@
-<test tags="B50-2941554.zul,A,E,Errorbox,Textbox,Tabbox,Popup">
+<test tags="B50-2941554.zul,A,E,Errorbox,Textbox,Tabbox,Popup,ie9">
 	<case id="closed">
 		<server>
 			<!--

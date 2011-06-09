@@ -1,4 +1,4 @@
-<test tags="window">
+<test tags="B30-1615919.zul,window,ie9">
 	<case id="Dragdrop">
 		<server><!--
 			<zk>

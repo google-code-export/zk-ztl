@@ -1,4 +1,4 @@
-<test tags="Xhtml,Component,Directive"
+<test tags="B30-1813518.zul,Xhtml,Component,Directive,ie9"
 	action="/test2/B30-1813518.zhtml">
 	<case id="Style">
 		<client><![CDATA[

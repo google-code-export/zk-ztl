@@ -1,4 +1,4 @@
-<test tags="Menu">
+<test tags="B30-1852304.zul,Menu,ie9">
 	<case id="Popup">
 		<server>
 			<!-- 

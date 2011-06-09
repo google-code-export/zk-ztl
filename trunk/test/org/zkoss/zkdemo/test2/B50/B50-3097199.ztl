@@ -1,4 +1,4 @@
-<test tags="B50-3097199.zul,Combobox,Constraint">
+<test tags="B50-3097199.zul,Combobox,Constraint,ie9">
 	<case id="Constraint">
 		<server><![CDATA[
 			<zk>

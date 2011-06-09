@@ -1,4 +1,4 @@
-<test tags="Listbox">
+<test tags="B30-1823278.zul,Listbox,ie9,Unstable">
 	<case id="KeyDownUp">
 		<server><!--
 <zk>

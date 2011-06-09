@@ -1,4 +1,4 @@
-<test tags="grid,column,auxhead,colspan,sizable">
+<test tags="grid,column,auxhead,colspan,sizable,ie9">
 	<case id="ColumnSpan">
 		<server><![CDATA[
 			<zk xmlns:n="http://www.zkoss.org/2005/zk/native">

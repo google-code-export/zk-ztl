@@ -1,4 +1,4 @@
-<test tags="window">
+<test tags="B36-2813877.zul,window,ie9">
 	<case id="resizer">
 		<server><!--
 			<zk>

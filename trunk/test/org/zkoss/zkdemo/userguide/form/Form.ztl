@@ -1,4 +1,4 @@
-<test tags="Textbox,Intbox,Form,Spinner" >
+<test tags="Textbox,Intbox,Form,Spinner,ie9" >
 	<case id="Form">
 		<server><!--
 			<window id="demo" apply="org.zkoss.zktest.test.DemoWindowComposer">

@@ -1,4 +1,4 @@
-<test tags="Grid,Columns">
+<test tags="B30-1822585.zul,Grid,Columns,ie9">
 	<case id="onColSize">
 		<server><!--
 <vbox>

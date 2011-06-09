@@ -1,4 +1,4 @@
-<test tags="Textbox,Intbox,Constraint">
+<test tags="B30-1876991.zul,Textbox,Intbox,Constraint,ie9">
 	<case id="Constraint">
 		<server><!--
 			<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
