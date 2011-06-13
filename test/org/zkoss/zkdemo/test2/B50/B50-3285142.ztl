@@ -1,0 +1,51 @@
+<!-- B50-3285142.ztl.java
+
+	Purpose:for testing B50-3285142.ztl .
+
+	Description:
+
+	History:
+		06, 3, 2011 15:30:14
+
+Copyright (C) 2011 Potix Corporation. All Rights Reserved.
+
+This program is distributed under Apache License Version 2.0 in the hope that
+it will be useful, but WITHOUT ANY WARRANTY.
+-->
+<test tags="B50-3285142.zul,DragDrop,ie9">
+	<case id="ztl">
+		<server><!--
+			<zk>
+	<html><![CDATA[
+		<ol>
+			<li>Click on the button.</li>
+			<li>In 5 seconds, drag the Div and do not drop until "Done" is shown.</li>
+			<li>Drop (release mousedown) when "Done" is shown.</li>
+			<li>If the dragged Div does not disappear, it is a bug.</li>
+		</ol>
+	]]></html>
+	<button label="Go">
+		<attribute name="onClick"><![CDATA[
+			Thread.sleep(5000);
+			div.detach();
+			lb.value = "Done!";
+		]]></attribute>
+	</button>
+	<label id="lb" />
+	<div id="div" draggable="true" style="border: 1px solid green">
+		Drag Me
+	</div>
+</zk>
+
+		--></server>
+		<client><![CDATA[
+				click(jq("@button[label=\"Go\"]"));
+				mouseMoveAt(jq(div), "3,3");
+				mouseDownAt(jq(div), "3,3");
+				mouseMoveAt(jq(div), "30,30");
+				sleep(5000);
+				verifyEquals("Done!",jq(lb).text());
+				verifyFalse(jq(div).exists());
+		]]></client>
+	</case>
+</test>
