@@ -68,7 +68,7 @@ public abstract class ClientWidget {
 	 * Returns the evaluation string that is JavaScript format. 
 	 */
 	public String toLocator() {
-		return "zk="+ _out.toString();
+		return _out.toString();
 	}
 	/**
 	 * Returns the evaluation string that is JavaScript format. 
