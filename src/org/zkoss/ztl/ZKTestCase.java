@@ -174,6 +174,7 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	protected String target;
 	protected List<Selenium> browsers;
 	protected String caseID;
+	protected int recordCount;
 
 	/**
 	 * Launches the browser with a new Selenium session
@@ -194,6 +195,7 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 		
 		_selenium.set(selenium);
 		this.selenium = selenium;
+		recordCount = 0; // reset
 	}
 	
 	/**
@@ -1058,6 +1060,19 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
     	String msg = "["+word1+"] didn't contains string ["+contains+"]";
     	super.verifyNotContains(msg, word1, contains);
 	}
+
+    /**
+     * Causes the currently executing thread to sleep for the specified number
+     * of milliseconds, subject to the precision and accuracy of system timers
+     * and schedulers. The thread does not lose ownership of any monitors.
+     * @param millis the length of time to sleep in milliseconds.
+     */
+	protected void sleep(long millis) {
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {
+		}
+	}
 	
 	/**
 	 * 
@@ -1092,12 +1107,16 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
             byte[] imgByteArr = Base64.decode(zkSelenium.getCmdProcessor().getString("captureEntirePageScreenshotToString", new String[] {title, browserName}));
             BufferedImage testBuffImg = ImageIO.read(new ByteArrayInputStream(imgByteArr));
             
+            final String postfix = "_" + recordCount++ + ".png";
             if (configHelper.isComparable()) {
-                BufferedImage baseBuffImg = ImageIO.read(new File(baseDir, caseID + "_" + browserName + ".png"));
+                BufferedImage baseBuffImg = ImageIO.read(new File(baseDir + File.separator + caseID, caseID + "_" + browserName + postfix));
                 if (baseBuffImg.getWidth() != testBuffImg.getWidth() || baseBuffImg.getHeight() != testBuffImg.getHeight()) {
-                	String f = resultDirStr + "/" + caseID + "_" + browserName + "_result.png";
-                	ImageIO.write(testBuffImg, "png", new File(f));
-                	super.verifyTrue("The size of images are not the same. Please check result. - " + f, false);
+                	File subDir = new File(resultDirStr + File.separator + caseID);
+                	if (!subDir.isDirectory())
+                		subDir.mkdir();
+                	subDir = new File(subDir, caseID + "_" + browserName + "_result" + postfix);
+                	ImageIO.write(testBuffImg, "png", subDir);
+                	super.verifyTrue("The size of images are not the same. Please check result. - " + subDir, false);
                 	return;
                 }
                 Comparator ic = comparator == null ? new DefaultComparator(baseBuffImg.getWidth()/configHelper.getGranularity(),
@@ -1105,17 +1124,23 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
                     						comparator;
                 BufferedImage imgc = ic.compare(baseBuffImg, testBuffImg);
                 if (imgc != null) {
-                	String f = resultDirStr + "/" + caseID + "_" + browserName + "_result.png";
-                	ImageIO.write(imgc, "png", new File(f));
-                    super.verifyTrue("Images are mismatch. Please check result. - " + f, false);
+                	File subDir = new File(resultDirStr + File.separator + caseID);
+                	if (!subDir.isDirectory())
+                		subDir.mkdir();
+                	subDir = new File(subDir, caseID + "_" + browserName + "_result" + postfix);
+                	ImageIO.write(imgc, "png", subDir);
+                    super.verifyTrue("Images are mismatch. Please check result. - " + subDir, false);
                 } else {
-                	File f = new File(resultDirStr + "/" + caseID + "_" + browserName + "_result.png");
+                	File f = new File(resultDirStr + File.separator + caseID + File.separator + caseID + "_" + browserName + "_result" + postfix);
                 	if (f.isFile()) {
                 		f.delete();
                 	}
                 }
             } else {
-                ImageIO.write(testBuffImg, "png", new File(baseDir, caseID + "_" + browserName + ".png"));
+            	File subDir = new File(baseDir, caseID);
+            	if (!subDir.isDirectory())
+            		subDir.mkdir();
+                ImageIO.write(testBuffImg, "png", new File(subDir, caseID + "_" + browserName + postfix));
             }
         } catch (Exception e) {
         	ByteArrayOutputStream baos = new ByteArrayOutputStream();
