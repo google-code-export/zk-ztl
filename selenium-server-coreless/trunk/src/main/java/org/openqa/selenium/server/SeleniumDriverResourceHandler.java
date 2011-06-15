@@ -444,9 +444,8 @@ public class SeleniumDriverResourceHandler extends ResourceHandler {
                         User32Extra u32extra = User32Extra.INSTANCE;
                         u32extra.GetWindowTextA(hWnd, titleBuff, titleBuff.length);
                         String winTitle = Native.toString(titleBuff);
-                        
                         if (winTitle.indexOf(title) >= 0 && winTitle.toLowerCase().indexOf(
-                        		(browserName.indexOf("IE") >=0 ? "internal explorer" : browserName)) >= 0) {
+                        		(browserName.toLowerCase().indexOf("ie") >=0 ? "internet explorer" : browserName)) >= 0) {
                             u32extra.ShowWindow(hWnd, 9);
                             u32extra.SetForegroundWindow(hWnd);
                             threadLocal.set(hWnd);
