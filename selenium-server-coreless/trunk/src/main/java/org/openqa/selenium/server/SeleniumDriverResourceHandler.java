@@ -439,39 +439,64 @@ public class SeleniumDriverResourceHandler extends ResourceHandler {
                 final String title = values.get(0);
                 final String browserName = values.get(1);
                 threadLocal.set(null); // reset
-                user32Extra.EnumWindows(new WndEnumProc() {
-                    public boolean callback(HWND hWnd, int lParam) {
-                        byte[] titleBuff = new byte[1024];
-                        User32Extra u32extra = User32Extra.INSTANCE;
-                        u32extra.GetWindowTextA(hWnd, titleBuff, titleBuff.length);
-                        String winTitle = Native.toString(titleBuff);
-                        
-                        // skip IE issue, because it may have two same winTitle
-                        if (threadLocal.get() != null) return true;
-                        
-                        if (winTitle.indexOf(title) >= 0 && winTitle.toLowerCase().indexOf(
-                        		(browserName.toLowerCase().indexOf("ie") >=0 ? "internet explorer" : browserName)) >= 0) {
-                        	
-                        	// ignore IE's empty window instance
-                        	if (browserName.toLowerCase().indexOf("ie") >= 0) {
-                                RECT bounds = new RECT();
-                                org.zkoss.ztl.jna.User32Extra.INSTANCE.GetClientRect(hWnd, bounds);
-
-                                int width = bounds.right - bounds.left;
-                                int height = bounds.bottom - bounds.top;
-                                if(width == 0 || height == 0)
-                                	return true;
-                        	}
-                            u32extra.ShowWindow(hWnd, 9);
-                            u32extra.SetForegroundWindow(hWnd);
-                            threadLocal.set(hWnd);
-                        }
-                        
-                        return true;
+                HWND w = user32Extra.GetForegroundWindow();
+                if (w != null) {
+                	byte[] titleBuff = new byte[1024];
+                	User32Extra u32extra = User32Extra.INSTANCE;
+                    u32extra.GetWindowTextA(w, titleBuff, titleBuff.length);
+                    String winTitle = Native.toString(titleBuff);
+                    if (winTitle.indexOf(title) >= 0 && winTitle.toLowerCase().indexOf(
+                    		(browserName.toLowerCase().indexOf("ie") >=0 ? "internet explorer" : browserName)) >= 0) {
+                    	LOGGER.info("** Match " + browserName + " **");
+                    	threadLocal.set(w);
                     }
-                }, 0);
-                HWND w = threadLocal.get();
-                BufferedImage bufferedImage = Snapshot.capture(w != null ? w : user32Extra.GetForegroundWindow());
+                }
+                
+                if (threadLocal.get() == null) {
+	                user32Extra.EnumWindows(new WndEnumProc() {
+	                    public boolean callback(HWND hWnd, int lParam) {
+	                        // skip IE issue, because it may have two same winTitle
+	                        if (threadLocal.get() != null) return true;
+	                        
+	                        byte[] titleBuff = new byte[1024];
+	                        User32Extra u32extra = User32Extra.INSTANCE;
+	                        u32extra.GetWindowTextA(hWnd, titleBuff, titleBuff.length);
+	                        String winTitle = Native.toString(titleBuff);
+	                        
+	                        
+	                        if (winTitle.indexOf(title) >= 0 && winTitle.toLowerCase().indexOf(
+	                        		(browserName.toLowerCase().indexOf("ie") >=0 ? "internet explorer" : browserName)) >= 0) {
+	                        	
+	                        	// ignore IE's empty window instance
+	                        	if (browserName.toLowerCase().indexOf("ie") >= 0) {
+	                                RECT bounds = new RECT();
+	                                org.zkoss.ztl.jna.User32Extra.INSTANCE.GetClientRect(hWnd, bounds);
+	
+	                                int width = bounds.right - bounds.left;
+	                                int height = bounds.bottom - bounds.top;
+	                                if (width == 0 || height == 0) {
+	                                	LOGGER.debug("** size is 0 :[width: " + width + ", height: " + height + "]**");
+	                                	return true;
+	                                }
+	                        	}
+	                            u32extra.ShowWindow(hWnd, 9);
+	                            u32extra.SetForegroundWindow(hWnd);
+	                            threadLocal.set(hWnd);
+	                        }
+	                        
+	                        return true;
+	                    }
+	                }, 0);
+                }
+                
+                w = threadLocal.get();
+                
+                if (w == null) {
+                	LOGGER.info("** the window instance is not matched! - " + browserName + "**");
+                	w = user32Extra.GetForegroundWindow();
+                }
+                
+                BufferedImage bufferedImage = Snapshot.capture(w);
                 ByteArrayOutputStream out = null;
                 try {
                     out = new ByteArrayOutputStream();
