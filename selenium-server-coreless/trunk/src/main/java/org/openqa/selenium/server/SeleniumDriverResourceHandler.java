@@ -444,6 +444,10 @@ public class SeleniumDriverResourceHandler extends ResourceHandler {
                         User32Extra u32extra = User32Extra.INSTANCE;
                         u32extra.GetWindowTextA(hWnd, titleBuff, titleBuff.length);
                         String winTitle = Native.toString(titleBuff);
+                        
+                        // skip IE issue, because it may have two same winTitle
+                        if (threadLocal.get() != null) return true;
+                        
                         if (winTitle.indexOf(title) >= 0 && winTitle.toLowerCase().indexOf(
                         		(browserName.toLowerCase().indexOf("ie") >=0 ? "internet explorer" : browserName)) >= 0) {
                             u32extra.ShowWindow(hWnd, 9);
