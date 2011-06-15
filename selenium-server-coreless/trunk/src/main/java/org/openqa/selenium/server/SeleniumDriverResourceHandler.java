@@ -44,6 +44,7 @@ import org.zkoss.ztl.jna.WndEnumProc;
 
 import com.sun.jna.Native;
 import com.sun.jna.platform.win32.WinDef.HWND;
+import com.sun.jna.platform.win32.WinDef.RECT;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -450,6 +451,17 @@ public class SeleniumDriverResourceHandler extends ResourceHandler {
                         
                         if (winTitle.indexOf(title) >= 0 && winTitle.toLowerCase().indexOf(
                         		(browserName.toLowerCase().indexOf("ie") >=0 ? "internet explorer" : browserName)) >= 0) {
+                        	
+                        	// ignore IE's empty window instance
+                        	if (browserName.toLowerCase().indexOf("ie") >= 0) {
+                                RECT bounds = new RECT();
+                                org.zkoss.ztl.jna.User32Extra.INSTANCE.GetClientRect(hWnd, bounds);
+
+                                int width = bounds.right - bounds.left;
+                                int height = bounds.bottom - bounds.top;
+                                if(width == 0 || height == 0)
+                                	return true;
+                        	}
                             u32extra.ShowWindow(hWnd, 9);
                             u32extra.SetForegroundWindow(hWnd);
                             threadLocal.set(hWnd);
