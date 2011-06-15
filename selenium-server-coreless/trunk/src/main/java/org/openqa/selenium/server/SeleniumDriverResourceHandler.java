@@ -437,6 +437,7 @@ public class SeleniumDriverResourceHandler extends ResourceHandler {
                 final User32Extra user32Extra = User32Extra.INSTANCE;
                 final String title = values.get(0);
                 final String browserName = values.get(1);
+                threadLocal.set(null); // reset
                 user32Extra.EnumWindows(new WndEnumProc() {
                     public boolean callback(HWND hWnd, int lParam) {
                         byte[] titleBuff = new byte[1024];
@@ -444,7 +445,8 @@ public class SeleniumDriverResourceHandler extends ResourceHandler {
                         u32extra.GetWindowTextA(hWnd, titleBuff, titleBuff.length);
                         String winTitle = Native.toString(titleBuff);
                         
-                        if (winTitle.indexOf(title) >= 0 && winTitle.toLowerCase().indexOf(browserName) >= 0) {
+                        if (winTitle.indexOf(title) >= 0 && winTitle.toLowerCase().indexOf(
+                        		(browserName.indexOf("IE") >=0 ? "internal explorer" : browserName)) >= 0) {
                             u32extra.ShowWindow(hWnd, 9);
                             u32extra.SetForegroundWindow(hWnd);
                             threadLocal.set(hWnd);
