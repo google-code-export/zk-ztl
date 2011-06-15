@@ -168,7 +168,7 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	 */
 	private static String PREFIX = "zk_comp_";
 
-	private static SimpleDateFormat format = new SimpleDateFormat("MMddHH");
+	private static SimpleDateFormat format = new SimpleDateFormat("yyMMddHH");
 	
 	// implicit variable
 	protected String target;
