@@ -58,7 +58,7 @@ Usage:
 		<java classname="org.zkoss.ztl.util.ZtlGenerator"
            	fork="true">
          <arg value="-src"/>
-         <arg value="test"/>
+         <arg value="${test.src}"/>
          <arg value="-dist"/>
          <arg value="codegen"/>
          <arg value="-tags"/>
@@ -115,7 +115,7 @@ Usage:
 		<java classname="org.zkoss.ztl.util.ZtlGenerator"
            	fork="true">
          <arg value="-src"/>
-         <arg value="test"/>
+         <arg value="${test.src}"/>
          <arg value="-dist"/>
          <arg value="codegen"/>           		
          <arg value="-run"/>
