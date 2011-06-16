@@ -689,6 +689,7 @@ public class ColorVerifingHelper {
 		commonColorMap.put("Silver,  Grey", "C0C0C0");
 		commonColorMap.put("Light Steel Blue", "545454");
 		commonColorMap.put("Steel Blue", "236B8E");
+		commonColorMap.put("alternating", "F0FAFF");
 	}
 
 	private ColorVerifingHelper() {
