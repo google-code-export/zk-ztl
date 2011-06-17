@@ -12,7 +12,7 @@ Copyright (C) 2011 Potix Corporation. All Rights Reserved.
 This program is distributed under Apache License Version 2.0 in the hope that
 it will be useful, but WITHOUT ANY WARRANTY.
 -->
-<test tags="F35-1926069.zul,Bandbox,Combobox,Unstable">
+<test tags="F35-1926069.zul,Bandbox,Combobox">
 	<case id="ztl">
 		<server><!--
 			
@@ -42,19 +42,15 @@ You shall see "xyz,,true" shown after onOpen.
 
 		--></server>
 		<client><![CDATA[
-				focus(jq("@bandbox input"));
-				keyPressNative("65");
-				keyPressNative("66");
-				keyPressNative("67");
+				type(jq("@bandbox input"),"abc");
+				waitResponse();
 				click(jq(".z-bandbox-btn"));
-				verifyEquals("abc,,true",jq(inf2).text());
+				verifyEquals("abc,abc,true",jq(inf2).text());
 				
-				focus(jq("@combobox input"));
-				keyPressNative("88");
-				keyPressNative("89");
-				keyPressNative("90");
+				type(jq("@combobox input"),"xyz");
+				waitResponse();
 				click(jq(".z-combobox-btn"));
-				verifyEquals("xyz,,true",jq(inf2).text());
+				verifyEquals("xyz,xyz,true",jq(inf2).text());
 		]]></client>
 	</case>
 </test>
