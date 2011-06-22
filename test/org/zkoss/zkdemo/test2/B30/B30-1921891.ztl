@@ -41,6 +41,8 @@ In 3.0.3 or earlier, ClassCastException is thrown - it is incorrect.
 
 		--></server>
 		<client><![CDATA[
+				click(jq("@button"));
+				waitResponse();
 				verifyFalse(jq("@window[title=\"ZK Test\"]").exists());
 		]]></client>
 	</case>
