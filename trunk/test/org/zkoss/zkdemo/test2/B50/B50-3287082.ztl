@@ -44,8 +44,8 @@ it will be useful, but WITHOUT ANY WARRANTY.
 		--></server>
 		<client><![CDATA[
 				click(jq("@bandbox .z-bandbox-btn"));waitResponse();
-				type(jq(".z-paging input.z-paging-inp"),"2");
-				verifyEquals(jq(msg).text(),"no fire");waitResponse();
+				type(jq(".z-paging input.z-paging-inp"),"2");waitResponse();
+				verifyEquals(jq(msg).text(),"no fire");
 		]]></client>
 	</case>
 </test>
