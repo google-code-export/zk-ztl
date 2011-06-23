@@ -1,0 +1,48 @@
+<!-- B30-1968667.ztl.java
+
+	Purpose:for testing B30-1968667.ztl .
+
+	Description:
+
+	History:
+		06, 8, 2011 10:28:06
+
+Copyright (C) 2011 Potix Corporation. All Rights Reserved.
+
+This program is distributed under Apache License Version 2.0 in the hope that
+it will be useful, but WITHOUT ANY WARRANTY.
+-->
+<test tags="B30-1968667.zul,Listbox,Checkmark,IE">
+	<case id="ztl">
+		<server><!--
+			
+
+
+<zk xmlns:n="http://www.zkoss.org/2005/zk/native">
+<n:ul>
+<n:li>when click button and select item2 then hide popup</n:li>	
+<n:li>again click button and the popup show and item2 should be selected (IE only) </n:li>
+</n:ul>
+<popup id="p">
+<listbox width="300px" multiple="false" checkmark="true">
+<listitem label="item1"/>
+<listitem label="item2"/>
+</listbox>
+</popup>
+<button label="popup" onClick="p.open(self)"/>
+</zk>
+
+		--></server>
+		<client><![CDATA[
+			click(jq("@button"));
+				waitResponse();
+				click(jq(".z-listcell-cnt:eq(0)"));
+				clickAt(jq("li"),"1,1"); // to blur
+
+				click(jq("@button"));
+				verifyTrue(jq(".z-listitem-seld").exists());
+				verifyEquals(" item1",jq(".z-listitem-seld").text());
+				verifyTrue(jq(".z-listitem-img-radio:eq(0)").is("checked"));
+		]]></client>
+	</case>
+</test>
