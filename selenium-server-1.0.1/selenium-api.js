@@ -1893,7 +1893,16 @@ Selenium.prototype.getMouseSpeed = function() {
     return this.mouseSpeed;
 }
 
-
+// Fixed Chrome dragdropTo issue
+Selenium.prototype.doDragdropFrom = function(locator, from) {
+	var element = this.browserbot.findElement(locator),
+		fromXY = getClientXY(element, from),
+		fromX = fromXY[0],
+		fromY = fromXY[1];
+		
+	this.browserbot.triggerMouseEvent(element, 'mousemove', true, fromX, fromY);
+	this.browserbot.triggerMouseEvent(element, 'mousedown', true, fromX, fromY);
+}
 Selenium.prototype.doDragAndDrop = function(locator, movementsString) {
     /** Drags an element a certain distance and then drops it
     * @param locator an element locator
