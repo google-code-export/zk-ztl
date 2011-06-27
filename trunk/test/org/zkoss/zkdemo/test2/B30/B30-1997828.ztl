@@ -34,6 +34,7 @@ it will be useful, but WITHOUT ANY WARRANTY.
 				click(jq("img"));
 				waitResponse();
 				verifyTrue(jq(".z-popup").exists());
+				verifyTrue(jq(".z-popup").isVisible());
 		]]></client>
 	</case>
 </test>
