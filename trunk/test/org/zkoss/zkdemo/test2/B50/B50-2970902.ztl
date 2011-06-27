@@ -15,6 +15,7 @@
 			</window>
 		]]></server>
 		<client><![CDATA[
+		sleep(1000);//for DataBinding
 			cb1.set("open", true);
 			verifyTrue(parseInt(cb1.firstChild().$n().get("offsetHeight")) > 5);
 			waitResponse();

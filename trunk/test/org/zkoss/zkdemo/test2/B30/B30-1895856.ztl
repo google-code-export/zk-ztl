@@ -68,7 +68,7 @@ it will be useful, but WITHOUT ANY WARRANTY.
 
 		--></server>
 		<client><![CDATA[
-				
+				sleep(1000);//for DataBinding
 			verifyEquals("Hello",jq("$fn").val());
 			verifyEquals("ZK",jq("$ln").val());
 			verifyEquals("Hello ZK",jq("$fullname").text());

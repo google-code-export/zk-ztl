@@ -47,6 +47,7 @@ is the same as what is shown on the page<br/>
 
 		 --></server>
 		<client><![CDATA[
+		sleep(1000);//for DataBinding
 			if (ZK.is("ie") && !ZK.is("ie8")) {
 				verifyEquals("http://www.zkoss.org/", jq("a:eq(0)").attr("href"));
 				verifyEquals("http://jp.zkoss.org/", jq("a:eq(1)").attr("href"));

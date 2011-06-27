@@ -82,6 +82,7 @@
 			</window>
 		--></server>
 		<client><![CDATA[
+		sleep(1000);//for DataBinding
 			click(jq(".z-label:eq(2)"));
 			waitResponse();
 			verifyEquals("$18", jq(".z-decimalbox").val());

@@ -53,11 +53,12 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-				click(btn);
+		sleep(1000);//for DataBinding
+				click(btn);waitResponse();
 				verifyEquals("C",jq(".z-messagebox > span.z-label:eq(0)").text());
-				click(jq("@button.z-button:eq(1)"));
-				click(r1.$n("real"));
-				click(btn);
+				click(jq("@button.z-button:eq(1)"));waitResponse();
+				click(r1.$n("real"));waitResponse();
+				click(btn);waitResponse();
 				verifyEquals("S",jq(".z-messagebox > span.z-label:eq(0)").text());
 		]]></client>
 	</case>

@@ -23,6 +23,7 @@
 			</window> 
 		--></server>
 		<client><![CDATA[
+		sleep(1000);//for DataBinding
 			focus(txtbox);
 			blur(txtbox);
 			// In safari, error message display may delay a few seconds.

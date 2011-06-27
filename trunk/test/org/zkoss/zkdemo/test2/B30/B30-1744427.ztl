@@ -36,6 +36,7 @@
 		</zk:window>
 		 --></server>
 		<client><![CDATA[
+			sleep(1000);//for DataBinding
 			select(codeFilterType, "STARTS");
 			verifyFalse(jq(".z-window-highlighted").exists());
 			select(codeFilterType, "CONTAINS");
