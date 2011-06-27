@@ -74,6 +74,7 @@
 						
 		--></server>
 		<client><![CDATA[
+		sleep(1000);//for DataBinding
 			click(myBtn);
 			waitResponse();
 			// First validation.

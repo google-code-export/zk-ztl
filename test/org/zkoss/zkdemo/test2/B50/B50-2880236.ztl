@@ -103,6 +103,7 @@ ListModel people = new BindingListModelList(peopleList, true);
 
 		--></server>
 		<client><![CDATA[
+		sleep(1000);//for DataBinding
 			// A, 123
 			type(jq(newName), "A");
             type(jq(newBalance), "123");

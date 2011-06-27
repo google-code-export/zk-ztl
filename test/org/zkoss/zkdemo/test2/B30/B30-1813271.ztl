@@ -54,6 +54,7 @@ Test xhtml component inside grid with annotation databinding (this bug generate 
 </zk>
 		--></server>
 		<client><![CDATA[
+		sleep(1000);//for DataBinding
 			verifyEquals("http://www.zkoss.org", jq("@row @label:eq(0)").html());
 			verifyEquals("http://jp.zkoss.org", jq("@row @label:eq(1)").html());
 			verifyEquals("http://zh.zkoss.org", jq("@row @label:eq(2)").html());

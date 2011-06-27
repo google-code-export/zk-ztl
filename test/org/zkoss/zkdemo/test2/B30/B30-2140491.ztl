@@ -86,6 +86,7 @@
 			</window>
 		--></server>
 		<client><![CDATA[
+		sleep(1000);//for DataBinding
 			click(jq("$listbox .z-listitem:eq(1)"));
 			waitResponse();
 			// First validation

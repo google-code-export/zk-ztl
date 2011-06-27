@@ -66,6 +66,7 @@ Two listbox share the same selected variable. It used to cause NullPointerExcept
 
 		--></server>
 		<client><![CDATA[
+		sleep(1000);//for DataBinding
        		verifyEquals("10", lb1.nChildren());
        		verifyEquals("10", lb2.nChildren());
        		verifyTrue(jq("@listitem:odd").hasClass("z-listbox-odd"));

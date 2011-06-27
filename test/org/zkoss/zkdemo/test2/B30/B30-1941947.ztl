@@ -52,7 +52,7 @@
 			</window>
 		--></server>
 		<client><![CDATA[
-			//dont need to press tab , type() will blur the widget
+		sleep(1000);//for DataBinding
 			type(cateTxtbox, "Cat2");		
 			if (!jq(".z-window-highlighted").exists() && !jq(".z-window-modal").exists()) {
 			    verifyTrue(true);

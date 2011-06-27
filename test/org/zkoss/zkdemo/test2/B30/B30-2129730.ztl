@@ -77,6 +77,7 @@ class Person {
 
 		--></server>
 		<client><![CDATA[
+		sleep(1000);//for DataBinding
 			String firstName = jq(".z-textbox:eq(0)").val();
             verifyTrue("First name: " + firstName, firstName.equals("Bill"));
             String lastName = jq(".z-textbox:eq(1)").val();

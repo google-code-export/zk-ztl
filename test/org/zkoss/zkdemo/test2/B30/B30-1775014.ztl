@@ -63,6 +63,7 @@ timer every second. This problem does not happen in Firefox 2.
 </window>
 		--></server>
 		<client><![CDATA[
+		sleep(1000);//for DataBinding
 		int width = jq(grid).outerWidth();
 		for (int i = 0; i < 10; i++) {
 			waitResponse();

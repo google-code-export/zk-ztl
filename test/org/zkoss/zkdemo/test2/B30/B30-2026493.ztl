@@ -42,7 +42,7 @@ it will be useful, but WITHOUT ANY WARRANTY.
 				int tar = getElementPositionTop(jq("div.z-paging")).intValue();
 				int no = jq("@listitem:visible").length();
 				int body = getElementPositionTop(jq(".z-listbox-body")).intValue();
-				verifyTolerant(body + 1 + no * item , tar,1);
+				verifyTolerant(body + no * item , tar,2);
 		]]></client>
 	</case>
 </test>
