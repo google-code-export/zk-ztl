@@ -1,4 +1,4 @@
-<test tags="B50-2916146.zul,Textbox,InputWidget">
+<test tags="B50-2916146.zul,Textbox,InputWidget,Unstable">
 	<case id="closed">
 		<server>
 			<!--
