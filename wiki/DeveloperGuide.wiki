@@ -14,7 +14,7 @@ Please refer to [http://code.google.com/p/zk-ztl/wiki/UserGuide#Eclipse_Project 
    All of you needs are to enhance the package under *org/zkoss/ztl*
 
 == TODO List ==
- # Provide a way or API to check the layout display correctly for ZTL test cases.
+ # ~~Provide a way or API to check the layout display correctly for ZTL test cases.~~(Vision Test)
  # ~~Provide a tool to record/play the ZTL test case automatically.~~(Processing)
  # Provide a plug-in for ZK studio to be able to edit the ZTL file and run it with JUnit automatically.
 
