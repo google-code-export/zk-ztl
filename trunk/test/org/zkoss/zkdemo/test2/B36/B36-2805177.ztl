@@ -1,4 +1,4 @@
-<test tags="listbox,grid">
+<test tags="listbox,grid,Unstable,bug">
 	<case id="bodyHeight">
 		<server><!--
 			<zk>
