@@ -394,9 +394,8 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	 * @param to the "x,y" value is related to the draggable element, which is dropped to.
 	 */
 	public void dragdropTo(String locatorOfObjectToBeDragged, String from, String to) {
-		Selenium browser = getCurrent();
-		browser.mouseMoveAt(locatorOfObjectToBeDragged, from);
-		browser.mouseDownAt(locatorOfObjectToBeDragged, from);
+		ZKSelenium browser = (ZKSelenium) getCurrent();
+		browser.dragdropFrom(locatorOfObjectToBeDragged, from);
 		browser.mouseMoveAt(locatorOfObjectToBeDragged, to);
 		browser.mouseUpAt(locatorOfObjectToBeDragged, to);
 	}
@@ -412,8 +411,8 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	 */
 	public void dragdropToObject(String locatorOfObjectToBeDragged,
 			String locatorOfDragDestinationObject, String from, String to) {
-		Selenium browser = getCurrent();
-		browser.mouseDownAt(locatorOfObjectToBeDragged, from);
+		ZKSelenium browser = (ZKSelenium) getCurrent();
+		browser.dragdropFrom(locatorOfObjectToBeDragged, from);
 		browser.mouseMoveAt(locatorOfDragDestinationObject, to);
 		browser.mouseUpAt(locatorOfDragDestinationObject, to);
 	}

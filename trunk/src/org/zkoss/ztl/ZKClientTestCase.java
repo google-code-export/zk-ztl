@@ -16,6 +16,8 @@ Copyright (C) 2009 Potix Corporation. All Rights Reserved.
 */
 package org.zkoss.ztl;
 
+import org.zkoss.ztl.util.image.Comparator;
+
 /**
  * A skeleton of ZK client widget.
  * @author jumperchen
@@ -31,6 +33,14 @@ public class ZKClientTestCase extends ZKTestCase {
 	 */
 	protected void waitResponse() {
 		waitResponse(_timeout);
+	}
+	
+	/**
+	 * Verifies the image before response has done. 
+	 */
+	public void verifyImage(Comparator comparator) {
+		waitResponse();
+		super.verifyImage(comparator);
 	}
 
 	/**
@@ -179,7 +189,7 @@ public class ZKClientTestCase extends ZKTestCase {
 		super.doubleClickAt(locator.toLocator(), coordString);
 	}
 
-		public void dragAndDrop(ClientWidget locator, String movementsString) {
+	public void dragAndDrop(ClientWidget locator, String movementsString) {
 		super.dragAndDrop(locator.toLocator(), movementsString);
 	}
 
