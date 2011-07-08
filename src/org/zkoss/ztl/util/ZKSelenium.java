@@ -88,4 +88,9 @@ public class ZKSelenium extends DefaultSelenium {
 	    return commandProcessor;
 	}
 	
+	// fixed Chrome dragdropTo issue
+	public void dragdropFrom(String locatorOfObjectToBeDragged, String from) {
+		commandProcessor.doCommand("dragdropFrom", new String[] {locatorOfObjectToBeDragged,from,});
+	}
+	
 }
