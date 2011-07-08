@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 
@@ -1118,10 +1119,26 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
                 	super.verifyTrue("The size of images are not the same. Please check result. - " + subDir, false);
                 	return;
                 }
-                Comparator ic = comparator == null ? new DefaultComparator(baseBuffImg.getWidth()/configHelper.getGranularity(),
-                		baseBuffImg.getHeight()/configHelper.getGranularity(), configHelper.getLeniency()):
+
+                Map<String, Integer[]> frameSize = configHelper.getFrameSize();
+                Integer[] sizes= frameSize.get(browserName);
+                
+                if (sizes == null)
+                	throw new IllegalStateException("The [" + browserName + "-frame] setting is not found in the config.properties.");
+              
+				BufferedImage base = baseBuffImg.getSubimage(sizes[1],
+						sizes[0], baseBuffImg.getWidth()
+								- (sizes[1] + sizes[3]),
+						baseBuffImg.getHeight() - (sizes[0] + sizes[2]));
+				BufferedImage test = testBuffImg.getSubimage(sizes[1],
+						sizes[0], testBuffImg.getWidth()
+								- (sizes[1] + sizes[3]),
+						testBuffImg.getHeight() - (sizes[0] + sizes[2]));
+
+                Comparator ic = comparator == null ? new DefaultComparator(base.getWidth()/configHelper.getGranularity(),
+                		base.getHeight()/configHelper.getGranularity(), configHelper.getLeniency()):
                     						comparator;
-                BufferedImage imgc = ic.compare(baseBuffImg, testBuffImg);
+                BufferedImage imgc = ic.compare(base, test);
                 if (imgc != null) {
                 	File subDir = new File(resultDirStr + File.separator + caseID);
                 	if (!subDir.isDirectory())

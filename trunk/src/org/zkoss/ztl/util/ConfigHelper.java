@@ -74,6 +74,8 @@ public class ConfigHelper {
 	
 	private boolean _openonce = false;
 	
+	private Map<String, Integer[]> _frames = new HashMap<String, Integer[]>();
+	
 	// 2011-03-02. Edited by Phoenix.
 	// Add properties for image comparing.
 	private String _imgsrc;
@@ -147,6 +149,9 @@ public class ConfigHelper {
 		return _browserNameMap.get(key);
 	}
 
+	public Map<String, Integer[]> getFrameSize() {
+		return _frames;
+	}
 	/**
 	 * 
 	 * @param key
@@ -279,6 +284,15 @@ public class ConfigHelper {
 					String browserKey = browser.trim();
 					if (_browserNameMap.containsKey(browserKey)) {
 						_allBrowsers.add(browserKey);
+					}
+					String frames = _prop.getProperty(browserKey + "-frame");
+					if (frames != null) {
+						Integer[] sizes = new Integer[4];
+						String[] sz = frames.split(",");
+						for (int i = 0; i < sz.length; i++)
+							sizes[i] = Integer.parseInt(sz[i]);
+						_frames.put(browserKey, sizes);
+						System.out.println(browserKey + "-frame:" + Arrays.asList(sizes));
 					}
 				}
 			} finally {
