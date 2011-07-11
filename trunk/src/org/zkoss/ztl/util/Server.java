@@ -114,7 +114,10 @@ public class Server implements Source {
 						str = str.replace("\\", "\\\\\\\\");
 						str = str.replace("'", "\\\\'");
 						str = str.replace("\"", "\\\"");
-						if (str.indexOf("//") < 0)
+						String s = str.trim();
+						if (s.indexOf('<') < 0)
+							str = " " + str;
+						if (str.indexOf("//") < 0 || str.indexOf("://") < 0)
 							ary.add('"' + str + '"');
 						else
 							ary.add('"' + str + "\\\\n\"");
