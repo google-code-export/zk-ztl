@@ -1,0 +1,11 @@
+﻿********* Please update the following file into https://zk-ztl.googlecode.com/svn/selenium-server-coreless/trunk/lib/selenium-server.jar *****************
+1. Add the zselenium.js into the RemoteRunner.html that it will be loaded at the Selenium's server.
+2. Unzip the selenium-server.jar
+3. Copy RemoteRunner.html under selenium-server.jar\core\
+4. Copy zselenium.js, selenium-browserbot.js, selenium-api.js, and htmlutils.js under selenium-server.jar\core\scripts\
+5. Zip the selenium-server.jar
+
+#zselenium.js hacked for supporting ZK 5 API
+#selenium-browserbot.js hacked for fixing IE9 event issue.
+#selenium-api.js hacked for fixing drag and drop on Chrome.
+#htmlutils.js hacked for fixing Safari and Chrome event issue.
