@@ -1109,7 +1109,12 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
             
             final String postfix = "_" + recordCount++ + ".png";
             if (configHelper.isComparable()) {
-                BufferedImage baseBuffImg = ImageIO.read(new File(baseDir + File.separator + caseID, caseID + "_" + browserName + postfix));
+            	File basef = new File(baseDir + File.separator + caseID, caseID + "_" + browserName + postfix);
+            	if (!basef.isFile()) {
+            		super.assertTrue("The image source is not found. - " + basef, false);
+            		return;
+            	}
+                BufferedImage baseBuffImg = ImageIO.read(basef);
                 if (baseBuffImg.getWidth() != testBuffImg.getWidth() || baseBuffImg.getHeight() != testBuffImg.getHeight()) {
                 	File subDir = new File(resultDirStr + File.separator + caseID);
                 	if (!subDir.isDirectory())
