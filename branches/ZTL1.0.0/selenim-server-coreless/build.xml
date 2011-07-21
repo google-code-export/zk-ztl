@@ -1,0 +1,45 @@
+<project name="selenium-server" default="help" basedir=".">
+	
+	<property name="source.dir" value="src/main/java/" />
+	<property name="resources.dir" value="src/main/resources/" />
+	<property name="build.dir" value="build/" />
+	<property name="lib.dir" value="lib/" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="dist.dir" value="${build.dir}/dist" />
+	<property name="jar.name" value="selenium-server.jar" />
+	
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+	<target name="init" depends="clean">
+		<mkdir dir="${classes.dir}"/>
+	</target>
+	<target name="build" depends="compile,jar">
+	</target>
+	<target name="jar">
+		<mkdir dir="${dist.dir}"/>
+		<jar jarfile="${dist.dir}/${jar.name}">
+			<fileset dir="${classes.dir}" includes="**/*SeleniumDriverResourceHandler* **/zkoss/**"/>
+			<fileset dir="${resources.dir}" includes="**/**.rdf"/>
+			<zipfileset src="${lib.dir}/jna.jar" includes="**"/>
+			<zipfileset src="${lib.dir}/platform.jar" includes="**"/>
+			<zipfileset src="${lib.dir}/selenium-server.jar" includes="**" excludes="**/*SeleniumDriverResourceHandler* **/**.rdf"/>
+			<manifest>
+		      <attribute name="Main-Class"
+		            value="org.openqa.selenium.server.SeleniumServer"/>
+		    </manifest>
+		</jar>
+	</target>
+	<target name="compile" depends="init">
+		<!-- local project jars -->
+		<fileset dir="${lib.dir}" id="lib.compile">
+			<include name="*.jar" />
+		</fileset>
+		<pathconvert targetos="windows" property="libs.compile"
+			refid="lib.compile" />
+		<!-- compile -->
+		<javac srcdir="${source.dir}" destdir="${classes.dir}"
+			classpath="${libs.compile}" includes="**/*.java" debug="true">
+		</javac>
+	</target>
+</project>
