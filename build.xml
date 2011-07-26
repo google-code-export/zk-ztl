@@ -1,0 +1,230 @@
+<project name="ZTL" default="help" basedir=".">
+	
+	<import file="build.prop.xml" />	
+	<target name="help">
+		<echo>
+Usage:
+	ant clean
+		Clean the source.
+	ant build
+		Generate the Java class and compile them
+	ant generate
+		Generate the Java class and build the ztl.jar file
+	ant run -Dtags=a,b,c
+		Run the test in the given package acrroding to the specific tags
+	ant runcase -Dcase=B30-123456.ztl,...
+		Run the test in the given package acrroding to the specific ztl file name
+	ant junit report
+		Run all of the test case and generate the report
+	ant javadoc
+		Generate the Javadoc
+		</echo>
+	</target>
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${report.dir}" />
+		<delete dir="${codegen.dir}"/>
+		<delete dir="${test.dir}"/>
+		<!--<delete dir="${javadoc.dir}"/>-->
+	</target>
+	<target name="init">
+		<mkdir dir="${classes.dir}"/>
+		<mkdir dir="${report.dir}" />
+		<mkdir dir="${test.dir}"/>
+		<mkdir dir="${codegen.dir}"/>
+	</target>
+	<target name="build" depends="generate,compileztl">
+	</target>
+	<target name="jar">
+		<mkdir dir="${dist.dir}"/>
+		<jar jarfile="${dist.dir}/${jar.name}">
+			<fileset dir="${classes.dir}" includes="**"/>
+		</jar>
+	</target>
+	<target name="genzul" depends="compile,jar">
+		<java classname="org.zkoss.ztl.util.ZulGenerator"
+           	fork="true">
+         <arg value="${src}"/>
+         <arg value="${dist}"/>
+         <classpath>
+           <pathelement path="${classes.dir}"/>
+			<fileset dir="${lib.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+         </classpath>
+       </java>
+	</target>    
+	<target name="generate" depends="compile,jar">
+		<java classname="org.zkoss.ztl.util.ZtlGenerator"
+           	fork="true">
+         <arg value="-src"/>
+         <arg value="${test.src}"/>
+         <arg value="-dist"/>
+         <arg value="codegen"/>
+         <arg value="-tags"/>
+         <arg value="${tags}"/>
+		 <arg value="-excludetags"/>
+         <arg value="${excludetags}"/>
+         <classpath>
+           <pathelement path="${classes.dir}"/>
+			<fileset dir="${lib.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+         </classpath>
+       </java>
+	</target>
+	<target name="compile" depends="init">
+		<!-- local project jars -->
+		<patternset id="lib.includes.compile">
+			<include name="*.jar" />
+		</patternset>
+		<fileset dir="${lib.dir}" id="lib.compile">
+			<patternset refid="lib.includes.compile" />
+		</fileset>
+		<pathconvert targetos="windows" property="libs.compile"
+			refid="lib.compile" />
+		<!-- compile -->
+		<javac srcdir="${source.dir}" destdir="${classes.dir}"
+			classpath="${libs.compile}" includes="**/*.java" debug="true">
+		</javac>
+		
+		<copy todir="${classes.dir}" preservelastmodified="yes">
+			<fileset dir="${source.dir}" includes="config.properties,velocity.properties,ztl.vm,zul.vm,testsuite.vm"/>
+		</copy>
+	</target>
+	<target name="compileztl" depends="init">
+		<!-- local project jars -->
+		<patternset id="lib.includes.compile">
+			<include name="*.jar" />
+		</patternset>
+		<fileset dir="${lib.dir}" id="lib.compile">
+			<patternset refid="lib.includes.compile" />
+		</fileset>
+		<pathconvert targetos="windows" property="libs.compile"
+			refid="lib.compile" />
+		<!-- compile -->
+		<javac srcdir="${codegen.dir}" destdir="${test.dir}"
+			classpath="${libs.compile}" includes="**/*.java" debug="true">
+			<classpath>
+				<pathelement path="${classes.dir}" />
+			</classpath>
+		</javac>
+	</target>
+	<target name="run" depends="compile,compileztl">
+		<echo>Tags: -Dtags=${tags}</echo>
+		<java classname="org.zkoss.ztl.util.ZtlGenerator"
+           	fork="true">
+         <arg value="-src"/>
+         <arg value="${test.src}"/>
+         <arg value="-dist"/>
+         <arg value="codegen"/>           		
+         <arg value="-run"/>
+         <arg value="${test.dir}"/>
+         <arg value="${tags}"/>
+         <classpath>
+           <pathelement path="${classes.dir}"/>
+           <pathelement path="${test.dir}"/>
+			<fileset dir="${lib.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+         </classpath>
+       </java>
+	</target>
+	<target name="runcase" depends="compile,compileztl">
+		<echo>Case: -Dcase=${case}</echo>
+		<java classname="org.zkoss.ztl.util.ZtlGenerator"
+           	fork="true">
+         <arg value="-run"/>
+         <arg value="${test.dir}"/>
+         <arg value="${case}"/>
+         <classpath>
+           <pathelement path="${classes.dir}"/>
+           <pathelement path="${test.dir}"/>
+			<fileset dir="${lib.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+         </classpath>
+       </java>
+	</target>
+	<target name="junitTag" depends="generate,compileztl">
+		<junit printsummary="on" fork="true" forkmode="once" haltonfailure="false"
+			   showoutput="true">
+			<classpath>
+				<pathelement path="${classes.dir}" />
+				<pathelement path="${test.dir}" />
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+			<formatter type="xml" />
+			<batchtest todir="${report.dir}">
+				<fileset dir="${test.dir}" >
+					<include name="test/TagSuite*" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>		
+	<target name="junitOne" depends="generate,compileztl">
+		<junit printsummary="on" fork="true" forkmode="once" haltonfailure="false"
+			   showoutput="true">
+			<classpath>
+				<pathelement path="${classes.dir}" />
+				<pathelement path="${test.dir}" />
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+			<formatter type="xml" />
+			<batchtest todir="${report.dir}">
+				<fileset dir="${test.dir}" >
+					<include name="**/*Test.*" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>	
+	<target name="junit" depends="generate,compileztl">
+		<junit printsummary="on" fork="true" haltonfailure="false"
+			   showoutput="true">
+			<classpath>
+				<pathelement path="${classes.dir}" />
+				<pathelement path="${test.dir}" />
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+			<formatter type="xml" />
+			<batchtest todir="${report.dir}">
+				<fileset dir="${test.dir}" >
+					<include name="**/*Test.*" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+	<target name="report" >
+		<junitreport todir="${report.dir}">
+			<fileset dir="${report.dir}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" styledir="." todir="${report.dir}" />
+		</junitreport>
+	</target>
+	<target name="javadoc" depends="compileztl">
+		<javadoc 
+		 destdir="${javadoc.dir}"
+		 sourcepath="${source.dir}"
+		 author="true" protected="true" version="true" use="true"
+		 windowtitle="${project.title} API"
+		 doctitle="${project.title} API"
+		 additionalparam="-breakiterator -source 1.5">
+		 <bottom><![CDATA[Copyright &copy; 2005-2010 Potix Corporation. All Rights Reserved.
+		 	<!--{{JAVASCRIPT_OUTPUT}}-->
+		 ]]></bottom>
+			<classpath>
+				<pathelement path="${classes.dir}"/>
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</javadoc>
+	</target>
+</project>

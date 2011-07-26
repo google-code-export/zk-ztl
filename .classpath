@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="codegen"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="lib/junit-src.jar"/>
+	<classpathentry kind="lib" path="lib/junit.jar"/>
+	<classpathentry kind="lib" path="lib/logging-selenium-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-java-client-driver-sources.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-java-client-driver-test-sources.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-java-client-driver-tests.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-java-client-driver.jar"/>
+	<classpathentry kind="lib" path="lib/velocity-1.6.3.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
