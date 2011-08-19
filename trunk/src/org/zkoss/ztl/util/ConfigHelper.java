@@ -145,8 +145,13 @@ public class ConfigHelper {
 		return _lastModified;
 	}
 
-	public String getBrowserBand(String key) {
-		return _browserNameMap.get(key);
+	public String getBrowserBand(String browserKey) {
+		for (Map.Entry<String, String> me : _browserNameMap.entrySet()) {
+			if (browserKey.toLowerCase().startsWith(me.getKey())) {
+				return me.getValue();
+			}
+		}
+		return null;
 	}
 
 	public Map<String, Integer[]> getFrameSize() {
@@ -159,7 +164,8 @@ public class ConfigHelper {
 	 */
 	private Selenium getBrowserFromHolder(String key) {
 		key = key.toLowerCase();
-		if (_browserNameMap.get(key) == null)
+		String browserBand = getBrowserBand(key);
+		if (browserBand == null)
 			throw new NullPointerException("Null Browser Type String");
 
 		Selenium browser = _browserHolder.get(key);
@@ -168,7 +174,6 @@ public class ConfigHelper {
 			String browserpath = _browserPathMap.containsKey(key) ? _browserPathMap.get(key):"";
 			browserpath = ("".equals(browserpath) ? "" : " " + browserpath);
 			
-			String browserBand = getBrowserBand(key) ;
 			if (_browserClient.containsKey(key)) {
 				browser = new ZKSelenium(new HttpCommandProcessor(_browserClient.get(key) + "/selenium-server/driver/",
 						browserBand + browserpath, _server), browserpath, browserBand,key,_openonce);
@@ -202,17 +207,10 @@ public class ConfigHelper {
 
 			_browserNameMap.put("ff", "*firefox");
 			_browserNameMap.put("firefox", "*firefox");
-			_browserNameMap.put("firefox4", "*firefox");
-			_browserNameMap.put("firefox5", "*firefox");
 			_browserNameMap.put("ie", "*iexplore");
-			_browserNameMap.put("ie6", "*iexplore");
-			_browserNameMap.put("ie7", "*iexplore");
-			_browserNameMap.put("ie8", "*iexplore");
-			_browserNameMap.put("ie9", "*iexplore");
+			_browserNameMap.put("internetexplorer", "*iexplore");
 			_browserNameMap.put("chrome", "*googlechrome");
 			_browserNameMap.put("safari", "*safariproxy");
-			_browserNameMap.put("safari4", "*safari");
-			_browserNameMap.put("safari5", "*safariproxy");
 			_browserNameMap.put("opera", "*opera");
 		}
 
@@ -282,9 +280,17 @@ public class ConfigHelper {
 				String[] allBrowsers = _prop.getProperty(ALL_BROWSERS).split(",");
 				for (String browser : allBrowsers) {
 					String browserKey = browser.trim();
-					if (_browserNameMap.containsKey(browserKey)) {
-						_allBrowsers.add(browserKey);
+					// if (_browserNameMap.containsKey(browserKey)) {
+						// _allBrowsers.add(browserKey);
+					// }
+					
+					for (String key : _browserNameMap.keySet()) {
+						if (browserKey.toLowerCase().startsWith(key)) {
+							_allBrowsers.add(browserKey);
+							break;
+						}
 					}
+					
 					String frames = _prop.getProperty(browserKey + "-frame");
 					if (frames != null) {
 						Integer[] sizes = new Integer[4];
