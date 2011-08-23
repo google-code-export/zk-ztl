@@ -207,6 +207,7 @@ public class ConfigHelper {
 
 			_browserNameMap.put("ff", "*firefox");
 			_browserNameMap.put("firefox", "*firefox");
+			_browserNameMap.put("ie6", "*iexploreproxy");
 			_browserNameMap.put("ie", "*iexplore");
 			_browserNameMap.put("internetexplorer", "*iexplore");
 			_browserNameMap.put("chrome", "*googlechrome");
