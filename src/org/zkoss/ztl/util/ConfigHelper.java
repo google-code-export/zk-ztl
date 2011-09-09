@@ -89,6 +89,7 @@ public class ConfigHelper {
 	 * key : Firefox, IE ... value : *firefox, *iexplore ...
 	 */
 	private HashMap<String, String> _browserNameMap;
+	private HashMap<String, String> _securedBrowserNameMap;
 
 	private HashMap<String, String> _browserPathMap;
 
@@ -145,8 +146,8 @@ public class ConfigHelper {
 		return _lastModified;
 	}
 
-	public String getBrowserBand(String browserKey) {
-		for (Map.Entry<String, String> me : _browserNameMap.entrySet()) {
+	public String getBrowserBand(String browserKey, boolean isSecured) {
+		for (Map.Entry<String, String> me : (isSecured ? _securedBrowserNameMap : _browserNameMap).entrySet()) {
 			if (browserKey.toLowerCase().startsWith(me.getKey())) {
 				return me.getValue();
 			}
@@ -162,9 +163,9 @@ public class ConfigHelper {
 	 * @param key
 	 * @return value :
 	 */
-	private Selenium getBrowserFromHolder(String key) {
+	private Selenium getBrowserFromHolder(String key, boolean isSecured) {
 		key = key.toLowerCase();
-		String browserBand = getBrowserBand(key);
+		String browserBand = getBrowserBand(key, isSecured);
 		if (browserBand == null)
 			throw new NullPointerException("Null Browser Type String");
 
@@ -188,19 +189,19 @@ public class ConfigHelper {
 		return browser;
 	}
 
-	public List<Selenium> getBrowsers(String keys) {
+	public List<Selenium> getBrowsers(String keys, boolean isSecured) {
 		List<String> browser = Arrays.asList(keys.split(","));
 		List<Selenium> list = new ArrayList<Selenium>();
 		if (browser.contains(ALL_BROWSERS)) {
 			for (String key : _allBrowsers)
-				list.add(getBrowserFromHolder(key));
+				list.add(getBrowserFromHolder(key, isSecured));
 			return list;
 		}
 		for (String key : browser)
-			list.add(getBrowserFromHolder(key));
+			list.add(getBrowserFromHolder(key, isSecured));
 		return list;
 	}
-
+	
 	private void init() throws IOException, Exception {
 		if (_browserNameMap == null) {
 			_browserNameMap = new HashMap<String, String>();
@@ -213,6 +214,17 @@ public class ConfigHelper {
 			_browserNameMap.put("chrome", "*googlechrome");
 			_browserNameMap.put("safari", "*safariproxy");
 			_browserNameMap.put("opera", "*opera");
+		}
+		
+		if (_securedBrowserNameMap == null) {
+			_securedBrowserNameMap = new HashMap<String, String>();
+			_securedBrowserNameMap.put("ff", "*firefox");
+			_securedBrowserNameMap.put("firefox", "*firefox");
+			_securedBrowserNameMap.put("ie", "*iexplore");
+			_securedBrowserNameMap.put("internetexplorer", "*iexplore");
+			_securedBrowserNameMap.put("chrome", "*chrome");
+			_securedBrowserNameMap.put("safari", "*safariproxy");
+			_securedBrowserNameMap.put("opera", "*opera");
 		}
 
 		if (_browserPathMap == null) {

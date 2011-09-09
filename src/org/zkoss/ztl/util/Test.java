@@ -63,6 +63,10 @@ public class Test {
 		return new String[0];
 	}
 
+	public boolean isSecured() {
+		return Boolean.valueOf(_attrs.get("secured"));
+	}
+	
 	public boolean containsTag(String[] check){
 		if(check == null || check.length==0) return false;
 

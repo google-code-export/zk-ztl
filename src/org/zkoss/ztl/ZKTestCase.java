@@ -222,7 +222,11 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 	}
 	
 	protected List<Selenium> getBrowsers(String browsers) {
-		return ConfigHelper.getInstance().getBrowsers(browsers);
+		return getBrowsers(browsers, false);
+	}
+	
+	protected List<Selenium> getBrowsers(String browsers, boolean isSecured) {
+		return ConfigHelper.getInstance().getBrowsers(browsers, isSecured);
 	}
 	
 	/**
