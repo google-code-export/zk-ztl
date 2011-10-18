@@ -109,6 +109,27 @@ Usage:
 				<pathelement path="${classes.dir}" />
 			</classpath>
 		</javac>
+		
+		<!-- compile scala-->
+		<taskdef resource="scala/tools/ant/antlib.xml">
+			<classpath>
+				<fileset dir="${lib.dir}">
+					<include name="scala-library.jar" />
+					<include name="scala-compiler.jar" />
+				</fileset>
+			</classpath>
+		</taskdef>
+		
+		<scalac srcdir="${zstl.src}" destdir="${test.dir}"
+			classpath="${libs.compile}" includes="**/*.scala" excludes="test/**" force="changed">
+			<classpath>
+				<pathelement path="${classes.dir}" />
+				<fileset dir="${lib.dir}">
+					<include name="scala-library.jar" />
+					<include name="scala-compiler.jar" />
+				</fileset>
+			</classpath>
+		</scalac>
 	</target>
 	<target name="run" depends="compile,compileztl">
 		<echo>Tags: -Dtags=${tags}</echo>
