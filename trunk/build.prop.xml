@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
 	<property name="source.dir" value="src/" />
-	<property name="test.src" value="test/" />
+	<property name="zstl.src" value="vision-test" />
+	<property name="test.src" value="vision-test" />
 	<property name="build.dir" value="build/" />
 	<property name="lib.dir" value="lib/" />
 	<property name="classes.dir" value="${build.dir}/classes" />
