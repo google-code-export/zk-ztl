@@ -24,7 +24,7 @@
             type(combobox, "aaa");
             click(reset);
             waitResponse();
-            verifyTrue(combobox.val().isEmpty());
+            verifyTrue("".equals(combobox.val()));
 		]]></client>
 	</case>
 	<case id="Constraint2">
@@ -51,7 +51,7 @@
             focus(combobox);
             click(reset);
             waitResponse();
-            verifyTrue(combobox.val().isEmpty());
+            verifyTrue("".equals(combobox.val()));
 		]]></client>
 	</case>
 	<case id="Constraint3">
@@ -79,7 +79,7 @@
             type(combobox, "ttt");
             click(reset);
             waitResponse();
-            verifyTrue(combobox.val().isEmpty());
+            verifyTrue("".equals(combobox.val()));
 		]]></client>
 	</case>
 </test>
