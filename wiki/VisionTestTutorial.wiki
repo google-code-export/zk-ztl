@@ -26,6 +26,7 @@ Please make sure the following setting is specified well:
  # *imgsrc* must be defined, and those base images must already exit.
  # *imgdest* must be defined.
  # *comparable* must be *true*.
+ # *_browser_-frame* must be set to a 4 integer number
 Invoking *verifyImage()* method while running the test case, the result of the testing case which have some different area will be stored to the given path (*imgdest*) you specified.
 
 *Note* that we will store the result by different testing name with its browser type(for example, _B30_1455584Test_chrome_result.png_) and classify them into a time naming folder, such as 031612 (_MMddHH_ date format).
