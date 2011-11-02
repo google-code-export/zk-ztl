@@ -25,6 +25,7 @@ Usage:
 		<delete dir="${report.dir}" />
 		<delete dir="${codegen.dir}"/>
 		<delete dir="${test.dir}"/>
+		<delete dir="${release.dir}" />
 		<!--<delete dir="${javadoc.dir}"/>-->
 	</target>
 	<target name="init">
@@ -47,7 +48,8 @@ Usage:
          <arg value="${src}"/>
          <arg value="${dist}"/>
          <classpath>
-           <pathelement path="${classes.dir}"/>
+            <pathelement path="${classes.dir}"/>
+         	<pathelement path="${ztlclasses.dir}"/>
 			<fileset dir="${lib.dir}">
 				<include name="**/*.jar" />
 			</fileset>
@@ -66,7 +68,8 @@ Usage:
 		 <arg value="-excludetags"/>
          <arg value="${excludetags}"/>
          <classpath>
-           <pathelement path="${classes.dir}"/>
+            <pathelement path="${classes.dir}"/>
+         	<pathelement path="${ztlclasses.dir}"/>
 			<fileset dir="${lib.dir}">
 				<include name="**/*.jar" />
 			</fileset>
@@ -84,7 +87,7 @@ Usage:
 		<pathconvert targetos="windows" property="libs.compile"
 			refid="lib.compile" />
 		<!-- compile -->
-		<javac srcdir="${source.dir}" destdir="${classes.dir}"
+		<javac srcdir="${source.dir}" destdir="${classes.dir}"  source="1.5" target="1.5"
 			classpath="${libs.compile}" includes="**/*.java" debug="true">
 		</javac>
 		
@@ -103,10 +106,11 @@ Usage:
 		<pathconvert targetos="windows" property="libs.compile"
 			refid="lib.compile" />
 		<!-- compile -->
-		<javac srcdir="${codegen.dir}" destdir="${test.dir}"
+		<javac srcdir="${codegen.dir}" destdir="${test.dir}" source="1.5" target="1.5"
 			classpath="${libs.compile}" includes="**/*.java" debug="true">
 			<classpath>
 				<pathelement path="${classes.dir}" />
+				<pathelement path="${ztlclasses.dir}"/>
 			</classpath>
 		</javac>
 		
@@ -124,6 +128,7 @@ Usage:
 			classpath="${libs.compile}" includes="**/*.scala" excludes="test/**" force="changed">
 			<classpath>
 				<pathelement path="${classes.dir}" />
+				<pathelement path="${ztlclasses.dir}"/>
 				<fileset dir="${lib.dir}">
 					<include name="scala-library.jar" />
 					<include name="scala-compiler.jar" />
@@ -144,6 +149,7 @@ Usage:
          <arg value="${tags}"/>
          <classpath>
            <pathelement path="${classes.dir}"/>
+           <pathelement path="${ztlclasses.dir}"/>
            <pathelement path="${test.dir}"/>
 			<fileset dir="${lib.dir}">
 				<include name="**/*.jar" />
@@ -160,6 +166,7 @@ Usage:
          <arg value="${case}"/>
          <classpath>
            <pathelement path="${classes.dir}"/>
+           <pathelement path="${ztlclasses.dir}"/>
            <pathelement path="${test.dir}"/>
 			<fileset dir="${lib.dir}">
 				<include name="**/*.jar" />
@@ -172,6 +179,7 @@ Usage:
 			   showoutput="true">
 			<classpath>
 				<pathelement path="${classes.dir}" />
+				<pathelement path="${ztlclasses.dir}"/>
 				<pathelement path="${test.dir}" />
 				<fileset dir="${lib.dir}">
 					<include name="**/*.jar" />
@@ -190,6 +198,7 @@ Usage:
 			   showoutput="true">
 			<classpath>
 				<pathelement path="${classes.dir}" />
+				<pathelement path="${ztlclasses.dir}"/>
 				<pathelement path="${test.dir}" />
 				<fileset dir="${lib.dir}">
 					<include name="**/*.jar" />
@@ -208,6 +217,7 @@ Usage:
 			   showoutput="true">
 			<classpath>
 				<pathelement path="${classes.dir}" />
+				<pathelement path="${ztlclasses.dir}"/>
 				<pathelement path="${test.dir}" />
 				<fileset dir="${lib.dir}">
 					<include name="**/*.jar" />
@@ -247,5 +257,58 @@ Usage:
 				</fileset>
 			</classpath>
 		</javadoc>
+	</target>
+	<target name="release" depends="clean,init,compile,javadoc">
+		<mkdir dir="${release.dir}"/>
+		<mkdir dir="${release.dir}/build"/>
+		<mkdir dir="${release.dir}/src"/>
+		<mkdir dir="${release.dir}/${ztlclasses.dir}"/>
+		<mkdir dir="${release.dir}/imgdest"/>
+		<mkdir dir="${release.dir}/imgsrc"/>
+		<mkdir dir="${release.dir}/report"/>
+		<mkdir dir="${release.dir}/test"/>
+		<copy todir="${release.dir}/${lib.dir}">
+			<fileset dir="${lib.dir}">
+				<include name="*.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="${release.dir}/${ztlclasses.dir}">
+			<fileset dir="${classes.dir}">
+				<include name="**/*.*"/>
+			</fileset>
+		</copy>
+		<copy todir="${release.dir}">
+			<fileset dir="${basedir}">
+				<include name="build.bat"/>
+				<include name="build.prop.xml"/>
+				<include name="build.xml"/>
+				<include name="clean.bat"/>
+				<include name="generator.bat"/>
+				<include name="junit-frames.xsl"/>
+				<include name="LICENSE"/>
+				<include name="readme.txt"/>
+				<include name="runProject.bat"/>
+			</fileset>
+			<fileset dir="${source.dir}">
+				<include name="config.properties"/>
+			</fileset>			
+		</copy>
+		<copy todir="${release.dir}/selenium-server">
+			<fileset dir="${basedir}/selenium-server-1.0.1">
+				<include name="**/*.jar"/>
+				<include name="**/*.bat"/>
+			</fileset>
+		</copy>
+		<copy todir="${release.dir}/test">
+			<fileset dir="${basedir}/test/org/zkoss/zkdemo/test2">
+				<include name="mytest.ztl"/>
+			</fileset>
+		</copy>
+		<zip destfile="${build.dir}/${zip.name}">
+			<fileset dir="${release.dir}" >
+				<include name="**/*"/>
+			</fileset>
+		</zip>
+		<delete dir="${release.dir}" />
 	</target>
 </project>
