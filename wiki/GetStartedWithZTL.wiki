@@ -10,13 +10,13 @@
  # If you use ZK Selector in your ZTL test case, ZK 5.0.2 or later is required.
 
 = How to run the ZTL test cases =
-== Checkout Source Code ==
-You need to check out the ZTL project from [http://code.google.com/p/zk-ztl/source/checkout here].
-You should now be able to see the following folders under *ztl*:
+== Download the released package ==
+You need to download ZTL released package from [http://code.google.com/p/zk-ztl/downloads/list here].
+And extract it to a folder, you should now be able to see the following folders under *ztl*:
  * *javadoc* the Javadoc of the ZTL core.
  * *lib* the libraries required for this project.
- * *selenium-server...* the selenium server.
- * *src* the source code of the ZTL core.
+ * *selenium-server* the selenium server.
+ * *ztl-classes* the binary classes of the ZTL core.
  * *test* the directory of the ZTL testing file.
 
 == Add Listener into zk.xml ==
