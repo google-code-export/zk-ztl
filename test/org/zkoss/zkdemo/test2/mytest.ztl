@@ -1,0 +1,14 @@
+<test tags="button">
+        <case id="Click">
+                <server><!--
+                        <zk>
+                                <button id="btn" label="Click Me to Show a Message" onClick='alert("Hello!")'/>
+                        </zk>
+                --></server>
+                <client>
+                        click(btn);
+                        waitResponse();
+                        verifyTrue(jq("@window").exists());
+                </client>
+        </case>
+</test>
