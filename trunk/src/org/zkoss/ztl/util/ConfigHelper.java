@@ -16,6 +16,7 @@ package org.zkoss.ztl.util;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -262,10 +263,23 @@ public class ConfigHelper {
 	private void initProperty() throws Exception, IOException {
 		InputStream in = null;
 		if (_prop == null) {
+			_prop = new Properties();
 			try {
 				in = ClassLoader.getSystemResourceAsStream("config.properties");
-				_prop = new Properties();
 				_prop.load(in);
+				
+				File localFile = new File(".","config.properties");
+				if(localFile.exists()){
+					System.out.println("load local configuration :"+localFile.getAbsolutePath());
+					//override
+					in.close();
+					in = null;
+					in = new FileInputStream(localFile);
+					_prop.load(in);
+					in.close();
+					in = null;
+				}
+
 				_openonce = Boolean.parseBoolean(_prop.getProperty("openonce","false"));
 				System.out.println("openonce="+_openonce);
 				_lastModified = new File(ClassLoader.getSystemResource("config.properties").getFile()).lastModified();

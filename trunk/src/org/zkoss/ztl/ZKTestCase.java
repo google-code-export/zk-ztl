@@ -1089,8 +1089,8 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
         String resultDirStr = configHelper.getImageDest() + File.separator +  format.format(new java.util.Date());
         String baseDirStr = configHelper.getImageSrc();
         
-        if (resultDirStr == null || resultDirStr.isEmpty() ||
-            baseDirStr == null || baseDirStr.isEmpty()) {
+        if (resultDirStr == null || "".equals(resultDirStr.trim()) ||
+            baseDirStr == null || "".equals(baseDirStr.trim())) {
             verifyTrue("Incorrect setting of images' outputing path. Please check config.properties.", false);
             return;
         }
