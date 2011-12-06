@@ -14,7 +14,7 @@ For example,
 			<button id="btn" label="click me" onClick='sayHi();'/>
 		--></server>
 		<server id="javaCode" lang="java"><![CDATA[
-			vold sayHi() {
+			void sayHi() {
 				alert("Hi!");
 			}
 		]]></server>
@@ -39,7 +39,7 @@ For example,
 	</case>
 </test>
 }}}
-As you can see, the content of the server is enclosed by *<!-- -->* or *<![CDATA[ ]]>*. The *<!-- -->* comment solves an issue which could arise if the content of the <server> tag contains another *<![CDATA[ ]]>* tag. You can choose either way to implement the _server_ tag.
+As you can see, the content of the server is enclosed by *<!-- -->* or *<![CDATA[ ]]>*. The *<!-- -->* comment solves an issue which could arise if the content of the *`<server>`* tag contains another *<![CDATA[ ]]>* tag. You can choose either way to implement the _server_ tag.
 
 In addition, the content of the _client_ tag is copied directly to the Java class which is generated, so the content should be valid Java. If the content contains the signs  *>* or *<* (like in a for loop), you should use *<![CDATA[ ]]>* to enclose the content of the _client_ for a well-formed ZTL file.
 
@@ -246,5 +246,5 @@ Sometimes you will need to test the zul file directly from ZK server. Thus, you 
 == Reference ==
  * [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/package-summary.html ZTL Java Documentation]
  * [http://www.zkoss.org/javadoc/latest/jsdoc/ ZK 5 JavaScript Documentation]
- * [http://www.jarvana.com/jarvana/view/org/seleniumhq/selenium/selenium-rc-documentation/1.0.1/selenium-rc-documentation-1.0.1-doc.zip!/java/com/thoughtworks/selenium/Selenium.html Selenium's API]
+ * [http://selenium.googlecode.com/svn/trunk/docs/api/java/index.html Selenium's API]
  * [http://api.jquery.com/category/selectors/ jQuery's selector API]
