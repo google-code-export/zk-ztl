@@ -2,4 +2,3 @@
  * [UserGuide2 User Guide]
   * [TestingTutorial2 Testing Tutorial]
   * [VisionTestTutorial2 Vision Test Tutorial]
- * [DeveloperGuide2 Developer's Guide]
