@@ -1,0 +1,109 @@
+#summary Get started with the ZTL auto-testing.
+#sidebar SideNav
+
+<wiki:toc max_depth="2" />
+
+= Prerequisites =
+ # You will need the Java SDK version 1.5 or later. If necessary,  please [http://java.sun.com/javase/downloads/index.jsp download and install the Java SE Development Kit (JDK)] for your platform.
+ # Apache Ant is also necessary to run command line arguments. If you don't already have it, install [http://ant.apache.org/ Apache Ant].
+ # If you use ZK Selector in your ZTL test case, ZK 5.0.2 or later is required.
+
+= How to run the ZTL test cases =
+== Download the released package ==
+You need to download ZTL released package from [http://code.google.com/p/zk-ztl/downloads/list here].
+And extract it to a folder, you should now be able to see the following folders under *ztl*:
+ * *javadoc* the Javadoc of the ZTL core.
+ * *lib* the libraries required for this project.
+ * *selenium-server* the selenium server.
+ * *ztl-classes* the binary classes of the ZTL core.
+ * *test* the directory of the ZTL testing file.
+
+== Add Listener into zk.xml ==
+Add a desktop listener to zk.xml.
+ For example,
+ {{{
+<listener>
+	<description>For Zul Testing Language</description>
+	<listener-class>org.zkoss.zktest.test2.DesktopInit</listener-class>
+</listener>
+}}}
+*Note:* the implementation class was added in ZK 5.0.1 release, you can also implement your own listener. For example,
+ {{{
+public class DesktopInit implements org.zkoss.zk.ui.util.DesktopInit {
+	
+	public void init(final Desktop desktop, Object request) throws Exception {
+		desktop.addListener(new AuService() {
+
+			public boolean service(AuRequest request, boolean everError) {
+				final String cmd = request.getCommand();
+				if (cmd.equals("onZTLService")) {
+					String zscript = (String) request.getData().get("");
+					Component cmp = Executions.createComponentsDirectly(
+							zscript, "zul", null, null);
+					if (cmp != null)
+						cmp.setPage((Page) desktop.getPages().iterator().next());
+					return true;
+				} else return false;
+			}
+		});
+	}
+
+}
+}}} 
+== Configure ZTL Setting ==
+Configure your server settings under *src/config.properties*
+|| *Name* || *Description* || * Overridden in ZTL file*||
+|| client || the URL of the selenium server|| yes||
+|| server || the URL of the ZK server|| yes ||
+|| context-path || the name(*/zkdemo*) of the context path, like http://localhost:8080/zkdemo|| yes ||
+||delay|| the delay time of each command run by Selenium|| yes ||
+||action|| by default, the service.zul is assumed, like http://localhost:8080/zkdemo/service.zul|| yes ||
+||timeout|| the timeout of the waiting response from ZK server, in millisecond|| yes ||
+||browser|| each test case should be tested with all browser types, by default "all" is assumed|| yes ||
+||all|| describes how many browser type should be tested|| no ||
+
+ * *Note*: *Overridden in ZTL file* means the property can be overridden in each ZTL file, if necessary.
+
+== Start Server ==
+Start the Selenium server and ZK server.
+ * Run with *startup.bat* under *selenium-server* directory.
+ * Run your ZK server.
+
+== Run Test Case and Report==
+Run the test case and reports using *runProject.bat* under the *ztl* directory.
+
+== More Details ==
+You can use [http://ant.apache.org/ Ant] to run the build.xml under the *ztl* folder.
+ For example,
+   {{{$ztl ant}}}
+{{{    
+help:
+     [echo]
+     [echo] Usage:
+     [echo]     ant clean
+     [echo]             Clean the source.
+     [echo]     ant build
+     [echo]             Generate the Java class and compile them
+     [echo]     ant generate
+     [echo]             Generate the Java class and build the ztl.jar file
+     [echo]     ant run -Dtags=a,b,c
+     [echo]             Run the test in the given package acrroding to the specific tags
+     [echo]     ant runcase -Dcase=B30-123456.ztl,...
+     [echo]             Run the test in the given package acrroding to the specific ztl file name
+     [echo]     ant junit report
+     [echo]             Run all of the test case and generate the report
+     [echo]     ant javadoc
+     [echo]             Generate the Javadoc
+     [echo]
+}}}
+
+= Demo =
+In a nutshell
+ * prepare a project for zk server
+ * add the listener into zk.xml
+ * set config.properties
+ * prepare your test case 
+ * start selenium server and zk server
+ * test!
+
+<wiki:video url="http://www.youtube.com/watch?v=Jcv5mGBXpW8"/>
