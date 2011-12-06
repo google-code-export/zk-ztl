@@ -19,10 +19,12 @@ And extract it to a folder, you should now be able to see the following folders 
  * *imgsrc* the folder of image samples for vision testing.
  * *imgdest* place the result images for vision testing.
 
-== Prepare Server ==
-In order to run ZTL test case, we need a server to run ZK Application (at least render zul).
+== Prepare ZK Server ==
+In order to run ZTL test case, we need a server to run ZK application (at least for rendering zul from ztl).
 
-*Note:* ZTL released package provide a myweb.war included requirements described below.
+*Note:* 
+ * ZTL released package provide a *myweb.war* included the requirements described below.
+ * Everything you need (such as composer, resources and so on) must put into the ZK server.
 
 === Add Listener into zk.xml ===
 Add a desktop listener to zk.xml.
@@ -30,10 +32,10 @@ Add a desktop listener to zk.xml.
  {{{
 <listener>
 	<description>For Zul Testing Language</description>
-	<listener-class>org.zkoss.zktest.test2.DesktopInit</listener-class>
+	<listener-class>org.zkoss.zktest.myweb.DesktopInit</listener-class>
 </listener>
 }}}
-*Note:* the implementation class was added in ZK 5.0.1 release, you can also implement your own listener. For example,
+Create the desktop listener. For example,
  {{{
 public class DesktopInit implements org.zkoss.zk.ui.util.DesktopInit {
 	
@@ -57,23 +59,20 @@ public class DesktopInit implements org.zkoss.zk.ui.util.DesktopInit {
 }
 }}} 
 
-== Start Server ==
-Start the Selenium server and ZK server.
- * Run with *startup.bat* under *selenium-server* directory.
- * Run your ZK server.
-
+=== Start Server ===
+Start ZK server.
+ * Run your ZK server. (or just deploy *myweb.war* in web container directly)
 
 == Configure ZTL Setting ==
-Configure your server settings under *src/config.properties*
+Configure your server settings under *config.properties*
 || *Name* || *Description* || * Overridden in ZTL file*||
-|| client || the URL of the selenium server|| yes||
 || server || the URL of the ZK server|| yes ||
 || context-path || the name(*/zkdemo*) of the context path, like http://localhost:8080/zkdemo|| yes ||
-||delay|| the delay time of each command run by Selenium|| yes ||
-||action|| by default, the service.zul is assumed, like http://localhost:8080/zkdemo/service.zul|| yes ||
-||timeout|| the timeout of the waiting response from ZK server, in millisecond|| yes ||
-||browser|| each test case should be tested with all browser types, by default "all" is assumed|| yes ||
-||all|| describes how many browser type should be tested|| no ||
+|| delay || the delay time of each command run by Selenium|| yes ||
+|| action || by default, the service.zul is assumed, like http://localhost:8080/zkdemo/service.zul|| yes ||
+|| timeout || the timeout of the waiting response from ZK server, in millisecond|| yes ||
+|| browser || each test case should be tested with all browser types, by default "all" is assumed|| yes ||
+|| all || describes how many browser type should be tested|| no ||
 
  * *Note*: *Overridden in ZTL file* means the property can be overridden in each ZTL file, if necessary.
 
