@@ -27,8 +27,7 @@ In order to run ZTL test case, we need a server to run ZK application (at least 
  * Everything you need (such as composer, resources and so on) must put into the ZK server.
 
 === Add Listener into zk.xml ===
-Add a desktop listener to zk.xml.
- For example,
+Add a desktop listener to zk.xml. For example,
  {{{
 <listener>
 	<description>For Zul Testing Language</description>
