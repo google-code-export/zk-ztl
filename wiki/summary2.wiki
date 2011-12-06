@@ -1,0 +1,45 @@
+http://books.zkoss.org/images/a/ad/WarningTriangle-32x32.png *The project is the old version for Selenium-RC. If you want to use Selenium 2 (Webdriver), please refer to this project - [https://github.com/zkoss/ztl ZTL on Github]
+
+ZK-ZTL is an open source tool which can automatically test the ZK Framework with jUnit and Selenium frameworks. And it can now support vision test to test on ZK Framework.
+== Introduction ==
+The ZTL language is XML based which describes the operation of a test case for the [http://seleniumhq.org/projects/remote-control/ Selenium  Remote Control (RC)].
+For example,
+{{{
+<test tags="button">
+	<case id="Click">
+		<server><!--
+			<zk>
+				<button id="btn" label="Click Me to Show a Message" onClick='alert("Hello!")'/>
+			</zk>
+		--></server>
+		<client>
+			click(btn);
+			waitResponse();
+			verifyTrue(jq("@window").exists());
+		</client>
+	</case>
+</test>
+}}}
+The root tag of the ZTL file is _test_ and encloses one or many _case_(s) (similar to each method of the jUnit test case). The _case_ can enclose one or many _server_ and _client_ tags. The content of the _server_ is run on the ZK server, and the content of the _client_ is run on the Selenium server(we called _client_).
+
+In the above example, the content of the _server_ creates a button (id=btn) which when clicked on will show a "Hello!" message. The content of the _client_ uses btn which is an instance of [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/Widget.html org.zkoss.ztl.Widget], to fire a _Click_ event to the browser, and then waits for the response from ZK server. Once the response is received the code then checks whether _@window_ exists or not by using the _jq_ API which is implemented by the class [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/JQuery.html org.zkoss.ztl.JQuery].
+
+= Documentation =
+ * [http://code.google.com/p/zk-ztl/wiki/GetStartedWithZTL Getting Start Guide]
+ * [http://code.google.com/p/zk-ztl/wiki/UserGuide User Guide]
+ * [http://code.google.com/p/zk-ztl/wiki/DeveloperGuide Developer's Guide]
+ * [http://zk-ztl.googlecode.com/svn/trunk/javadoc/index.html Java Doc]
+
+= Vision Test =
+This is a new feature since 2011/03/15. Now you can easily use the image comparison to test on ZTL platform. For more details, please see this guide and demo - [VisionTestTutorial Vision Test Tutorial]
+
+= Contribution =
+ * [http://code.google.com/p/zk-ztl/wiki/ContributorGuide Contributor's Guide]
+If you contribute to this project, we will run through all of the ZTL files you created before ZK release and freshly builds.
+
+= Issue Tracker =
+ * [http://tracker.zkoss.org/browse/ZTL Please post the issue here]
+
+= Tools =
+
+<wiki:video url="http://www.youtube.com/watch?v=ZWVqM-tGTQA"/>
