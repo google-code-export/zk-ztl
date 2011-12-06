@@ -59,17 +59,25 @@ public class DesktopInit implements org.zkoss.zk.ui.util.DesktopInit {
 }
 }}} 
 
+Create a empty *ztl.zul* into web context path in ZK server.
+ {{{
+<?xml version="1.0" encoding="UTF-8"?>
+<?page title="ZTL TEST"?>
+<zk></zk>
+}}} 
+
+
 === Start Server ===
 Start ZK server.
- * Run your ZK server. (or just deploy *myweb.war* in web container directly)
+ * Run your ZK server. (or deploy *myweb.war* in your web container directly and run web container)
 
 == Configure ZTL Setting ==
 Configure your server settings under *config.properties*
 || *Name* || *Description* || * Overridden in ZTL file*||
-|| server || the URL of the ZK server|| yes ||
-|| context-path || the name(*/zkdemo*) of the context path, like http://localhost:8080/zkdemo|| yes ||
+|| server || the URL of the ZK server, like http://localhost:8080 || yes ||
+|| context-path || the name of the context path, like /myweb || yes ||
 || delay || the delay time of each command run by Selenium|| yes ||
-|| action || by default, the service.zul is assumed, like http://localhost:8080/zkdemo/service.zul|| yes ||
+|| action || by default, the ztl.zul is assumed || yes ||
 || timeout || the timeout of the waiting response from ZK server, in millisecond|| yes ||
 || browser || each test case should be tested with all browser types, by default "all" is assumed|| yes ||
 || all || describes how many browser type should be tested|| no ||
@@ -77,9 +85,6 @@ Configure your server settings under *config.properties*
  * *Note*: *Overridden in ZTL file* means the property can be overridden in each ZTL file, if necessary.
 
 == Run Test Case and Report==
-Run the test case and reports using *runProject.bat* under the *ztl* directory.
-
-== More Details ==
 You can use [http://ant.apache.org/ Ant] to run the build.xml under the *ztl* folder.
  For example,
    {{{$ztl ant}}}
@@ -91,16 +96,10 @@ help:
      [echo]             Clean the source.
      [echo]     ant build
      [echo]             Generate the Java class and compile them
-     [echo]     ant generate
-     [echo]             Generate the Java class and build the ztl.jar file
-     [echo]     ant run -Dtags=a,b,c
-     [echo]             Run the test in the given package acrroding to the specific tags
-     [echo]     ant runcase -Dcase=B30-123456.ztl,...
-     [echo]             Run the test in the given package acrroding to the specific ztl file name
-     [echo]     ant junit report
-     [echo]             Run all of the test case and generate the report
-     [echo]     ant javadoc
-     [echo]             Generate the Javadoc
+     [echo]     ant junit
+     [echo]             Run all of the test cases
+     [echo]     ant report
+     [echo]             Run all of the test cases and generate the report
      [echo]
 }}}
 
@@ -110,7 +109,7 @@ In a nutshell
  * add the listener into zk.xml
  * set config.properties
  * prepare your test case 
- * start selenium server and zk server
+ * start zk server
  * test!
 
 <wiki:video url="http://www.youtube.com/watch?v=Jcv5mGBXpW8"/>
