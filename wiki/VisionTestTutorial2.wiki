@@ -1,0 +1,34 @@
+= How to Use Vision Test for ZTL Test Case =
+
+== Demo ==
+<wiki:video url="http://www.youtube.com/watch?v=hsTxSuMq4kk"/>
+
+If you cannot see the youtube, please see this url instead. http://www.screencast.com/t/FAFodxwGM
+
+== Configuration ==
+There are five properties about image comparing in the _config.properties_:
+ * *imgsrc*: the path of the base images to be stored.
+ * *imgdest*: the path of the different images to be stored.
+ * *comparable*: to decide whether store the image or compare it. If true, it is comparable.
+ * *granularity*: It is an integer to specify how big the section of the image to be compared. It is better to have 1~15, less is a precise comparison, but performance is slow. Don't specify too high, it may compare without any different.
+ * *leniency*: It is an integer to distinguish the brightness of each section point. It is better to have 1~10, less is a precise comparison. 
+
+== Making Base Images ==
+Please make sure the following setting is specified well:
+ # *imgsrc* must be defined. If not yet, it will fail at the testing runtime while you are using this function.
+ # *comparable* must be *false*.
+Invoking the *verifyImage()* method while running the testing case, the result of the testing case will be stored to the given path (*imgsrc*) you specified.
+
+*Note* that those base images are very important for the image comparison, so you'd better to back up them first.
+== Comparing the Result ==
+Please make sure the following setting is specified well:
+ # *imgsrc* must be defined, and those base images must already exit.
+ # *imgdest* must be defined.
+ # *comparable* must be *true*.
+ # *_browser_-frame* must be set to a 4 integer number
+Invoking *verifyImage()* method while running the test case, the result of the testing case which have some different area will be stored to the given path (*imgdest*) you specified.
+
+*Note* that we will store the result by different testing name with its browser type(for example, _B30_1455584Test_chrome_result.png_) and classify them into a time naming folder, such as 031612 (_MMddHH_ date format).
+
+== Environment Limits ==
+Currently the API can only work on Windows(I mean the selenium-server side, not Junit runner side.) - But we will improve it if needed.
