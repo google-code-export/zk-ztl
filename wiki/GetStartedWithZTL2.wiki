@@ -102,14 +102,3 @@ help:
      [echo]             Run all of the test cases and generate the report
      [echo]
 }}}
-
-= Demo =
-In a nutshell
- * prepare a project for zk server
- * add the listener into zk.xml
- * set config.properties
- * prepare your test case 
- * start zk server
- * test!
-
-<wiki:video url="http://www.youtube.com/watch?v=Jcv5mGBXpW8"/>
