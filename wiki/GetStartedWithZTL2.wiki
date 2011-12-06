@@ -59,7 +59,7 @@ public class DesktopInit implements org.zkoss.zk.ui.util.DesktopInit {
 }
 }}} 
 
-Create a empty *ztl.zul* into web context path in ZK server.
+Create a empty *ztl.zul* into web context path in ZK server. For example,
  {{{
 <?xml version="1.0" encoding="UTF-8"?>
 <?page title="ZTL TEST"?>
