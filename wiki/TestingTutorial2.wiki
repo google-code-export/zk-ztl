@@ -1,0 +1,250 @@
+#summary This tutorial will guide you how to write a run-able ZTL test case.
+<wiki:toc max_depth="3" />
+
+== Well-formed ZTL file ==
+
+A ZTL file is a well-formed XML document.
+
+For example,
+{{{
+<test import="java.util.*,java.io.*"
+	browser="firefox,ie" tags="window">
+	<case id="Method1">
+		<server id="zulCode"><!--
+			<button id="btn" label="click me" onClick='sayHi();'/>
+		--></server>
+		<server id="javaCode" lang="java"><![CDATA[
+			vold sayHi() {
+				alert("Hi!");
+			}
+		]]></server>
+		<client>
+			click(btn);
+			waitResponse();
+			verifyTrue(jq("@window").exists());
+		</client>
+	</case>
+	<case id="Method2">
+		<server ref="zulCode"/>
+		<server lang="java"><!--
+			void sayHi() {
+				btn.detach();
+			}
+		--></server>
+		<client>
+			click(btn);
+			waitResponse();
+			verifyFalse(btn.exists());
+		</client>
+	</case>
+</test>
+}}}
+As you can see, the content of the server is enclosed by *<!-- -->* or *<![CDATA[ ]]>*. The *<!-- -->* comment solves an issue which could arise if the content of the <server> tag contains another *<![CDATA[ ]]>* tag. You can choose either way to implement the _server_ tag.
+
+In addition, the content of the _client_ tag is copied directly to the Java class which is generated, so the content should be valid Java. If the content contains the signs  *>* or *<* (like in a for loop), you should use *<![CDATA[ ]]>* to enclose the content of the _client_ for a well-formed ZTL file.
+
+Each ID of the _case_ in the ZTL file should be unique, for example, the _case_'s ID maps to a method name of the Java class, therefore two methods with the same name should not be present in the same class. Moreover, the ID of the _server_ is used to reference another _server_ tag, so it is better to have different IDs to avoid unnecessary conflicts.
+
+----
+== ID Naming Binding ==
+Once you specify the ID of ZK component into the _server_ tag, you can use the ID in the _client_ tag directly.
+
+For example,
+{{{
+<server>
+	<button id="btn"/>
+</server>
+<client>
+	click(btn);
+</client>
+}}}
+or
+{{{
+<server lang="java">
+	void createLabel(Window w) {
+		Label label = new Label("Hello!");
+		label.setId("mylabel");
+		label.setParent(w);
+	}
+</server>
+<client>
+	verifyEquals("Hello!", getText(mylabel));
+</client>
+}}}
+
+----
+== Scope Visibility ==
+Please refer to the last sample.
+=== Case===
+Each _case_ tag has its own scope, so the content inside the _case_ tag won't affect others.
+
+=== Server ===
+Each _server_ tag can refer to another _server_ tag which is placed in the same _test_ tag (i.e. in the same ZTL file). Therefore you can use the *ref* property to refer to the other _server_ tag for the same content.
+
+*Note:* each _server_ tag in the same _case_ tag is run on the same ZK page via an Ajax request. Therefore the ID of the ZK component or the content of the Zscript may conflict if there is not another ID-Space-Owner.
+
+=== Client ===
+The content of each _client_ tag in the same _case_ will be copied to the same method of the java class so variable names should not be declared twice.
+----
+== Utile API ==
+=== Waiting Response ===
+The API of [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/ZKClientTestCase.html#waitResponse%28%29 waitResponse] is employed when waiting for the response from the ZK server. For example, if you have a button to run Zscript at the ZK server and you have to check the value of another component after the process is done, you can invoke the *waitResponse()* method before checking the value.
+
+For example,
+{{{
+click(btn); // it may cost some times.
+waitResponse(); // ensure the process is done.
+verifyEquals("Ready", label.get("value"));
+}}}
+
+=== Parse Integer from String ===
+The [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/ZKClientTestCase.html#parseInt%28java.lang.String%29 parseInt] function is employed to convert a string value into an int value.
+
+For example, if the value of _left_ is "125px", it will be converted into an integer of value 125.
+{{{
+JQuery jq = jq("@window");
+int left = parseInt(jq.css("left"));
+int top = parseInt(jq.css("top"));
+}}}
+
+=== Sleep the Current Thread ===
+Because Thread.sleep() needs to try/catch the method, but the sleep() doesn't.
+
+For example,
+{{{
+mouseOver(jq("$view @label:eq(2)"));
+sleep(1000);
+verifyTrue(jq("$mail div.z-popup-cm").exists());
+}}}
+----
+== Case Study ==
+=== Checkbox ===
+ ==== Check ====
+ You need to click the _real_ sub-element, rather than invoking the check() method.
+ 
+ For example,
+ {{{
+click(checkbox.$n("real"));
+}}}
+=== Combobox ===
+ ==== Type ====
+ In _combobox_ or _bandbox_, you need to “type” text into the _real_ sub-element.
+
+ For example,
+ {{{
+type(combobox.$n("real"), "abc");
+verifyEquals("abc", msg.get("value"));
+}}}
+ or
+{{{
+typeKeys(combobox.$n("real"), "abc");
+verifyEquals("abc", msg.get("value"));
+}}}
+ Note: the typeKeys will simulate the event in order keyDown, keyPress, and keyUp.
+=== Spinner/Timebox ===
+ ==== Click ====
+ In the two widgets, you have to use mouseDownAt/mouseUp() instead of clickAt().
+
+ For example,
+ {{{
+mouseDownAt(jq("@spinner i.z-spinner-btn"), "0,0");
+mouseUp(jq("@spinner i.z-spinner-btn"));
+blur(jq("@spinner i.z-spinner-btn"));
+verifyTrue(5 < parseInt(jq("@spinner input.z-spinner-inp").val()));
+mouseDownAt(jq("@spinner i.z-spinner-btn"), "3,20");
+mouseUp(jq("@spinner i.z-spinner-btn"));
+blur(jq("@spinner i.z-spinner-btn"));
+verifyTrue(3 > parseInt(jq("@spinner input.z-spinner-inp").val()));
+}}}
+  * You have to use *blur()*, otherwise it will not save the value to server.
+=== Menu ===
+ ==== Click right arrow ====
+ You need to click the arrow area of the menu.
+ For example,
+ {{{
+<server><!--
+	<zk>
+		<menubar>
+			<menu label="click me" onClick="">
+				<menupopup>
+					<menuitem label="item" onClick='alert("you click")' />
+				</menupopup>
+			</menu>
+		</menubar>
+	</zk>
+--></server>
+<client>
+	JQuery menu = jq("@menu[label=\"click me\"]");
+	clickAt(menu, ""+(menu.width() - 5)+",5");
+</client>
+}}}
+=== Menupopup ===
+ ==== Right Click ====
+ You need to use *contextMenu*, rather than invoking the mouseDownRight() method.
+ 
+ For example,
+ {{{
+contextMenu(jq("@image"));
+}}}
+
+=== Tree ===
+ ==== Open ====
+ In treeitem, you have to click upon the _open_ sub-element.
+
+ For example,
+ {{{
+click(treeitem.$n("open"));
+}}}
+
+=== Window ===
+ ==== Drag Drop ====
+ In the overlapped window or modal window, you need to drag the element upon the _cap_ sub-element.
+ 
+ For example,
+ {{{
+dragdropTo(jq("@window > div[id$=\"cap\"]"), "10,10", "160,160");
+}}}
+ As you can see, the selector matches a any div with an id ending with *cap* inside a _window_ component.
+
+=== Textbox===
+ ==== Copy and Paste ====
+ In _textbox_, you can use _keyDownNative_, _keyPressNative_ and _keyUpNative_ to execute ctrl + A, ctrl + X, ctrl + C and ctrl + V.
+
+ For example,
+ {{{
+focus(jq("@textbox"));
+
+keyDownNative("17");
+keyPressNative("65");
+keyPressNative("88");
+keyPressNative("86");
+keyUpNative("17");
+}}}
+ * keycode:
+     # Ctrl: 17
+     # A: 65
+     # V: 86
+     # X: 88
+ * Note: You have to call *keyUpNative("17");* when you call *keyDownNative("17");*, otherwise your compute will *keep hold _ctrl_ key.*
+
+----
+== Troubleshooting == 
+=== Escaping Single Quotation ===
+You may use the jQuery's selector to find a ZK or other elements within the _client_ tag.
+
+For example,
+{{{
+verifyTrue(jq("@window[border=\"normal\"]").exists());
+}}}
+As you can see, you need to use the *\"* double quotation rather than single quotation in this case as Selenium will translate the content to enclose with a single quotation.
+
+=== Test without Server tag ===
+Sometimes you will need to test the zul file directly from ZK server. Thus, you can modify the _action_ property to the path of the zul file. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1729253.ztl For example].
+
+
+----
+== Reference ==
+ * [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/package-summary.html ZTL Java Documentation]
+ * [http://www.zkoss.org/javadoc/latest/jsdoc/ ZK 5 JavaScript Documentation]
+ * [http://www.jarvana.com/jarvana/view/org/seleniumhq/selenium/selenium-rc-documentation/1.0.1/selenium-rc-documentation-1.0.1-doc.zip!/java/com/thoughtworks/selenium/Selenium.html Selenium's API]
+ * [http://api.jquery.com/category/selectors/ jQuery's selector API]
