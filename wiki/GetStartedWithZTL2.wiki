@@ -12,13 +12,19 @@
 == Download the released package ==
 You need to download ZTL released package from [http://code.google.com/p/zk-ztl/downloads/list here].
 And extract it to a folder, you should now be able to see the following folders under *ztl*:
- * *javadoc* the Javadoc of the ZTL core.
+ * *codegen* the java source folder for ZTL generated code.
  * *lib* the libraries required for this project.
- * *selenium-server* the selenium server.
- * *ztl-classes* the binary classes of the ZTL core.
- * *test* the directory of the ZTL testing file.
+   * include *ztl-2.0.0-jar* and *ztl-2.0.0-javadoc.jar* (the Javadoc of the ZTL core)
+ * *src* the directory of the ZTL testing file.
+ * *imgsrc* the folder of image samples for vision testing.
+ * *imgdest* place the result images for vision testing.
 
-== Add Listener into zk.xml ==
+== Prepare Server ==
+In order to run ZTL test case, we need a server to run ZK Application (at least render zul).
+
+*Note:* ZTL released package provide a myweb.war included requirements described below.
+
+=== Add Listener into zk.xml ===
 Add a desktop listener to zk.xml.
  For example,
  {{{
@@ -50,6 +56,13 @@ public class DesktopInit implements org.zkoss.zk.ui.util.DesktopInit {
 
 }
 }}} 
+
+== Start Server ==
+Start the Selenium server and ZK server.
+ * Run with *startup.bat* under *selenium-server* directory.
+ * Run your ZK server.
+
+
 == Configure ZTL Setting ==
 Configure your server settings under *src/config.properties*
 || *Name* || *Description* || * Overridden in ZTL file*||
@@ -63,11 +76,6 @@ Configure your server settings under *src/config.properties*
 ||all|| describes how many browser type should be tested|| no ||
 
  * *Note*: *Overridden in ZTL file* means the property can be overridden in each ZTL file, if necessary.
-
-== Start Server ==
-Start the Selenium server and ZK server.
- * Run with *startup.bat* under *selenium-server* directory.
- * Run your ZK server.
 
 == Run Test Case and Report==
 Run the test case and reports using *runProject.bat* under the *ztl* directory.
