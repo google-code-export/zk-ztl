@@ -73,10 +73,10 @@ Start ZK server.
 == Configure ZTL Setting ==
 Configure your server settings under *config.properties*
 || *Name* || *Description* || * Overridden in ZTL file*||
-|| server || the URL of the ZK server, like http://localhost:8080 || yes ||
-|| context-path || the name of the context path, like /myweb || yes ||
+|| server || the URL of the ZK server, like *http://localhost:8080 * || yes ||
+|| context-path || the name of the context path, like */myweb* || yes ||
 || delay || the delay time of each command run by Selenium|| yes ||
-|| action || by default, the ztl.zul is assumed || yes ||
+|| action || by default, the "ztl.zul" is assumed || yes ||
 || timeout || the timeout of the waiting response from ZK server, in millisecond|| yes ||
 || browser || each test case should be tested with all browser types, by default "all" is assumed|| yes ||
 || all || describes how many browser type should be tested|| no ||
@@ -84,10 +84,11 @@ Configure your server settings under *config.properties*
  * *Note*: *Overridden in ZTL file* means the property can be overridden in each ZTL file, if necessary.
 
 == Run Test Case and Report==
-You can use [http://ant.apache.org/ Ant] to run the build.xml under the *ztl* folder.
- For example,
-   {{{$ztl ant}}}
+You can use [http://ant.apache.org/ Ant] to run the build.xml under the *ztl* folder. For example,
 {{{    
+C:\eclipse\tmp>ant
+Buildfile: C:\eclipse\tmp\build.xml
+
 help:
      [echo]
      [echo] Usage:
