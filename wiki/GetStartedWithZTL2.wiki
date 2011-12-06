@@ -24,7 +24,7 @@ In order to run ZTL test case, we need a server to run ZK application (at least 
 
 *Note:* 
  * ZTL released package provide a *myweb.war* included the requirements described below.
- * Everything you need in server side(such as composer, resources and so on) must put into the ZK server.
+ * Everything you need in server side (such as composer, resources and so on) must put into the ZK server.
 
 === Add Listener into zk.xml ===
 Add a desktop listener to zk.xml. For example,
