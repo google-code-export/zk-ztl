@@ -7,8 +7,7 @@ A ZTL file is a well-formed XML document.
 
 For example,
 {{{
-<test import="java.util.*,java.io.*"
-	browser="firefox,ie" tags="window">
+<test import="java.util.*,java.io.*" tags="window">
 	<case id="Method1">
 		<server id="zulCode"><!--
 			<button id="btn" label="click me" onClick='sayHi();'/>
@@ -88,7 +87,7 @@ The content of each _client_ tag in the same _case_ will be copied to the same m
 ----
 == Utile API ==
 === Waiting Response ===
-The API of [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/ZKClientTestCase.html#waitResponse%28%29 waitResponse] is employed when waiting for the response from the ZK server. For example, if you have a button to run Zscript at the ZK server and you have to check the value of another component after the process is done, you can invoke the *waitResponse()* method before checking the value.
+The API of [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/ZKClientTestCase.html#waitResponse%28%29 waitResponse] is employed when waiting for the response from the test application. For example, if you have a button to run Zscript at the test application and you have to check the value of another component after the process is done, you can invoke the *waitResponse()* method before checking the value.
 
 For example,
 {{{
@@ -239,7 +238,7 @@ verifyTrue(jq("@window[border=\"normal\"]").exists());
 As you can see, you need to use the *\"* double quotation rather than single quotation in this case as Selenium will translate the content to enclose with a single quotation.
 
 === Test without Server tag ===
-Sometimes you will need to test the zul file directly from ZK server. Thus, you can modify the _action_ property to the path of the zul file. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1729253.ztl For example].
+Sometimes you will need to test the zul file directly from test application. Thus, you can modify the _action_ property to the path of the zul file. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1729253.ztl For example].
 
 
 ----
