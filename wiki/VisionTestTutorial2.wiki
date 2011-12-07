@@ -28,6 +28,3 @@ Please make sure the following setting is specified well:
 Invoking *verifyImage()* method while running the test case, the result of the testing case which have some different area will be stored to the given path (*imgdest*) you specified.
 
 *Note* that we will store the result by different testing name with its browser type(for example, _CASE_1455584Test_chrome_result.png_) and classify them into a time naming folder, such as 031612 (_MMddHH_ date format).
-
-== Environment Limits ==
-Currently the API can only work on Windows(I mean the Selenium side, not JUnit runner side.) - But we will improve it if needed.
