@@ -4,7 +4,7 @@
 <wiki:toc max_depth="2" />
 
 = Prerequisites =
- # You will need the Java SDK version 1.6 or later. If necessary,  please [http://java.sun.com/javase/downloads/index.jsp download and install the Java SE Development Kit (JDK)] for your platform.
+ # You will need the Java SDK version 1.5 or later. If necessary,  please [http://java.sun.com/javase/downloads/index.jsp download and install the Java SE Development Kit (JDK)] for your platform.
  # Apache Ant is also necessary to run command line arguments. If you don't already have it, install [http://ant.apache.org/ Apache Ant].
  # If you use ZK Selector in your ZTL test case, ZK 5.0.2 or later is required.
 
