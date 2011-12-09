@@ -94,7 +94,7 @@ public class case1Test extends ZKClientTestCase {
 || *Property* || *Description* || *Default Value* || *Require* ||
 || import || the package that is required to import this test case || none || optional ||
 || tags || the tags to filter the test case, like _button_, _window_, _listbox_, and so on. || none || optional ||
-|| context-path || the name of the context path, for example */myweb* || according to *config.properties* || optional ||
+|| context-path || the name of the context path, for example */myweb* || according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
 || server || the URL of the ZK server || according to *config.properties* || optional ||
 || action || the path that is visited by the Selenium || according to *config.properties* || optional ||
 || delay || the delay time of each command run by Selenium ||according to *config.properties* || optional ||
