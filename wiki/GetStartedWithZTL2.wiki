@@ -19,12 +19,12 @@ And extract it to a folder, you should now be able to see the following folders 
  * *imgsrc* the folder of image samples for vision testing.
  * *imgdest* place the result images for vision testing.
 
-== Prepare ZK Server ==
+== Prepare Test Application ==
 In order to run ZTL test case, we need a server to run ZK application (at least for rendering zul from ztl).
 
 *Note:* 
  * ZTL released package provide a *myweb.war* included the requirements described below.
- * Everything you need in server side (such as composer, resources and so on) must put into the ZK server.
+ * Everything you need in server side (such as composer, resources and so on) must put into the test application.
 
 === Add Listener into zk.xml ===
 Add a desktop listener to zk.xml. For example,
@@ -58,7 +58,7 @@ public class DesktopInit implements org.zkoss.zk.ui.util.DesktopInit {
 }
 }}} 
 
-Create a empty *ztl.zul* into web context path in ZK server. For example,
+Create a empty *ztl.zul* into web context path in test application. For example,
  {{{
 <?xml version="1.0" encoding="UTF-8"?>
 <?page title="ZTL TEST"?>
@@ -67,17 +67,18 @@ Create a empty *ztl.zul* into web context path in ZK server. For example,
 
 
 === Start Server ===
-Start ZK server.
- * Run your ZK server. (or deploy *myweb.war* in your web container directly and run web container)
+Start test application.
+ * Deploy your test application in your web server. (or deploy *myweb.war* in your web container directly and run web container)
+ * Run your web server.
 
 == Configure ZTL Setting ==
 Configure your server settings under *config.properties*
 || *Name* || *Description* || * Overridden in ZTL file*||
-|| server || the URL of the ZK server, like *http://localhost:8080 * || yes ||
+|| server || the URL of the test application, like *http://localhost:8080 * || yes ||
 || context-path || the name of the context path, like */myweb* || yes ||
 || delay || the delay time of each command run by Selenium|| yes ||
 || action || by default, the "ztl.zul" is assumed || yes ||
-|| timeout || the timeout of the waiting response from ZK server, in millisecond|| yes ||
+|| timeout || the timeout of the waiting response from test application, in millisecond|| yes ||
 || browser || each test case should be tested with all browser types, by default "all" is assumed|| yes ||
 || all || describes how many browser type should be tested|| no ||
 
