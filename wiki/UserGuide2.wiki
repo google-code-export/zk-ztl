@@ -95,10 +95,10 @@ public class case1Test extends ZKClientTestCase {
 || import || the package that is required to import this test case || none || optional ||
 || tags || the tags to filter the test case, like _button_, _window_, _listbox_, and so on. || none || optional ||
 || context-path || the name of the context path, for example */myweb* || according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
-|| server || the URL of the ZK server || according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
+|| server || the URL of the test application || according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
 || action || the path that is visited by the Selenium || according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
 || delay || the delay time of each command run by Selenium ||according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
-|| timeout || the timeout for waiting response from ZK server, in millisecond||according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
+|| timeout || the timeout for waiting response from test application, in millisecond||according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
 || browser || the test case should be tested with all of the browser types ||according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
 
 === Case ===
@@ -107,7 +107,7 @@ public class case1Test extends ZKClientTestCase {
 || id || the name of the method in the JUnit test case that starts with "test" || none || *yes* ||
 
 === Server ===
- The content of the tag is run on the ZK server, and each tag will fire an Ajax request to execute the code.
+ The content of the tag is run on the test application, and each tag will fire an Ajax request to execute the code.
 || *Property* || *Description* || *Default Value* || *Require* ||
 || id || the id of the server tag used for the *ref* property to identify. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1486556.ztl For example]|| none || optional ||
 || ref || refer to the content of the server which matches the id. i.e. the content of the tag will be copied from the content of the server whose id is a match. [http://zk-ztl.googlecode.com/svn/trunk/test/org/zkoss/zkdemo/test2/B30/B30-1486556.ztl For example]|| none || optional ||
