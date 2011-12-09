@@ -30,7 +30,7 @@ In the above example, the content of the _server_ creates a button (id=btn) whic
  * [http://zk-ztl.googlecode.com/svn/doc/ztl2-javadoc/index.html Java Doc]
 
 = Vision Test =
-This is a new feature since 2011/03/15. Now you can easily use the image comparison to test on ZTL platform. For more details, please see this guide and demo - [VisionTestTutorial Vision Test Tutorial]
+This is a new feature since 2011/03/15. Now you can easily use the image comparison to test on ZTL platform. For more details, please see this guide and demo - [VisionTestTutorial2 Vision Test Tutorial]
 
 = Issue Tracker =
  * [http://tracker.zkoss.org/browse/ZTL Please post the issue here]
