@@ -2,7 +2,7 @@
 <wiki:toc max_depth="3" />
 
 == Introduction ==
-A ZTL file is an XML based format that is compiled by [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/util/ZtlGenerator.html ZtlGenerator] to generate a JUnit Java test case.
+A ZTL file is an XML based format that is compiled by [http://zk-ztl.googlecode.com/svn/doc/ztl2-javadoc/org/zkoss/ztl/util/ZtlGenerator.html ZtlGenerator] to generate a JUnit Java test case.
 
 For example (ZTL),
 {{{
