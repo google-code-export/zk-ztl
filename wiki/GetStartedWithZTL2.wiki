@@ -23,7 +23,7 @@ And extract it to a folder, you should now be able to see the following folders 
 In order to run ZTL test case, we need a server to run ZK application (at least for rendering zul from ztl).
 
 *Note:* 
- * ZTL released package provide a *myweb.war* included the requirements described below.
+ * ZTL released package provide a *testweb.war* included the requirements described below.
  * Everything you need in server side (such as composer, resources and so on) must put into the test application.
 
 === Add Listener into zk.xml ===
@@ -31,7 +31,7 @@ Add a desktop listener to zk.xml. For example,
  {{{
 <listener>
 	<description>For Zul Testing Language</description>
-	<listener-class>org.zkoss.zktest.myweb.DesktopInit</listener-class>
+	<listener-class>org.zkoss.zktest.testweb.DesktopInit</listener-class>
 </listener>
 }}}
 Create the desktop listener. For example,
@@ -68,14 +68,14 @@ Create a empty *ztl.zul* into web context path in test application. For example,
 
 === Start Server ===
 Start test application.
- * Deploy your test application in your web server. (or deploy *myweb.war* in your web container directly and run web container)
+ * Deploy your test application in your web server. (or deploy *testweb.war* in your web container directly and run web container)
  * Run your web server.
 
 == Configure ZTL Setting ==
 Configure your server settings under *config.properties*
 || *Name* || *Description* || * Overridden in ZTL file*||
 || server || the URL of the test application, like *http://localhost:8080 * || yes ||
-|| context-path || the name of the context path, like */myweb* || yes ||
+|| context-path || the name of the context path, like */testweb* || yes ||
 || delay || the delay time of each command run by Selenium|| yes ||
 || action || by default, the "ztl.zul" is assumed || yes ||
 || timeout || the timeout of the waiting response from test application, in millisecond|| yes ||
