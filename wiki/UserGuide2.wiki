@@ -123,4 +123,4 @@ public class case1Test extends ZKClientTestCase {
 You can change the value of *test.src* under *build.prop.xml* to your own directory where the ZTL files are located.
 
 == Testing Tutorial ==
-[TestingTutorial Testing Tutorial]
+[TestingTutorial2 Testing Tutorial]
