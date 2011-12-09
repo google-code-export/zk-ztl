@@ -82,9 +82,9 @@ public class case1Test extends ZKClientTestCase {
 == ZTL Description ==
 
 === Package ===
- The package of the test case will depend on the location of the file within the root directory. In this project, the directory is named *src/main/java* (However, you can use your own directory, please refer to [#Change_ZTL_directory this] for more information).
+ The package of the test case will depend on the location of the file within the root directory. In this project, the directory is named *src/* (However, you can use your own directory, please refer to [#Change_ZTL_directory this] for more information).
 
- For example, the _case1_ file is under _src/main/java/org/zkoss/zktest/testsample/case1.ztl_, its package is _org.zkoss.zktest.testsample.case1Test.java_.
+ For example, the _case1_ file is under _src/org/zkoss/zktest/testsample/case1.ztl_, its package is _org.zkoss.zktest.testsample.case1Test.java_.
 
 === File Name ===
  The file name of the ZTL file will be converted to a Java class name, there it should be a legal Java class name which JUnit can recognize. i.e. The class name should end with *Test*. If the name of ztl file includes dash '-', the dash '-' is replaced with an underscore '`_`' for the legal Java class name convention. For example, _case1-1.ztl_ will convert to _case1`_`1Test.java_.
@@ -122,5 +122,21 @@ public class case1Test extends ZKClientTestCase {
 === Change ZTL directory ===
 You can change the value of *test.src* under *build.prop.xml* to your own directory where the ZTL files are located.
 
+== Create test case in Eclipse IDE ==
+ZTL released package provide a *testsample.zip* in the *dist* folder. It contains the [GetStartedWithZTL2#How_to_run_the_ZTL_test_cases configuration] for Eclipse IDE. In the words, Eclipse IDE can import the ZTL test case project from the *testsample.zip*. And you can use this project to write your test cases.
+ # Extract the *testsample.zip* from ZTL released package.
+ # Open your Eclipse IDE.
+ # Click the menu *File>Import...>Existing Projects into Workspace*
+ # Choice *Select archive file:* and select *testsample.zip* using *Browse...* button.
+ # Check the *testsample(/)* project and click *Finish* button. The *testsample* project should be appear in the *Package Explorer*.
+ # The ZTL test case should be placed in *src* folder. (ex. src/org.zkoss.zktest.testsample.case1.ztl)
+ # Right click *build.xml* and click *Run as>Ant build...* will popup the dialog.
+ # Only check the *build* task (uncheck the default task) and click *Run* button. Ant will build the test case in java code from the .ztl files.
+  * Because of *build* task will compile test cases, you must configure your Eclipse to use JDK not JRE.
+ # Refresh the *testsample* project and the JUnit test case will appear in *codegen/* folder. (ex. codegen/org.zkoss.zktest.testsample.case1Test.java)
+ # Make sure you test application was already running.
+ # Right click any JUnit case file (for example, case1Test.java) and click *Run as>JUnit Test*.
+ # Eclipse will run selected test case and report the test result.
+
 == Testing Tutorial ==
-[TestingTutorial2 Testing Tutorial]
+[TestingTutorial2 Testing Tutorial ]
