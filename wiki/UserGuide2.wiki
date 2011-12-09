@@ -130,13 +130,13 @@ ZTL released package provide a *testsample.zip* in the *dist* folder. It contain
  # Choice *Select archive file:* and select *testsample.zip* using *Browse...* button.
  # Check the *testsample(/)* project and click *Finish* button. The *testsample* project should be appear in the *Package Explorer*.
  # The ZTL test case should be placed in *src* folder. (ex. src/org.zkoss.zktest.testsample.case1.ztl)
- # Right click *build.xml* and click *Run as>Ant build...* will popup the dialog.
+ # Right click *build.xml* and click *Run as>Ant Build...* will popup the dialog.
  # Only check the *build* task (uncheck the default task) and click *Run* button. Ant will build the test case in java code from the .ztl files.
   * Because of *build* task will compile test cases, you must configure your Eclipse to use JDK not JRE.
  # Refresh the *testsample* project and the JUnit test case will appear in *codegen/* folder. (ex. codegen/org.zkoss.zktest.testsample.case1Test.java)
  # Make sure you test application was already running.
- # Right click any JUnit case file (for example, case1Test.java) and click *Run as>JUnit Test*.
- # Eclipse will run selected test case and report the test result.
+ # Right click any JUnit case file (for example, case1Test.java) and click *Run as>JUnit Test*. Eclipse will run selected test case and report the test result.
+ # If you want to run test case by ANT. Right click *build.xml* and click *Run as>Ant Build...* Only check the *junit* task and click *Run* button. Ant will run all test cases.
 
 == Testing Tutorial ==
 [TestingTutorial2 Testing Tutorial ]
