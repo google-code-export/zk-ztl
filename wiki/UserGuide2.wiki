@@ -23,7 +23,7 @@ For example (ZTL),
 }}}
 It will generate the Java class as follows:
 {{{
-package org.zkoss.zktest.mytest;
+package org.zkoss.zktest.testsample;
 import org.junit.Test;
 import org.zkoss.ztl.Tags;
 import org.zkoss.ztl.Widget;
@@ -34,7 +34,7 @@ import com.thoughtworks.selenium.Selenium;
 public class case1Test extends ZKClientTestCase {
 	
 	public case1Test() {
-		target = "http://localhost:8080/myweb/ztl.zul";
+		target = "http://localhost:8080/testweb/ztl.zul";
 		browsers = getBrowsers("firefox");
 		_timeout = 60000;
 		caseID = getClass().getSimpleName();
@@ -84,7 +84,7 @@ public class case1Test extends ZKClientTestCase {
 === Package ===
  The package of the test case will depend on the location of the file within the root directory. In this project, the directory is named *src/main/java* (However, you can use your own directory, please refer to [#Change_ZTL_directory this] for more information).
 
- For example, the _case1_ file is under _src/main/java/org/zkoss/zktest/mytest/case1.ztl_, its package is _org.zkoss.zktest.mytest.case1Test.java_.
+ For example, the _case1_ file is under _src/main/java/org/zkoss/zktest/testsample/case1.ztl_, its package is _org.zkoss.zktest.testsample.case1Test.java_.
 
 === File Name ===
  The file name of the ZTL file will be converted to a Java class name, there it should be a legal Java class name which JUnit can recognize. i.e. The class name should end with *Test*. If the name of ztl file includes dash '-', the dash '-' is replaced with an underscore '`_`' for the legal Java class name convention. For example, _case1-1.ztl_ will convert to _case1`_`1Test.java_.
@@ -94,7 +94,7 @@ public class case1Test extends ZKClientTestCase {
 || *Property* || *Description* || *Default Value* || *Require* ||
 || import || the package that is required to import this test case || none || optional ||
 || tags || the tags to filter the test case, like _button_, _window_, _listbox_, and so on. || none || optional ||
-|| context-path || the name of the context path, for example */myweb* || according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
+|| context-path || the name of the context path, for example */testweb* || according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
 || server || the URL of the test application || according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
 || action || the path that is visited by the Selenium || according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
 || delay || the delay time of each command run by Selenium ||according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
