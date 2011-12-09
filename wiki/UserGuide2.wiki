@@ -95,11 +95,11 @@ public class case1Test extends ZKClientTestCase {
 || import || the package that is required to import this test case || none || optional ||
 || tags || the tags to filter the test case, like _button_, _window_, _listbox_, and so on. || none || optional ||
 || context-path || the name of the context path, for example */myweb* || according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
-|| server || the URL of the ZK server || according to *config.properties* || optional ||
-|| action || the path that is visited by the Selenium || according to *config.properties* || optional ||
-|| delay || the delay time of each command run by Selenium ||according to *config.properties* || optional ||
-|| timeout || the timeout for waiting response from ZK server, in millisecond||according to *config.properties* || optional ||
-|| browser || the test case should be tested with all of the browser types ||according to *config.properties* || optional ||
+|| server || the URL of the ZK server || according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
+|| action || the path that is visited by the Selenium || according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
+|| delay || the delay time of each command run by Selenium ||according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
+|| timeout || the timeout for waiting response from ZK server, in millisecond||according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
+|| browser || the test case should be tested with all of the browser types ||according to [GetStartedWithZTL2#Configure_ZTL_Setting config.properties] || optional ||
 
 === Case ===
  The tag is like a method of a JUnit test case, and each [#Case Case] in the same [#Test Test] won't impact on each other. It can also enclose one or many [#Server Servers] or [#Client Clients]
