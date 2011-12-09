@@ -87,7 +87,7 @@ The content of each _client_ tag in the same _case_ will be copied to the same m
 ----
 == Utile API ==
 === Waiting Response ===
-The API of [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/ZKClientTestCase.html#waitResponse%28%29 waitResponse] is employed when waiting for the response from the test application. For example, if you have a button to run Zscript at the test application and you have to check the value of another component after the process is done, you can invoke the *waitResponse()* method before checking the value.
+The API of [http://zk-ztl.googlecode.com/svn/doc/ztl2-javadoc/org/zkoss/ztl/ZKClientTestCase.html#waitResponse%28%29 waitResponse] is employed when waiting for the response from the test application. For example, if you have a button to run Zscript at the test application and you have to check the value of another component after the process is done, you can invoke the *waitResponse()* method before checking the value.
 
 For example,
 {{{
@@ -97,7 +97,7 @@ verifyEquals("Ready", label.get("value"));
 }}}
 
 === Parse Integer from String ===
-The [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/ZKClientTestCase.html#parseInt%28java.lang.String%29 parseInt] function is employed to convert a string value into an int value.
+The [http://zk-ztl.googlecode.com/svn/doc/ztl2-javadoc/org/zkoss/ztl/ZKClientTestCase.html#parseInt%28java.lang.String%29 parseInt] function is employed to convert a string value into an int value.
 
 For example, if the value of _left_ is "125px", it will be converted into an integer of value 125.
 {{{
@@ -243,7 +243,7 @@ Sometimes you will need to test the zul file directly from test application. Thu
 
 ----
 == Reference ==
- * [http://zk-ztl.googlecode.com/svn/trunk/javadoc/org/zkoss/ztl/package-summary.html ZTL Java Documentation]
+ * [http://zk-ztl.googlecode.com/svn/doc/ztl2-javadoc/org/zkoss/ztl/package-summary.html ZTL Java Documentation]
  * [http://www.zkoss.org/javadoc/latest/jsdoc/ ZK 5 JavaScript Documentation]
  * [http://selenium.googlecode.com/svn/trunk/docs/api/java/index.html Selenium's API]
  * [http://api.jquery.com/category/selectors/ jQuery's selector API]
