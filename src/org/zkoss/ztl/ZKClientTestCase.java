@@ -48,10 +48,16 @@ public class ZKClientTestCase extends ZKTestCase {
 	 * @param timeout the time. (millisecond).
 	 */
 	protected void waitResponse(int timeout) {
+		waitResponse(timeout, false);
+	}
+	
+	protected void waitResponse(int timeout, boolean includingAnimation) {
 		long s = System.currentTimeMillis();
 		int i = 0;
+		String scripts = includingAnimation ? "!!zAu.processing() || !!jq.timers.length"
+				: "!!zAu.processing()";
 		while (i < 2) { // make sure the command is triggered.
-			while(Boolean.valueOf(this.getEval("!!zAu.processing()"))) {
+			while(Boolean.valueOf(this.getEval(scripts))) {
 				if (System.currentTimeMillis() - s > timeout) {
 					assertTrue("Test case timeout!", false);
 					break;
@@ -59,6 +65,9 @@ public class ZKClientTestCase extends ZKTestCase {
 			}
 			i++;
 		}
+	}
+	protected void waitResponse(boolean includingAnimation) {
+		waitResponse(_timeout, includingAnimation);
 	}
 
 	/**
