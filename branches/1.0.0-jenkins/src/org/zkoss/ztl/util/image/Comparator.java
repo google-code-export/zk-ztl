@@ -17,6 +17,7 @@ Copyright (C) 2011 Potix Corporation. All Rights Reserved.
 package org.zkoss.ztl.util.image;
 
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 /**
  * An image comparator to compare two images.
@@ -30,4 +31,10 @@ public interface Comparator {
 	 * @param b2 the compared image.
 	 */
 	public BufferedImage compare(BufferedImage b1, BufferedImage b2);
+	
+	/**
+	 * Return the matrix of the spot that two images are unmatched.
+	 * <p> if all matched, empty list is assumed.
+	 */
+	public List<int[]> getSpotMatrix();
 }

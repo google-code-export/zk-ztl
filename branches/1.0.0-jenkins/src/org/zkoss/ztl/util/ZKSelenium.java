@@ -93,4 +93,6 @@ public class ZKSelenium extends DefaultSelenium {
 		commandProcessor.doCommand("dragdropFrom", new String[] {locatorOfObjectToBeDragged,from,});
 	}
 	
+	public void shutdown(){}
+	
 }

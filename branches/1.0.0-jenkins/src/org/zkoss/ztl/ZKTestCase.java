@@ -20,6 +20,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -1102,10 +1105,6 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
             if (!baseDir.exists()) {
                 baseDir.mkdir();
             }
-            
-            if (!resultDir.exists()) {
-                resultDir.mkdir();
-            }
 
             String title = this.getEval("document.title");
             byte[] imgByteArr = Base64.decode(zkSelenium.getCmdProcessor().getString("captureEntirePageScreenshotToString", new String[] {title, browserName}));
@@ -1148,10 +1147,10 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
                 		base.getHeight()/configHelper.getGranularity(), configHelper.getLeniency()):
                     						comparator;
                 BufferedImage imgc = ic.compare(base, test);
-                if (imgc != null) {
+                if (imgc != null && checkMatrix(ic, configHelper.getLeniency())) {
                 	File subDir = new File(resultDirStr + File.separator + caseID);
                 	if (!subDir.isDirectory())
-                		subDir.mkdir();
+                		subDir.mkdirs();
                 	subDir = new File(subDir, caseID + "_" + browserName + "_result" + postfix);
                 	ImageIO.write(imgc, "png", subDir);
                     super.verifyTrue("Images are mismatch. Please check result. - " + subDir, false);
@@ -1164,7 +1163,7 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
             } else {
             	File subDir = new File(baseDir, caseID);
             	if (!subDir.isDirectory())
-            		subDir.mkdir();
+            		subDir.mkdirs();
                 ImageIO.write(testBuffImg, "png", new File(subDir, caseID + "_" + browserName + postfix));
             }
         } catch (Exception e) {
@@ -1173,6 +1172,51 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
         	e.printStackTrace(ps);
             super.fail(baos.toString());
         }
+	}
+	
+	protected boolean checkMatrix(Comparator ic, int lenicency) {
+		if (lenicency == 1) return true;
+		List<int []> matrix = ic.getSpotMatrix();
+		Map<String, List<Integer>> xmap = new HashMap<String, List<Integer>>();
+		Map<String, List<Integer>> ymap = new HashMap<String, List<Integer>>();
+		for (int [] data : matrix) {
+			final String x = String.valueOf(data[0]);
+			final String y = String.valueOf(data[1]);
+			if (xmap.containsKey(x)) {
+				xmap.get(x).add(data[1]);
+			} else {
+				ArrayList<Integer> l = new ArrayList<Integer>();
+				l.add(data[1]);
+				xmap.put(x, l);
+			}
+			if (ymap.containsKey(y)) {
+				ymap.get(y).add(data[0]);
+			} else {
+				ArrayList<Integer> l = new ArrayList<Integer>();
+				l.add(data[0]);
+				ymap.put(y, l);
+			}
+		}
+		for (Map.Entry<String, List<Integer>> me : xmap.entrySet()) {
+			List<Integer> yList = me.getValue();
+			Collections.sort(yList);
+			for (int i = 0; i < yList.size() - 1; i++) {
+				int prev = yList.get(i).intValue();
+				if (prev +1 == yList.get(i + 1).intValue()) 
+					return true; // not matched
+			}
+		}
+
+		for (Map.Entry<String, List<Integer>> me : ymap.entrySet()) {
+			List<Integer> xList = me.getValue();
+			Collections.sort(xList);
+			for (int i = 0; i < xList.size() - 1; i++) {
+				int prev = xList.get(i).intValue();
+				if (prev +1 == xList.get(i + 1).intValue()) 
+					return true; // not matched
+			}
+		}
+		return false; // loose match for 1px different.
 	}
 	/**
 	 * Compares the snapshot of the testing result.

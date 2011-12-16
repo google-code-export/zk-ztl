@@ -155,6 +155,8 @@ public class ConfigHelper {
 		return null;
 	}
 
+	public void clearCache(ZKSelenium browser) {}
+	
 	public Map<String, Integer[]> getFrameSize() {
 		return _frames;
 	}
