@@ -22,6 +22,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * A comparer class to compare two images.
@@ -30,11 +32,13 @@ import java.awt.image.BufferedImage;
  */
 public class DefaultComparator implements Comparator {
 	private int _comparex, _comparey, _leniency;
+	private List<int[]> _matchMatrix;
 
     public DefaultComparator(int comparex, int comparey, int leniency) {
-        this._comparex = comparex;
-        this._comparey = comparey;
-        this._leniency = leniency;
+        _comparex = comparex;
+        _comparey = comparey;
+        _leniency = leniency;
+        _matchMatrix = new LinkedList<int[]>();
     }
 
     // buffered images are just better.
@@ -102,11 +106,16 @@ public class DefaultComparator implements Comparator {
                 variance[y][x] = diff; 
                 if (diff > _leniency) { // the difference in a certain region has passed the threshold value
                     gc.drawRect(x*bx, y*by, bx - 1, by - 1);
+                    _matchMatrix.add(new int[]{x*bx, y*by});
                     match = false;
                 }
             }
         }
         return match ? null : imgc;
+    }
+    
+    public List<int[]> getSpotMatrix() {
+    	return _matchMatrix;
     }
     private int aggregateMapArea(int[][] map, int ox, int oy, int w, int h) {
         int t = 0;
