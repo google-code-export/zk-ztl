@@ -36,6 +36,13 @@ public class ZKClientTestCase extends ZKTestCase {
 	}
 	
 	/**
+	 * For Scala API compiling
+	 */
+	protected Object getWebDriver() {
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
 	 * Verifies the image before response has done. 
 	 */
 	public void verifyImage(Comparator comparator) {
