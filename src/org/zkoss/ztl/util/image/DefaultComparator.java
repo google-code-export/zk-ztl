@@ -78,7 +78,9 @@ public class DefaultComparator implements Comparator {
         int[][] m2 = getImageMap(bi2);
     	BufferedImage imgc = imageToBufferedImage(bi2);
         Graphics2D gc = imgc.createGraphics();
+        Graphics2D gc1 = imgc.createGraphics();
         gc.setColor(Color.RED);
+        gc1.setColor(Color.YELLOW);
         int cx = _comparex;
         int w = bi1.getWidth();
         int h = bi1.getHeight();
@@ -105,7 +107,10 @@ public class DefaultComparator implements Comparator {
                 int diff = Math.abs(b1 - b2);
                 variance[y][x] = diff; 
                 if (diff > _leniency) { // the difference in a certain region has passed the threshold value
-                    gc.drawRect(x*bx, y*by, bx - 1, by - 1);
+                	if (b1 - b2 > 0)
+                		gc.drawRect(x*bx, y*by, bx - 1, by - 1);
+                	else
+                		gc1.drawRect(x*bx, y*by, bx - 1, by - 1);
                     _matchMatrix.add(new int[]{x*bx, y*by});
                     match = false;
                 }
