@@ -1103,7 +1103,7 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
             File baseDir = new File(baseDirStr);
             
             if (!baseDir.exists()) {
-                baseDir.mkdir();
+                baseDir.mkdirs();
             }
 
             String title = this.getEval("document.title");
@@ -1121,7 +1121,7 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
                 if (baseBuffImg.getWidth() != testBuffImg.getWidth() || baseBuffImg.getHeight() != testBuffImg.getHeight()) {
                 	File subDir = new File(resultDirStr + File.separator + caseID);
                 	if (!subDir.isDirectory())
-                		subDir.mkdir();
+                		subDir.mkdirs();
                 	subDir = new File(subDir, caseID + "_" + browserName + "_result" + postfix);
                 	ImageIO.write(testBuffImg, "png", subDir);
                 	super.verifyTrue("The size of images are not the same. Please check result. - " + subDir, false);
