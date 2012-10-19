@@ -187,7 +187,7 @@ public class ZKTestCase extends ZKSeleneseTestCase implements Selenium {
 		System.out.println("testing:"+((ZKSelenium)selenium).getBrowserName());
 		selenium.start();
 		try{
-			selenium.setTimeout("5000");
+			selenium.setTimeout("10000");
 			selenium.open(target);
 		}catch(SeleniumException e){
 			//Sometime it will get timeout , try one more time.
