@@ -486,12 +486,28 @@ public class ZKClientTestCase extends ZKTestCase {
 	 * @since 7.0
 	 */
 	public void verScroll(ClientWidget locator, double percent) {
-		Widget sbwgt = jq(locator).find(".z-scrollbar").toWidget();
-		Element ind = sbwgt.$n("ver-indicator");
-		Element rail = sbwgt.$n("ver-rail");
-		dragdropToObject(ind, rail, "8," + jq(ind).outerHeight() / 2, "8," + jq(rail).outerHeight() * percent);
+		int totalHight;
+		Widget wgt = jq(locator).toWidget();
+		Element bpad = wgt.$n("bpad"),
+				tpad = wgt.$n("tpad");
+		JQuery body = jq(wgt.$n("body")),
+			   cave = jq(wgt.$n("cave"));
+		if (bpad.exists() && tpad.exists()) {
+			// ROD Scroll
+			totalHight = Integer.parseInt(bpad.get("offsetHeight")) + Integer.parseInt(tpad.get("offsetHeight"));
+		} else {
+			totalHight = jq(cave).height() - jq(body).height();
+		}
+		
+		int dist = (int) Math.round(totalHight * percent);
+		String version = ZK.VERSION.substring(0, 1);
+		if(!ZK.is("ie8") && Integer.parseInt(version) >= 7)
+			locator.eval("_scrollbar.scrollTo(0, " + dist +")");
+		else
+			jq(body.exists() ? body : (cave.exists() ? cave : wgt))
+			.toElement().set("scrollTop", Math.abs(dist));
+		waitResponse();
 	}
-	
 	/**
 	 * 
 	 * @param locator
@@ -500,10 +516,19 @@ public class ZKClientTestCase extends ZKTestCase {
 	 * @since 7.0
 	 */
 	public void horScroll(ClientWidget locator, double percent) {
-		Widget sbwgt = jq(locator).find(".z-scrollbar").toWidget();
-		Element ind = sbwgt.$n("hor-indicator");
-		Element rail = sbwgt.$n("hor-rail");
-		dragdropToObject(ind, rail, jq(ind).outerHeight() / 2 +",8" , jq(rail).outerHeight() * percent + ",8");
+		Widget wgt = jq(locator).toWidget();
+		JQuery body = jq(wgt.$n("body"));
+		JQuery cave = jq(wgt.$n("cave"));
+		int totalWidth = cave.width() - body.width();		
+		int dist = (int) Math.round(totalWidth * percent);
+		
+		String version = ZK.VERSION.substring(0, 1);
+		if(!ZK.is("ie8") && Integer.parseInt(version) >= 7)
+			locator.eval("_scrollbar.scrollTo(" + dist +", 0)");
+		else 
+			jq(body.exists() ? body : (cave.exists() ? cave : wgt))
+			.toElement().set("scrollLeft", Math.abs(dist));
+		waitResponse();
 	}
 
 	/**
