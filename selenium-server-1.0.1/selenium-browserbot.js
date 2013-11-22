@@ -2159,7 +2159,11 @@ IEBrowserBot.prototype.modifySeparateTestWindowToDetectPageLoads = function(wind
     var pageUnloadDetector = function() {
         self.pageUnloading = true;
     };
-    windowObject.attachEvent("onbeforeunload", pageUnloadDetector);
+    var evt = windowObject.attachEvent;
+    if(evt)
+    	windowObject.attachEvent("onbeforeunload", pageUnloadDetector);
+    else
+    	windowObject.addEventListener("onbeforeunload", pageUnloadDetector);
     BrowserBot.prototype.modifySeparateTestWindowToDetectPageLoads.call(this, windowObject);
 };
 
@@ -2414,7 +2418,11 @@ IEBrowserBot.prototype._fireEventOnElement = function(eventType, element, client
     var pageUnloadDetector = function() {
         pageUnloading = true;
     };
-    win.attachEvent("onbeforeunload", pageUnloadDetector);
+    var evt = win.attachEvent;
+    if(evt)
+    	win.attachEvent("onbeforeunload", pageUnloadDetector);
+    else
+    	win.addEventListener("onbeforeunload", pageUnloadDetector);
     this._modifyElementTarget(element);
     if (element[eventType] && ! browserVersion.ie9) {
         element[eventType]();
