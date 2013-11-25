@@ -84,8 +84,11 @@
 				keyup:"keyup",
 				keypress:"keypress"				
 			};
+
 			EventTrigger.setEventHandler([EVENTS.mousedown, EVENTS.mousemove, EVENTS.mouseout, EVENTS.mouseover, EVENTS.mouseup, EVENTS.click, EVENTS.dblclick], function(element, eventType, canBubble, clientX, clientY, button) {
-				var screenX = 0, screenY = 0;
+				if(!document.createEvent)
+                    return;
+                var screenX = 0, screenY = 0;
 				
 				clientX = clientX ? clientX : 0;
 				clientY = clientY ? clientY : 0;
@@ -96,7 +99,9 @@
 				element.dispatchEvent(evt);
 			});
 			EventTrigger.setEventHandler([EVENTS.focus, EVENTS.blur, EVENTS.focusin, EVENTS.focusout], function(element, eventType, canBubble, viewdetail, detailArg) {
-				var screenX = 0, screenY = 0;
+				if(!document.createEvent)
+                    return;
+                var screenX = 0, screenY = 0;
 				var evt = document.createEvent('FocusEvent');
 				evt.initUIEvent(eventType, canBubble, true, viewdetail || bot.currentWindow, detailArg);
 				
@@ -105,7 +110,8 @@
 			EventTrigger.setEventHandler(
 				[EVENTS.keydown,EVENTS.keyup,EVENTS.keypress],
 				function(element, eventType, keySequence, canBubble, controlKeyDown, altKeyDown, shiftKeyDown, metaKeyDown) {
-					
+					if(!document.createEvent)
+                        return;
 					var keycode = getKeyCodeFromKeySequence(keySequence);
 					var evt;
 					evt = document.createEvent('FocusEvent');
