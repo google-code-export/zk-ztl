@@ -329,7 +329,7 @@ function getKeyCodeFromKeySequence(keySequence) {
 }
 
 function createEventObject(element, controlKeyDown, altKeyDown, shiftKeyDown, metaKeyDown) {
-     var evt = element.ownerDocument.createEventObject();
+     var evt = document.createEventObject();
      evt.shiftKey = shiftKeyDown;
      evt.metaKey = metaKeyDown;
      evt.altKey = altKeyDown;
