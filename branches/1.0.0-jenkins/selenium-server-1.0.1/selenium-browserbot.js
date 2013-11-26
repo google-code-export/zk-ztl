@@ -33,15 +33,18 @@
 	window.initIE9Support = function(bot){
 		if(browserVersion.ie9check) return false;
 		if( browserVersion.browser == BrowserVersion.IE ){
-			var rmsie = /(msie) ([\w.]+)/gi ,
+			var rmsie = /([Tt]rident)\/([\w.]+)/gi ,
 				match = rmsie.exec( bot.currentWindow.navigator.userAgent );
 				
 			browserVersion.ie9check= true;
-			if (match[2] == "9.0") {
-				browserVersion.ie9 = true;
-			} else {
-				return false;
+			if (match && match[2]) {
+				var ver = match[2];
+				browserVersion.ien = parseFloat(ver) + 4;
+				if (browserVersion.ien == 9) {
+					browserVersion.ie9 = true;
+				} 
 			}
+			return false;			
 		}
 		if (browserVersion.ie9) {
 			window.EventTrigger = {
@@ -81,20 +84,25 @@
 				keyup:"keyup",
 				keypress:"keypress"				
 			};
+
 			EventTrigger.setEventHandler([EVENTS.mousedown, EVENTS.mousemove, EVENTS.mouseout, EVENTS.mouseover, EVENTS.mouseup, EVENTS.click, EVENTS.dblclick], function(element, eventType, canBubble, clientX, clientY, button) {
-				var screenX = 0, screenY = 0;
+				if(!document.createEvent)
+                    return;
+                var screenX = 0, screenY = 0;
 				
 				clientX = clientX ? clientX : 0;
 				clientY = clientY ? clientY : 0;
 				
-				var evt = element.ownerDocument.createEvent('MouseEvent');
+				var evt = document.createEvent('MouseEvent');
 				if (evt.initMouseEvent) evt.initMouseEvent(eventType, canBubble, true, bot.currentWindow, 1, screenX, screenY, clientX, clientY, this.controlKeyDown, this.altKeyDown, this.shiftKeyDown, this.metaKeyDown, button ? button : 0, null);
 				
 				element.dispatchEvent(evt);
 			});
 			EventTrigger.setEventHandler([EVENTS.focus, EVENTS.blur, EVENTS.focusin, EVENTS.focusout], function(element, eventType, canBubble, viewdetail, detailArg) {
-				var screenX = 0, screenY = 0;
-				var evt = element.ownerDocument.createEvent('FocusEvent');
+				if(!document.createEvent)
+                    return;
+                var screenX = 0, screenY = 0;
+				var evt = document.createEvent('FocusEvent');
 				evt.initUIEvent(eventType, canBubble, true, viewdetail || bot.currentWindow, detailArg);
 				
 				element.dispatchEvent(evt);
@@ -102,9 +110,11 @@
 			EventTrigger.setEventHandler(
 				[EVENTS.keydown,EVENTS.keyup,EVENTS.keypress],
 				function(element, eventType, keySequence, canBubble, controlKeyDown, altKeyDown, shiftKeyDown, metaKeyDown) {
-					
+					if(!document.createEvent)
+                        return;
 					var keycode = getKeyCodeFromKeySequence(keySequence);
-					var evt = element.ownerDocument.createEvent("Events");
+					var evt;
+					evt = document.createEvent('FocusEvent');
 		            evt.initEvent(eventType, canBubble, true);
 					
 					try{
@@ -2435,6 +2445,7 @@ IEBrowserBot.prototype._fireEventOnElement = function(eventType, element, client
     // If the page is going to unload - still attempt to fire any subsequent events.
     // However, we can't guarantee that the page won't unload half way through, so we need to handle exceptions.
     try {
+    	if(browserVersion.ien < 11)
         win.detachEvent("onbeforeunload", pageUnloadDetector);
 
         if (this._windowClosed(win)) {

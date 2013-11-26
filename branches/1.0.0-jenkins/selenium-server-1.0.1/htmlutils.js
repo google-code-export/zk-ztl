@@ -291,7 +291,7 @@ function triggerEvent(element, eventType, canBubble, controlKeyDown, altKeyDown,
         var evt = createEventObject(element, controlKeyDown, altKeyDown, shiftKeyDown, metaKeyDown);        
         element.fireEvent('on' + eventType, evt);
     }
-    else {
+    else if(document.createEvent) {
         var evt = document.createEvent('HTMLEvents');
         
         try {
@@ -329,7 +329,7 @@ function getKeyCodeFromKeySequence(keySequence) {
 }
 
 function createEventObject(element, controlKeyDown, altKeyDown, shiftKeyDown, metaKeyDown) {
-     var evt = element.ownerDocument.createEventObject();
+     var evt = document.createEventObject();
      evt.shiftKey = shiftKeyDown;
      evt.metaKey = metaKeyDown;
      evt.altKey = altKeyDown;
@@ -345,7 +345,7 @@ function triggerKeyEvent(element, eventType, keySequence, canBubble, controlKeyD
         keyEvent.keyCode = keycode;
         element.fireEvent('on' + eventType, keyEvent);
     }
-    else {
+    else if(document.createEvent) {
         var evt;
         if (window.KeyEvent) {
             evt = document.createEvent('KeyEvents');
