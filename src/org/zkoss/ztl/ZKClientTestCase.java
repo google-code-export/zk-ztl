@@ -477,6 +477,36 @@ public class ZKClientTestCase extends ZKTestCase {
 	public void submit(ClientWidget formLocator) {
 		super.submit(formLocator.toLocator());
 	}
+
+	/**
+	 * @param locator
+	 * @param num
+	 */
+	public void frozenScroll(ClientWidget locator, int num) {
+		String lo = locator.toLocator();
+		if (lo == null || 
+				(!lo.contains("z-tree") && !lo.contains("z-grid") && !lo.contains("z-listbox")))
+			return;
+		
+		Widget wgt = jq(locator).toWidget();
+		wgt.eval("frozen._doScrollNow(" + num + ")");
+		waitResponse();
+	}
+	
+	/**
+	 * @param locator
+	 * @param percent
+	 */
+	public void nativeFrozenScroll(ClientWidget locator, double dist) {
+		String lo = locator.toLocator();
+		if (lo == null || 
+				(!lo.contains("z-tree") && !lo.contains("z-grid") && !lo.contains("z-listbox")))
+			return;
+		
+		Widget wgt = jq(locator).find(".z-frozen").toWidget();
+		jq(wgt.$n("scrollX")).toElement().set("scrollLeft", "" + dist);
+		waitResponse();
+	}
 	
 	/**
 	 * 
